@@ -109,8 +109,8 @@ const SignleBlog = () => {
 
         <div className='mb-4'>
             <h1 className='text-xl text-primary-orange  mb-2 font-semibold'>What is TMS ?</h1>
-            <p className='mb-2 text-sm text-gray-700'>Many mental health conditions like depression, anxiety, PTSD, and OCD are linked to specific parts of the brain not working as they should. When these areas of the brain are underactive, it can lead to constant and challenging symptoms that affect daily life. </p>
-            <p className='mb-5 text-sm text-gray-700'>Transcranial Magnetic Stimulation (TMS) offers a non-invasive way to address this issue. By using magnetic fields, TMS stimulates nerve cells in the brain areas responsible for mood regulation and mental health. Think of TMS as a method to "jump-start" these underactive parts of the brain, helping them to function normally again and improving overall mental health. </p>
+            <p className='mb-2 text-sm text-gray-700'>Many mental health conditions like depression, anxiety, PTSD, and OCD are linked to specific parts of the brain not working as they should. When these areas of the brain are underactive, it can lead to constant and challenging symptoms that affect daily life.</p>
+            <p className='mb-5 text-sm text-gray-700'>Transcranial Magnetic Stimulation (TMS) offers a non-invasive way to address this issue. By using magnetic fields, TMS stimulates nerve cells in the brain areas responsible for mood regulation and mental health. Think of TMS as a method to &apos;jump-start&apos; these underactive parts of the brain, helping them to function normally again and improving overall mental health. </p>
             <div>
                 <img src='/home/clinicImg.svg' />
             </div>
