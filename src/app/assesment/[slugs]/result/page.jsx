@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 const Result = () => {
@@ -6,7 +7,7 @@ const Result = () => {
   return (
     <div>
     <div className='mt-8 flex justify-center'>
-        <img src='/home/smile.svg' />
+        <Image src='/home/smile.svg' />
     </div>
     <div class=" items-center p-4 gap-4">
 
@@ -28,7 +29,7 @@ const Result = () => {
             <button class="bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3  ">GET OTP</button>
         </div>
         <div className='flex justify-center flex-col items-center px-4 mb-3 '>
-        <p class="text-center text-sm text-muted-foreground mb-4">You'll receive a message on WhatsApp shortly. If you haven't received it yet, <a href="#" class="font-bold">click here</a></p>
+        <p class="text-center text-sm text-muted-foreground mb-4">You&apos;ll receive a message on WhatsApp shortly. If you haven&apos;t received it yet, <a href="#" class="font-bold">click here</a></p>
         <button onClick={() => router.push('/consultation/location')} class="bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3 ">BOOK A CONSULTATION</button>
    
         </div>
