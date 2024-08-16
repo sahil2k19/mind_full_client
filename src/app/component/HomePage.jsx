@@ -33,7 +33,11 @@ const HomePage = ({ allSection }) => {
                 </div>
             </section>
             <section className='bg-primary-div py-10'>
-
+                <div>
+                    <h1 className='text-2xl  text-center font-sans mb-4 font-semibold'>
+                        {allSection?.section2?.para1}
+                    </h1>
+                </div>
 
                 <div className='flex flex-col justify-center mb-5 px-8 bg-[rgba(239, 102, 35, 0.3)]'>
                     <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} />
