@@ -6,7 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HomePage from '@/app/component/HomePage'
 import EditHomePage from './EditHomePage';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import EditAssesment from './EditAssesment';
 import AssesmentPage from '@/app/assesment/AssesmentPage';
 import { usePathname } from 'next/navigation';
@@ -336,14 +336,14 @@ const GeneralEdit = ({ params }) => {
                 {renderPageHeader(page)}
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 px-8 py-4 gap-4'>
-                <div className=' sm:col-span-3 border-[1px] border-gray-400 p-2 shadow rounded-xl'>
+                <div className='h-[100vh] overflow-y-scroll overflow-x-hidden sm:col-span-3 border-[1px] border-gray-400 p-2 shadow rounded-xl'>
                     {renderPageComponent(page, allSection, setAllSection)}
                 </div>
                 <div className='col-span-1'>
                     <div className='flex justify-center mb-5 bg-green-500 rounded-xl text-white p-3'>
                         <h1 className='text-2xl font-semibold'>Live Preview</h1>
                     </div>
-                    <div className='h-[70vh] overflow-y-scroll overflow-x-hidden'>
+                    <div className='h-[90vh] overflow-y-scroll overflow-x-hidden'>
                         {renderPreviewPage(page, allSection, setAllSection)}
                     </div>
                 </div>
