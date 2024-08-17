@@ -101,9 +101,9 @@ const EditHomePage = ({ allSection, setAllSection }) => {
               </div>
               <div className='flex flex-col w-full mb-6'>
                 <label className='text-lg font-semibold'>Para2</label>
-                <textarea className='border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none h-[200px]' value={allSection?.section2?.html1} onChange={(e) => {
+                {/* <textarea className='border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none h-[200px]' value={allSection?.section2?.html1} onChange={(e) => {
                   setAllSection({ ...allSection, section2: { ...allSection?.section2, html1: e.target.value } })
-                }} />
+                }} /> */}
                 <QuillEditor
                   value={allSection?.section2?.html1}
                   onChange={(e)=>{setAllSection({ ...allSection, section2: { ...allSection?.section2, html1: e } })}}

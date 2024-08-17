@@ -28,7 +28,7 @@ const Admin = () => {
         {
           pages.map((page, index) => (
             <div className='px-2 py-5 rounded-lg hover:shadow-lg bg-orange-400 cursor-pointer flex justify-center' key={index} onClick={() => router.push(`/admin/${page.slug}`)}>
-                <h1 className='text-white font-semibold'>{page.name}</h1>
+                <h1 className='text-white text-2xl font-semibold'>{page.name}</h1>
             </div>
           ))
         }
