@@ -1,10 +1,12 @@
 "use client"
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Accordion, AccordionSummary, AccordionDetails, Button, TextField, IconButton, MenuItem, Select } from '@mui/material';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import DeleteIcon from '@mui/icons-material/Delete';
+// import AddIcon from '@mui/icons-material/Add';
 
-const EditBlogsComponent = ({ blog , slugs, setBlog }) => {
- 
-
+const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
+    const [expanded, setExpanded] = useState(false);
     const handleInputChange = (e, index, type, accordionIndex = null) => {
         const { name, value } = e.target;
 
@@ -69,195 +71,219 @@ const EditBlogsComponent = ({ blog , slugs, setBlog }) => {
     if (!blog) {
         return <div>Loading...</div>; // Add a loading state or a spinner here
     }
+    const handleAccordionChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     return (
         <form className="space-y-4 p-4 bg-white shadow-md rounded-lg">
             <div>
                 <label className="block text-gray-700">Title</label>
-                <input
-                    type="text"
+                <TextField
+                    fullWidth
                     name="title"
                     value={blog?.title || ''}
                     onChange={(e) => handleInputChange(e)}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                    variant="outlined"
                 />
             </div>
 
             <div>
                 <label className="block text-gray-700">Main Image URL</label>
-                <input
-                    type="text"
+                <TextField
+                    fullWidth
                     name="mainImage"
                     value={blog?.mainImage || ''}
                     onChange={(e) => handleInputChange(e)}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                    variant="outlined"
                 />
             </div>
 
             <div className="space-y-4">
                 {blog?.sections?.map((section, index) => (
-                    <div key={index} className="p-4 border border-gray-200 rounded-md">
-                        <div className="flex justify-between items-center mb-2">
-                            <div className="text-lg font-medium">Section {index + 1}</div>
-                            <div className="space-x-2">
-                                <button
-                                    type="button"
-                                    onClick={() => moveSection(index, 'up')}
-                                    className="bg-blue-500 text-white px-2 py-1 rounded-md"
-                                >
-                                    Up
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => moveSection(index, 'down')}
-                                    className="bg-blue-500 text-white px-2 py-1 rounded-md"
-                                >
-                                    Down
-                                </button>
-                            </div>
-                        </div>
-
-                        <label className="block text-gray-700">Section Type</label>
-                        <select
-                            name="type"
-                            value={section.type}
-                            onChange={(e) => handleInputChange(e, index, 'sections')}
-                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                    <Accordion key={index}    expanded={expanded === `panel${index}`}
+                        onChange={handleAccordionChange(`panel${index}`)}>
+                        <AccordionSummary
+                            // expandIcon={<ExpandMoreIcon />}
                         >
-                            <option value="content">Content</option>
-                            <option value="image">Image</option>
-                            <option value="button">Button</option>
-                            <option value="accordion">Accordion</option>
-                        </select>
-
-                        {section.type === 'content' && (
-                            <div className="mt-2">
-                                <label className="block text-gray-700">Content</label>
-                                <textarea
-                                    name="content"
-                                    value={section.content || ''}
-                                    onChange={(e) => handleInputChange(e, index, 'sections')}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                ></textarea>
-                            </div>
-                        )}
-
-                        {section.type === 'image' && (
-                            <div className="mt-2">
-                                <label className="block text-gray-700">Image URL</label>
-                                <input
-                                    type="text"
-                                    name="content"
-                                    value={section.content || ''}
-                                    onChange={(e) => handleInputChange(e, index, 'sections')}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                />
-                            </div>
-                        )}
-
-                        {section.type === 'button' && (
-                            <div className="mt-2 space-y-2">
-                                <div>
-                                    <label className="block text-gray-700">Button Text</label>
-                                    <input
-                                        type="text"
-                                        name="text"
-                                        value={section.text || ''}
-                                        onChange={(e) => handleInputChange(e, index, 'sections')}
-                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-gray-700">Link</label>
-                                    <input
-                                        type="text"
-                                        name="link"
-                                        value={section.link || ''}
-                                        onChange={(e) => handleInputChange(e, index, 'sections')}
-                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                    />
+                            <div className="flex justify-between items-center w-full">
+                                <div className="text-lg font-medium capitalize">{section?.type } {index+1}</div>
+                                <div className="space-x-2">
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-green-500 text-white font-semibold" onClick={(e) =>{e.preventDefault(); moveSection(index, 'up')}}
+                                    >
+                                        Up
+                                    </button>
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-orange-500 text-white font-semibold" onClick={(e) => {e.preventDefault() ;moveSection(index, 'down')}}
+                                    >
+                                        Down
+                                    </button>
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-red-500 text-white font-semibold" onClick={(e) => {e.preventDefault() ;handleRemoveSection(index)}}
+                                    >
+                                        {/* <DeleteIcon /> */}
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
-                        )}
+                        </AccordionSummary>
 
-                        {section.type === 'accordion' && (
-                            <div className="mt-2">
-                                {section.sections?.map((accSection, accIndex) => (
-                                    <div key={accIndex} className="mb-4 border p-2 rounded">
-                                        <label className="block text-gray-700">Accordion Section {accIndex + 1} Type</label>
-                                        <select
-                                            name="type"
-                                            value={accSection.type}
-                                            onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                        >
-                                            <option value="content">Content</option>
-                                            <option value="image">Image</option>
-                                        </select>
+                        <AccordionDetails>
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="block text-gray-700">Section Type</label>
+                                    <Select
+                                        name="type"
+                                        value={section.type}
+                                        onChange={(e) => handleInputChange(e, index, 'sections')}
+                                        fullWidth
+                                    >
+                                        <MenuItem value="content">Content</MenuItem>
+                                        <MenuItem value="image">Image</MenuItem>
+                                        <MenuItem value="button">Button</MenuItem>
+                                        <MenuItem value="accordion">Accordion</MenuItem>
+                                    </Select>
+                                </div>
 
-                                        {accSection.type === 'content' && (
-                                            <div className="mt-2">
-                                                <label className="block text-gray-700">Content</label>
-                                                <textarea
-                                                    name="content"
-                                                    value={accSection.content || ''}
-                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                                ></textarea>
-                                            </div>
-                                        )}
-
-                                        {accSection.type === 'image' && (
-                                            <div className="mt-2">
-                                                <label className="block text-gray-700">Image URL</label>
-                                                <input
-                                                    type="text"
-                                                    name="content"
-                                                    value={accSection.content || ''}
-                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                                />
-                                            </div>
-                                        )}
-
-                                        <button
-                                            type="button"
-                                            onClick={() => handleRemoveAccordionSection(index, accIndex)}
-                                            className="mt-4 bg-red-500 text-white p-2 rounded-md"
-                                        >
-                                            Remove Accordion Section
-                                        </button>
+                                {section.type === 'content' && (
+                                    <div>
+                                        <label className="block text-gray-700">Content</label>
+                                        <TextField
+                                            name="content"
+                                            value={section.content || ''}
+                                            onChange={(e) => handleInputChange(e, index, 'sections')}
+                                            multiline
+                                            rows={4}
+                                            fullWidth
+                                            variant="outlined"
+                                        />
                                     </div>
-                                ))}
+                                )}
 
-                                <button
-                                    type="button"
-                                    onClick={() => handleAddAccordionSection(index)}
-                                    className="mt-4 bg-green-500 text-white p-2 rounded-md"
-                                >
-                                    Add Accordion Section
-                                </button>
+                                {section.type === 'image' && (
+                                    <div>
+                                        <label className="block text-gray-700">Image URL</label>
+                                        <TextField
+                                            name="content"
+                                            value={section.content || ''}
+                                            onChange={(e) => handleInputChange(e, index, 'sections')}
+                                            fullWidth
+                                            variant="outlined"
+                                        />
+                                    </div>
+                                )}
+
+                                {section.type === 'button' && (
+                                    <div className="space-y-2">
+                                        <div>
+                                            <label className="block text-gray-700">Button Text</label>
+                                            <TextField
+                                                name="text"
+                                                value={section.text || ''}
+                                                onChange={(e) => handleInputChange(e, index, 'sections')}
+                                                fullWidth
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-gray-700">Link</label>
+                                            <TextField
+                                                name="link"
+                                                value={section.link || ''}
+                                                onChange={(e) => handleInputChange(e, index, 'sections')}
+                                                fullWidth
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+
+                                {section.type === 'accordion' && (
+                                    <div>
+                                        {section.sections?.map((accSection, accIndex) => (
+                                            <Accordion key={accIndex} expanded>
+                                                <AccordionSummary
+                                                    // expandIcon={<ExpandMoreIcon />}
+                                                >
+                                                    <div>Accordion Section {accIndex + 1}</div>
+                                                </AccordionSummary>
+
+                                                <AccordionDetails>
+                                                    <div className="space-y-2">
+                                                        <div>
+                                                            <label className="block text-gray-700">Type</label>
+                                                            <Select
+                                                                name="type"
+                                                                value={accSection.type}
+                                                                onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                                fullWidth
+                                                            >
+                                                                <MenuItem value="content">Content</MenuItem>
+                                                                <MenuItem value="image">Image</MenuItem>
+                                                            </Select>
+                                                        </div>
+
+                                                        {accSection.type === 'content' && (
+                                                            <div>
+                                                                <label className="block text-gray-700">Content</label>
+                                                                <TextField
+                                                                    name="content"
+                                                                    value={accSection.content || ''}
+                                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                                    multiline
+                                                                    rows={4}
+                                                                    fullWidth
+                                                                    variant="outlined"
+                                                                />
+                                                            </div>
+                                                        )}
+
+                                                        {accSection.type === 'image' && (
+                                                            <div>
+                                                                <label className="block text-gray-700">Image URL</label>
+                                                                <TextField
+                                                                    name="content"
+                                                                    value={accSection.content || ''}
+                                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                                    fullWidth
+                                                                    variant="outlined"
+                                                                />
+                                                            </div>
+                                                        )}
+
+                                                        <IconButton
+                                                            color="secondary"
+                                                            onClick={() => handleRemoveAccordionSection(index, accIndex)}
+                                                        >
+                                                            {/* <DeleteIcon /> */}
+                                                        </IconButton>
+                                                    </div>
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        ))}
+
+                                        <Button
+                                            // startIcon={<AddIcon />}
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={() => handleAddAccordionSection(index)}
+                                        >
+                                            Add Accordion Section
+                                        </Button>
+                                    </div>
+                                )}
                             </div>
-                        )}
-
-                        <button
-                            type="button"
-                            onClick={() => handleRemoveSection(index)}
-                            className="mt-4 bg-red-500 text-white p-2 rounded-md"
-                        >
-                            Remove Section
-                        </button>
-                    </div>
+                        </AccordionDetails>
+                    </Accordion>
                 ))}
             </div>
 
-            <button
-                type="button"
+            <Button
+                // startIcon={<AddIcon />}
+                variant="contained"
+                color="primary"
                 onClick={handleAddSection}
-                className="mt-4 bg-blue-500 text-white p-2 rounded-md"
             >
                 Add Section
-            </button>
+            </Button>
         </form>
     );
 }
