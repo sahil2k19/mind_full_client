@@ -10,6 +10,110 @@ import EditHomePage from './EditHomePage';
 import EditAssesment from './EditAssesment';
 import AssesmentPage from '@/app/assesment/AssesmentPage';
 import { usePathname } from 'next/navigation';
+import axios from 'axios';
+
+
+
+
+
+const GeneralEdit = ({ params }) => {
+    const { page } = params;
+    const location = usePathname();
+    
+    const RenderApiUrl = () => {
+        
+    }
+    
+    const [allSection, setAllSection] = useState();
+
+    const getSection =()=>{
+        let apiUrl = ''
+        if(page === 'homesection'){
+            apiUrl= `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
+        }
+        else if(page === 'assesment'){
+            apiUrl= `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
+        }
+        axios.get( apiUrl )
+        .then((res)=>{
+            // console.log(res.data);
+            setAllSection(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+    useEffect(()=>{
+        getSection();
+    },[])
+    const handleSave = ()=>{
+        if(allSection){
+          axios.put(`${process.env.NEXT_PUBLIC_API_URL}homeSection/udpateHomeSection`, allSection).then((res) => {
+            console.log(res.data);
+          }).catch((err) => {
+            console.log(err);
+          })
+        }
+      }
+    
+
+    const renderPageComponent = (page, allSection, setAllSection) => {
+        if (page === 'homesection') {
+            return <EditHomePage allSection={allSection} setAllSection={setAllSection} />;
+        }
+        else if (page === 'assesment') {
+            return <EditAssesment allSection={allSection} setAllSection={setAllSection} />;
+        }
+        return null;
+    }
+
+    const renderPageHeader = (page) => {
+        if (page === 'homesection') {
+            return <h1 className='text-2xl font-semibold'>Home Page</h1>;
+        }
+        return null;
+    };
+
+    const renderPreviewPage = (page, allSection, setAllSection) => {
+        if (page === 'homesection') {
+            return <HomePage allSection={allSection} />;
+        }
+        else if (page === 'assesment') {
+            return <AssesmentPage allSection={allSection} setAllSection={setAllSection} />;
+        }
+        
+        return null;
+    }
+
+    return (
+        <>
+            <div className='px-4 py-4 flex justify-around'>
+
+                {renderPageHeader(page)}
+                <button className='bg-green-500 text-white px-4 py-2 rounded-xl' onClick={handleSave}>Save</button>
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-4 px-8 py-4 gap-4'>
+                <div className='h-[100vh] overflow-y-scroll overflow-x-hidden sm:col-span-3 border-[1px] border-gray-400 p-2 shadow rounded-xl'>
+                    {renderPageComponent(page, allSection, setAllSection)}
+                </div>
+                <div className='col-span-1'>
+                    <div className='flex justify-center mb-5 bg-green-500 rounded-xl text-white p-3'>
+                        <h1 className='text-2xl font-semibold'>Live Preview</h1>
+                    </div>
+                    <div className='h-[90vh] overflow-y-scroll overflow-x-hidden'>
+                        {renderPreviewPage(page, allSection, setAllSection)}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default GeneralEdit;
+
+
+
+// BELOW ARE THE EXAMPLE OF DATA FOR HOME PAGE , ASSESMENT PAGE 
 
 const HomePageSections = {
     heroSection: {
@@ -281,75 +385,3 @@ const assesmentPageSection = {
         }
     }
 }
-
-
-
-const GeneralEdit = ({ params }) => {
-    const { page } = params;
-    const location = usePathname();
-    
-    const RenderDynamicPreviewSection = () => {
-        if(page === 'homesection'){
-            return HomePageSections;
-        }
-        else if(page === 'assesment'){
-            return assesmentPageSection;
-        }
-    }
-    
-    const [allSection, setAllSection] = useState(RenderDynamicPreviewSection());
-
-    useEffect(() => {
-        setAllSection(RenderDynamicPreviewSection());
-    }, [location]);
-
-    const renderPageComponent = (page, allSection, setAllSection) => {
-        if (page === 'homesection') {
-            return <EditHomePage allSection={allSection} setAllSection={setAllSection} />;
-        }
-        else if (page === 'assesment') {
-            return <EditAssesment allSection={allSection} setAllSection={setAllSection} />;
-        }
-        return null;
-    }
-
-    const renderPageHeader = (page) => {
-        if (page === 'homesection') {
-            return <h1 className='text-2xl font-semibold'>Home Page</h1>;
-        }
-        return null;
-    };
-
-    const renderPreviewPage = (page, allSection, setAllSection) => {
-        if (page === 'homesection') {
-            return <HomePage allSection={allSection} />;
-        }
-        else if (page === 'assesment') {
-            return <AssesmentPage allSection={allSection} setAllSection={setAllSection} />;
-        }
-        return null;
-    }
-
-    return (
-        <>
-            <div className='px-4 py-4 flex justify-center'>
-                {renderPageHeader(page)}
-            </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 px-8 py-4 gap-4'>
-                <div className='h-[100vh] overflow-y-scroll overflow-x-hidden sm:col-span-3 border-[1px] border-gray-400 p-2 shadow rounded-xl'>
-                    {renderPageComponent(page, allSection, setAllSection)}
-                </div>
-                <div className='col-span-1'>
-                    <div className='flex justify-center mb-5 bg-green-500 rounded-xl text-white p-3'>
-                        <h1 className='text-2xl font-semibold'>Live Preview</h1>
-                    </div>
-                    <div className='h-[90vh] overflow-y-scroll overflow-x-hidden'>
-                        {renderPreviewPage(page, allSection, setAllSection)}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
-
-export default GeneralEdit;

@@ -1,6 +1,7 @@
 "use client"
-import Link from 'next/link'
 import React from 'react'
+import SingleBlogPage from "@/app/component/SingleBlogPage"
+import BlogSection from "@/app/component/BlogSection"
 const works = [
     {
         id: 1,
@@ -76,96 +77,79 @@ const stages = [
         ]
        },
 ]
-const SignleBlog = () => {
+
+// const blog ={
+//     "title": "A Journey Through the Mountains",
+//     "mainImage": "https://picsum.photos/200/300",
+//     "sections": [
+//       {
+//         "type": "content",
+//         "content": "<p>This is the first paragraph describing the journey.</p>",
+//         "order": 1
+//       },
+//       {
+//         "type": "image",
+//         "content": "https://picsum.photos/200/300",
+//         "order": 2
+//       },
+//       {
+//         "type": "content",
+//         "content": "<p>This section provides more details about the mountain ranges.</p>",
+//         "order": 3
+//       },
+//       {
+//         "type": "button",
+//         "text": "Read More",
+//         "link": "/",
+//         "order": 3
+//       },
+//       {
+//         "type":"accordion",
+//         "order":4,
+//         "sections": [
+//             {
+//               "type": "content",
+//               "content": "<p>Details about the first part of the journey inside the accordion.</p>",
+//               "order": 1
+//             },
+//             {
+//               "type": "image",
+//               "content": "https://picsum.photos/200/300",
+//               "order": 2
+//             },
+//             {
+//               "type": "content",
+//               "content": "<p>Additional information inside the accordion section.</p>",
+//               "order": 3
+//             }
+//           ],
+//       }
+     
+//     ]
+//   }
+  
+
+const SingleBlog = ({blog}) => {
   return (
-    <>   <div className='px-4'>
-
-    <div className='flex justify-start p-6 items-center mb-6'>
-        <Link className='mr' href={'/'}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            // className="w-6 h-6"
-            >
-                <path d="M15 18l-6-6 6-6" />
-            </svg>
-        </Link>
-
+    <> 
+        {/* <SingleBlogPage works={works} stages={stages}/> */}
         <div>
-            <h1 class="text-2xl font-semibold "> TMS Treatment</h1>
-
+            <h2 className='text-2xl font-bold text-center text-primary-orange my-8'>{blog?.title}</h2>
         </div>
-
-
-    </div>
-    <div className='px-4'>
-
-        <div className='mb-4'>
-            <h1 className='text-xl text-primary-orange  mb-2 font-semibold'>What is TMS ?</h1>
-            <p className='mb-2 text-sm text-gray-700'>Many mental health conditions like depression, anxiety, PTSD, and OCD are linked to specific parts of the brain not working as they should. When these areas of the brain are underactive, it can lead to constant and challenging symptoms that affect daily life.</p>
-            <p className='mb-5 text-sm text-gray-700'>Transcranial Magnetic Stimulation (TMS) offers a non-invasive way to address this issue. By using magnetic fields, TMS stimulates nerve cells in the brain areas responsible for mood regulation and mental health. Think of TMS as a method to &apos;jump-start&apos; these underactive parts of the brain, helping them to function normally again and improving overall mental health. </p>
-            <div>
-                <img src='/home/clinicImg.svg' />
-            </div>
-        </div>
-        <div className='mb-10'>
-            <h1 className='text-xl text-primary-orange  mb-4 font-semibold '>How TMS Works:</h1>
-            <div className='mb-6'>
-                {
-                    works?.map((i, index) => (
-                        <div key={index} className='flex justify-between p-5 mb-3 bg-primary-div rounded-lg '>
-                            <h1 className='text-primary-orange font-semibold'>{index + 1}. {i?.title}</h1>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" stroke-width="1" class="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                            </svg>
-                        </div>
-                    ))
-                }
-            </div>
-            <div className='flex justify-center'>
-                <button className='bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3'>BOOK A CONSULTATION</button>
-            </div>
-        </div>
-
-        <div className='mb-10'>
-            <h1 className='text-center text-2xl font-semibold mb-3 '>Stages in TMS Therapy?</h1>
-            <p className='text-gray-700 text-center text-[13px] mb-6'>What can I expect when receiving a TMS therapy? </p>
-            {
-                stages?.map((i, index) => (
-                    <div key={index} className='mb-6'>
-                        <h1 className='text-xl text-primary-orange  mb-4 font-semibold'>{index+1}. {i?.title}</h1>
-                        <div>
-                            <div className='h-[201px] w-full rounded-lg mb-4 bg-primary-div border-orange-500 border-2'></div>
-                            {
-                                i.subPoints?.map((sp, index)=> (
-                                    <div key={index} className='d-flex mb-3'>
-                                <p> <span className='font-bold '>{sp?.paraTitle}: </span>{sp?.para}</p>
-                            </div>
-                                ))
-                            }
-                            
-                        </div>
-                    </div>
-                ))
-            }
-           
-        </div>
-
-        <div className='flex justify-center mb-10'>
-            <button className='bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3'>BOOK A CONSULTATION</button>
-        </div>
-    </div>
-</div>
-
+        {
+            blog?.sections?.map((section, index) => {
+                return <div className='my-4 px-8 '>
+                    <BlogSection key={index} section={section}/>
+                </div>
+            })
+        }
+        {/* <BlogSection section={blog.sections[0]}/>
+        <BlogSection section={blog.sections[1]}/>
+        <BlogSection section={blog.sections[2]}/>
+        <BlogSection section={blog.sections[3]}/>
+        <BlogSection section={blog.sections[4]}/> */}
     </>
   )
 }
 
-export default SignleBlog
+export default SingleBlog

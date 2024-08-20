@@ -14,7 +14,8 @@ const pages = [
   {
     name: 'Assesment',
     slug: 'assesment'
-  }
+  },
+ 
 ]
 
 
@@ -32,6 +33,9 @@ const Admin = () => {
             </div>
           ))
         }
+        <div className='px-2 py-5 rounded-lg hover:shadow-lg bg-orange-400 cursor-pointer flex justify-center'  onClick={() => router.push(`/admin/blogs`)}>
+                <h1 className='text-white text-2xl font-semibold'>Blogs</h1>
+            </div>
        
         </div>
     </div>
