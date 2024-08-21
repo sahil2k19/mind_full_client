@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import EditBlogsComponent from '../../components/EditBlogsComponent';
-import SingleBlog from '@/app/blogs/[slugs]/page';
+import SingleBlog from '@/app/blogs/[slugs]/SingleBlog';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 const AddBlog = () => {
@@ -27,7 +27,7 @@ const AddBlog = () => {
                 <div className='grid grid-cols-1 md:grid-cols-6 '>
                     <div className='border-2 md:col-span-4 rounded-xl '>
                         <div className='flex p-6 justify-between '>
-                            <h1 className=' text-xl font-semibold'>Edit Blog</h1>
+                            <h1 className=' text-xl font-semibold'>Add Blog</h1>
                             <button onClick={updateBlogData} className='px-10 py-3 active:shadow-lg active:bg-green-500  font-semibold text-green-900 bg-green-400 rounded-lg'>Save</button>
                         </div>
                         <div className='p-4 h-[90vh] overflow-scroll'>

@@ -1,7 +1,6 @@
-"use client"
 import React from 'react'
-import SingleBlogPage from "@/app/component/SingleBlogPage"
-import BlogSection from "@/app/component/BlogSection"
+import SingleBlog from "@/app/blogs/[slugs]/SingleBlog"
+import axios from 'axios'
 const works = [
     {
         id: 1,
@@ -129,27 +128,15 @@ const stages = [
 //   }
   
 
-const SingleBlog = ({blog}) => {
+const page = async({params}) => {
+    const {slugs} = params;
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blogs/getBlogData/${slugs}/blog`);
+    const blog = res.data
   return (
     <> 
-        {/* <SingleBlogPage works={works} stages={stages}/> */}
-        <div>
-            <h2 className='text-2xl font-bold text-center text-primary-orange my-8'>{blog?.title}</h2>
-        </div>
-        {
-            blog?.sections?.map((section, index) => {
-                return <div className='my-4 px-8 '>
-                    <BlogSection key={index} section={section}/>
-                </div>
-            })
-        }
-        {/* <BlogSection section={blog.sections[0]}/>
-        <BlogSection section={blog.sections[1]}/>
-        <BlogSection section={blog.sections[2]}/>
-        <BlogSection section={blog.sections[3]}/>
-        <BlogSection section={blog.sections[4]}/> */}
+       <SingleBlog blog={blog}/>
     </>
   )
 }
 
-export default SingleBlog
+export default page

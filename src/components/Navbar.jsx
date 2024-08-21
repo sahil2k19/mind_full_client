@@ -121,7 +121,7 @@ function Navbar() {
               {
                 links.map((link, index) => (
                   <div
-                    className={`flex justify-between px-8 py-4 mb-2 ${(link.active === currentLocation) ? "font-bold bg-[#F8A51C] rounded-lg  text-white" : ""}`}
+                    className={`flex cursor-pointer justify-between px-8 py-4 mb-2 ${(link.active === currentLocation) ? "font-bold bg-[#F8A51C] rounded-lg  text-white" : ""}`}
                     key={index}
                     onClick={() => {
                       if(link?.child){
@@ -130,12 +130,12 @@ function Navbar() {
                       handleNavigate(link.path)
                     }}
                   >
-                    <div>
+                    <div className="">
                       <p >{link.title}</p>
                       {
                         link?.child?.map((c,index)=>(
                             <div key={index} onClick={() => {handleNavigate(c.path)}} className={`ml-5 mt-4  ${c?.active===currentLocation?"font-bold bg-[#F8A51C] rounded-lg px-10 py-2 w-full  text-white":""}`}>
-                              <p className="mb-2"><span className={`${c?.active===currentLocation?"":""}text-[#EF6623]`}>{`${c.active===currentLocation?"":"--"}`} </span>{c?.title}</p>
+                              <p className="mb-2"><span className={`${c?.active===currentLocation?"":""}text-[#EF6623]`}>{`${c.active===currentLocation?"":""}`} </span>{c?.title}</p>
                             </div>
                         )) 
                       }

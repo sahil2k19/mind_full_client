@@ -76,8 +76,8 @@ const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
     };
 
     return (
-        <form className="space-y-4 p-4 bg-white shadow-md rounded-lg">
-            <div>
+        <form className="space-y-4 p-4 bg-purple-100 shadow-md rounded-lg">
+            <div className=''>
                 <label className="block text-gray-700">Title</label>
                 <TextField
                     fullWidth
@@ -85,6 +85,7 @@ const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
                     value={blog?.title || ''}
                     onChange={(e) => handleInputChange(e)}
                     variant="outlined"
+                    className='bg-white'
                 />
             </div>
 
@@ -96,28 +97,29 @@ const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
                     value={blog?.mainImage || ''}
                     onChange={(e) => handleInputChange(e)}
                     variant="outlined"
+                    className='bg-white'
                 />
             </div>
 
             <div className="space-y-4">
                 {blog?.sections?.map((section, index) => (
-                    <Accordion key={index}    expanded={expanded === `panel${index}`}
+                    <Accordion key={index} expanded={expanded === `panel${index}`}
                         onChange={handleAccordionChange(`panel${index}`)}>
                         <AccordionSummary
-                            // expandIcon={<ExpandMoreIcon />}
+                        // expandIcon={<ExpandMoreIcon />}
                         >
                             <div className="flex justify-between items-center w-full">
-                                <div className="text-lg font-medium capitalize">{section?.type } {index+1}</div>
+                                <div className="text-lg font-medium capitalize">{section?.type} {index + 1}</div>
                                 <div className="space-x-2">
-                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-green-500 text-white font-semibold" onClick={(e) =>{e.preventDefault(); moveSection(index, 'up')}}
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-green-500 text-white font-semibold" onClick={(e) => { e.preventDefault(); moveSection(index, 'up') }}
                                     >
                                         Up
                                     </button>
-                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-orange-500 text-white font-semibold" onClick={(e) => {e.preventDefault() ;moveSection(index, 'down')}}
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-orange-500 text-white font-semibold" onClick={(e) => { e.preventDefault(); moveSection(index, 'down') }}
                                     >
                                         Down
                                     </button>
-                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-red-500 text-white font-semibold" onClick={(e) => {e.preventDefault() ;handleRemoveSection(index)}}
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-red-500 text-white font-semibold" onClick={(e) => { e.preventDefault(); handleRemoveSection(index) }}
                                     >
                                         {/* <DeleteIcon /> */}
                                         Remove
@@ -136,140 +138,16 @@ const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
                                         onChange={(e) => handleInputChange(e, index, 'sections')}
                                         fullWidth
                                     >
+                                        <MenuItem value="header">Header</MenuItem>
                                         <MenuItem value="content">Content</MenuItem>
                                         <MenuItem value="image">Image</MenuItem>
                                         <MenuItem value="button">Button</MenuItem>
                                         <MenuItem value="accordion">Accordion</MenuItem>
+                                        <MenuItem value="space">Space</MenuItem>
+
                                     </Select>
                                 </div>
-
-                                {section.type === 'content' && (
-                                    <div>
-                                        <label className="block text-gray-700">Content</label>
-                                        <TextField
-                                            name="content"
-                                            value={section.content || ''}
-                                            onChange={(e) => handleInputChange(e, index, 'sections')}
-                                            multiline
-                                            rows={4}
-                                            fullWidth
-                                            variant="outlined"
-                                        />
-                                    </div>
-                                )}
-
-                                {section.type === 'image' && (
-                                    <div>
-                                        <label className="block text-gray-700">Image URL</label>
-                                        <TextField
-                                            name="content"
-                                            value={section.content || ''}
-                                            onChange={(e) => handleInputChange(e, index, 'sections')}
-                                            fullWidth
-                                            variant="outlined"
-                                        />
-                                    </div>
-                                )}
-
-                                {section.type === 'button' && (
-                                    <div className="space-y-2">
-                                        <div>
-                                            <label className="block text-gray-700">Button Text</label>
-                                            <TextField
-                                                name="text"
-                                                value={section.text || ''}
-                                                onChange={(e) => handleInputChange(e, index, 'sections')}
-                                                fullWidth
-                                                variant="outlined"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-gray-700">Link</label>
-                                            <TextField
-                                                name="link"
-                                                value={section.link || ''}
-                                                onChange={(e) => handleInputChange(e, index, 'sections')}
-                                                fullWidth
-                                                variant="outlined"
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-
-                                {section.type === 'accordion' && (
-                                    <div>
-                                        {section.sections?.map((accSection, accIndex) => (
-                                            <Accordion key={accIndex} expanded>
-                                                <AccordionSummary
-                                                    // expandIcon={<ExpandMoreIcon />}
-                                                >
-                                                    <div>Accordion Section {accIndex + 1}</div>
-                                                </AccordionSummary>
-
-                                                <AccordionDetails>
-                                                    <div className="space-y-2">
-                                                        <div>
-                                                            <label className="block text-gray-700">Type</label>
-                                                            <Select
-                                                                name="type"
-                                                                value={accSection.type}
-                                                                onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                                                fullWidth
-                                                            >
-                                                                <MenuItem value="content">Content</MenuItem>
-                                                                <MenuItem value="image">Image</MenuItem>
-                                                            </Select>
-                                                        </div>
-
-                                                        {accSection.type === 'content' && (
-                                                            <div>
-                                                                <label className="block text-gray-700">Content</label>
-                                                                <TextField
-                                                                    name="content"
-                                                                    value={accSection.content || ''}
-                                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                                                    multiline
-                                                                    rows={4}
-                                                                    fullWidth
-                                                                    variant="outlined"
-                                                                />
-                                                            </div>
-                                                        )}
-
-                                                        {accSection.type === 'image' && (
-                                                            <div>
-                                                                <label className="block text-gray-700">Image URL</label>
-                                                                <TextField
-                                                                    name="content"
-                                                                    value={accSection.content || ''}
-                                                                    onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
-                                                                    fullWidth
-                                                                    variant="outlined"
-                                                                />
-                                                            </div>
-                                                        )}
-
-                                                        <IconButton
-                                                            color="secondary"
-                                                            onClick={() => handleRemoveAccordionSection(index, accIndex)}
-                                                        >
-                                                            {/* <DeleteIcon /> */}
-                                                        </IconButton>
-                                                    </div>
-                                                </AccordionDetails>
-                                            </Accordion>
-                                        ))}
-
-                                        <Button
-                                            // startIcon={<AddIcon />}
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={() => handleAddAccordionSection(index)}
-                                        >
-                                            Add Accordion Section
-                                        </Button>
-                                    </div>
-                                )}
+                                <ContentManage section={section} handleInputChange={handleInputChange} handleAddAccordionSection={handleAddAccordionSection} index={index} />
                             </div>
                         </AccordionDetails>
                     </Accordion>
@@ -286,6 +164,183 @@ const EditBlogsComponent = ({ blog, setBlog, isEdit }) => {
             </Button>
         </form>
     );
+}
+
+const ContentManage = ({ section, handleInputChange, handleAddAccordionSection,index }) => {
+    return (
+        <>
+            {section.type === 'header' && (
+                <div>
+                    <label className="block text-gray-700">Header</label>
+                    <TextField
+                        name="header"
+                        value={section.header || ''}
+                        onChange={(e) => handleInputChange(e, index, 'sections')}
+                        multiline
+                        rows={4}
+                        fullWidth
+                        variant="outlined"
+                    />
+                </div>
+            )}
+
+            {section.type === 'content' && (
+                <div>
+                    <label className="block text-gray-700">Content</label>
+                    <TextField
+                        name="content"
+                        value={section.content || ''}
+                        onChange={(e) => handleInputChange(e, index, 'sections')}
+                        multiline
+                        rows={4}
+                        fullWidth
+                        variant="outlined"
+                    />
+                </div>
+            )}
+
+            {section.type === 'image' && (
+                <div>
+                    <label className="block text-gray-700">Image URL</label>
+                    <TextField
+                        name="content"
+                        value={section.content || ''}
+                        onChange={(e) => handleInputChange(e, index, 'sections')}
+                        fullWidth
+                        variant="outlined"
+                    />
+                </div>
+            )}
+
+            {section.type === 'button' && (
+                <div className="space-y-2">
+                    <div>
+                        <label className="block text-gray-700">Button Text</label>
+                        <TextField
+                            name="text"
+                            value={section.text || ''}
+                            onChange={(e) => handleInputChange(e, index, 'sections')}
+                            fullWidth
+                            variant="outlined"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-gray-700">Link</label>
+                        <TextField
+                            name="link"
+                            value={section.link || ''}
+                            onChange={(e) => handleInputChange(e, index, 'sections')}
+                            fullWidth
+                            variant="outlined"
+                        />
+                    </div>
+                </div>
+            )}
+
+            {section.type === 'accordion' && (
+                <div>
+                    <div className="space-y-2">
+                        <div>
+                            <label className="block text-gray-700">Accordion Title</label>
+                            <TextField
+                                name="title"
+                                value={section.title || ''}
+                                onChange={(e) => handleInputChange(e, index, 'sections')}
+                                fullWidth
+                                variant="outlined"
+                            />
+                        </div>
+                    </div>
+                    {section?.sections?.map((accSection, accIndex) => (
+                        <Accordion key={accIndex} expanded>
+                            <AccordionSummary
+                            // expandIcon={<ExpandMoreIcon />}
+                            >
+                                <div>Accordion Section {accIndex + 1}</div>
+                            </AccordionSummary>
+
+                            <AccordionDetails>
+                                <div className="space-y-2">
+                                    <div>
+                                        <label className="block text-gray-700">Type</label>
+                                        <Select
+                                            name="type"
+                                            value={accSection.type}
+                                            onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                            fullWidth
+                                        >
+                                            <MenuItem value="header">Header</MenuItem>
+                                            <MenuItem value="content">Content</MenuItem>
+                                            <MenuItem value="image">Image</MenuItem>
+                                            <MenuItem value="space">Space</MenuItem>
+                                        </Select>
+                                    </div>
+                                    
+                                    {accSection.type === 'header' && (
+                                        <div>
+                                            <label className="block text-gray-700">Header</label>
+                                            <TextField
+                                                name="header"
+                                                value={accSection.header || ''}
+                                                onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                multiline
+                                                rows={4}
+                                                fullWidth
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    )}
+                                    {accSection.type === 'content' && (
+                                        <div>
+                                            <label className="block text-gray-700">Content</label>
+                                            <TextField
+                                                name="content"
+                                                value={accSection.content || ''}
+                                                onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                multiline
+                                                rows={4}
+                                                fullWidth
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    )}
+
+                                    {accSection.type === 'image' && (
+                                        <div>
+                                            <label className="block text-gray-700">Image URL</label>
+                                            <TextField
+                                                name="content"
+                                                value={accSection.content || ''}
+                                                onChange={(e) => handleInputChange(e, index, 'sections', accIndex)}
+                                                fullWidth
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    )}
+
+
+                                    <button className="py-2 px-3 rounded-xl shadow-lg bg-red-500 text-white font-semibold" onClick={(e) => { e.preventDefault(); handleRemoveAccordionSection(index, accIndex) }}
+                                    >
+                                        {/* <DeleteIcon /> */}
+                                        Remove
+                                    </button>
+                                </div>
+                            </AccordionDetails>
+                        </Accordion>
+                    ))}
+
+                    <Button
+                        // startIcon={<AddIcon />}
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleAddAccordionSection(index)}
+                    >
+                        Add Accordion Section
+                    </Button>
+                </div>
+            )}
+        </>
+    )
 }
 
 export default EditBlogsComponent;

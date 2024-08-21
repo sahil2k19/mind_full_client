@@ -5,10 +5,10 @@ const AssesmentPage = ({ allSection }) => {
     return (
         <>
             {allSection && <div>
-                <div className='flex p-6 items-center'>
+                <div className='flex p-6 justify-center items-center'>
                     <div></div>
-                    <div>
-                        <h1 className="text-2xl font-">{allSection?.section1?.header}</h1>
+                    <div className=''>
+                        <h1 className="text-2xl md:text-3xl font-semibold">{allSection?.section1?.header}</h1>
                     </div>
                 </div>
 
@@ -20,12 +20,13 @@ const AssesmentPage = ({ allSection }) => {
 
                 <div className=''>
                     <div>
-                        <h1 className='text-center text-xl mb-4 underline'>Available tests:</h1>
+                        <h1 className='text-center text-xl md:text-2xl mb-4 underline'>Available tests:</h1>
                     </div>
-                    <div className='grid grid-cols-1 px-4 py-2 gap-4'>
+                  <div className='flex justify-center'>
+                  <div className='grid grid-cols-1 md:grid-cols-3  px-4 py-2 gap-4 '>
                         {
                             allSection?.section1?.AvailableTest?.map((test, index) => (
-                                <Link key={index} href={test?.link ?? '#'} className='min-h-[250px]'>
+                                <Link key={index} href={test?.link ?? '#'} className='min-h-[250px] '>
                                     <div className='bg-secondary-yellow overflow-hidden rounded-xl h-full'>
                                         <div
                                             className="bg-cover flex justify-center items-center p-3 flex-col bg-center w-full h-[80%]"
@@ -42,14 +43,15 @@ const AssesmentPage = ({ allSection }) => {
                             ))
                         }
                     </div>
+                  </div>
 
                     <div className='mt-7 p'>
                         <div className='flex px-4 flex-col items-center mb-6'>
-                            <h1 className='text-center text-xl font-bold mb-4'>{allSection?.section2?.header}</h1>
+                            <h1 className='text-center text-xl md:text-2xl font-bold mb-4'>{allSection?.section2?.header}</h1>
                             <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.para }}></div>
                         </div>
-                        <div className='grid grid-cols-1 px-4 py-2 gap-4'>
-                            <Link href={'/assesment/k10/selfAssesment'} className='min-h-[350px]'>
+                        <div className='flex justify-center w-full px-4 py-2 gap-4'>
+                            <Link href={'/assesment/k10/selfAssesment'} className='min-h-[350px] md:w-[350px]'>
                                 <div className='bg-secondary-yellow overflow-hidden rounded-xl h-full'>
                                     <div
                                         className="bg-cover flex justify-center items-center p-4 flex-col bg-center w-full h-[80%]"
@@ -68,7 +70,7 @@ const AssesmentPage = ({ allSection }) => {
                 </div>
 
                 <div className='p-8'>
-                    <div className='grid grid-cols-3 gap-5 justify-center items-center mb-6'>
+                    <div className='grid grid-cols-3 gap-5 md:hidden justify-center items-center mb-6'>
                         {
                             allSection?.section3?.blogs?.map((blog, index) => (
                                 <div key={index} className='flex flex-col items-center justify-center '>
@@ -79,8 +81,8 @@ const AssesmentPage = ({ allSection }) => {
                         }
                     </div>
                     <div className='mb-4'>
-                        <Link href={'/'}>
-                            <button className='text-white font-semibold bg-primary-orange active:bg-orange-400 p-4 rounded w-full'>
+                        <Link href={'/'} className='flex justify-center'>
+                            <button className='text-white font-semibold bg-primary-orange active:bg-orange-400 p-4 rounded w-full md:w-[300px]'>
                                 {allSection?.section3?.button?.text}
                             </button>
                         </Link>
