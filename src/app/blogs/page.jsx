@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 const Blogs = async () => {
   let blogs = []
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blogs/getAllBlogs`)
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blogs/getAllBlogs`) 
   blogs = res.data
 
 
