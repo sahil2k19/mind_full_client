@@ -7,14 +7,7 @@ const pages = [
     name: 'Home Section',
     slug: 'homesection'
   },
-  {
-    name: 'Consultation',
-    slug: 'consultation'
-  },
-  {
-    name: 'Assesment',
-    slug: 'assesment'
-  },
+
  
 ]
 
@@ -36,8 +29,14 @@ const Admin = () => {
         <div className='px-2 py-5 rounded-lg hover:shadow-lg bg-orange-400 cursor-pointer flex justify-center'  onClick={() => router.push(`/admin/blogs`)}>
                 <h1 className='text-white text-xl font-semibold'>Blogs</h1>
             </div>
+            
+            <div className='px-2 py-5 rounded-lg hover:shadow-lg bg-orange-400 cursor-pointer flex justify-center'  onClick={() => router.push(`/admin/services`)}>
+                <h1 className='text-white text-xl font-semibold'>Services</h1>
+            </div>
        
         </div>
+       
+       
     </div>
   )
 }
