@@ -11,9 +11,9 @@ const Blogs = async () => {
     <div className='p-11'>
       <div className='grid grid-cols-2 md:grid-cols-4  gap-5'>
         {
-          blogs.map((blog) => {
+          blogs.map((blog,index) => {
             return (
-              <Link href={`/blogs/${blog?._id}`} key={blog?._id} className='bg-primary-div rounded-xl p-3 active:bg-orange-100 active:shadow-lg text-primary-orange font-semibold cursor-pointer select-none'>
+              <Link href={`/blogs/${blog?._id}`} key={index} className='bg-primary-div rounded-xl p-3 active:bg-orange-100 active:shadow-lg text-primary-orange font-semibold cursor-pointer select-none'>
                 <h3 className='text-lg'>{blog.title}</h3>
               </Link>
             )
