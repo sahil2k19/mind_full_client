@@ -27,7 +27,7 @@ const AdminBlogs = () => {
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4'>
           {
             blogs.map((blog, index) => (
-              <div onClick={() => router.push(`/admin/blogs/${blog._id}`)} className='bg-primary-div rounded-xl p-3 cursor-pointer select-none  text-primary-orange font-semibold active:shadow-xl active:bg-orange-100 text-center '>
+              <div key={index} onClick={() => router.push(`/admin/blogs/${blog._id}`)} className='bg-primary-div rounded-xl p-3 cursor-pointer select-none  text-primary-orange font-semibold active:shadow-xl active:bg-orange-100 text-center '>
                 <h4 className='text-lg'>{blog.title}</h4>
               </div>
             ))
