@@ -91,9 +91,9 @@ const HomePage = ({ allSection }) => {
                                     <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.para2 }} />
                                 </div>
                                 <div className='flex justify-center'>
-                                    <button className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
+                                    <Link href={allSection?.section3?.button?.link} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
                                         {allSection?.section3?.button?.text}
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

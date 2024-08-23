@@ -49,7 +49,7 @@ export default function Home() {
             <p style="font-size: 15px; color: #3A3A3A; text-align: center">Is TMS for me? Learn how it works and if it is the right option for you. </p>`,
             button: {
                 text: "MORE ABOUT TMS",
-                link: "/blog/tms",
+                link: "/pages/tmsPage",
             }
     
         },
