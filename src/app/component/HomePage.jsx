@@ -133,7 +133,6 @@ const HomePage = ({ allSection }) => {
 
                     </section>
                     
-                    <hr className='border-1 border-gray-200'/>
 
                     {/* wy tms */}
                     <section className='py-8 px-4 mb-11'>
@@ -156,6 +155,7 @@ const HomePage = ({ allSection }) => {
                             </div>
                        </div>
                     </section>
+                    <hr className='border-1 border-gray-200'/>
                 
 
                   
