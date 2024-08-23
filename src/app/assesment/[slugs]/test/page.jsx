@@ -69,75 +69,75 @@ return (
 
                   </div>
                   <div>
-                      <h1 class="text-xl font-semibold ">{test.title}</h1>
+                      <h1 className="text-xl font-semibold ">{test.title}</h1>
 
                   </div>
 
 
               </div>
    
-          <div class="p-4 lg:container max-w-md mx-auto">
-              <h2 class="font-semibold mb-4 text-primary-orange">Please select the answer that is applicable to you</h2>
-              <div class="mb-6">
-                  <p class="mb-2">1. Little interest or pleasure in doing things</p>
-                  <div class="ml-4">
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question1" class="form-radio text-primary" />
-                          <span class="ml-2">Not at all</span>
+          <div className="p-4 lg:container max-w-md mx-auto">
+              <h2 className="font-semibold mb-4 text-primary-orange">Please select the answer that is applicable to you</h2>
+              <div className="mb-6">
+                  <p className="mb-2">1. Little interest or pleasure in doing things</p>
+                  <div className="ml-4">
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question1" className="form-radio text-primary" />
+                          <span className="ml-2">Not at all</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question1" class="form-radio text-primary"  />
-                          <span class="ml-2">Several Days</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question1" className="form-radio text-primary"  />
+                          <span className="ml-2">Several Days</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question1" class="form-radio text-primary" />
-                          <span class="ml-2">Atleast half of the days</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question1" className="form-radio text-primary" />
+                          <span className="ml-2">Atleast half of the days</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question1" class="form-radio text-primary" />
-                          <span class="ml-2">Nearly Everyday</span>
-                      </label>
-                  </div>
-              </div>
-              <div class="mb-6">
-                  <p class="mb-2">2. Feeling down, depressed, or hopeless</p>
-                  <div class="ml-4">
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question2" class="form-radio text-primary"  />
-                          <span class="ml-2">Not at all</span>
-                      </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question2" class="form-radio text-primary" />
-                          <span class="ml-2">Several Days</span>
-                      </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question2" class="form-radio text-primary" />
-                          <span class="ml-2">Atleast half of the days</span>
-                      </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question2" class="form-radio text-primary" />
-                          <span class="ml-2">Nearly Everyday</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question1" className="form-radio text-primary" />
+                          <span className="ml-2">Nearly Everyday</span>
                       </label>
                   </div>
               </div>
-              <div class="mb-6">
-                  <p class="mb-2">3. Trouble falling or staying asleep, or sleeping too much</p>
-                  <div class="ml-4">
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question3" class="form-radio text-primary" />
-                          <span class="ml-2">Not at all</span>
+              <div className="mb-6">
+                  <p className="mb-2">2. Feeling down, depressed, or hopeless</p>
+                  <div className="ml-4">
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question2" className="form-radio text-primary"  />
+                          <span className="ml-2">Not at all</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question3" class="form-radio text-primary" />
-                          <span class="ml-2">Several Days</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question2" className="form-radio text-primary" />
+                          <span className="ml-2">Several Days</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question3" class="form-radio text-primary" />
-                          <span class="ml-2">Atleast half of the days</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question2" className="form-radio text-primary" />
+                          <span className="ml-2">Atleast half of the days</span>
                       </label>
-                      <label class="flex items-center mb-2">
-                          <input type="radio" name="question3" class="form-radio text-primary"  />
-                          <span class="ml-2">Nearly Everyday</span>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question2" className="form-radio text-primary" />
+                          <span className="ml-2">Nearly Everyday</span>
+                      </label>
+                  </div>
+              </div>
+              <div className="mb-6">
+                  <p className="mb-2">3. Trouble falling or staying asleep, or sleeping too much</p>
+                  <div className="ml-4">
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question3" className="form-radio text-primary" />
+                          <span className="ml-2">Not at all</span>
+                      </label>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question3" className="form-radio text-primary" />
+                          <span className="ml-2">Several Days</span>
+                      </label>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question3" className="form-radio text-primary" />
+                          <span className="ml-2">Atleast half of the days</span>
+                      </label>
+                      <label className="flex items-center mb-2">
+                          <input type="radio" name="question3" className="form-radio text-primary"  />
+                          <span className="ml-2">Nearly Everyday</span>
                       </label>
                   </div>
               </div>

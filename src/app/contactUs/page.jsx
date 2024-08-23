@@ -16,7 +16,7 @@ const ContactUs = () => {
           </div>
           <div className='flex flex-col justify-center items-center text-white '>
             <p className='font-semibold text-sm'>Aster CMI</p>
-            <h1 className='font-bold '>Bangalore North</h1>
+            <h1 className='text-lg font-semibold  '>Bangalore North</h1>
           </div>
         </div>
         <div className='bg-[#F8A51C] py-3 px-3 rounded-lg shadow min-w-[170px]'>
@@ -27,7 +27,7 @@ const ContactUs = () => {
           </div>
           <div className='flex flex-col justify-center items-center text-white '>
             <p className='font-semibold text-sm'>Aster CMI</p>
-            <h1 className='font-bold '>Bangalore North</h1>
+            <h1 className='text-lg font-semibold  '>Bangalore North</h1>
           </div>
         </div>
         <div className='bg-primary-orange py-3 px-3 rounded-lg shadow min-w-[170px]'>
@@ -38,7 +38,7 @@ const ContactUs = () => {
           </div>
           <div className='flex flex-col justify-center items-center text-white '>
             <p className='font-semibold text-sm'>Aster CMI</p>
-            <h1 className='font-bold '>Bangalore North</h1>
+            <h1 className='text-lg font-semibold  '>Bangalore North</h1>
           </div>
         </div>
       </div>

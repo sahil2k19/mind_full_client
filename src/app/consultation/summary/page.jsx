@@ -26,45 +26,45 @@ const Summary = () => {
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-semibold text-center ">Booking Summary</h1>
+                    <h1 className="text-2xl font-semibold text-center ">Booking Summary</h1>
 
                 </div>
             </div>
-            <div class="max-w-md mx-auto p-3 px-5">
+            <div className="max-w-md mx-auto p-3 px-5">
 
-                <div class="bg-primary-div p-4 rounded-lg mb-4 flex justify-between items-center">
+                <div className="bg-primary-div p-4 rounded-lg mb-4 flex justify-between items-center">
                     <div>
-                        <p class="font-semibold">Aster CMI, Hebbal Bangalore</p>
-                        <p class="text-sm text-muted-foreground">1hr | One on One</p>
+                        <p className="font-semibold">Aster CMI, Hebbal Bangalore</p>
+                        <p className="text-sm text-muted-foreground">1hr | One on One</p>
                     </div>
-                    <button class="text-primary-orange underline">Change</button>
+                    <button className="text-primary-orange underline">Change</button>
                 </div>
-                <div class="bg-primary-div p-4 py-6 rounded-lg mb-8">
-                    <p class="font-semibold text-lg">Dr. David Samson</p>
-                    <p class="text-muted-foreground">20 June 2024</p>
-                    <p class="text-muted-foreground">11:25 am - 12:25 pm</p>
+                <div className="bg-primary-div p-4 py-6 rounded-lg mb-8">
+                    <p className="font-semibold text-lg">Dr. David Samson</p>
+                    <p className="text-muted-foreground">20 June 2024</p>
+                    <p className="text-muted-foreground">11:25 am - 12:25 pm</p>
                 </div>
                 <div className='flex items-center justify-center'>
-                <p class="font-semibold mb-2">Please Enter Your Details</p>
+                <p className="font-semibold mb-2">Please Enter Your Details</p>
 
                 </div>
                 <form>
-                    <label class="block mb-2">
-                        <span class="text-muted-foreground">Name *</span>
-                        <input type="text" class="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" required />
+                    <label className="block mb-2">
+                        <span className="text-muted-foreground">Name *</span>
+                        <input type="text" className="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" required />
                     </label>
-                    <label class="block mb-2">
-                        <span class="text-muted-foreground">Email *</span>
-                        <input type="email" class="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" required />
+                    <label className="block mb-2">
+                        <span className="text-muted-foreground">Email *</span>
+                        <input type="email" className="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" required />
                     </label>
 
-                    <label class="block mb-4">
-                        <span class="text-muted-foreground">Contact Number *</span>
-                        <input type="tel" class="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" placeholder="+91" required />
+                    <label className="block mb-4">
+                        <span className="text-muted-foreground">Contact Number *</span>
+                        <input type="tel" className="mt-1 outline-orange-300 border-orange-400 block w-full border  rounded p-3" placeholder="+91" required />
                     </label>
                     <div className='flex items-center justify-center'>
 
-                        <button onClick={() => router.push("/consultation/confirmation")} type="submit" class=" font-bold p-4 bg-primary-orange text-white w-full rounded-lg">SCHEDULE APPOINTMENT</button>
+                        <button onClick={() => router.push("/consultation/confirmation")} type="submit" className=" font-bold p-4 bg-primary-orange text-white w-full rounded-lg">SCHEDULE APPOINTMENT</button>
                     </div>
                 </form>
             </div>

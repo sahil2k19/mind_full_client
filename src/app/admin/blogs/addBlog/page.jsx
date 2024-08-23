@@ -38,6 +38,12 @@ const AddBlog = () => {
                         <h1 className='text-center p-3 text-2xl font-semibold bg-green-400 rounded-lg mb-3 text-green-900'>Live Preview</h1>
                         <div className='h-[90vh] overflow-scroll'>
                             <SingleBlog blog={blog} />
+                            {/* <iframe
+                                src={`${process.env.NEXT_PUBLIC_CLIENT_URL}blogs/${blog._id}`} // Adjust this URL based on your needs
+                                className="w-full h-full"
+                                title="Live Blog Preview"
+                                frameBorder="0"
+                            ></iframe> */}
                         </div>
                     </div>
                 </div>

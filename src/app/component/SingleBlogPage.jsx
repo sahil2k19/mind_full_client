@@ -27,7 +27,7 @@ const SingleBlogPage = ({works, stages}) => {
         </Link>
 
         <div>
-            <h1 class="text-2xl font-semibold "> TMS Treatment</h1>
+            <h1 className="text-2xl font-semibold "> TMS Treatment</h1>
 
         </div>
 
@@ -50,7 +50,7 @@ const SingleBlogPage = ({works, stages}) => {
                     works?.map((i, index) => (
                         <div key={index} className='flex justify-between p-5 mb-3 bg-primary-div rounded-lg '>
                             <h1 className='text-primary-orange text-sm font-semibold'>{index + 1}. {i?.title}</h1>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" stroke-width="1" class="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" stroke-width="1" className="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
                             </svg>
                         </div>

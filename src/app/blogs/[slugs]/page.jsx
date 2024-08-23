@@ -1,6 +1,7 @@
 import React from 'react'
 import SingleBlog from "@/app/blogs/[slugs]/SingleBlog"
 import axios from 'axios'
+
 const works = [
     {
         id: 1,
@@ -130,8 +131,15 @@ const stages = [
 
 const page = async({params}) => {
     const {slugs} = params;
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blogs/getBlogData/${slugs}/blog`);
-    const blog = res.data
+    let blog ={}
+    try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blogs/getBlogData/${slugs}/blog`);
+        blog = res.data
+    //    console.log('res', blog)
+    } catch (error) {
+        console.log(error)
+    }
+   
   return (
     <> 
        <SingleBlog blog={blog}/>

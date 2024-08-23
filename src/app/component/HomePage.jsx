@@ -1,12 +1,20 @@
 import React from 'react'
 import Link from 'next/link';
-
+import VideoComponent from './VideoComponent'
+import NewComponent from './newComponent';
+import Footer from '@/components/Footer'
+const videos = [
+    { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
+    { id: 2, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
+    { id: 3, service: 'Stress Relief Techniques', speaker: 'Jane Smith', src: '/home/random.mp4' },
+    { id: 4, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
+]
 const HomePage = ({ allSection }) => {
     return (
         <>
             {allSection &&
                 <div className=" select-none">
-
+                    {/* hero section */}
                     <section className='mb-5'>
                         <div className='md:grid grid-cols-2 items-center'>
                             <div className='flex justify-center w-full px-3  mb-4'>
@@ -38,6 +46,7 @@ const HomePage = ({ allSection }) => {
                             </div>
                         </div>
                     </section>
+                    {/* free test */}
                     <section className='bg-primary-div py-10'>
                         <div>
                             <h1 className='text-2xl  text-center font-sans mb-4 font-semibold'>
@@ -57,7 +66,7 @@ const HomePage = ({ allSection }) => {
                             </Link>
                         </div>
                     </section>
-
+                    {/* More about tms */}
                     <section className=' py-10 px-4'>
                         <div className='mb-10'>
                             <h1 className='text-3xl text-center font-sans font-semibold'>
@@ -89,29 +98,8 @@ const HomePage = ({ allSection }) => {
                             </div>
                         </div>
                     </section>
-                    <hr className='border-1 border-gray-200'/>
-                    <section className='py-8 px-4 mb-11'>
-                        <div className='mb-8'>
-                            <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.header }} />
-
-                            <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.para }} />
-                        </div>
-                       <div className='flex justify-center'>
-                        <div className='grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0  items-center  justify-center'>
-                            {
-                                allSection?.section4?.services?.map((service, index) => (
-                                    <div key={index} className='flex flex-col justify-center  items-center'>
-                                        <img className='w-[64px] h-[64px] text-center' src={service?.icon} />
-                                        <p className='text-md font-semibold mt-3'>{service?.text}</p>
-                                    </div>
-                                ))
-                            }
-
-                            </div>
-                       </div>
-                    </section>
-
-                    <section className='py-8 px-4 bg-primary-div'>
+                      {/* services */}
+                      <section className='py-8 px-4 bg-primary-div'>
                         <div className='mb-8'>
                             <div className='mb-8'>
                                 <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1>
@@ -144,7 +132,40 @@ const HomePage = ({ allSection }) => {
                         </div>
 
                     </section>
+                    
+                    <hr className='border-1 border-gray-200'/>
 
+                    {/* wy tms */}
+                    <section className='py-8 px-4 mb-11'>
+                        <div className='mb-8'>
+                            <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.header }} />
+
+                            <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.para }} />
+                        </div>
+                       <div className='flex justify-center'>
+                        <div className='grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0  items-center  justify-center'>
+                            {
+                                allSection?.section4?.services?.map((service, index) => (
+                                    <div key={index} className='flex flex-col justify-center  items-center'>
+                                        <img className='w-[64px] h-[64px] text-center' src={service?.icon} />
+                                        <p className='text-md font-semibold mt-3'>{service?.text}</p>
+                                    </div>
+                                ))
+                            }
+
+                            </div>
+                       </div>
+                    </section>
+                
+
+                  
+
+                    {/* client speaks */}
+                    <section className='py-8 px-4'>
+                        {/* <VideoComponent /> */}
+                        <NewComponent videos={videos}/>
+                    </section>
+                    {/* locations */}
                     <section className='py-8 px-4'>
                         <div className='mb-8 flex flex-col justify-center items-center'>
                             <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section6?.header}</h1>
@@ -182,7 +203,7 @@ const HomePage = ({ allSection }) => {
 
 
                     </section>
-
+                    {/* our experts */}
                     <section className='py-8 px-4'>
                         <div className='mb-11 flex flex-col justify-center items-center'>
                             <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Our Experts</h1>
@@ -209,34 +230,11 @@ const HomePage = ({ allSection }) => {
                         </div>
                     </section>
 
-                    <section>
-                        <div className='p-8'>
-                            <div>
-                                <h1 className='text-2xl font-semibold mb-6 text-center'>Clients Speak</h1>
-                            </div>
-                            <div className='  rounded-[20px] overflow-hidden bg-[#F8A51C]'>
-                                <div className='flex items-center py-4 justify-center'>
-                                    <h1 className='text-white text-lg font-semibold'>Therapy for Depression</h1>
-                                </div>
-                                {/* <div className="video-container mt-5 w-[100%] h-[400px]">
-                <video ref={videoRef} className="video-element w-full h-full object-cover">
-                    <source src="/home/health.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <button onClick={togglePlay} className="play-button">
-                    {isPlaying ?
-                        'Pause'
-                        : <span><img src='/home/play.png' />'</span>
-
-                    }
-                </button>
-            </div> */}
-                            </div>
-
-                        </div>
-                    </section>
+                 
+                    
 
                     {/* <Footer /> */}
+                    <Footer/>
                 </div>
             }
         </>

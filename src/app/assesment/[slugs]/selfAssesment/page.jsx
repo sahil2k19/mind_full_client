@@ -68,7 +68,7 @@ const SelfAssesment = () => {
 
         </div>
         <div>
-            <h1 class="text-2xl font- ">Self-Assessment</h1>
+            <h1 className="text-2xl font- ">Self-Assessment</h1>
 
         </div>
 
