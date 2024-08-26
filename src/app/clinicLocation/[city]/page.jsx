@@ -6,7 +6,7 @@ const page = ({params}) => {
   return (
     <div>
 
-    <City2Component/>
+    <City2Component city={city}/>
     
     </div>
   )

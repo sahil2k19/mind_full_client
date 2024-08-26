@@ -57,22 +57,28 @@ const links = [
     child: [
       {
         id: 1,
-        title: 'Delhi',
-        path: '/clinicLocation/Delhi',
-        active: '/clinicLocation/Delhi',
+        title: 'New Delhi',
+        path: '/clinicLocation/New-Delhi',
+        active: '/clinicLocation/New-Delhi',
       },
       {
         id: 2,
-        title: 'Bangalore',
-        path: '/clinicLocation/Bangalore',
-        active: '/clinicLocation/Bangalore',
+        title: 'Bengaluru Whitefield',
+        path: '/clinicLocation/Bengaluru-Whitefield',
+        active: '/clinicLocation/Bengaluru-Whitefield',
+      },
+      {
+        id: 3,
+        title: 'Bengaluru Hebbal',
+        path: '/clinicLocation/Bengaluru-Hebbal',
+        active: '/clinicLocation/Bengaluru-Hebbal',
       },
     ]
   },
   {
     id: 5,
     title: 'Our Experts',
-    path: '/location',
+    path: '/pages/ourExpert',
     active: '/location',
   },
   {
@@ -133,11 +139,11 @@ function Navbar() {
               {links.map((link) => (
                 <div key={link.id}>
                   <div
-                    className={`flex cursor-pointer justify-between px-8 py-4 mb-2 ${(link.active === currentLocation) ? "font-bold bg-[#F8A51C] rounded-lg text-white" : ""}`}
+                    className={`flex cursor-pointer justify-between px-8 py-4 mb-2 ${(link.active === currentLocation) ? "font-bold bg-[#F8A51C] rounded-lg text-white" : "text-gray-500"}`}
                     onClick={() => handleNavigate(link.path, link.child, link.id)}
                   >
                     <div>
-                      <p className="font-semibold">{link.title}</p>
+                      <p className="font-semibold ">{link.title}</p>
                     </div>
                     {link.child && <p>{activeParent === link.id ? "v" : ">"}</p>}
                   </div>
