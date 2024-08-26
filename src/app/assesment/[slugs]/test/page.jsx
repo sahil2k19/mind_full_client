@@ -1,6 +1,7 @@
 "use client"
 
 
+import { Container } from '@mui/material'
 import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
 
@@ -46,7 +47,7 @@ const Test = () => {
   const router = useRouter()
   const test = tests.find(t => t.id === slugs)
 return (
-  <div>
+  <Container maxWidth="lg">
 
 <div className='flex p-6 items-center'>
                   <div className='mr' onClick={() => router.back()}>
@@ -149,7 +150,7 @@ return (
           <button onClick={() => router.push(`/assesment/${slugs}/result`)} className="bg-primary-orange text-white py-3 px-14 rounded-lg font-semibold">SUBMIT</button>
           </div>
 
-      </div>
+      </Container>
 )
 }
 

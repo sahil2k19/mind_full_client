@@ -1,6 +1,7 @@
 "use client"
 
 
+import { Container } from '@mui/material'
 import { useParams, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
@@ -46,7 +47,7 @@ const SelfAssesment = () => {
     const test = tests.find(t => t.id === slugs)
     const [checked, setChecked] = useState(false);
   return (
-    <div>
+    <Container maxWidth="lg">
     <div className='flex p-6 items-center'>
         <div className='mr' onClick={() => router.back()}>
             <svg
@@ -102,7 +103,7 @@ const SelfAssesment = () => {
             <button disabled={!checked} onClick={() => router.push(test?.link)} className={` text-white p-3 rounded-lg font-semibold px-10 ${!checked ? 'cursor-not-allowed bg-gray-300' : 'bg-primary-orange active:bg-orange-500'}`}>TAKE THE TEST</button>
         </div>
     </div>
-</div>
+</Container>
   )
 }
 

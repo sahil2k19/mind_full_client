@@ -10,7 +10,7 @@ const AvailableTest = [
         title: "Take the PHQ-9 Test",
         title2: "Test for Depression",
         para: `This test helps evaluate the severity of depression symptoms.`,
-        img: '/home/depression.svg',
+        img: '/home/positive2.svg',
         link:'/assesment/phq9/selfAssesment'
     },
     {
@@ -18,7 +18,7 @@ const AvailableTest = [
         title: "Take the GAD-7 Test",
         title2: "Test for Anxiety",
         para: `This test helps evaluate the severity of anxiety symptoms.`,
-        img: '/home/anxiety.svg',
+        img: '/home/positive3.svg',
         link:'/assesment/gad7/selfAssesment'
     },
     {
@@ -26,7 +26,7 @@ const AvailableTest = [
         title: "Take the PSS-10 Test",
         title2: "Test for Stress",
         para: `This test assesses how stressful you find your life situations.`,
-        img: '/home/stress.svg',
+        img: '/home/positive4.svg',
         link:'/assesment/pss10/selfAssesment'
     },
 
@@ -37,7 +37,7 @@ const defaultTest = {
     title: "Take the K10 Test",
     title2: "K10 (Kessler Psychological Distress Scale)",
     para: `This test assesses the level of distress you have experienced in the past month. It helps identify symptoms of anxiety and depression, emotional and physical fatigue, and the impact on daily functioning. `,
-    img: '/home/anxiety.svg',
+    img: '/home/positive1.svg',
 }
 
 const section1 = {

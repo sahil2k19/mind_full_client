@@ -1,4 +1,5 @@
 
+import { Container } from '@mui/material';
 import Link from 'next/link';
 import React from 'react'
 // import { useParams } from 'next/navigation'
@@ -57,9 +58,9 @@ const Services = ({params , searchParams}) => {
     const service = services.find(service => service.title === decodeURIComponent(slugs));
 
   return (
-    <>
+    <Container maxWidth="lg">
     <div className='px-4'>
-    <div className='flex p-6 items-center'>
+    <div className='flex p-6 items-center justify-center'>
             {/* <div className='mr' onClick={() => navigate('/')}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,8 +80,8 @@ const Services = ({params , searchParams}) => {
             <div>
 
             </div>
-            <div>
-                <h1 className="text-2xl font-semibold ">{service?.title}</h1>
+            <div className=' md:flex justify-center  '>
+                <h1 className="text-2xl font-semibold">{service?.title}</h1>
 
             </div>
 
@@ -93,10 +94,10 @@ const Services = ({params , searchParams}) => {
                 ))}
             </div>
         </div>
-        <div className='px-4 py-3 '>
+        <div className='px-4 py-3 md:flex justify-center md:flex-col items-center '>
             {
                 service?.avail?.map((i,index)=>(
-                    <div key={index} className='flex justify-between items-center px-4 py-6 bg-primary-div rounded-lg mb-3'>
+                    <div key={index} className='flex cursor-pointer justify-between items-center md:w-2/3  px-4 py-6 bg-primary-div rounded-lg mb-3'>
                         <h1 className='font-semibold text-sm  text-gray-700 '>{i.title}</h1>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" stroke-width="1" className="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
@@ -109,14 +110,14 @@ const Services = ({params , searchParams}) => {
             }
         </div>
         <div className='flex justify-center'>
-          <Link href='/contactUs' className=' w-[75%] '>
+          <Link href='/contactUs' className=' w-[75%] md:w-1/2 '>
           <button  className='bg-primary-orange w-full py-3 text-white font-semibold rounded-lg'>
             CONTACT US
             </button>
           </Link>
         </div>
     </div>
-</>
+</Container>
   )
 }
 

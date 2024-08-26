@@ -11,7 +11,7 @@ const videos = [
 ]
 const HomePage = ({ allSection }) => {
     return (
-        <>
+        <div className="md:mx-16 md:px-20">
             {allSection &&
                 <div className=" select-none">
                     {/* hero section */}
@@ -178,9 +178,8 @@ const HomePage = ({ allSection }) => {
                                     <div key={index} className='md:mb-11'>
                                         <div className="flex items-center justify-center py-4 ">
                                             <div className="">
-                                                <p className="text-xl text-center top-[13px] left-[35%] px-2 bg-white ">{location?.title}</p>
+                                                <p className="text-xl text-center font-semibold top-[13px] left-[35%] px-2 bg-white ">{location?.title}</p>
 
-                                                <div className="w-[90vw] h-px bg-black "></div>
                                                 {/* <div className="w-[30vw] h-px bg-black"></div> */}
                                             </div>
 
@@ -237,7 +236,7 @@ const HomePage = ({ allSection }) => {
                     <Footer/>
                 </div>
             }
-        </>
+        </div>
     )
 }
 

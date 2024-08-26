@@ -1,11 +1,14 @@
 "use client"
 // import Image from 'next/image'
+import { Container } from '@mui/material'
+
 import { useRouter } from 'next/navigation'
 import React from 'react'
 const Result = () => {
   const router = useRouter()
   return (
-    <div>
+   <Container maxWidth="lg">
+     <div>
     <div className='mt-8 flex justify-center'>
         <img src='/home/smile.svg' />
     </div>
@@ -26,15 +29,16 @@ const Result = () => {
         </div>
         <div className='flex justify-center mb-6'>
 
-            <button className="bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3  ">GET OTP</button>
+            <button className="bg-primary-orange  text-white font-semibold w-[75%] md:w-1/3 rounded-lg py-3  ">GET OTP</button>
         </div>
         <div className='flex justify-center flex-col items-center px-4 mb-3 '>
         <p className="text-center text-sm text-muted-foreground mb-4">You&apos;ll receive a message on WhatsApp shortly. If you haven&apos;t received it yet, <a href="#" className="font-bold">click here</a></p>
-        <button onClick={() => router.push('/consultation/location')} className="bg-primary-orange  text-white font-semibold w-[75%] rounded-lg py-3 ">BOOK A CONSULTATION</button>
+        <button onClick={() => router.push('/consultation/location')} className="bg-primary-orange  text-white font-semibold w-[75%] md:w-1/3 rounded-lg py-3 ">BOOK A CONSULTATION</button>
    
         </div>
          </div>
 </div>
+   </Container>
   )
 }
 

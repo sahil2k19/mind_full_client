@@ -1,9 +1,10 @@
+import { Container } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
 const AssesmentPage = ({ allSection }) => {
     return (
-        <>
+        <Container maxWidth="lg">
             {allSection && <div>
                 <div className='flex p-6 justify-center items-center'>
                     <div></div>
@@ -29,8 +30,8 @@ const AssesmentPage = ({ allSection }) => {
                                 <Link key={index} href={test?.link ?? '#'} className='min-h-[250px] '>
                                     <div className='bg-secondary-yellow overflow-hidden rounded-xl h-full'>
                                         <div
-                                            className="bg-cover flex justify-center items-center p-3 flex-col bg-center w-full h-[80%]"
-                                            style={{ backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/home/depression.svg')" }}
+                                            className=" flex justify-center items-center p-3 flex-col bg-center w-full h-[80%]"
+                                            style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${test?.img}')` }}
                                         >
                                             <h1 className="text-center text-2xl font-bold text-white">{test?.title2}</h1>
                                             <p className="text-white text-center">{test?.para}</p>
@@ -54,8 +55,8 @@ const AssesmentPage = ({ allSection }) => {
                             <Link href={'/assesment/k10/selfAssesment'} className='min-h-[350px] md:w-[350px]'>
                                 <div className='bg-secondary-yellow overflow-hidden rounded-xl h-full'>
                                     <div
-                                        className="bg-cover flex justify-center items-center p-4 flex-col bg-center w-full h-[80%]"
-                                        style={{ background: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/home/brain.svg')" }}
+                                        className=" flex justify-center items-center p-4 flex-col bg-center w-full h-[80%]"
+                                        style={{ background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${allSection?.section2?.defaultTest?.img})` }}
                                     >
                                         <h1 className="text-center text-2xl font-bold text-white">{allSection?.section2?.defaultTest?.title2}</h1>
                                         <p className="text-white text-center">{allSection?.section2?.defaultTest?.para}</p>
@@ -89,7 +90,7 @@ const AssesmentPage = ({ allSection }) => {
                     </div>
                 </div>
             </div>}
-        </>
+        </Container>
     )
 }
 
