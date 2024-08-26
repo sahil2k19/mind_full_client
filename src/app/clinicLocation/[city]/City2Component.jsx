@@ -353,7 +353,7 @@ const City2Component = () => {
                                                 onChange={handleInputChange}
                                                 checked={formData.consent}
                                             />
-                                            <span>I Agree "Patient Information Consent"</span>
+                                            <span>{`I Agree "Patient Information Consent"`}</span>
                                         </label>
                                     </div>
                                     <div className="col-span-1 md:col-span-2 flex justify-end gap-4">
