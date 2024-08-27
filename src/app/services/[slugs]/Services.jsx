@@ -58,7 +58,7 @@ const Services = ({params , searchParams}) => {
     const service = services.find(service => service.title === decodeURIComponent(slugs));
 
   return (
-    <Container maxWidth="lg">
+    <div >
     <div className='px-4'>
     <div className='flex p-6 items-center justify-center'>
             {/* <div className='mr' onClick={() => navigate('/')}>
@@ -117,7 +117,7 @@ const Services = ({params , searchParams}) => {
           </Link>
         </div>
     </div>
-</Container>
+</div>
   )
 }
 

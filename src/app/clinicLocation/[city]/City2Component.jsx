@@ -159,91 +159,104 @@ const City2Component = ({city}) => {
                                 <h2 className="text-2xl md:text-3xl font-semibold text-primary-orange mb-4 border-b whitespace-nowrap ">Request An Appointment.</h2>
                                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
+                                    <label className="block text-gray-500 mb-2">First Name</label>
+
                                         <input
                                             type="text"
                                             name="firstName"
-                                            placeholder="First Name"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.firstName}
                                         />
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Last Name</label>
+
                                         <input
                                             type="text"
                                             name="lastName"
-                                            placeholder="Last Name"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.lastName}
                                         />
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Email</label>
+                                    
                                         <input
                                             type="email"
                                             name="email"
-                                            placeholder="Email"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.email}
                                         />
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Phone No.</label>
+
                                         <input
                                             type="tel"
                                             name="phoneNo"
-                                            placeholder="Phone No."
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.phoneNo}
                                         />
                                     </div>
                                     <div>
+                                        <label className="block text-gray-500 mb-2">Date of Birth</label>
                                         <input
                                             type="date"
                                             name="dateOfBirth"
                                             placeholder="Date of Birth"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
-                                            value={formData.dateOfBirth}
+                                            value={formData.dateOfBirth || '1990-01-01'}
                                         />
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2"> Select Gender</label>
+
                                         <select
                                             name="gender"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.gender}
                                         >
-                                            <option value="">Select Gender</option>
+                                            {/* <option value="">Select Gender</option> */}
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Select Location</label>
+
                                         <select
                                             name="location"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.location}
                                         >
-                                            <option value="">Select Location</option>
+                                            {/* <option value="">Select Location</option> */}
                                             <option value="mysore">Mysore</option>
                                         </select>
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Select Clinic</label>
+
                                         <select
                                             name="clinic"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.clinic}
                                         >
-                                            <option value="">Select Clinic</option>
+                                            {/* <option value="">Select Clinic</option> */}
                                             <option value="apollo">Apollo Clinic Mysore</option>
                                         </select>
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">Select Doctor</label>
+
                                         <select
                                             name="doctor"
                                             className="border p-2 rounded w-full"
@@ -255,33 +268,38 @@ const City2Component = ({city}) => {
                                         </select>
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">   Select Appointment Date</label>
+
                                         <input
                                             type="date"
                                             name="appointmentDate"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
-                                            value={formData.appointmentDate}
+                                            value={new Date(Date.now() + 86400000).toISOString().substr(0, 10)}
                                         />
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">   Select Time</label>
+
                                         <select
                                             name="appointmentTime"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.appointmentTime}
                                         >
-                                            <option value="">Select Time</option>
                                             <option value="16:50-16:55">16:50-16:55</option>
+                                            <option value="16:50-16:55">14:50-14:55</option>
                                         </select>
                                     </div>
                                     <div>
+                                    <label className="block text-gray-500 mb-2">   Select Mode</label>
+
                                         <select
                                             name="mode"
                                             className="border p-2 rounded w-full"
                                             onChange={handleInputChange}
                                             value={formData.mode}
                                         >
-                                            <option value="">Select Mode</option>
                                             <option value="inPerson">In-Person</option>
                                             <option value="video">Video Consultation</option>
                                         </select>
