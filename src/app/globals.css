@@ -209,3 +209,8 @@ body {
   }
 
 }
+
+.sectionTarget {
+  padding-top: 140px; /* Add space for the fixed nav */
+  margin-top: -140px; /* Pull the section back up into view */
+}

@@ -53,6 +53,8 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         <Tab className="font-semibold text-xl" label="Section 5" />
       </Tabs>
 
+      
+    {/* SECTION 1 */}
       <TabPanel value={selectedTab} index={0}>
         <div className="px-10">
           <div className="flex flex-col items-center">
@@ -113,6 +115,7 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         </div>
       </TabPanel>
 
+    {/* SECTION 2 */}
       <TabPanel value={selectedTab} index={1}>
         <div className="px-10">
           <div className="flex flex-col items-center">
@@ -170,6 +173,7 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         </div>
       </TabPanel>
 
+      {/* SECTION 3 */}
       <TabPanel value={selectedTab} index={2}>
         <div className="px-10">
           <div className="flex flex-col items-center">
@@ -271,8 +275,28 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                     section3: {
                       ...allSection?.section3,
                       button: {
-                        ...allSection?.section2?.button,
+                        ...allSection?.section3?.button,
                         text: e.target.value,
+                      },
+                    },
+                  });
+                }}
+              />
+            </div>
+
+            <div className="flex flex-col w-full mb-6">
+              <label className="text-lg font-semibold">Button Link</label>
+              <input
+                type="text" className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none" 
+                value={allSection?.section3?.button?.link || ""}
+                onChange={(e) => {
+                  setAllSection({
+                    ...allSection,
+                    section3: {
+                      ...allSection?.section3,
+                      button: {
+                        ...allSection?.section3?.button,
+                        link: e.target.value,
                       },
                     },
                   });

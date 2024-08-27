@@ -25,6 +25,7 @@ const QuillEditorComponent = ({ value, onChange, className = '' }) => {
             '#FFA500', // orange
             '#800080', // purple
             '#00FFFF', // cyan
+            '#3A3A3A',//dark gray
           ],
         },
       ],

@@ -116,7 +116,7 @@ function Navbar() {
   }, [location.pathname]);
 
   return (
-    <div className='sticky bg-white p-0 top-0 left-0 right-0 z-50'>
+    <div className=' bg-white p-0 top-0 left-0 right-0 z-50'>
       <div className="select-none">
         <header className="flex items-center justify-between px-6 py-0">
           <div onClick={() => setOpen(true)} className="cursor-pointer">

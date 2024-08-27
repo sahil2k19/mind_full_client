@@ -11,7 +11,8 @@ import EditAssesment from './EditAssesment';
 import AssesmentPage from '@/app/assesment/AssesmentPage';
 import { usePathname } from 'next/navigation';
 import axios from 'axios';
-
+import AdminPreviewPage from './AdminPreviewPage'
+import toast from 'react-hot-toast';
 
 
 
@@ -19,42 +20,51 @@ import axios from 'axios';
 const GeneralEdit = ({ params }) => {
     const { page } = params;
     const location = usePathname();
-    
+
     const RenderApiUrl = () => {
-        
+
     }
-    
+
     const [allSection, setAllSection] = useState();
 
-    const getSection =()=>{
+    const getSection = () => {
         let apiUrl = ''
-        if(page === 'homesection'){
-            apiUrl= `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
+        if (page === 'homesection') {
+            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
         }
-        else if(page === 'assesment'){
-            apiUrl= `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
+        else if (page === 'assesment') {
+            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
         }
-        axios.get( apiUrl )
-        .then((res)=>{
-            // console.log(res.data);
-            setAllSection(res.data);
-        }).catch((err)=>{
-            console.log(err);
-        })
+        axios.get(apiUrl)
+            .then((res) => {
+                // console.log(res.data);
+                setAllSection(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
     }
-    useEffect(()=>{
+    useEffect(() => {
         getSection();
-    },[])
-    const handleSave = ()=>{
-        if(allSection){
-          axios.put(`${process.env.NEXT_PUBLIC_API_URL}homeSection/udpateHomeSection`, allSection).then((res) => {
-            console.log(res.data);
-          }).catch((err) => {
-            console.log(err);
-          })
+    }, [])
+    const handleSave = () => {
+        if (allSection) {
+            axios.put(`${process.env.NEXT_PUBLIC_API_URL}homeSection/udpateHomeSection`, allSection).then((res) => {
+                console.log(res.data);
+                toast.dismiss()
+                toast.success('Section updated successfully')
+            }).catch((err) => {
+                console.log(err);
+            })
         }
-      }
-    
+    }
+    const renderUrlForPreview = () => {
+        if (page === 'homesection') {
+            return `${process.env.NEXT_PUBLIC_CLIENT_URL}`
+        }
+        else{
+            return `${process.env.NEXT_PUBLIC_CLIENT_URL}`
+        }
+    }
 
     const renderPageComponent = (page, allSection, setAllSection) => {
         if (page === 'homesection') {
@@ -80,7 +90,7 @@ const GeneralEdit = ({ params }) => {
         else if (page === 'assesment') {
             return <AssesmentPage allSection={allSection} setAllSection={setAllSection} />;
         }
-        
+
         return null;
     }
 
@@ -97,11 +107,13 @@ const GeneralEdit = ({ params }) => {
                     {renderPageComponent(page, allSection, setAllSection)}
                 </div>
                 <div className='col-span-1'>
-                    <div className='flex justify-center mb-5 bg-green-500 rounded-xl text-white p-3'>
+                    {/* <div className='flex justify-center mb-5 bg-green-500 rounded-xl text-white p-3'>
                         <h1 className='text-2xl font-semibold'>Live Preview</h1>
-                    </div>
+                    </div> */}
                     <div className='h-[90vh] overflow-y-scroll overflow-x-hidden'>
-                        {renderPreviewPage(page, allSection, setAllSection)}
+                        {/* {renderPreviewPage(page, allSection, setAllSection)}
+                         */}
+                        <AdminPreviewPage url={renderUrlForPreview()} />
                     </div>
                 </div>
             </div>
@@ -161,147 +173,147 @@ what you may have and need`,
         }
 
     },
-    section4:{
-        header:`<h1 class='text-2xl font-[30px] text-center '>
+    section4: {
+        header: `<h1 class='text-2xl font-[30px] text-center '>
                     Why choose <span class='font-semibold'>MindfulTMS?</span>
                 </h1>`,
-        para:`<p class='text-center'>
+        para: `<p class='text-center'>
                     Your well being is our mission.
                 </p>`,
-        services:[
+        services: [
             {
-                icon:'/home/medical.svg',
-                text:'Personalized care',
+                icon: '/home/medical.svg',
+                text: 'Personalized care',
             },
             {
-                icon:'/home/handshake.svg',
-                text:'Trust',
+                icon: '/home/handshake.svg',
+                text: 'Trust',
             },
             {
-                icon:'/home/group.svg',
-                text:'Safe',
+                icon: '/home/group.svg',
+                text: 'Safe',
             },
             {
-                icon:'/home/heart.svg',
-                text:'Holistic',
+                icon: '/home/heart.svg',
+                text: 'Holistic',
             },
         ]
     },
-    section5:{
-        header:'Services we offer',
-        services:[
+    section5: {
+        header: 'Services we offer',
+        services: [
             {
-                title:'Psychology/Therapy',
-                array:[
+                title: 'Psychology/Therapy',
+                array: [
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                 ],
-                button:{
-                    text:'LEARN MORE',
-                    link:'/services/Therapy Services'
+                button: {
+                    text: 'LEARN MORE',
+                    link: '/services/Therapy Services'
                 }
             }, {
-                title:'Psychiatry',
-                array:[
+                title: 'Psychiatry',
+                array: [
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                     {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        img: "",
+                        name: 'Lorem Ipsum dolor qioe',
                     },
                 ],
-                button:{
-                    text:'LEARN MORE',
-                    link:'/services/TMS Treatment Services'
+                button: {
+                    text: 'LEARN MORE',
+                    link: '/services/TMS Treatment Services'
                 }
             }
         ]
     },
-    section6:{
-        header:'Our Locations',
-        para:`Lorem ipsum dolor sit amet`,
-        locations:[
-           {
-            title:'Bangalore',
-            locationArray:[
-                {
-                    title:"Aster CMI",
-                    address:"Bangalore North",
-                },
-                {
-                    title:"Whitefield",
-                    address:"Bangalore East",
-                },
-            ]
-           },
-           {
-            title:'Delhi',
-            locationArray:[
-                {
-                    title:"Greater Kailash",
-                    address:"Delhi",
-                },
-                
-            ]
-           },
+    section6: {
+        header: 'Our Locations',
+        para: `Lorem ipsum dolor sit amet`,
+        locations: [
+            {
+                title: 'Bangalore',
+                locationArray: [
+                    {
+                        title: "Aster CMI",
+                        address: "Bangalore North",
+                    },
+                    {
+                        title: "Whitefield",
+                        address: "Bangalore East",
+                    },
+                ]
+            },
+            {
+                title: 'Delhi',
+                locationArray: [
+                    {
+                        title: "Greater Kailash",
+                        address: "Delhi",
+                    },
+
+                ]
+            },
         ]
     },
-    section7:{
-        header:'Our Experts',
-        expertArray:[
+    section7: {
+        header: 'Our Experts',
+        expertArray: [
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
             {
-                img:'/home/doctor1.png',
-                name:'Dr.Sheela Rao',
-                desig:'Clinical Psychologist',
-                location:'Bangalore',
+                img: '/home/doctor1.png',
+                name: 'Dr.Sheela Rao',
+                desig: 'Clinical Psychologist',
+                location: 'Bangalore',
             },
-         
+
         ]
     }
 }
@@ -321,14 +333,14 @@ const assesmentPageSection = {
                         <p class='text-sm text-center'>
                             Select the test that best matches your current feelings and concerns.
                         </p>`,
-        AvailableTest:[
+        AvailableTest: [
             {
                 id: 1,
                 title: "Take the PHQ-9 Test",
                 title2: "Test for Depression",
                 para: `This test helps evaluate the severity of depression symptoms.`,
                 img: '/home/depression.svg',
-                link:'/assesment/phq9/selfAssesment'
+                link: '/assesment/phq9/selfAssesment'
             },
             {
                 id: 2,
@@ -336,7 +348,7 @@ const assesmentPageSection = {
                 title2: "Test for Anxiety",
                 para: `This test helps evaluate the severity of anxiety symptoms.`,
                 img: '/home/anxiety.svg',
-                link:'/assesment/gad7/selfAssesment'
+                link: '/assesment/gad7/selfAssesment'
             },
             {
                 id: 3,
@@ -344,16 +356,16 @@ const assesmentPageSection = {
                 title2: "Test for Stress",
                 para: `This test assesses how stressful you find your life situations.`,
                 img: '/home/stress.svg',
-                link:'/assesment/pss10/selfAssesment'
+                link: '/assesment/pss10/selfAssesment'
             },
-        
+
         ],
-    
+
     },
     section2: {
         header: "Not sure which test to take?",
         para: `<p class='text-center text-sm'>The K10 is designed to measure general psychological distress and can be an effective initial screening tool to identify whether you may need further assessment or support.  </p>`,
-        defaultTest:{
+        defaultTest: {
             id: 4,
             title: "Take the K10 Test",
             title2: "K10 (Kessler Psychological Distress Scale)",
@@ -361,7 +373,7 @@ const assesmentPageSection = {
             img: '/home/anxiety.svg',
         },
     },
-    section3:{
+    section3: {
         blogs: [
             {
                 id: 1,
