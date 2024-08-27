@@ -1,5 +1,5 @@
+"use client"
 import { useState, useEffect, useRef } from 'react';
-
 const doctors = [
   { name: "DR. RAHUL KUMAR", specialty: "GENERAL MEDICINE", image: "/home/doctor.png" },
   { name: "DR. RAJEEV NANGIA", specialty: "ENT", image: "/home/doctor.png" },
