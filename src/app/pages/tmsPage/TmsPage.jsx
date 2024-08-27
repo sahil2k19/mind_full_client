@@ -35,14 +35,14 @@ const TmsPage = () => {
 
             <div className="py-6">
               {/* Navigation Buttons */}
-              <div className="flex gap-4 overflow-scroll">
-                <a href="#section1" className="p-2 bg-primary-orange whitespace-nowrap font-semibold  text-white rounded-lg">
+              <div className="flex gap-4 overflow-x-scroll ">
+                <a href="#section1" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold  text-white rounded-lg">
                   What is TMS?
                 </a>
-                <a href="#section2" className="p-2 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
+                <a href="#section2" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
                   How TMS Works
                 </a>
-                <a href="#section3" className="p-2 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
+                <a href="#section3" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
                   What to Expect
                 </a>
               </div>
