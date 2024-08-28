@@ -90,7 +90,7 @@ const Services = ({ params, searchParams }) => {
                 <div>
                     <div className='px-4'>
                         {service?.para.split('\n').map((para, index) => (
-                            <p k className='text-sm text-gray-600 mb-2 text-center' key={index}>{para}</p>
+                            <p k={index} className='text-sm text-gray-600 mb-2 text-center' key={index}>{para}</p>
                         ))}
                     </div>
                 </div>
@@ -99,8 +99,8 @@ const Services = ({ params, searchParams }) => {
                         service?.avail?.map((i, index) => (
                             <div key={index} className='flex cursor-pointer justify-between items-center md:w-2/3  px-4 py-6 bg-primary-div rounded-lg mb-3'>
                                 <h1 className='font-semibold text-sm  text-gray-700 '>{i.title}</h1>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" stroke-width="1" className="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#EF6623" stroke="#EF6623" strokeWidth="1" className="bi bi-chevron-right ml-auto" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
                                 </svg>
                             </div>
 

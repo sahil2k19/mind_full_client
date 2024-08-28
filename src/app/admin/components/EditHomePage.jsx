@@ -46,11 +46,11 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         onChange={handleTabChange}
         aria-label="Home Page Sections"
       >
-        <Tab className="font-semibold text-xl" label="Section 1" />
-        <Tab className="font-semibold text-xl" label="Section 2" />
-        <Tab className="font-semibold text-xl" label="Section 3" />
-        <Tab className="font-semibold text-xl" label="Section 4" />
-        <Tab className="font-semibold text-xl" label="Section 5" />
+        <Tab className="font-semibold text-md" label="Section 1" />
+        <Tab className="font-semibold text-md" label="Section 2" />
+        <Tab className="font-semibold text-md" label="Section 3" />
+        <Tab className="font-semibold text-md" label="Section 4" />
+        <Tab className="font-semibold text-md" label="Section 5" />
       </Tabs>
 
       

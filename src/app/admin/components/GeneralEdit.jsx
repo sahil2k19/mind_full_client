@@ -32,7 +32,7 @@ const GeneralEdit = ({ params }) => {
         if (page === 'homesection') {
             apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
         }
-        else if (page === 'assesment') {
+        else if (page === 'selfassessment') {
             apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
         }
         axios.get(apiUrl)
@@ -61,6 +61,9 @@ const GeneralEdit = ({ params }) => {
         if (page === 'homesection') {
             return `${process.env.NEXT_PUBLIC_CLIENT_URL}`
         }
+        if (page === 'selfassessment') {
+            return `${process.env.NEXT_PUBLIC_CLIENT_URL}assesment`
+        }
         else{
             return `${process.env.NEXT_PUBLIC_CLIENT_URL}`
         }
@@ -70,7 +73,7 @@ const GeneralEdit = ({ params }) => {
         if (page === 'homesection') {
             return <EditHomePage allSection={allSection} setAllSection={setAllSection} />;
         }
-        else if (page === 'assesment') {
+        else if (page === 'selfassessment') {
             return <EditAssesment allSection={allSection} setAllSection={setAllSection} />;
         }
         return null;
@@ -80,6 +83,9 @@ const GeneralEdit = ({ params }) => {
         if (page === 'homesection') {
             return <h1 className='text-2xl font-semibold'>Home Page</h1>;
         }
+        if (page === 'selfassessment') {
+            return <h1 className='text-2xl font-semibold'>Assessment</h1>;
+        }
         return null;
     };
 
@@ -87,7 +93,7 @@ const GeneralEdit = ({ params }) => {
         if (page === 'homesection') {
             return <HomePage allSection={allSection} />;
         }
-        else if (page === 'assesment') {
+        else if (page === 'selfassessment') {
             return <AssesmentPage allSection={allSection} setAllSection={setAllSection} />;
         }
 
