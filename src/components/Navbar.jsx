@@ -96,6 +96,30 @@ function Navbar() {
   const [currentLocation, setCurrentLocation] = useState(location.pathname);
   const [open, setOpen] = useState(false);
   const [activeParent, setActiveParent] = useState(null); // Track which parent link is expanded
+  const [drawerAnchor, setDrawerAnchor] = useState("left"); // State to manage drawer anchor position
+
+
+
+  useEffect(() => {
+    setCurrentLocation(location.pathname);
+    window.scrollTo(0, 0);
+
+    // Set the drawer anchor based on window width
+    const updateAnchor = () => {
+      setDrawerAnchor(window.innerWidth < 640 ? "right" : "left");
+    };
+
+    // Update anchor on component mount
+    updateAnchor();
+
+    // Add event listener to handle window resize
+    window.addEventListener("resize", updateAnchor);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateAnchor);
+    };
+  }, [location.pathname]);
 
   const toggleDrawer = (open) => (event) => {
     setOpen(open);
@@ -109,6 +133,7 @@ function Navbar() {
       setOpen(false); // Close the drawer after navigation
     }
   };
+
 
   useEffect(() => {
     setCurrentLocation(location.pathname);
@@ -127,7 +152,7 @@ function Navbar() {
           </div>
         </header>
         <Drawer
-          anchor={window.innerWidth < 640 ? "right" : "left"}
+          anchor={drawerAnchor}
           open={open}
           onClose={toggleDrawer(false)}
           className=""
