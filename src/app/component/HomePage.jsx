@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link';
-import VideoComponent from './VideoComponent'
+// import VideoComponent from './VideoComponent'
 import NewComponent from './newComponent';
-import Footer from '@/components/Footer'
+// import Footer from '@/components/Footer'
 const videos = [
     { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
     { id: 2, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
@@ -233,7 +233,7 @@ const HomePage = ({ allSection }) => {
                     
 
                     {/* <Footer /> */}
-                    <Footer/>
+                    {/* <Footer/> */}
                 </div>
             }
         </div>

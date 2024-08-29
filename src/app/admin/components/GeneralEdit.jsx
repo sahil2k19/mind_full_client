@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HomePage from '@/app/component/HomePage'
 import EditHomePage from './EditHomePage';
@@ -33,7 +31,7 @@ const GeneralEdit = ({ params }) => {
             apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
         }
         else if (page === 'selfassessment') {
-            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/getHomeSection`;
+            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}AssessmentSection/getSection`;
         }
         axios.get(apiUrl)
             .then((res) => {
