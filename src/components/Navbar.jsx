@@ -118,7 +118,7 @@ function Navbar() {
   return (
     <div className=' bg-white p-0 top-0 left-0 right-0 z-50'>
       <div className="select-none">
-        <header className="flex items-center justify-between px-6 py-0">
+        <header className="flex items-center flex-row-reverse md:flex-row justify-between px-6 py-0">
           <div onClick={() => setOpen(true)} className="cursor-pointer">
             <img src="/home/menu.svg" />
           </div>
@@ -126,8 +126,13 @@ function Navbar() {
             <img className="cursor-pointer w-full h-full" src="/home/logoMain.svg" />
           </div>
         </header>
-        <Drawer open={open} onClose={toggleDrawer(false)} className="">
-          <div className="w-[261px] px-2 py-6 select-none">
+        <Drawer
+          anchor={window.innerWidth < 640 ? "right" : "left"}
+          open={open}
+          onClose={toggleDrawer(false)}
+          className=""
+        >
+          <div className="w-[261px] px-2 py-6 select-none md:w-auto">
             <div className="flex justify-end">
               <img
                 onClick={() => setOpen(false)}

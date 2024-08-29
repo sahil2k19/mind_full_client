@@ -34,14 +34,14 @@ function Footer() {
         {/* Call Us Section */}
         <div className='mb-8'>
           <div>
-            <h2 className='text-center text-2xl font-semibold'>Call Us</h2>
+            <h2 className='text-center text-2xl font-bold text-primary-orange'>Call Us</h2>
           </div>
           <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
             {locations.map((location, index) => (
-              <div key={index} className={`${location.bgColor} py-3 px-3 rounded-lg shadow min-w-[170px]`}>
+              <div key={index} className={`bg-gray-shades py-3 px-3 rounded-lg shadow-lg select-none min-w-[170px]`}>
                 <div className='flex justify-center mb-3'>
                   <div className='w-[40px]'>
-                    <Image src='/home/wassup.svg' width={100} height={100} alt="WhatsApp" />
+                    <Image src='/home/whatsapp2.svg' width={100} height={100} alt="WhatsApp" />
                   </div>
                 </div>
                 <div className='flex flex-col justify-center items-center text-white'>
@@ -56,14 +56,14 @@ function Footer() {
         {/* WhatsApp Us Section */}
         <div>
           <div>
-            <h2 className='text-center text-2xl font-semibold'>WhatsApp Us</h2>
+            <h2 className='text-center text-2xl font-bold text-primary-orange'>WhatsApp Us</h2>
           </div>
           <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
             {locations.map((location, index) => (
-              <div key={index} className={`${location.bgColor} py-3 px-3 rounded-lg shadow  min-w-[170px]`}>
+              <div key={index} className={`bg-gray-shades py-3 px-3 rounded-lg shadow  min-w-[170px]`}>
                 <div className='flex justify-center mb-3'>
                   <div className='w-[40px]'>
-                    <Image src='/home/wassup.svg' width={100} height={100} alt="WhatsApp" />
+                  <Image src='/home/whatsapp2.svg' width={100} height={100} alt="WhatsApp" />
                   </div>
                 </div>
                 <div className='flex flex-col justify-center items-center text-white'>

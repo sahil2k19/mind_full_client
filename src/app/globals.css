@@ -214,3 +214,13 @@ body {
   padding-top: 140px; /* Add space for the fixed nav */
   margin-top: -140px; /* Pull the section back up into view */
 }
+
+
+.bg-gray-shades{
+  background: rgb(0,0,0);background: linear-gradient(0deg, rgba(0,0,0,0.4515056022408963) 0%, rgba(184,184,184,0.3) 100%);
+}
+
+
+.footer-grey-shades{
+  background: rgb(175,175,175);background: linear-gradient(0deg, rgba(175,175,175,0.4515056022408963) 0%, rgba(210,210,210,0.3) 100%);
+}
