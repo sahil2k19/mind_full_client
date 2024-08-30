@@ -4,15 +4,17 @@ import DoctorCarousel from './DoctorCarousel';
 import AppointmentForm from './AppointmentForm';
 import ImageGallary from './ImageGallary';
 import ImageCarousel from './ImageCarousel';
-
-const DesktopComponent = ({ images, data }) => {
+import RequestAppointment from './RequestAppointment';
+import ClinicAddress from './ClinicAddress';
+import OurDoctorSection from './OurDoctorSection';
+const DesktopComponent = ({ images, data, city }) => {
     return (
         <>
             <div className="bg-primary-div md:p-5 select-none mb-8">
                 <Container maxWidth="lg" className="py-[65px]">
                     <div className="mx-auto md:p-4">
                         <h1 className="text-[28px] md:text-4xl font-bold text-center text-primary-orange">
-                          {data?.addressTitle}
+                            {data?.addressTitle}
                         </h1>
                     </div>
                 </Container>
@@ -57,43 +59,18 @@ const DesktopComponent = ({ images, data }) => {
                         <ImageCarousel images={images} />
                     </div>
                     <div id='clinic-location' className="mb-10 col-span-2">
-                        <div className="grid grid-cols-1 justify-center">
-                            <div className="mb-5">
-                                <h2 className="text-2xl md:text-3xl font-semibold text-primary-orange mb-8 border-b">
-                                    Clinic Address
-                                </h2>
-                                <div className="flex h-full flex-col justify-start items-start">
-                                    <p className="font-semibold mb-4">Address: {data?.addressTitle}</p>
-                                    <span>{data?.address}</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-semibold text-primary-orange mb-8 border-b">
-                                    Location Map
-                                </h2>
-                                <div className="bg-gray-300 h-64 flex items-center justify-center">
-                                    <iframe
-                                        title="Google Map"
-                                        src={data?.googleMapLink}
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen=""
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                    ></iframe>
-                                </div>
-                            </div>
+                        {/* clinic location here */}
+                        <div className='mb-8'>
+                            <RequestAppointment city={city} />
+                        </div>
+                        <div>
+                            <ClinicAddress images={images} data={data} />
                         </div>
                     </div>
                 </div>
 
-                {/* <div id='request-appointment' className="mb-10">
-                <AppointmentForm/>
-            </div> */}
-
-                <div id='our-doctors' className="mb-10">
-                    <DoctorCarousel />
+                <div>
+                    <OurDoctorSection />
                 </div>
 
 

@@ -56,10 +56,10 @@ const City2Component = ({ city }) => {
     return (
        <>
        <div className='md:hidden'>
-        <MobileComponent  data={data} images={images}/>
+        <MobileComponent  data={data} images={images} city={city}/>
        </div>
         <div className='md:block hidden'>
-            <DesktopComponent data={data} images={images}/>
+            <DesktopComponent data={data} images={images} city={city}/>
         </div>
        </>
     );
