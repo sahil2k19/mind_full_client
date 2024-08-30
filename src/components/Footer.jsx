@@ -130,7 +130,7 @@ function Footer() {
 
   return (
     <footer className="py-6 footer-gradient">
-      <div className='scale-[0.85] md:scale-100'>
+      <div className='scale-[0.85] md:scale-110'>
         <div className="flex justify-center">
           <img
             className="h-[129px] w-[185px]"
@@ -146,7 +146,7 @@ function Footer() {
           </div>
           <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
             {locations.map((location, index) => (
-              <div key={index} onClick={() => cardClick(location)} style={{ backgroundColor: location.bgColor }} className={`bg-gray-shades py-3 px-3 rounded-lg shadow-lg select-none min-w-[170px]`}>
+              <div key={index} onClick={() => cardClick(location)} style={{ backgroundColor: location.bgColor }} className={`bg-gray-shades py-3 px-3 rounded-lg shadow-lg cursor-pointer select-none min-w-[170px]`}>
                 <div className='flex justify-center mb-3'>
                   <div className='w-[40px]'>
                     <Image src='/home/whatsapp2.svg' width={100} height={100} alt="WhatsApp" />
@@ -168,7 +168,7 @@ function Footer() {
           </div>
           <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
             {locations.map((location, index) => (
-              <div key={index}  onClick={() => cardClick(location)} className={`bg-gray-shades py-3 px-3 rounded-lg shadow  min-w-[170px]`}>
+              <div key={index}  onClick={() => cardClick(location)} className={`bg-gray-shades py-3 cursor-pointer px-3 rounded-lg shadow  min-w-[170px]`}>
                 <div className='flex justify-center mb-3'>
                   <div className='w-[40px]'>
                     <Image src='/home/whatsapp2.svg' width={100} height={100} alt="WhatsApp" />
