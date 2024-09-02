@@ -20,8 +20,8 @@ With empathy and confidence, our professionals will guide you through every chal
         para2: `These tests can help identify
 what you may have and need`,
         para2: `Take a FREE TEST to identify your symptoms`,
-        html1: `<p class='text-center mb-5 font-[15px] text-[#3A3A3A]'>These tests can help identify
-                        what you may have and need</p>
+        html1: `
+        
 
                     <h1 class='text-2xl text-center text-gray-800'>
                         Take a <span class="font-semibold">FREE TEST</span> to identify your symptoms
@@ -80,46 +80,29 @@ what you may have and need`,
         header:'Services we offer',
         services:[
             {
-                title:'Psychology/Therapy',
                 array:[
                     {
                         img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        name:'Therapy (Psychology)',
                     },
                     {
                         img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        name:'Psychiatry ',
                     },
                     {
                         img:"",
-                        name:'Lorem Ipsum dolor qioe',
+                        name:'Assessments',
+                    },
+                    {
+                        img:"",
+                        name:'TMS',
                     },
                 ],
                 button:{
                     text:'LEARN MORE',
                     link:'/services/Therapy Services'
                 }
-            }, {
-                title:'Psychiatry',
-                array:[
-                    {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
-                    },
-                    {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
-                    },
-                    {
-                        img:"",
-                        name:'Lorem Ipsum dolor qioe',
-                    },
-                ],
-                button:{
-                    text:'LEARN MORE',
-                    link:'/services/TMS Treatment Services'
-                }
-            }
+            }, 
         ]
     },
     section6:{

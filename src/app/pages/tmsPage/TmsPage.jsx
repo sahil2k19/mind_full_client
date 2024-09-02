@@ -5,8 +5,6 @@ import { Container } from '@mui/material';
 const TmsPage = () => {
   return (
     <>
-     
-
       <section className="select-none">
         <div className="bg-primary-div md:px-[150px]">
           <Container maxWidth="lg">
@@ -107,9 +105,9 @@ const TmsPage = () => {
 
             {/* Section 3 */}
             <div id="section3" className="mb-10">
-              <h1 className="text-center text-2xl font-semibold mb-3">Stages in TMS Therapy</h1>
+              <h1 className="text-center text-2xl font-semibold mb-3"> What can I expect when receiving TMS therapy?</h1>
               <p className="text-gray-700 text-center text-[13px] mb-6">
-                What can I expect when receiving TMS therapy?
+              Stages in TMS Therapy
               </p>
               {stages.map((i, index) => (
                 <div key={index} className="mb-6">

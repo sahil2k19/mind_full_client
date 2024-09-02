@@ -13,7 +13,7 @@ const locations = [
       area: "Bangalore North",
       bgColor: "bg-primary-orange",
       location: "Banglore Aster CMI",
-      whatsapp: +91966309563200000000,
+      whatsapp: +919663095632,
       call: +919663095632,
       params:"Bengaluru-Hebbal"
     },
@@ -22,7 +22,7 @@ const locations = [
       area: "Bangalore North",
       bgColor: "bg-[#F8A51C]",
       location: "Banglore Whitefield",
-      whatsapp: +9196630956320,
+      whatsapp: +919663095632,
       call: +919663095632,
       params:"Bengaluru-Whitefield"
     },
@@ -31,7 +31,7 @@ const locations = [
       area: "Delhi",
       bgColor: "bg-primary-orange",
       location: "Delhi",
-      whatsapp: +919663095632000,
+      whatsapp: +919663095632,
       call: +919663095632,
       params:"New-Delhi"
     }

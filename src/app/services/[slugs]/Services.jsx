@@ -50,6 +50,29 @@ const services = [
                 title: 'TMS FOR MOOD DISORDER',
             }
         ]
+    },
+    {
+        id: 3,
+        title: 'Psychiatry',
+        para: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus`,
+        avail: [
+            {
+                id: 1,
+                title: 'TMS FOR DEPRESSION',
+            },
+            {
+                id: 2,
+                title: 'TMS FOR DEPRESSION',
+            },
+            {
+                id: 3,
+                title: 'TMS FOR ANXIETY',
+            },
+            {
+                id: 4,
+                title: 'TMS FOR MOOD DISORDER',
+            }
+        ]
     }
 ]
 const Services = ({ params, searchParams }) => {

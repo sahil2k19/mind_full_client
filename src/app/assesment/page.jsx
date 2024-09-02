@@ -43,13 +43,11 @@ const defaultTest = {
 const section1 = {
     header: "Take a Self-Assessment",
     para1: `<p class='text-sm text-center mb-5'>
-                        Welcome to our self-assessment page.
-                        Here, you can choose from a variety of tests to help you understand your mental health better.
+                       RCI Certified Clinicians provide various tests and Assessments
                     </p>
 
-                    <p class='text-sm text-center'>
-                        Select the test that best matches your current feelings and concerns.
-                    </p>`,
+                    <p class='text-sm text-center'>If you are looking for an psychological assessment reach out to your nearest clinic.
+                     </p>`,
     AvailableTest,
 
 }
@@ -63,7 +61,7 @@ const section3 = {
     blogs: [
         {
             id: 1,
-            img: "",
+            img: "dep1.svg",
             title: "TMS for Depression"
         },
         {
