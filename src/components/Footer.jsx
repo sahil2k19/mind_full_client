@@ -47,7 +47,7 @@ function Footer() {
     const checkBusinessHours = () => {
       const now = new Date();
       const hours = now.getHours();
-      if (hours >= 10 && hours < 11) {
+      if (hours >= 10 && hours < 18) {
         setIsBusinessHours(true);
       } else {
         setIsBusinessHours(false);
