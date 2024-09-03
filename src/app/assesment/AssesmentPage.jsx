@@ -4,22 +4,22 @@ import React from 'react'
 
 const AssesmentPage = ({ allSection }) => {
     return (
-        <Container maxWidth="lg">
-            {allSection && <div>
+        <>
+            {allSection && <div className='bg-primary-div h-min-[100vh]'>
                 <div className='flex px-6 py-1 justify-center items-center'>
                     <div></div>
                     <div className=''>
-                        <h1 className="text-2xl md:text-3xl font-semibold">{allSection?.section1?.header}</h1>
+                        <h1 className="text-2xl md:text-3xl text-primary-orange font-semibold">{allSection?.section1?.header}</h1>
                     </div>
                 </div>
 
                 <div className='p-4 mb-4'>
                     {
-                        <div dangerouslySetInnerHTML={{ __html: allSection?.section1?.para1 }}></div>
+                        <div className='text-primary-orange font-semibold' dangerouslySetInnerHTML={{ __html: allSection?.section1?.para1 }}></div>
                     }
                 </div>
 
-                <div className=''>
+                <div className='min-h-[70vh]'>
                     {/* <div>
                         <h1 className='text-center text-xl md:text-2xl mb-4 underline'>Available tests:</h1>
                     </div> */}
@@ -28,15 +28,15 @@ const AssesmentPage = ({ allSection }) => {
                             {
                                 allSection?.section1?.AvailableTest?.map((test, index) => (
                                     <Link key={index} href={test?.link ?? '#'} className='min-h-[60px] '>
-                                        <div className='overflow-hidden rounded-xl border-2 h-full hover:shadow-xl active:shadow-sm'>
+                                        <div className='overflow-hidden rounded-xl  h-full  active:shadow-sm'>
                                             <div
-                                                className=" flex justify-start flex-col items-center p-3 gap-4  bg-center w-full "
+                                                className=" flex justify-between flex-col items-center p-3 gap-4  bg-center w-full "
 
                                             >
-                                                <div className='w-[100px] rounded-full overflow-hidden'>
+                                                <div className='md:w-[300px] w-[150px]  rounded-full overflow-hidden'>
                                                     <img className='w-full' src={test?.img} />
                                                 </div>
-                                                <p className="text-start text-lg font-bold ">{test?.title2}</p>
+                                                <p className="text-start text-primary-orange text-lg font-bold ">{test?.title2}</p>
                                                 {/* <p className="text-white text-center">{test?.para}</p> */}
                                             </div>
                                             {/* <div className='p-4'>
@@ -97,7 +97,7 @@ const AssesmentPage = ({ allSection }) => {
                     </div>
                 </div> */}
             </div>}
-        </Container>
+        </>
     )
 }
 

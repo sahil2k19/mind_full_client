@@ -19,7 +19,7 @@ const HomePage = ({ allSection }) => {
                 <section className='mb-5'>
                     <div className='md:grid grid-cols-2 items-center'>
                         <div className='flex justify-center w-full px-3  mb-4'>
-                            <img className='w-full object-cover' src='/home/banner01.png' />
+                            <img className='w-full object-cover' src='/home/banner01.svg' />
                         </div>
                         <div>
                             <div className='flex flex-col justify-center px-8'>
@@ -112,9 +112,9 @@ const HomePage = ({ allSection }) => {
                                     <div className='grid grid-cols-2 md:grid-cols-4 items-center mb-11 gap-8 justify-center'>
                                         {
                                             service?.array?.map((i, index) => (
-                                                <div key={index} className='flex flex-col justify-center  items-center text-center '>
-                                                    <div className='w-[64px] h-[64px] rounded-full bg-[#EF6623] mb-3 '></div>
-                                                    <p className=' font-semibold'>{i?.name}</p>
+                                                <div key={index} className='flex flex-col justify-between  items-center text-center '>
+                                                    <div className='w-[100px] h-[100px] rounded-full bg-[#EF6623] mb-3 '></div>
+                                                    <p className=' text-lg ml-1 font-semibold whitespace-nowrap'>{i?.name}</p>
                                                 </div>
                                             ))
                                         }
@@ -278,9 +278,9 @@ const HomePage = ({ allSection }) => {
 
                     <div className='flex justify-around items-center bg-primary-div px-8 py-8'>
                         <div className='flex flex-col justify-center mb-5 px-8 py-8 bg-[rgba(239, 102, 35, 0.3)]'>
-                            {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
-                            <h1 className='text-3xl'>Take a <span className='font-bold'>FREE TEST </span>
-                                to identify your symptoms</h1>
+                            <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} />
+                            {/* <h1 className='text-3xl'>Take a <span className='font-bold'>FREE TEST </span>
+                                to identify your symptoms</h1> */}
                         </div>
                         <div className='flex justify-center'>
                             <Link href={allSection?.section2?.button?.link}>
@@ -332,12 +332,12 @@ const HomePage = ({ allSection }) => {
                     </div>
                 </section>
 
-                 {/* wy tms */}
-                 <section className='py-4 px-4 mb-11'>
+                {/* wy tms */}
+                <section className='py-4 px-4 mb-11'>
                     <div className='mb-10'>
                         <h1 className='text-4xl text-center font-sans mb-4'>Why Choose <span className='font-semibold'> MindfulTMS?</span></h1>
 
-                       <p className='text-lg text-center'>Your well being is our mission</p>
+                        <p className='text-lg text-center'>Your well being is our mission</p>
                     </div>
                     <div className='flex justify-center'>
                         <div className='grid grid-cols-2 md:grid-cols-4 gap-[70px]  items-center  justify-center'>
@@ -354,8 +354,8 @@ const HomePage = ({ allSection }) => {
                     </div>
                 </section>
 
-                  {/* services */}
-                  <section className='py-8 px-4 bg-primary-div rounded-lg'>
+                {/* services */}
+                <section className='py-8 px-4 bg-primary-div rounded-lg'>
                     <div className='mb-8'>
                         <div className='mb-8 py-5'>
                             <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1>
@@ -368,8 +368,8 @@ const HomePage = ({ allSection }) => {
                                         {
                                             service?.array?.map((i, index) => (
                                                 <div key={index} className='flex flex-col justify-center  items-center text-center '>
-                                                    <div className='w-[64px] h-[64px] rounded-full bg-[#EF6623] mb-3 '></div>
-                                                    <p className=' font-semibold'>{i?.name}</p>
+                                                    <div className='w-[164px] h-[164px] rounded-full bg-[#EF6623] mb-3 '></div>
+                                                    <p className='text-xl font-semibold'>{i?.name}</p>
                                                 </div>
                                             ))
                                         }
@@ -389,20 +389,20 @@ const HomePage = ({ allSection }) => {
 
                 </section>
 
-                   {/* client speaks */}
-                   <section className='py-8 px-4'>
+                {/* client speaks */}
+                <section className='py-8 px-4'>
                     {/* <VideoComponent /> */}
                     <NewComponent videos={videos} />
                 </section>
 
-                 {/* locations */}
-                 <section className='py-8 px-4'>
+                {/* locations */}
+                <section className='py-8 px-4'>
                     <div className='mb-8 flex flex-col justify-center items-center'>
                         <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section6?.header}</h1>
                         <p className='text-center text-sm text-gray-500'>{allSection?.section6?.para}</p>
                     </div>
 
-                    <div className='md:px-8'>
+                    <div className='md:px-8 grid grid-cols-2 gap-8 justify-between'>
                         {
                             allSection?.section6?.locations?.map((location, index) => (
                                 <div key={index} className='md:mb-11'>
@@ -415,7 +415,7 @@ const HomePage = ({ allSection }) => {
 
                                     </div>
 
-                                    <div className='flex flex-col md:grid grid-cols-4 md:gap-5 justify-center'>
+                                    <div className='flex flex-col  justify-center'>
                                         {location?.locationArray?.map((i, index) => (
                                             <div key={index} className='bg-primary-div px-4 mb-4 py-4 rounded-lg'>
                                                 <h1 className='text-xl font-semibold text-gray-700 '>{i?.title}</h1>
@@ -459,19 +459,15 @@ const HomePage = ({ allSection }) => {
                     </div>
                 </section>
 
-            
+
             </>
         )
     }
 
-
-
-
-
     return (
         <div className="">
             {allSection &&
-                <div maxWidth="lg" className=" select-none">
+                <div className=" select-none">
                     {/* hero section */}
                     <div className='md:hidden'>
                         <MobileScreen />

@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import QuillEditorComponent from "@/components/QuillEditorComponent";
 import axios from "axios";
 import Image from "next/image";
-
+import TextEditor from "@/components/TextEditor";
 const EditHomePage = ({ allSection, setAllSection }) => {
   const [content, setContent] = useState("");
   const [selectedTab, setSelectedTab] = useState(0);
@@ -41,6 +41,19 @@ const EditHomePage = ({ allSection, setAllSection }) => {
 
   return (
     <>
+    <TextEditor 
+    value={ ""}
+    onChange={(e) => {
+                  setAllSection({
+                    ...allSection,
+                    heroSection: {
+                      ...allSection?.heroSection,
+                      para:e
+                    },
+                  });
+                }}
+
+    />
       <Tabs
         value={selectedTab}
         onChange={handleTabChange}
@@ -52,7 +65,7 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         <Tab className="font-semibold text-md" label="Section 4" />
         <Tab className="font-semibold text-md" label="Section 5" />
       </Tabs>
-
+        <textarea className="h-[500px] w-[500px]" value={allSection?.heroSection?.para} />
       
     {/* SECTION 1 */}
       <TabPanel value={selectedTab} index={0}>

@@ -106,9 +106,9 @@ const TmsPage = () => {
             {/* Section 3 */}
             <div id="section3" className="mb-10">
               <h1 className="text-center text-2xl font-semibold mb-3"> What can I expect when receiving TMS therapy?</h1>
-              <p className="text-gray-700 text-center text-[13px] mb-6">
+              {/* <p className="text-gray-700 text-center text-[13px] mb-6">
               Stages in TMS Therapy
-              </p>
+              </p> */}
               {stages.map((i, index) => (
                 <div key={index} className="mb-6">
                   <h1 className="text-xl text-primary-orange mb-4 font-semibold">
@@ -267,13 +267,13 @@ const stages = [
         paraTitle: 'Evaluation',
         para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
       },
-      {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      }, {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      },
+      // {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // }, {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // },
 
     ]
   },
@@ -285,13 +285,13 @@ const stages = [
         paraTitle: 'Evaluation',
         para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
       },
-      {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      }, {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      },
+      // {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // }, {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // },
 
     ]
   },
@@ -303,13 +303,13 @@ const stages = [
         paraTitle: 'Evaluation',
         para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
       },
-      {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      }, {
-        paraTitle: 'Evaluation',
-        para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
-      },
+      // {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // }, {
+      //   paraTitle: 'Evaluation',
+      //   para: ` Your journey begins with a thorough evaluation by a trained clinical psychologist or psychiatrist. They will review your medical history, current medications, and previous treatments, if any. They will then determine if TMS is right for you. `
+      // },
 
     ]
   },

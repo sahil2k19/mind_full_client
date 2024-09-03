@@ -8,7 +8,7 @@ const AvailableTest = [
     {
         id: 1,
         title: "Take the PHQ-9 Test",
-        title2: "Test for Depression",
+        title2: "Am I Depressed?",
         para: `This test helps evaluate the severity of depression symptoms.`,
         img: '/home/positive2.svg',
         link:'/assesment/phq9/selfAssesment'
@@ -16,7 +16,7 @@ const AvailableTest = [
     {
         id: 2,
         title: "Take the GAD-7 Test",
-        title2: "Test for Anxiety",
+        title2: "Do I have Anxiety?",
         para: `This test helps evaluate the severity of anxiety symptoms.`,
         img: '/home/positive3.svg',
         link:'/assesment/gad7/selfAssesment'
@@ -24,7 +24,7 @@ const AvailableTest = [
     {
         id: 3,
         title: "Take the PSS-10 Test",
-        title2: "Test for Stress",
+        title2: "How stressed am I?",
         para: `This test assesses how stressful you find your life situations.`,
         img: '/home/positive4.svg',
         link:'/assesment/pss10/selfAssesment'
