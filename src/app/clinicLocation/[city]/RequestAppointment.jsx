@@ -106,7 +106,7 @@ const RequestAppointment = ({city}) => {
             email: '',
             phone: '',
             doctor: '',
-            location: '',
+            location: currentLocation?.location||"",
             message: '',
             preferredTime: ''
         });
@@ -169,7 +169,7 @@ const RequestAppointment = ({city}) => {
                         <Select
                             labelId="location-label"
                             name="location"
-                            value={formData.location || currentLocation?.location}
+                            value={formData.location }
                             onChange={handleChange}
                         >
                             <MenuItem value="Delhi">Delhi</MenuItem>
