@@ -26,11 +26,13 @@ const HomePage = ({ allSection }) => {
                                 <h1 className=' text-3xl mb-5  text-center font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1>
-                                {
+                                {/* {
                                     allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className='text-center mb-5 font-[15px] text-[#3A3A3A] '>{para}</p>
 
                                     )
-                                }
+                                } */}
+
+                                <div  dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }}/>
 
 
                             </div>
@@ -244,12 +246,12 @@ const HomePage = ({ allSection }) => {
                                 <h1 className=' text-6xl mb-5 text-[#3A3A3A]  text-start font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1>
-                                {
+                                {/* {
                                     allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-[#3A3A3A] '>{para}</p>
 
                                     )
-                                }
-
+                                } */}
+                                    <div dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }} />
 
                             </div>
                             <div className='flex justify-start px-8'>

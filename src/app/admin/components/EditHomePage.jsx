@@ -42,7 +42,7 @@ const EditHomePage = ({ allSection, setAllSection }) => {
   return (
     <>
     <TextEditor 
-    value={ ""}
+    value={ allSection?.heroSection?.para}
     onChange={(e) => {
                   setAllSection({
                     ...allSection,
