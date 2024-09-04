@@ -76,13 +76,13 @@ const TextEditor = ({ value, onChange }) => {
   }, [value]);
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
+    <div className="p-4 bg-gray-100 ">
       {/* Style Controls */}
       <div className="mb-4">
         {/* Heading and Text Style Buttons */}
         <button
           onClick={() =>
-            applyStyle("h1", "text-4xl sm:text-3xl md:text-4xl lg:text-5xl")
+            applyStyle("h1", " text-3xl md:text-4xl lg:text-5xl")
           }
           className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
         >
@@ -90,7 +90,7 @@ const TextEditor = ({ value, onChange }) => {
         </button>
         <button
           onClick={() =>
-            applyStyle("h2", "text-3xl sm:text-2xl md:text-3xl lg:text-4xl")
+            applyStyle("h2", " text-2xl md:text-3xl lg:text-4xl")
           }
           className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
         >
@@ -98,7 +98,7 @@ const TextEditor = ({ value, onChange }) => {
         </button>
         <button
           onClick={() =>
-            applyStyle("h3", "text-2xl sm:text-xl md:text-2xl lg:text-3xl")
+            applyStyle("h3", " text-xl md:text-2xl lg:text-3xl")
           }
           className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
         >
@@ -106,20 +106,20 @@ const TextEditor = ({ value, onChange }) => {
         </button>
         <button
           onClick={() =>
-            applyStyle("h4", "text-xl sm:text-lg md:text-xl lg:text-2xl")
+            applyStyle("h4", " text-lg md:text-xl lg:text-2xl")
           }
           className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
         >
           H4
         </button>
         <button
-          onClick={() => applyStyle("p", "text-base sm:text-sm md:text-base")}
+          onClick={() => applyStyle("p", " text-sm md:text-base")}
           className="bg-gray-500 text-white px-4 py-2 mr-2 rounded"
         >
           Normal Text
         </button>
         <button
-          onClick={() => applyStyle("p", "text-sm sm:text-xs md:text-sm")}
+          onClick={() => applyStyle("p", " text-xs md:text-sm")}
           className="bg-gray-500 text-white px-4 py-2 mr-2 rounded"
         >
           Small Text
