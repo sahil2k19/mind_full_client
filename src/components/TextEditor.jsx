@@ -78,127 +78,105 @@ const TextEditor = ({ value, onChange }) => {
   return (
     <div className="p-4 bg-gray-100 ">
       {/* Style Controls */}
-      <div className="mb-4">
-        {/* Heading and Text Style Buttons */}
-        <button
-          onClick={() =>
-            applyStyle("h1", " text-3xl md:text-4xl lg:text-5xl")
-          }
-          className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          H1
-        </button>
-        <button
-          onClick={() =>
-            applyStyle("h2", " text-2xl md:text-3xl lg:text-4xl")
-          }
-          className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          H2
-        </button>
-        <button
-          onClick={() =>
-            applyStyle("h3", " text-xl md:text-2xl lg:text-3xl")
-          }
-          className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          H3
-        </button>
-        <button
-          onClick={() =>
-            applyStyle("h4", " text-lg md:text-xl lg:text-2xl")
-          }
-          className="bg-blue-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          H4
-        </button>
-        <button
-          onClick={() => applyStyle("p", " text-sm md:text-base")}
-          className="bg-gray-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Normal Text
-        </button>
-        <button
-          onClick={() => applyStyle("p", " text-xs md:text-sm")}
-          className="bg-gray-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Small Text
-        </button>
+      <div className="mb-4 flex space-x-4">
+        {/* Heading and Text Style Dropdown */}
+        <div className="relative">
+          <select
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+            onChange={(e) => {
+              const selected = e.target.value;
+              if (selected === "H1") applyStyle("h1", "text-3xl md:text-4xl lg:text-5xl");
+              else if (selected === "H2") applyStyle("h2", "text-2xl md:text-3xl lg:text-4xl");
+              else if (selected === "H3") applyStyle("h3", "text-xl md:text-2xl lg:text-3xl");
+              else if (selected === "H4") applyStyle("h4", "text-lg md:text-xl lg:text-2xl");
+              else if (selected === "Normal") applyStyle("p", "text-sm md:text-base");
+              else if (selected === "Small") applyStyle("p", "text-xs md:text-sm");
+            }}
+          >
+            <option value="">Text Style</option>
+            <option value="H1">H1</option>
+            <option value="H2">H2</option>
+            <option value="H3">H3</option>
+            <option value="H4">H4</option>
+            <option value="Normal">Normal Text</option>
+            <option value="Small">Small Text</option>
+          </select>
+        </div>
 
-        {/* Inline Style Buttons */}
-        <button
-          onClick={() => applyInlineStyle("bold")}
-          className="bg-green-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Bold
-        </button>
-        <button
-          onClick={() => applyInlineStyle("italic")}
-          className="bg-yellow-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Italic
-        </button>
-        <button
-          onClick={() => applyInlineStyle("underline")}
-          className="bg-red-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Underline
-        </button>
+        {/* Inline Style Dropdown */}
+        <div className="relative">
+          <select
+            className="bg-green-500 text-white px-4 py-2 rounded"
+            onChange={(e) => {
+              const selected = e.target.value;
+              if (selected === "Bold") applyInlineStyle("bold");
+              else if (selected === "Italic") applyInlineStyle("italic");
+              else if (selected === "Underline") applyInlineStyle("underline");
+            }}
+          >
+            <option value="">Inline Style</option>
+            <option value="Bold">Bold</option>
+            <option value="Italic">Italic</option>
+            <option value="Underline">Underline</option>
+          </select>
+        </div>
 
-        {/* Alignment Buttons */}
-        <button
-          onClick={() => applyAlignment("Left")}
-          className="bg-purple-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Left
-        </button>
-        <button
-          onClick={() => applyAlignment("Center")}
-          className="bg-purple-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Center
-        </button>
-        <button
-          onClick={() => applyAlignment("Right")}
-          className="bg-purple-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Right
-        </button>
+        {/* Alignment Dropdown */}
+        <div className="relative">
+          <select
+            className="bg-purple-500 text-white px-4 py-2 rounded"
+            onChange={(e) => {
+              const selected = e.target.value;
+              if (selected === "Left") applyAlignment("Left");
+              else if (selected === "Center") applyAlignment("Center");
+              else if (selected === "Right") applyAlignment("Right");
+            }}
+          >
+            <option value="">Alignment</option>
+            <option value="Left">Left</option>
+            <option value="Center">Center</option>
+            <option value="Right">Right</option>
+          </select>
+        </div>
 
-        {/* Text Color Buttons */}
-        <button
-          onClick={() => applyTextColor("text-red-500")}
-          className="bg-red-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Red
-        </button>
-        <button
-          onClick={() => applyTextColor("text-green-500")}
-          className="bg-green-500 text-white px-4 py-2 mr-2 rounded"
-        >
-          Green
-        </button>
+        {/* Text Color Dropdown */}
+        <div className="relative">
+          <select
+            className="bg-red-500 text-white px-4 py-2 rounded"
+            onChange={(e) => {
+              const selected = e.target.value;
+              if (selected === "Red") applyTextColor("text-red-500");
+              else if (selected === "Green") applyTextColor("text-green-500");
+            }}
+          >
+            <option value="">Text Color</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+          </select>
+        </div>
 
         {/* Custom Color Picker */}
-        <input
-          type="color"
-          value={customColor}
-          onChange={(e) => setCustomColor(e.target.value)}
-          className="border border-gray-300 px-2 py-1 rounded mr-2"
-        />
-        <button
-          onClick={applyCustomColor}
-          className="bg-gray-700 text-white px-4 py-2 rounded"
-        >
-          Apply Custom Color
-        </button>
+        <div className="flex items-center">
+          <input
+            type="color"
+            value={customColor}
+            onChange={(e) => setCustomColor(e.target.value)}
+            className="border border-gray-300 px-2 py-1 rounded mr-2"
+          />
+          <button
+            onClick={applyCustomColor}
+            className="bg-gray-700 text-white px-4 py-2 rounded"
+          >
+            Apply Custom Color
+          </button>
+        </div>
       </div>
 
       {/* Editable Text Area */}
       <div
         ref={editorRef}
         contentEditable
-        className="p-4 border border-gray-300 min-h-[300px] bg-white"
+        className="p-4 border border-gray-300 min-h-[150px] bg-white"
         onInput={handleInput}
       ></div>
     </div>

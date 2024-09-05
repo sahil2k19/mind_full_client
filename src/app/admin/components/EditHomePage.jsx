@@ -39,21 +39,56 @@ const EditHomePage = ({ allSection, setAllSection }) => {
     }
   };
 
+
+  const handleAddExpert = () => {
+    setAllSection((prev) => ({
+      ...prev,
+      section7: {
+        ...prev.section7,
+        expertArray: [
+          ...prev.section7.expertArray,
+          { img: "", name: "", desig: "", location: "" },
+        ],
+      },
+    }));
+  };
+
+  const handleRemoveExpert = (index) => {
+    const updatedExperts = allSection.section7.expertArray.filter(
+      (_, i) => i !== index
+    );
+    setAllSection((prev) => ({
+      ...prev,
+      section7: { ...prev.section7, expertArray: updatedExperts },
+    }));
+  };
+
+  const handleAddVideo = () => {
+    setAllSection((prev) => ({
+      ...prev,
+      section8: {
+        ...prev.section8,
+        videos: [
+          ...prev.section8.videos,
+          { id: Date.now(), service: "", speaker: "", src: "" },
+        ],
+      },
+    }));
+  };
+
+  const handleRemoveVideo = (id) => {
+    const updatedVideos = allSection.section8.videos.filter(
+      (video) => video.id !== id
+    );
+    setAllSection((prev) => ({
+      ...prev,
+      section8: { ...prev.section8, videos: updatedVideos },
+    }));
+  };
+
   return (
     <>
-    <TextEditor 
-    value={ allSection?.heroSection?.para}
-    onChange={(e) => {
-                  setAllSection({
-                    ...allSection,
-                    heroSection: {
-                      ...allSection?.heroSection,
-                      para:e
-                    },
-                  });
-                }}
 
-    />
       <Tabs
         value={selectedTab}
         onChange={handleTabChange}
@@ -64,8 +99,10 @@ const EditHomePage = ({ allSection, setAllSection }) => {
         <Tab className="font-semibold text-md" label="Section 3" />
         <Tab className="font-semibold text-md" label="Section 4" />
         <Tab className="font-semibold text-md" label="Section 5" />
+        <Tab className="font-semibold text-md" label="Section 6" />
+        <Tab className="font-semibold text-md" label="Section 7" />
+        <Tab className="font-semibold text-md" label="Section 8" />
       </Tabs>
-        <textarea className="h-[500px] w-[500px]" value={allSection?.heroSection?.para} />
       
     {/* SECTION 1 */}
       <TabPanel value={selectedTab} index={0}>
@@ -151,7 +188,7 @@ const EditHomePage = ({ allSection, setAllSection }) => {
             </div>
             <div className="flex flex-col w-full mb-6">
               <label className="text-lg font-semibold">Para2</label>
-              <QuillEditorComponent
+              {/* <QuillEditorComponent
                 value={allSection?.section2?.html1 || ""}
                 onChange={(e) =>
                   setAllSection({
@@ -160,6 +197,15 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                   })
                 }
                 className="w-full h-[70%] mt-10 bg-white"
+              /> */}
+              <TextEditor
+                value={allSection?.section2?.html1 || ""}
+                onChange={(e) =>
+                  setAllSection(prev=>({
+                    ...prev,
+                    section2: { ...prev?.section2, html1: e },
+                  }))
+                }
               />
             </div>
             <div className="flex flex-col w-full mb-6">
@@ -197,13 +243,13 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
                 value={allSection?.section3?.title || ""}
                 onChange={(e) => {
-                  setAllSection({
-                    ...allSection,
+                  setAllSection(prev=>({
+                    ...prev,
                     section3: {
-                      ...allSection?.section3,
+                      ...prev?.section3,
                       title: e.target.value,
                     },
-                  });
+                  }));
                 }}
               />
             </div>
@@ -214,13 +260,13 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
                 value={allSection?.section3?.para1 || ""}
                 onChange={(e) => {
-                  setAllSection({
-                    ...allSection,
+                  setAllSection(prev=>({
+                    ...prev,
                     section3: {
-                      ...allSection?.section3,
+                      ...prev?.section3,
                       para1: e.target.value,
                     },
-                  });
+                  }));
                 }}
               />
             </div>
@@ -244,19 +290,19 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 </div>
                 <div>
                   <div className="flex flex-col w-full mb-6">
-                    <label className="text-lg font-semibold">Para2</label>
-                    <QuillEditorComponent
+                    <label className="text-lg font-semibold">Para</label>
+                    <TextEditor
                       value={allSection?.section3?.box?.para || ""}
                       onChange={(e) =>
-                        setAllSection({
-                          ...allSection,
+                        setAllSection(prev=>({
+                          ...prev,
                           section3: {
-                            ...allSection?.section3,
-                            box: { ...allSection?.section3?.box, para: e },
+                            ...prev?.section3,
+                            box: { ...prev?.section3?.box, para: e },
                           },
-                        })
+                        }))
                       }
-                      className="w-full h-[70%] mt-10 bg-white"
+                      // className="w-full h-[70%] mt-10 bg-white"
                     />
                   </div>
                 </div>
@@ -265,15 +311,15 @@ const EditHomePage = ({ allSection, setAllSection }) => {
 
             <div className="flex flex-col w-full mb-6">
               <label className="text-lg font-semibold">Para2</label>
-              <QuillEditorComponent
+              <TextEditor
                 value={allSection?.section3?.para2 || ""}
                 onChange={(e) =>
-                  setAllSection({
-                    ...allSection,
-                    section3: { ...allSection?.section3, para2: e },
-                  })
+                  setAllSection(prev=>({
+                    ...prev,
+                    section3: { ...prev?.section3, para2: e },
+                  }))
                 }
-                className="w-full h-[70%] mt-10 bg-white"
+                // className="w-full h-[70%] mt-10 bg-white"
               />
             </div>
             <div className="flex flex-col w-full mb-6">
@@ -283,16 +329,16 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
                 value={allSection?.section3?.button?.text || ""}
                 onChange={(e) => {
-                  setAllSection({
-                    ...allSection,
+                  setAllSection(prev=>({
+                    ...prev,
                     section3: {
-                      ...allSection?.section3,
+                      ...prev?.section3,
                       button: {
-                        ...allSection?.section3?.button,
+                        ...prev?.section3?.button,
                         text: e.target.value,
                       },
                     },
-                  });
+                  }));
                 }}
               />
             </div>
@@ -303,16 +349,16 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 type="text" className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none" 
                 value={allSection?.section3?.button?.link || ""}
                 onChange={(e) => {
-                  setAllSection({
-                    ...allSection,
+                  setAllSection(prev=>({
+                    ...prev,
                     section3: {
-                      ...allSection?.section3,
+                      ...prev?.section3,
                       button: {
-                        ...allSection?.section3?.button,
+                        ...prev?.section3?.button,
                         link: e.target.value,
                       },
                     },
-                  });
+                  }));
                 }}
               />
             </div>
@@ -326,20 +372,20 @@ const EditHomePage = ({ allSection, setAllSection }) => {
           <div className="flex flex-col items-center">
             <div className="flex flex-col w-full mb-6">
               <label className="text-lg font-semibold">Title</label>
-              <QuillEditorComponent
+              <TextEditor
                 value={allSection?.section4?.header || ""}
                 onChange={(e) =>
-                  setAllSection({
-                    ...allSection,
-                    section4: { ...allSection?.section4, header: e },
-                  })
+                  setAllSection(prev=>({
+                    ...prev,
+                    section4: { ...prev?.section4, header: e },
+                  }))
                 }
-                className="w-full h-[70%] mt-10 bg-white"
+                // className="w-full h-[70%] mt-10 bg-white"
               />
             </div>
             <div className="flex flex-col w-full mb-6">
               <label className="text-lg font-semibold">Para 1</label>
-              <QuillEditorComponent
+              <TextEditor
                 value={allSection?.section4?.para || ""}
                 onChange={(e) =>
                   setAllSection({
@@ -488,6 +534,284 @@ const EditHomePage = ({ allSection, setAllSection }) => {
                 }}
               />
             </div>
+          </div>
+        </div>
+      </TabPanel>
+
+      <TabPanel value={selectedTab} index={5}>
+        <div className="px-10">
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col w-full mb-6">
+              <label className="text-lg font-semibold">Header</label>
+              <input
+                type="text"
+                className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                value={allSection?.section6?.header || ""}
+                onChange={(e) => {
+                  setAllSection({
+                    ...allSection,
+                    section6: {
+                      ...allSection?.section6,
+                      header: e.target.value,
+                    },
+                  });
+                }}
+              />
+            </div>
+            <div className="flex flex-col w-full mb-6">
+              <label className="text-lg font-semibold">Paragraph</label>
+              <input
+                className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                value={allSection?.section6?.para || ""}
+                onChange={(e) => {
+                  setAllSection({
+                    ...allSection,
+                    section6: {
+                      ...allSection?.section6,
+                      para: e.target.value,
+                    },
+                  });
+                }}
+              />
+            </div>
+            {allSection?.section6?.locations?.map((location, locIndex) => (
+              <div key={locIndex} className="border-2 p-4 rounded-xl mb-6">
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Location Title</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={location?.title || ""}
+                    onChange={(e) => {
+                      const updatedLocations = [...allSection.section6.locations];
+                      updatedLocations[locIndex].title = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section6: {
+                          ...allSection.section6,
+                          locations: updatedLocations,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                {location?.locationArray?.map((locItem, locItemIndex) => (
+                  <div key={locItemIndex} className="ml-4 mb-6">
+                    <label className="text-lg font-semibold">Location Name</label>
+                    <input
+                      type="text"
+                      className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                      value={locItem?.title || ""}
+                      onChange={(e) => {
+                        const updatedLocations = [...allSection.section6.locations];
+                        updatedLocations[locIndex].locationArray[locItemIndex].title = e.target.value;
+                        setAllSection({
+                          ...allSection,
+                          section6: {
+                            ...allSection.section6,
+                            locations: updatedLocations,
+                          },
+                        });
+                      }}
+                    />
+                    <label className="text-lg font-semibold">Address</label>
+                    <input
+                      type="text"
+                      className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                      value={locItem?.address || ""}
+                      onChange={(e) => {
+                        const updatedLocations = [...allSection.section6.locations];
+                        updatedLocations[locIndex].locationArray[locItemIndex].address = e.target.value;
+                        setAllSection({
+                          ...allSection,
+                          section6: {
+                            ...allSection.section6,
+                            locations: updatedLocations,
+                          },
+                        });
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </TabPanel>
+      <TabPanel value={selectedTab} index={6}>
+        <div className="px-10">
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col w-full mb-6">
+              <label className="text-lg font-semibold">Header</label>
+              <input
+                type="text"
+                className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                value={allSection?.section7?.header || ""}
+                onChange={(e) => {
+                  setAllSection({
+                    ...allSection,
+                    section7: {
+                      ...allSection?.section7,
+                      header: e.target.value,
+                    },
+                  });
+                }}
+              />
+            </div>
+
+            {allSection?.section7?.expertArray?.map((expert, expertIndex) => (
+              <div key={expertIndex} className="border-2 p-4 rounded-xl mb-6">
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Expert Name</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={expert?.name || ""}
+                    onChange={(e) => {
+                      const updatedExperts = [...allSection.section7.expertArray];
+                      updatedExperts[expertIndex].name = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section7: {
+                          ...allSection.section7,
+                          expertArray: updatedExperts,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Designation</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={expert?.desig || ""}
+                    onChange={(e) => {
+                      const updatedExperts = [...allSection.section7.expertArray];
+                      updatedExperts[expertIndex].desig = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section7: {
+                          ...allSection.section7,
+                          expertArray: updatedExperts,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Location</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={expert?.location || ""}
+                    onChange={(e) => {
+                      const updatedExperts = [...allSection.section7.expertArray];
+                      updatedExperts[expertIndex].location = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section7: {
+                          ...allSection.section7,
+                          expertArray: updatedExperts,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex items-center mb-6">
+                  <input type="file" className="" />
+                  {expert?.img && (
+                    <Image
+                      src={expert.img}
+                      width={100}
+                      height={100}
+                      alt="Expert Image"
+                    />
+                  )}
+                </div>
+                <button
+                  className="bg-red-500 text-white py-2 px-4 rounded"
+                  onClick={() => handleRemoveExpert(expertIndex)}
+                >
+                  Remove Expert
+                </button>
+              </div>
+            ))}
+            <button
+              className="bg-blue-500 text-white py-2 px-4 rounded"
+              onClick={handleAddExpert}
+            >
+              Add Expert
+            </button>
+          </div>
+        </div>
+      </TabPanel>
+
+      {/* SECTION 8 */}
+      <TabPanel value={selectedTab} index={7}>
+        <div className="px-10">
+          <div className="flex flex-col items-center">
+            {allSection?.section8?.videos?.map((video, videoIndex) => (
+              <div key={videoIndex} className="border-2 p-4 rounded-xl mb-6">
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Service</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={video?.service || ""}
+                    onChange={(e) => {
+                      const updatedVideos = [...allSection.section8.videos];
+                      updatedVideos[videoIndex].service = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section8: {
+                          ...allSection.section8,
+                          videos: updatedVideos,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Speaker</label>
+                  <input
+                    type="text"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                    value={video?.speaker || ""}
+                    onChange={(e) => {
+                      const updatedVideos = [...allSection.section8.videos];
+                      updatedVideos[videoIndex].speaker = e.target.value;
+                      setAllSection({
+                        ...allSection,
+                        section8: {
+                          ...allSection.section8,
+                          videos: updatedVideos,
+                        },
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col w-full mb-6">
+                  <label className="text-lg font-semibold">Video File</label>
+                  <input
+                    type="file"
+                    className="border-2 w-full rounded-xl p-2 text-xl border-gray-400 outline-none"
+                  />
+                </div>
+                <button
+                  className="bg-red-500 text-white py-2 px-4 rounded"
+                  onClick={() => handleRemoveVideo(video.id)}
+                >
+                  Remove Video
+                </button>
+              </div>
+            ))}
+            <button
+              className="bg-blue-500 text-white py-2 px-4 rounded"
+              onClick={handleAddVideo}
+            >
+              Add Video
+            </button>
           </div>
         </div>
       </TabPanel>

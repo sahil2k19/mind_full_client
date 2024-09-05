@@ -12,28 +12,28 @@ const assesmentPageSection = {
             {
                 id: 1,
                 title: "Take the PHQ-9 Test",
-                title2: "Test for Depression",
+                title2: "Am I Depressed?",
                 para: `This test helps evaluate the severity of depression symptoms.`,
                 img: '/home/positive2.svg',
-                link: '/assesment/phq9/selfAssesment'
+                link:'/assesment/phq9/selfAssesment'
             },
             {
                 id: 2,
                 title: "Take the GAD-7 Test",
-                title2: "Test for Anxiety",
+                title2: "Do I have Anxiety?",
                 para: `This test helps evaluate the severity of anxiety symptoms.`,
                 img: '/home/positive3.svg',
-                link: '/assesment/gad7/selfAssesment'
+                link:'/assesment/gad7/selfAssesment'
             },
             {
                 id: 3,
                 title: "Take the PSS-10 Test",
-                title2: "Test for Stress",
+                title2: "How stressed am I?",
                 para: `This test assesses how stressful you find your life situations.`,
                 img: '/home/positive4.svg',
-                link: '/assesment/pss10/selfAssesment'
+                link:'/assesment/pss10/selfAssesment'
             },
-
+        
         ],
 
     },
@@ -244,6 +244,14 @@ what you may have and need`,
                 location: 'Bangalore',
             },
 
+        ]
+    }, 
+    section8:{
+        videos : [
+            { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
+            { id: 2, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
+            { id: 3, service: 'Stress Relief Techniques', speaker: 'Jane Smith', src: '/home/random.mp4' },
+            { id: 4, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
         ]
     }
 }
