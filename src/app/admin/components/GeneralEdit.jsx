@@ -45,8 +45,15 @@ const GeneralEdit = ({ params }) => {
         getSection();
     }, [])
     const handleSave = () => {
+        let apiUrl = ''
+        if (page === 'homesection') {
+            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}homeSection/udpateHomeSection`;
+        }
+        else if (page === 'selfassessment') {
+            apiUrl = `${process.env.NEXT_PUBLIC_API_URL}AssessmentSection/udpateSection`;
+        }
         if (allSection) {
-            axios.put(`${process.env.NEXT_PUBLIC_API_URL}homeSection/udpateHomeSection`, allSection).then((res) => {
+            axios.put(apiUrl, allSection).then((res) => {
                 console.log(res.data);
                 toast.dismiss()
                 toast.success('Section updated successfully')
