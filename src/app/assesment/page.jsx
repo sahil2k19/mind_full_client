@@ -2,7 +2,8 @@
 import Link from 'next/link'
 import React from 'react'
 import AssesmentPage from './AssesmentPage'
-
+import {assesmentPageSection} from '@/example'
+import axios from 'axios'
 
 const AvailableTest = [
     {
@@ -81,16 +82,20 @@ const section3 = {
     }
 }
 
-const allSection = {
+const allSectionStatic = {
     section1,
     section2,
     section3
 }
-const Assesment = () => {
+const Assesment = async() => {
     // const router = useRouter()
+    let allSection = {}
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}AssessmentSection/getSection`)
+    allSection = res.data
   return (
     <>
-        <AssesmentPage allSection={allSection} />
+      {allSection &&  <AssesmentPage allSection={allSection} />}
+        {/* <AssesmentPage allSection={assesmentPageSection} /> */}
     </>
   )
 }

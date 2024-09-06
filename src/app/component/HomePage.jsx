@@ -32,6 +32,8 @@ const HomePage = ({ allSection }) => {
                                     )
                                 }
 
+                                {/* <div  dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }}/> */}
+
 
                             </div>
                             <div className='flex justify-center'>
@@ -249,7 +251,7 @@ const HomePage = ({ allSection }) => {
 
                                     )
                                 }
-
+                                    {/* <div dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }} /> */}
 
                             </div>
                             <div className='flex justify-start px-8'>
@@ -392,7 +394,7 @@ const HomePage = ({ allSection }) => {
                 {/* client speaks */}
                 <section className='py-8 px-4'>
                     {/* <VideoComponent /> */}
-                    <NewComponent videos={videos} />
+                    <NewComponent videos={allSection?.section8?.videos} />
                 </section>
 
                 {/* locations */}
