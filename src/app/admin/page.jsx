@@ -8,13 +8,26 @@ const pages = [
     name: 'Home Page',
     slug: 'homesection'
   },
+  
   {
     name: 'Self Assessment',
     slug: 'selfassessment'
   },
   {
+    name: 'Our Clinic Locations',
+    slug: 'cliniclocation'
+  },
+  {
+    name: 'TMS',
+    slug: 'tms'
+  },
+  {
     name: 'Services',
     slug: 'services'
+  },
+  {
+    name: 'Footer',
+    slug: 'footer'
   },
   {
     name: 'Blogs',
@@ -27,16 +40,7 @@ const Admin = () => {
 
   return (
     <Container maxWidth="lg" className='px-10 py-4'>
-      {/* Breadcrumbs Component */}
-      {/* <Breadcrumbs aria-label="breadcrumb" className="mb-4">
-        <Link 
-          color="inherit" 
-          onClick={() => router.push('/admin')} 
-          style={{ cursor: 'pointer' }}
-        >
-          Admin
-        </Link>
-      </Breadcrumbs> */}
+
 
       <div className='flex justify-center mb-8'>
         <h1 className='text-3xl font-semibold'>Admin</h1>

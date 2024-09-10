@@ -113,7 +113,7 @@ const RequestAppointment = ({city}) => {
     }
 
     const isFormValid = () => {
-        return formData.name && formData.email && formData.phone && formData.location;
+        return formData.name && formData.email && formData.phone ;
     }
 
     useEffect(() => {
