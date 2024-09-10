@@ -5,7 +5,7 @@ import AdminPreviewPage from '../../components/AdminPreviewPage'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-const page = ({params}) => {
+const Page = ({params}) => {
     const city = params.location
     const [data, setData] = useState(null); // Initially set data to null
     const [loading, setLoading] = useState(true); // Loading state to handle API request
@@ -61,4 +61,4 @@ const page = ({params}) => {
     );
 }
 
-export default page;
+export default Page;
