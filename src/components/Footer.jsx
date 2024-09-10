@@ -3,37 +3,45 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Dialog, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-const locations = [
-  {
-    name: "Aster CMI",
-    area: "Bangalore North",
-    bgColor: "bg-primary-orange",
-    location: "Banglore Aster CMI",
-    whatsapp: +919663095632,
-    call: +919663095632,
-  },
-  {
-    name: "Whitefield",
-    area: "Bangalore North",
-    bgColor: "bg-[#F8A51C]",
-    location: "Banglore Whitefield",
-    whatsapp: +919663095632,
-    call: +919663095632,
-  },
-  {
-    name: "Greater Kailash 1",
-    area: "Delhi",
-    bgColor: "bg-primary-orange",
-    location: "Delhi",
-    whatsapp: +919663095632,
-    call: +919663095632,
-  }
-];
+import axios from 'axios';
+// const locations = [
+//   {
+//     name: "Aster CMI",
+//     area: "Bangalore North",
+//     bgColor: "bg-primary-orange",
+//     location: "Banglore Aster CMI",
+//     whatsapp: +919663095632,
+//     call: +919663095632,
+//     officeOpen:10, 
+//     officeClose:24,
+//   },
+//   {
+//     name: "Whitefield",
+//     area: "Bangalore North",
+//     bgColor: "bg-[#F8A51C]",
+//     location: "Banglore Whitefield",
+//     whatsapp: +919663095632,
+//     call: +919663095632,
+//     officeOpen:10, 
+//     officeClose:18,
+//   },
+//   {
+//     name: "Greater Kailash 1",
+//     area: "Delhi",
+//     bgColor: "bg-primary-orange",
+//     location: "Delhi",
+//     whatsapp: +919663095632,
+//     call: +919663095632,
+//     officeOpen:10, 
+//     officeClose:18,
+//   }
+// ];
 
 
 function Footer() {
   const router = useRouter();
   const [requestModal, setRequestModal] = useState(false);
+  const [locations, setLocations] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,20 +49,47 @@ function Footer() {
     doctor: '',
     location: '',
     message: '',
-    whatsapp: ''
+    whatsapp: '',
+    officeOpen:null, 
+    officeClose:null,
   });
+
+  const getLocationData = ()=>{
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}clinicLocation/getAllContactDetails`)
+    .then(res=>{
+      const details = res?.data?.map((item)=>{
+        return item.details;
+      });
+      setLocations(details)
+      console.log('details', res?.data)
+    }).catch(err=>console.log(err))
+  }
+
   useEffect(() => {
-    const checkBusinessHours = () => {
-      const now = new Date();
-      const hours = now.getHours();
-      if (hours >= 10 && hours < 11) {
-        setIsBusinessHours(true);
-      } else {
-        setIsBusinessHours(false);
-      }
-    };
+    getLocationData();
+  }, [])
+
+
+  const checkBusinessHours = () => {
+    const now = new Date();
+    const hours = now.getHours();
+  
+    const officeOpen = formData?.officeOpen ?? 10; // Default to 10 if formData?.officeOpen is undefined
+    const officeClose = formData?.officeClose ?? 11; // Default to 11 if formData?.officeClose is undefined
+  
+    if (hours >= officeOpen && hours < officeClose) {
+      console.log('inside', hours, officeOpen, officeClose);
+      setIsBusinessHours(true);
+    } else {
+      console.log('outside', hours, officeOpen, officeClose);
+      setIsBusinessHours(false);
+    }
+  };
+  
+  useEffect(() => {
+  
     checkBusinessHours();
-  }, []);
+  }, [formData]);
   useEffect(() => {
     const handlePopState = () => {
       if (requestModal) {
@@ -81,11 +116,13 @@ function Footer() {
     setRequestModal(true)
   }
   useEffect(() => {
-    const whatsappNumber = locations.find(location => location.location === formData.location)?.whatsapp;
-    if (whatsappNumber) {
+    const data = locations.find(location => location.location === formData.location);
+    if (data) {
       setFormData(prev => ({
         ...prev,
-        whatsapp: whatsappNumber
+        whatsapp: data?.whatsappNumber,
+        officeOpen: data?.officeOpen,
+        officeClose: data?.officeClose
       }));
     }
     // console.log("new whatsapp number", formData.whatsapp);
@@ -145,7 +182,7 @@ function Footer() {
           
             <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
               {locations.map((location, index) => (
-                <div key={index} className={` ${location?.bgColor} py-3 px-3 rounded-lg shadow-lg cursor-pointer select-none min-w-[170px]`}>
+                <div key={index} className={` ${location?.bgColor} py-3 px-3 rounded-lg shadow-lg cursor-pointer select-none min-w-[150px]`}>
                   <div className='flex justify-center mb-3'>
                   <div className='w-[48px] cursor-pointer'>
                       <a href={`tel:${location?.call}`}>
@@ -154,8 +191,8 @@ function Footer() {
                     </div>
                   </div>
                   <div className='flex flex-col justify-center items-center text-white'>
-                    <p className='font-semibold text-sm'>{location.name}</p>
-                    <h1 className='text-lg font-semibold'>{location.area}</h1>
+                    <p className='font-semibold text-[12px]'>{location.name}</p>
+                    <h1 className='text-[18px] whitespace-nowrap font-semibold'>{location.area}</h1>
                   </div>
                 </div>
               ))}
@@ -169,15 +206,15 @@ function Footer() {
             </div>
             <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
               {locations.map((location, index) => (
-                <div key={index} onClick={() => cardClick(location)} className={`${location?.bgColor} py-3 cursor-pointer px-3 rounded-lg shadow  min-w-[170px]`}>
+                <div key={index} onClick={() => cardClick(location)} className={`${location?.bgColor} py-3 cursor-pointer px-3 rounded-lg shadow  min-w-[150px]  `}>
                   <div className='flex justify-center mb-3'>
                     <div className='w-[40px]'>
                       <Image src='/home/whatsapp2.svg' width={100} height={100} alt="WhatsApp" />
                     </div>
                   </div>
                   <div className='flex flex-col justify-center items-center text-white'>
-                    <p className='font-semibold text-sm'>{location.name}</p>
-                    <h1 className='text-lg font-semibold'>{location.area}</h1>
+                    <p className='font-semibold text-[12px]'>{location.name}</p>
+                    <h1 className='text-[18px] whitespace-nowrap font-semibold'>{location.area}</h1>
                   </div>
                 </div>
               ))}
@@ -292,6 +329,7 @@ function Footer() {
     return (
       <>
         <div className=''>
+    
           <div className="flex justify-center">
             <img
               className="h-[129px] w-[185px]"

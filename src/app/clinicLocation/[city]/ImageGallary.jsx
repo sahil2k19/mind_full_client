@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent, IconButton, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-export default function ImageGallery({ images }) {
+export default function ImageGallary({ images }) {
+    // console.log('images', images)
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {

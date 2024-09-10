@@ -6,6 +6,7 @@ import HomePage from '@/app/component/HomePage'
 import EditHomePage from './EditHomePage';
 // import { render } from 'react-dom';
 import EditAssesment from './EditAssesment';
+import EditTmsPage from './EditTmsPage';
 import AssesmentPage from '@/app/assesment/AssesmentPage';
 import { usePathname } from 'next/navigation';
 import axios from 'axios';
@@ -17,11 +18,7 @@ import toast from 'react-hot-toast';
 
 const GeneralEdit = ({ params }) => {
     const { page } = params;
-    const location = usePathname();
-
-    const RenderApiUrl = () => {
-
-    }
+    // const location = usePathname();
 
     const [allSection, setAllSection] = useState();
 
@@ -33,6 +30,7 @@ const GeneralEdit = ({ params }) => {
         else if (page === 'selfassessment') {
             apiUrl = `${process.env.NEXT_PUBLIC_API_URL}AssessmentSection/getSection`;
         }
+        
         axios.get(apiUrl)
             .then((res) => {
                 // console.log(res.data);
@@ -69,6 +67,9 @@ const GeneralEdit = ({ params }) => {
         if (page === 'selfassessment') {
             return `${process.env.NEXT_PUBLIC_CLIENT_URL}assesment`
         }
+        if (page === 'tms') {
+            return `${process.env.NEXT_PUBLIC_CLIENT_URL}pages/tmsPage`
+        }
         else{
             return `${process.env.NEXT_PUBLIC_CLIENT_URL}`
         }
@@ -80,6 +81,9 @@ const GeneralEdit = ({ params }) => {
         }
         else if (page === 'selfassessment') {
             return <EditAssesment allSection={allSection} setAllSection={setAllSection} />;
+        }
+        else if (page === 'tms') {
+            return <EditTmsPage allSection={allSection} setAllSection={setAllSection} />;
         }
         return null;
     }
@@ -94,16 +98,6 @@ const GeneralEdit = ({ params }) => {
         return null;
     };
 
-    const renderPreviewPage = (page, allSection, setAllSection) => {
-        if (page === 'homesection') {
-            return <HomePage allSection={allSection} />;
-        }
-        else if (page === 'selfassessment') {
-            return <AssesmentPage allSection={allSection} setAllSection={setAllSection} />;
-        }
-
-        return null;
-    }
 
     return (
         <>
@@ -328,10 +322,6 @@ what you may have and need`,
         ]
     }
 }
-
-
-
-
 
 const assesmentPageSection = {
     section1: {
