@@ -18,6 +18,10 @@ const pages = [
     slug: 'cliniclocation'
   },
   {
+    name: 'Blogs',
+    slug: 'blogs'
+  },
+  {
     name: 'TMS',
     slug: 'tms'
   },
@@ -29,10 +33,7 @@ const pages = [
     name: 'Footer',
     slug: 'footer'
   },
-  {
-    name: 'Blogs',
-    slug: 'blogs'
-  },
+
 ];
 
 const Admin = () => {

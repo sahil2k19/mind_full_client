@@ -33,20 +33,20 @@ const links = [
       {
         id: 1,
         title: 'Therapy',
-        path: '/services/Therapy Services',
-        active: '/services/Therapy%20Services',
+        path: '/services/therapy',
+        active: '/services/therapy',
       },
       {
         id: 2,
         title: 'TMS Treatment Page',
-        path: '/services/TMS Treatment Services',
-        active: '/services/TMS%20Treatment%20Services',
+        path: '/services/tms-treatment-page',
+        active: '/services/tms-treatment-page',
       },
       {
         id: 3,
         title: 'Psychiatry',
-        path: '/services/Psychiatry ',
-        active: '/services/Psychiatry ',
+        path: '/services/psychiatry ',
+        active: '/services/psychiatry ',
       },
     ]
   },
