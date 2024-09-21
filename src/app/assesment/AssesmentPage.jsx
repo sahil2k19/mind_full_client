@@ -6,20 +6,26 @@ const AssesmentPage = ({ allSection }) => {
     return (
         <>
             {allSection && <div className='bg-primary-div h-min-[100vh]'>
-                <div className='flex px-6 py-1 justify-center items-center'>
+                <div className='flex px-6 py-2 justify-center items-center'>
                     <div></div>
                     <div className=''>
-                        <h1 className="text-2xl md:text-3xl text-primary-orange font-semibold">{allSection?.section1?.header}</h1>
+                        <h1 className="text-2xl md:text-4xl text-primary-orange font-[600]">{allSection?.section1?.header}</h1>
                     </div>
                 </div>
 
-                <div className='p-4 mb-4'>
-                    {
+                <div className='px-4 mb-4  text-[#3A3A3A] text-center text-sm  md:text-xl'>
+                    {/* {
                         <div className='text-primary-orange font-semibold' dangerouslySetInnerHTML={{ __html: allSection?.section1?.para1 }}></div>
-                    }
+                    } */}
+                    <p>RCI Certified Clinicians provide various tests and Assessments</p>
+                </div>
+                <div className='text-center text-xl mx-5 mb-6 md:text-2xl text-[#3A3A3A] font-semibold'>
+                    <span className=' '>If you are looking for a psychological assessment</span>
+                    <br className='md:block hidden'/>
+                  <span>  reach out to your nearest clinic.</span>
                 </div>
 
-                <div className='min-h-[70vh]'>
+                <div className='min-h-[70vh] py-5'>
                     {/* <div>
                         <h1 className='text-center text-xl md:text-2xl mb-4 underline'>Available tests:</h1>
                     </div> */}

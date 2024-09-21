@@ -10,6 +10,25 @@ const videos = [
     { id: 3, service: 'Stress Relief Techniques', speaker: 'Jane Smith', src: '/home/random.mp4' },
     { id: 4, service: 'Anxiety Management', speaker: 'John Doe', src: '/home/health.mp4' },
 ]
+
+const servicesIcon=[
+    {
+        icon:'/home/therapyIcon.svg',
+        link:'/services/therapy'
+    },
+    {
+        icon:'/home/Psychiatry.svg',
+        link:'/services/psychiatry'
+    },
+    {
+        icon:'/home/assessmentsIcon.svg',
+        link:'/assesment'
+    },
+    {
+        icon:'/home/tmsIcon.svg',
+        link:'/services/tms-treatment-page'
+    },
+]
 const HomePage = ({ allSection }) => {
 
     const MobileScreen = () => {
@@ -114,10 +133,10 @@ const HomePage = ({ allSection }) => {
                                     <div className='grid grid-cols-2 md:grid-cols-4 items-center mb-11 gap-8 justify-center'>
                                         {
                                             service?.array?.map((i, index) => (
-                                                <div key={index} className='flex flex-col justify-between  items-center text-center '>
-                                                    <div className='w-[100px] h-[100px] rounded-full bg-[#EF6623] mb-3 '></div>
+                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer flex-col justify-between  items-center text-center '>
+                                                    <img src={servicesIcon[index]?.icon} className='w-[100px] h-[100px]   mb-3 '/>
                                                     <p className=' text-lg ml-1 font-semibold whitespace-nowrap'>{i?.name}</p>
-                                                </div>
+                                                </Link>
                                             ))
                                         }
 
@@ -235,7 +254,7 @@ const HomePage = ({ allSection }) => {
         return (
             <>
                 <section className='mb-5'>
-                    <div className='grid grid-cols-2  w-full px-3 cover mb-4 h-[545px]  ' style={{
+                    <div className='grid grid-cols-2  w-full px-3 cover mb-4 h-[545px] rounded-xl ' style={{
                         backgroundImage: `url('/home/banner02.svg')`,
                         backgroundSize: 'cover',  // This makes the background image cover the entire div
                         backgroundPosition: 'center', // This centers the background image
@@ -258,7 +277,7 @@ const HomePage = ({ allSection }) => {
                                 <Link href={allSection?.heroSection?.button?.link}>
                                     <button
 
-                                        className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 text-white text-lg hover:shadow-lg font-semibold'
+                                        className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-lg hover:shadow-lg font-semibold'
                                     >
                                         {allSection?.heroSection?.button?.text}
                                     </button>
@@ -278,15 +297,15 @@ const HomePage = ({ allSection }) => {
                         <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
                     </div>
 
-                    <div className='flex justify-around items-center bg-primary-div px-8 py-8'>
-                        <div className='flex flex-col justify-center mb-5 px-8 py-8 bg-[rgba(239, 102, 35, 0.3)]'>
-                            <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} />
-                            {/* <h1 className='text-3xl'>Take a <span className='font-bold'>FREE TEST </span>
-                                to identify your symptoms</h1> */}
+                    <div className='flex justify-around items-center bg-primary-div p-8 rounded-xl'>
+                        <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
+                            {/* <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
+                            <span className='text-3xl  mb-2'>Take a <span className='font-semibold'>FREE TEST </span></span> 
+                            <span className=' text-3xl'>to identify your symptoms</span>
                         </div>
                         <div className='flex justify-center'>
                             <Link href={allSection?.section2?.button?.link}>
-                                <button className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 font-semibold text-lg text-white'>
+                                <button  className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-12 py-3 font-semibold text-lg text-white'>
                                     {/* {allSection?.section2?.button?.text} */}
                                     Start Test
                                 </button>
@@ -364,15 +383,18 @@ const HomePage = ({ allSection }) => {
                         </div>
                         {
                             allSection?.section5?.services?.map((service, index) => (
-                                <div key={index} className='mb-6'>
+                                <div key={index} className='mb-6 '>
                                     {/* <h1 className='text-xl font-semibold mb-5 text-center'>{service?.title}</h1> */}
                                     <div className='grid grid-cols-2 md:grid-cols-4 items-center mb-11 gap-8 justify-center'>
                                         {
                                             service?.array?.map((i, index) => (
-                                                <div key={index} className='flex flex-col justify-center  items-center text-center '>
-                                                    <div className='w-[164px] h-[164px] rounded-full bg-[#EF6623] mb-3 '></div>
-                                                    <p className='text-xl font-semibold'>{i?.name}</p>
-                                                </div>
+                                                <Link  href={servicesIcon[index]?.link} key={index}   className='flex cursor-pointer flex-col justify-center  items-center text-center '>
+                                                    {/* <div className='w-[164px] h-[164px] rounded-full bg-[#EF6623] mb-3 '></div> */}
+                                                   <div className='w-[164px] h-[164px] flex justify-center'>
+                                                   <img src={servicesIcon[index]?.icon} className=' p-4 h-full w-full object-contain    mb-3 '/>
+                                                   </div>
+                                                    <p className='text-xl text-center font-semibold'>{i?.name}</p>
+                                                </Link>
                                             ))
                                         }
 

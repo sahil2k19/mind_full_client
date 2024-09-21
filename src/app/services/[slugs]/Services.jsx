@@ -7,6 +7,7 @@ const services = [
     {
         id: 1,
         title: 'Therapy Services',
+        slug: 'therapy',
         para: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
          Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus`,
         avail: [
@@ -31,6 +32,7 @@ const services = [
     {
         id: 2,
         title: 'TMS Treatment Services',
+        slug: 'tms-treatment-page',
         para: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus`,
         avail: [
             {
@@ -54,6 +56,7 @@ const services = [
     {
         id: 3,
         title: 'Psychiatry',
+        slug: 'psychiatry',
         para: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus`,
         avail: [
             {
@@ -78,7 +81,7 @@ const services = [
 const Services = ({ params, searchParams }) => {
     // const {slugs} = useParams()
     const { slugs } = params;
-    const service = services.find(service => service.title === decodeURIComponent(slugs));
+    const service = services.find(service => service.slug === slugs);
 
     return (
         <Container maxWidth="lg" >

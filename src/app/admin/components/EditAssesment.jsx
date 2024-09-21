@@ -3,15 +3,44 @@ import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import axios from "axios";
 
 const EditAssessment = ({ allSection, setAllSection }) => {
 
   const [selectedTab, setSelectedTab] = useState(0);
-
+  const [imageUrl, setImageUrl] = useState("");
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
+  const handleImageChange = (e, index) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}uploads/file`, formData)
+      .then((res) => {
+        const imageUrl = res.data.result;
+        
+        // Update the specific test's image URL in AvailableTest
+        const updatedTests = allSection.section1.AvailableTest.map((test, i) =>
+          i === index ? { ...test, img: imageUrl } : test
+        );
+  
+        // Update the state with the new image URL
+        setAllSection({
+          ...allSection,
+          section1: {
+            ...allSection.section1,
+            AvailableTest: updatedTests,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  
   return (
     <>
       <Tabs
@@ -89,7 +118,7 @@ const EditAssessment = ({ allSection, setAllSection }) => {
 
                   <label className="text-lg font-semibold">Test Img</label>
                   <div className="flex  gap-4 border-2 border-gray-400 bg-gray-100 rounded-xl p-2">
-                  <input type="file" className=" rounded-xl p-2 text-xl border-gray-400 outline-none" />
+                  <input type="file"  onChange={(e) => handleImageChange(e, index)}  className=" rounded-xl p-2 text-xl border-gray-400 outline-none" />
                   <div className="h-[80px] w-[80px]">
                     <img className="h-100 w-100" src={test?.img} alt="test" />
                   </div>
