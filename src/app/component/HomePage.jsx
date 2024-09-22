@@ -4,6 +4,7 @@ import Link from 'next/link';
 import NewComponent from './newComponent';
 import CounterComponent from './CounterComponent';
 import { Container } from '@mui/material';
+import OurDoctorSection from '../clinicLocation/[city]/OurDoctorSection';
 // import Footer from '@/components/Footer'
 const videos = [
     { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
@@ -46,7 +47,7 @@ const HomePage = ({ allSection }) => {
                                 {/* <h1 className=' text-3xl mb-5  text-center font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1> */}
-                                <h1 className=' text-4xl mb-5  text-center font-sans font-semibold '>
+                                <h1 className=' text-3xl mb-3  text-center font-sans font-semibold '>
                                     You Deserve to <br />
                                     Feel Better
                                 </h1>
@@ -59,7 +60,7 @@ const HomePage = ({ allSection }) => {
                                 {/* <div  dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }}/> */}
 
                                 <div className='mb-5'>
-                                    <p className='mb-4 mt-4 font-semibold text-lg  text-center text-gray-600'>Get the best care from our experts </p>
+                                    <p className='mb-4  font-semibold text-lg  text-center text-gray-600'>Get the best care from our experts </p>
                                     <div className='mb-6'>
                                         <div className='flex gap-5 mb-2 items-center justify-center'>
                                             <div className='flex'>
@@ -80,7 +81,7 @@ const HomePage = ({ allSection }) => {
                                         </div> */}
                                     </div>
                                     <p className='mb-2 mt-5 font-semibold text-center text-lg text-gray-600'>We help you win over </p>
-                                    <div className='flex gap-3 justify-center mb-6'>
+                                    <div className='flex gap-3 justify-center mb-8'>
                                         <div className='flex items-center gap-2'>
                                             <img className='w-5' src='/home/Tick.png' /><span className='text-sm  text-gray-500 whitespace-nowrap font-semibold'>OCD</span>
                                         </div>
@@ -95,15 +96,10 @@ const HomePage = ({ allSection }) => {
                                         </div>
 
                                     </div>
-                                    {/* <div className='flex gap-3 justify-center mb-4'>
-                                        <div className='flex items-center gap-2'>
-                                            <img className='w-5' src='/home/Tick.png' /><span className='text-sm  text-gray-500 font-semibold'>Depression</span>
-                                        </div>
-                                        <div className='flex items-center gap-2'>
-                                            <img className='w-5' src='/home/Tick.png' /><span className='text-sm  text-gray-500 font-semibold'>{"& More.."}</span>
-                                        </div>
+                                    <p className='mb-4  font-semibold text-lg  text-center text-gray-600'>With empathy and confidence,
+                                        our professionals will guide you
+                                        through every challenge. </p>
 
-                                    </div> */}
 
 
                                 </div>
@@ -132,7 +128,7 @@ const HomePage = ({ allSection }) => {
                     <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)]'>
                         {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                         <div>
-                            <img className='w-full' src='/home/banner01.svg' />
+                            <img className='w-full' src='/home/bannerNew.jpg' />
                         </div>
 
                     </div>
@@ -154,12 +150,12 @@ const HomePage = ({ allSection }) => {
                             allSection?.section5?.services?.map((service, index) => (
                                 <div key={index} className='mb-6'>
                                     {/* <h1 className='text-xl font-semibold mb-5 text-center'>{service?.title}</h1> */}
-                                    <div className='grid grid-cols-1 md:grid-cols-4 items-center  gap-3 justify-center px-[50px]'>
+                                    <div className='grid grid-cols-1 md:grid-cols-4 items-center  gap-3 justify-center px-[70px]'>
                                         {
                                             service?.array?.map((i, index) => (
-                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer   items-center  '>
+                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer justify-start  items-center  '>
                                                     <img src={servicesIcon[index]?.icon} className='w-[40px] h-[40px]   mb-3 mr-4 ' />
-                                                    <p className=' text-lg ml-1 font-semibold whitespace-nowrap'>{i?.name}</p>
+                                                    <p className=' text-lg ml-1 font-semibold '>{i?.name}</p>
                                                 </Link>
                                             ))
                                         }
@@ -189,23 +185,23 @@ const HomePage = ({ allSection }) => {
 
                     <div className='md:grid grid-cols-6 items-center justify-center md:bg-primary-div'>
                         {/* hide this on medium and show alternate */}
-                        <div className='flex flex-col justify-between mb-5 items-center py-6 px-2 md:px-8 rounded-lg gap-6 col-span-2  bg-white '>
+                        <div className='flex flex-col justify-between mb-5 items-center pb-4  md:px-8 rounded-lg gap-6 col-span-2  bg-white '>
                             <div className=''>
-                                <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
+                                <img className='w-full h-full rounded-t-lg' src={"/home/bannerNew.jpg"} />
                             </div>
-                            <div className='grid grid-cols-2 gap-3'>
+                            <div className='grid grid-cols-2 gap-2'>
                                 {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.box?.para }} /> */}
-                                <div className='flex  items-center gap-4'>
-                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>NON-INVASIVE</p> 
+                                <div className='flex  items-center gap-1'>
+                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>NON-INVASIVE</p>
                                 </div>
-                                <div className='flex  items-center gap-4'>
-                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>NO MEDICATION</p> 
+                                <div className='flex  items-center gap-1'>
+                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>NO MEDICATION</p>
                                 </div>
-                                <div className='flex  items-center gap-4'>
-                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>SAFE</p> 
+                                <div className='flex  items-center gap-1'>
+                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>SAFE</p>
                                 </div>
-                                <div className='flex  items-center gap-4'>
-                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>US FDA Approved</p> 
+                                <div className='flex  items-center gap-1'>
+                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>US FDA Approved</p>
                                 </div>
                             </div>
                         </div>
@@ -214,12 +210,12 @@ const HomePage = ({ allSection }) => {
                             {/* <div className='flex flex-col justify-center mb-5 px-8 bg-[rgba(239, 102, 35, 0.3)]'>
                                 <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.para2 }} />
                             </div> */}
-                          <div className='mb-8'>
-                          <CounterComponent/>
-                          </div>
+                            <div className='mb-8'>
+                                <CounterComponent />
+                            </div>
                             <div>
                                 <p className='text-center mb-8 text-gray-700 text-lg font-semibold'>Is TMS for me? Learn how it works and
-                                if it is the right option for you.</p>
+                                    if it is the right option for you.</p>
                             </div>
                             <div className='flex justify-center'>
                                 <Link href={allSection?.section3?.button?.link} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
@@ -297,32 +293,9 @@ const HomePage = ({ allSection }) => {
 
                 </section> */}
                 {/* our experts */}
-                <section className='py-8 px-4 bg-primary-div'>
-                    <div className='mb-11 flex flex-col justify-center items-center'>
-                        <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Our Experts</h1>
-                    </div>
-                    <div className='grid grid-cols-3 md:grid-cols-6 gap-4 text-center'>
-                        {
-                            allSection?.section7?.expertArray?.map((expert, index) => (
-                                <Link href='/consultation/booking' key={index} className=' flex flex-col items-center justify-center'>
-                                    <div className='mb-2 h-[71] w-[71] rounded-full'>
-                                        <img className='w-full h-full rounded-full' src={expert?.img} />
-                                    </div>
-                                    <div className='mb-1'>
-                                        <p className='font-semibold  text-[13px] text-gray-800'>{expert?.name}</p>
-                                        {/* <p className='text-[11px] text-gray-500'>{expert?.desig}</p> */}
-                                        <p className='text-[12px] text-gray-500 font-bold'>{expert?.location}</p>
-
-                                    </div>
-                                    {/* <div className='mb-2'>
-                                    </div> */}
-                                </Link>
-                            ))
-                        }
-
-
-                    </div>
-                </section>
+               <div className='bg-primary-div'>
+               <OurDoctorSection/>
+               </div>
             </>
         )
     }
