@@ -17,7 +17,7 @@ const OurDoctorSection = () => {
                     <div className='mb-1'>
                         <p className='font-semibold  text-[13px] text-gray-800'>{expert?.name}</p>
                         {/* <p className='text-[11px] text-gray-500'>{expert?.desig}</p> */}
-                        <p className='text-[12px] text-gray-500 font-bold'>{expert?.location}</p>
+                        {/* <p className='text-[12px] text-gray-500 font-bold'>{expert?.location}</p> */}
 
                     </div>
                     {/* <div className='mb-2'>

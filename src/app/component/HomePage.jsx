@@ -129,10 +129,10 @@ const HomePage = ({ allSection }) => {
                         </h1>
                     </div>
 
-                    <div className='flex flex-col justify-center mb-5 px-8 bg-[rgba(239, 102, 35, 0.3)]'>
+                    <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)]'>
                         {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                         <div>
-                            <img src='/home/banner01.svg' />
+                            <img className='w-full' src='/home/banner01.svg' />
                         </div>
 
                     </div>
@@ -193,19 +193,19 @@ const HomePage = ({ allSection }) => {
                             <div className=''>
                                 <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
                             </div>
-                            <div>
+                            <div className='grid grid-cols-2 gap-3'>
                                 {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.box?.para }} /> */}
-                                <div className='flex justify-between items-center gap-4'>
-                                    <p className='text-left text-gray-700 text-lg font-semibold'>NON-INVASIVE</p> <img src='/home/Tick.png' className='h-[20px] w-[20px]' />
+                                <div className='flex  items-center gap-4'>
+                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>NON-INVASIVE</p> 
                                 </div>
-                                <div className='flex justify-between items-center gap-4'>
-                                    <p className='text-left text-gray-700 text-lg font-semibold'>NO MEDICATION</p> <img src='/home/Tick.png' className='h-[20px] w-[20px]' />
+                                <div className='flex  items-center gap-4'>
+                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>NO MEDICATION</p> 
                                 </div>
-                                <div className='flex justify-between items-center gap-4'>
-                                    <p className='text-left text-gray-700 text-lg font-semibold'>SAFE</p> <img src='/home/Tick.png' className='h-[20px] w-[20px]' />
+                                <div className='flex  items-center gap-4'>
+                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>SAFE</p> 
                                 </div>
-                                <div className='flex justify-between items-center gap-4'>
-                                    <p className='text-left text-gray-700 text-lg font-semibold'>US FDA Approved</p> <img src='/home/Tick.png' className='h-[20px] w-[20px]' />
+                                <div className='flex  items-center gap-4'>
+                                   <img src='/home/Tick.png' className='h-[20px] w-[20px]' /> <p className='text-left text-gray-700 text-sm font-semibold'>US FDA Approved</p> 
                                 </div>
                             </div>
                         </div>

@@ -63,17 +63,18 @@ export default function CounterComponent() {
   }, [])
 
   return (
-    <div ref={componentRef} className="">
+    <div ref={componentRef} className="mt-3">
       <div className="text-center">
 
         {/* Loop through each counter and display them */}
         {counters.map((counter, index) => (
-          <div key={index} className="mb-4">
-            <p className="text-lg font-semibold">{counter.label}</p>
-            <div className="text-2xl font-bold tabular-nums text-orange-600" aria-live="polite">
+          <div key={index} className="mb-5">
+          <div className="text-2xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">
               {counts[index].toLocaleString()}
               {counter.suffix && counter.suffix}
             </div>
+            <p className="text-lg font-semibold">{counter.label}</p>
+           
           </div>
         ))}
       </div>

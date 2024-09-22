@@ -1,5 +1,5 @@
 import React from 'react'
-
+import OurDoctorSection from '@/app/clinicLocation/[city]/OurDoctorSection'
 
 
 const allSection = {
@@ -194,31 +194,7 @@ what you may have and need`,
 }
 const page = () => {
   return (
-    <section className='py-8 px-4'>
-    <div className='mb-11 flex flex-col justify-center items-center'>
-        <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Our Experts</h1>
-    </div>
-    <div className='grid grid-cols-3 md:grid-cols-6 gap-4 text-center'>
-        {
-            allSection?.section7?.expertArray?.map((expert, index) => (
-                <div key={index} className=' flex flex-col items-center justify-center'>
-                    <div className='mb-2 h-[71] w-[71] rounded-full'>
-                        <img className='w-full h-full rounded-full' src={expert?.img} />
-                    </div>
-                    <div className='mb-1'>
-                        <h1 className='font-semibold mb-1 text-[13px] text-gray-800'>{expert?.name}</h1>
-                        <p className='text-[11px] text-gray-500'>{expert?.desig}</p>
-                    </div>
-                    <div className='mb-2'>
-                        <p className='text-[12px] text-gray-500 font-bold'>{expert?.location}</p>
-                    </div>
-                </div>
-            ))
-        }
-
-
-    </div>
-</section>
+    <OurDoctorSection/>
   )
 }
 

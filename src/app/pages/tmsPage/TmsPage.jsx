@@ -43,7 +43,7 @@ const TmsPage = () => {
   return (
     <>
       <section className="select-none">
-        <div className="bg-primary-div md:px-[150px]">
+        <div className="bg-primary-div md:px-[150px] mb-8">
           <Container maxWidth="lg">
             <div className="py-11">
               <h1 className="text-start text-3xl md:text-4xl font-bold text-primary-orange whitespace-nowrap">
@@ -71,9 +71,9 @@ const TmsPage = () => {
         </div>
 
         <Container maxWidth="lg">
-          <div className="p-2">
+          <div className="p-1">
             {/* Accordion Section */}
-            <Accordion className="bg-primary-div mb-4">
+            <Accordion className="bg-primary-div mb-5">
               <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" font-semibold text-primary-orange">
                 <Typography className='font-semibold'>{pageData?.section1?.title}</Typography>
               </AccordionSummary>
@@ -94,7 +94,7 @@ const TmsPage = () => {
               </AccordionDetails>
             </Accordion>
 
-            <Accordion className="bg-primary-div mb-4">
+            <Accordion className="bg-primary-div mb-5">
               <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" text-primary-orange">
                 <Typography className='font-semibold'>{pageData?.section2?.title}</Typography>
               </AccordionSummary>
@@ -129,7 +129,7 @@ const TmsPage = () => {
               </AccordionDetails>
             </Accordion>
 
-            <Accordion className="bg-primary-div mb-4">
+            <Accordion className="bg-primary-div mb-5">
               <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" text-primary-orange">
                 <p className='font-bold'> {pageData?.section3?.title}</p>
               </AccordionSummary>
