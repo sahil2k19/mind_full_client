@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Container } from '@mui/material';
+import { Container, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 // Example dynamic data
 const pageData = {
@@ -66,51 +67,43 @@ const TmsPage = () => {
                 Request an Appointment
               </p>
             </Link>
-
-            <div className="py-6">
-              {/* Navigation Buttons */}
-              <div className="flex gap-4 overflow-x-scroll">
-                <a href="#section1" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
-                  {pageData?.section1?.title}
-                </a>
-                <a href="#section2" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
-                  {pageData?.section2?.title}
-                </a>
-                <a href="#section3" className="p-2 hover:bg-orange-400 bg-primary-orange whitespace-nowrap font-semibold text-white rounded-lg">
-                  {pageData?.section3?.title}
-                </a>
-              </div>
-            </div>
           </Container>
         </div>
 
         <Container maxWidth="lg">
-          <div className="p-6">
-            {/* Section 1 */}
-            <div id="section1" className="mb-10">
-              <h1 className="text-xl text-primary-orange mb-2 font-semibold">{pageData?.section1?.title}</h1>
-              {pageData?.section1?.content?.map((paragraph, index) => (
-                <p key={index} className="mb-2 text-sm text-gray-700">{paragraph}</p>
-              ))}
-              <div className="mb-10">
-                <img src={pageData?.section1?.image} alt="Clinic" />
-              </div>
-              <div className="flex justify-center mb-10">
-                <Link href="/consultation/location" className="bg-primary-orange text-white font-semibold p-3 rounded-lg">
-                  BOOK A CONSULTATION
-                </Link>
-              </div>
-            </div>
+          <div className="p-2">
+            {/* Accordion Section */}
+            <Accordion className="bg-primary-div mb-4">
+              <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" font-semibold text-primary-orange">
+                <Typography className='font-semibold'>{pageData?.section1?.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails className="bg-white">
+                {pageData?.section1?.content?.map((paragraph, index) => (
+                  <Typography key={index} className="mb-2 text-sm text-gray-700">
+                    {paragraph}
+                  </Typography>
+                ))}
+                <div className="mb-10">
+                  <img src={pageData?.section1?.image} alt="Clinic" />
+                </div>
+                <div className="flex justify-center">
+                  <Link href="/consultation/location" className="bg-primary-orange text-white font-semibold p-3 rounded-lg">
+                    BOOK A CONSULTATION
+                  </Link>
+                </div>
+              </AccordionDetails>
+            </Accordion>
 
-            {/* Section 2 */}
-            <div id="section2" className="mb-10">
-              <h1 className="text-xl text-primary-orange mb-4 font-semibold">{pageData?.section2?.title}</h1>
-              <div className="mb-6">
+            <Accordion className="bg-primary-div mb-4">
+              <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" text-primary-orange">
+                <Typography className='font-semibold'>{pageData?.section2?.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails className="bg-white">
                 {pageData?.section2?.steps?.map((step, index) => (
                   <div key={index} className="flex justify-between p-5 mb-3 bg-primary-div rounded-lg md:w-[50%]">
-                    <h1 className="text-primary-orange text-sm font-semibold">
+                    <Typography className="text-primary-orange text-sm font-semibold">
                       {index + 1}. {step}
-                    </h1>
+                    </Typography>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -128,48 +121,41 @@ const TmsPage = () => {
                     </svg>
                   </div>
                 ))}
-              </div>
-              <div className="flex justify-center">
-                <Link href="/consultation/location" className="bg-primary-orange text-white font-semibold rounded-lg p-3">
-                  BOOK A CONSULTATION
-                </Link>
-              </div>
-            </div>
+                <div className="flex justify-center">
+                  <Link href="/consultation/location" className="bg-primary-div text-white font-semibold p-3 rounded-lg">
+                    BOOK A CONSULTATION
+                  </Link>
+                </div>
+              </AccordionDetails>
+            </Accordion>
 
-            {/* Section 3 */}
-            <div id="section3" className="mb-10">
-              <h1 className="text-center text-2xl font-semibold mb-3">{pageData?.section3?.title}</h1>
-              {pageData?.section3?.stages?.map((stage, index) => (
-                <div key={index} className="mb-6">
-                  <h1 className="text-xl text-primary-orange mb-4 font-semibold">
-                    {index + 1}. {stage?.title}
-                  </h1>
-                  <div className="md:flex flex-col justify-center items-center">
-                    <div className="h-[201px] w-full md:w-[50%] rounded-lg mb-6 bg-primary-div border-orange-500 border-2"></div>
+            <Accordion className="bg-primary-div mb-4">
+              <AccordionSummary expandIcon={<ExpandMoreIcon className='text-primary-orange'/>} className=" text-primary-orange">
+                <p className='font-bold'> {pageData?.section3?.title}</p>
+              </AccordionSummary>
+              <AccordionDetails className="bg-white">
+                {pageData?.section3?.stages?.map((stage, index) => (
+                  <div key={index} className="mb-6">
+                    <Typography className="text-xl text-primary-orange mb-4 font-semibold">
+                      {index + 1}. {stage?.title}
+                    </Typography>
                     {stage?.subPoints?.map((sp, subIndex) => (
-                      <div key={subIndex} className="d-flex mb-3">
-                        <p>
-                          <span className="font-bold">{sp?.paraTitle}: </span>
-                          {sp?.para}
-                        </p>
-                      </div>
+                      <Typography key={subIndex}>
+                        <span className="font-bold">{sp?.paraTitle}: </span>
+                        {sp?.para}
+                      </Typography>
                     ))}
                   </div>
+                ))}
+                <div className="flex justify-center">
+                  <Link href="/consultation/location" className="bg-primary-orange text-white font-semibold p-3 rounded-lg">
+                    BOOK A CONSULTATION
+                  </Link>
                 </div>
-              ))}
-              <div className="flex justify-center mb-10">
-                <Link href="/consultation/location" className="bg-primary-orange text-white font-semibold p-3 rounded-lg">
-                  BOOK A CONSULTATION
-                </Link>
-              </div>
-            </div>
+              </AccordionDetails>
+            </Accordion>
 
-            {/* Go to Top Button */}
-            <div className="flex justify-center mb-10">
-              <a href="#top" className="bg-primary-orange text-white font-semibold p-3 rounded-lg">
-                Go to Top
-              </a>
-            </div>
+           
           </div>
         </Container>
       </section>
