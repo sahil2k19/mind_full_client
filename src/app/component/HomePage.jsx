@@ -130,7 +130,10 @@ const HomePage = ({ allSection }) => {
                     </div>
 
                     <div className='flex flex-col justify-center mb-5 px-8 bg-[rgba(239, 102, 35, 0.3)]'>
-                        <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} />
+                        {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
+                        <div>
+                            <img src='/home/banner01.svg' />
+                        </div>
 
                     </div>
                     <div className='flex justify-center'>
