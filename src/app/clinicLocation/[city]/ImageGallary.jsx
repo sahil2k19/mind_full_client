@@ -52,7 +52,7 @@ export default function ImageGallary({ images }) {
                 ))}
 
                 {/* Show more section with a blurry background */}
-                <div className="col-span-2 relative flex items-center justify-center bg-muted rounded-lg overflow-hidden">
+                <div className="col-span-2 relative flex items-center justify-center bg-muted  overflow-hidden">
                     {/* Blurry image background */}
                     <Image
                         src={images[6]?.src} // using the 7th image as the background
