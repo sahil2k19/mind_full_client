@@ -50,12 +50,25 @@ export default function ImageGallary({ images }) {
                         />
                     </div>
                 ))}
-                <div className="col-span-2 flex items-center justify-center bg-muted rounded-lg">
-                    <div variant="outline" size="lg" onClick={handleOpen}>
-                        {`+${images.length - 6} more` }
+
+                {/* Show more section with a blurry background */}
+                <div className="col-span-2 relative flex items-center justify-center bg-muted rounded-lg overflow-hidden">
+                    {/* Blurry image background */}
+                    <Image
+                        src={images[6]?.src} // using the 7th image as the background
+                        alt={images[6]?.alt || 'More images'}
+                        layout="fill"
+                        className="object-cover w-full h-full blur-[.5px]" // apply blur here
+                    />
+                    {/* Overlay with the "show more" text */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
+                        <div className="text-xl font-semibold" onClick={handleOpen}>
+                            {`+${images.length - 6} more`}
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <Dialog
                 fullScreen
@@ -70,9 +83,9 @@ export default function ImageGallary({ images }) {
                             color="inherit"
                             onClick={handleClose}
                             aria-label="close"
-                            
+
                         >
-                        Close 
+                            Close
                             <CloseIcon />
                         </IconButton>
                     </div>

@@ -153,8 +153,8 @@ const HomePage = ({ allSection }) => {
                                     <div className='grid grid-cols-1 md:grid-cols-4 items-center  gap-3 justify-center px-[70px]'>
                                         {
                                             service?.array?.map((i, index) => (
-                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer justify-start  items-center  '>
-                                                    <img src={servicesIcon[index]?.icon} className='w-[40px] h-[40px]   mb-3 mr-4 ' />
+                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer justify-start mb-2  items-center  '>
+                                                    <img src={servicesIcon[index]?.icon} className='w-[40px] h-[40px]   mr-4 ' />
                                                     <p className=' text-lg ml-1 font-semibold '>{i?.name}</p>
                                                 </Link>
                                             ))
