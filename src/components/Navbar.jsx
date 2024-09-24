@@ -45,17 +45,19 @@ const links = [
       {
         id: 3,
         title: 'Psychiatry',
-        path: '/services/psychiatry ',
-        active: '/services/psychiatry ',
+        path: '/services/psychiatry',
+        active: '/services/psychiatry',
+        
+      },
+      {
+        id: 13,
+        title: 'Self Assessment',
+        path: '/assesment',
+        active: '/assesment',
       },
     ]
   },
-  {
-    id: 13,
-    title: 'Self Assessment',
-    path: '/assesment',
-    active: '/assesment',
-  },
+ 
   {
     id: 4,
     title: 'Our Clinic Locations',

@@ -9,7 +9,12 @@ export default function CounterComponent() {
     { label: 'Treatments Administered', targetNumber: 400000, suffix: '+', duration: 4000 },
   ]
 
-  const [counts, setCounts] = useState(counters.map(() => 0))
+  // Static display of counts without animation
+  const [counts, setCounts] = useState(counters.map((counter) => counter.targetNumber))
+
+  /*
+  // Commenting out the animation logic
+  
   const animationInProgress = useRef(false)
   const componentRef = useRef(null)
 
@@ -61,20 +66,19 @@ export default function CounterComponent() {
       }
     }
   }, [])
+  */
 
   return (
-    <div ref={componentRef} className="mt-3">
+    <div className="mt-3">
       <div className="text-center">
-
         {/* Loop through each counter and display them */}
         {counters.map((counter, index) => (
           <div key={index} className="mb-5">
-          <div className="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">
+            <div className="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">
               {counts[index].toLocaleString()}
               {counter.suffix && counter.suffix}
             </div>
             <p className="text-md font-semibold">{counter.label}</p>
-           
           </div>
         ))}
       </div>

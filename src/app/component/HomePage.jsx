@@ -5,6 +5,7 @@ import NewComponent from './newComponent';
 import CounterComponent from './CounterComponent';
 import { Container } from '@mui/material';
 import OurDoctorSection from '../clinicLocation/[city]/OurDoctorSection';
+import TestimonialComponent from './TestimonialComponent';
 // import Footer from '@/components/Footer'
 const videos = [
     { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
@@ -39,18 +40,20 @@ const HomePage = ({ allSection }) => {
                 {/* hero section */}
                 <section className='mb-5'>
                     <div className='md:grid grid-cols-2 items-center'>
-                        <div className='flex justify-center w-full px-3  mb-4'>
-                            <img className='w-full object-cover' src='/home/banner01.svg' />
+                        <div className='flex justify-center w-full  mb-4'>
+                            <img className='w-full object-cover' src='/home/mindfullbanner2.png' />
                         </div>
                         <div>
                             <div className='flex flex-col justify-center px-2'>
                                 {/* <h1 className=' text-3xl mb-5  text-center font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1> */}
-                                <h1 className=' text-3xl mb-3  text-center font-sans font-semibold '>
-                                    You Deserve to <br />
-                                    Feel Better
-                                </h1>
+                                <div className='mb-5'>
+                                    <h1 className=' text-[24px] m-0 p-0 leading-[20px] text-[#f6881f] text-center uppercase  font-bold '>
+                                        You Deserve  </h1>
+                                    <h1 className=' text-[24px] mb-0 p-0 text-[#f6881f] text-center  uppercase  font-bold '>    to Feel Better
+                                    </h1>
+                                </div>
                                 {/* {
                                     allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className='text-center mb-5 font-[15px] text-[#3A3A3A] '>{para}</p>
 
@@ -60,28 +63,35 @@ const HomePage = ({ allSection }) => {
                                 {/* <div  dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }}/> */}
 
                                 <div className='mb-5'>
-                                    <p className='mb-4  font-semibold text-lg  text-center text-gray-600'>Get the best care from our experts </p>
+                                    <p className='mb-2   text-[16px]  text-center text-[#545454]'>Get the best care from our experts. </p>
                                     <div className='mb-6'>
                                         <div className='flex gap-5 mb-2 items-center justify-center'>
                                             <div className='flex'>
-                                                <img className='w-6' src='/home/mindfulIcon.png' /><span className='text-sm text-blue-500 whitespace-nowrap font-semibold' > Psychologists</span>
+                                                <img className='w-6' src='/home/mindfulIcon.png' /><span className='text-[16px] text-[#3084ae] whitespace-nowrap font-bold' > Psychologists</span>
                                             </div>
                                             <div className='flex'>
-                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-sm  text-blue-500 whitespace-nowrap font-semibold'>TMS Experts</span>
+                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-[16px]  text-[#3084ae] whitespace-nowrap font-bold'>Psychiatrists</span>
                                             </div>
-                                            <div className='flex'>
-                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-sm  text-blue-500 whitespace-nowrap font-semibold'>Psychiatry</span>
-                                            </div>
+                                            {/* <div className='flex'>
+                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-[16px]  text-[#3084ae] whitespace-nowrap font-bold'>Psychiatry</span>
+                                            </div> */}
 
                                         </div>
-                                        {/* <div className='flex justify-center'>
+                                        <div className='flex justify-center'>
                                             <div className='flex'>
-                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-sm  text-blue-500 font-semibold'>Psychiatry</span>
+                                                <img className='w-6' src='/home/mindfulIcon.png' /> <span className='text-[16px]  text-[#3084ae] whitespace-nowrap font-bold'>TMS Specialists</span>
                                             </div>
-                                        </div> */}
+                                        </div>
                                     </div>
-                                    <p className='mb-2 mt-5 font-semibold text-center text-lg text-gray-600'>We help you win over </p>
-                                    <div className='flex gap-3 justify-center mb-8'>
+                                    <div>
+                                        <p className=' mb-2 text-center text-[16px] text-[#737373]'>We help you win over</p>
+                                        <div className='mb-2'>
+                                            <p className='text-[16px] text-center font-semibold'>OCD | ANXIETY | DEPRESSION | TRAUMA</p>
+                                        </div>
+                                        <p className='mb-2   text-center text-[16px] text-[#737373]'>and various other conditions</p>
+
+                                    </div>
+                                    {/* <div className='flex gap-3 justify-center mb-8'>
                                         <div className='flex items-center gap-2'>
                                             <img className='w-5' src='/home/Tick.png' /><span className='text-sm  text-gray-500 whitespace-nowrap font-semibold'>OCD</span>
                                         </div>
@@ -95,8 +105,8 @@ const HomePage = ({ allSection }) => {
                                             <span className='text-sm  whitespace-nowrap text-gray-500 font-semibold'>{"& More..."}</span><img className='w-5 ' src='/home/mindfulIcon.png' />
                                         </div>
 
-                                    </div>
-                                    <p className='mb-4  font-semibold text-lg  text-center text-gray-600'>With empathy and confidence,
+                                    </div> */}
+                                    <p className='mb-4 mt-5  text-[16px]  text-center text-[#737373]'>With empathy and confidence,
                                         our professionals will guide you
                                         through every challenge. </p>
 
@@ -121,14 +131,16 @@ const HomePage = ({ allSection }) => {
                 <section className='bg-primary-div py-10'>
                     <div>
                         <h1 className='text-2xl  text-center font-sans mb-4 font-semibold'>
-                            {allSection?.section2?.para1}
+                            {/* {allSection?.section2?.para1} */}
+                            Not Sure where to begin?
                         </h1>
+                        <p className='text-center font-semibold text-lg'>Take our self-assessment</p>
                     </div>
 
                     <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)]'>
                         {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                         <div>
-                            <img className='w-full' src='/home/bannerNew.jpg' />
+                            <img className='w-full' src='https://mindfultms1.s3.us-east-1.amazonaws.com/take_assessment_image_4__1_-removebg-preview.png' />
                         </div>
 
                     </div>
@@ -144,7 +156,9 @@ const HomePage = ({ allSection }) => {
                 <section className='py-5 px-4'>
                     <div className='mb-'>
                         <div className='mb-8'>
-                            <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1>
+                            {/* <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1> */}
+                            <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Services</h1>
+
                         </div>
                         {
                             allSection?.section5?.services?.map((service, index) => (
@@ -180,28 +194,36 @@ const HomePage = ({ allSection }) => {
                         <h1 className='text-3xl text-center font-sans font-semibold'>
                             {allSection?.section3?.title}
                         </h1>
-                        <p className='text-center mb-5 font-[15px] text-[#3A3A3A]'>{allSection?.section3?.para1}</p>
+                        <p className='text-center mt-2 mb-5 text-[16px] text-[#545454] font-semibold'>{allSection?.section3?.para1}</p>
                     </div>
 
                     <div className='md:grid grid-cols-6 items-center justify-center md:bg-primary-div'>
                         {/* hide this on medium and show alternate */}
                         <div className='flex flex-col justify-between mb-5 items-center pb-4  md:px-8 rounded-lg gap-6 col-span-2  bg-white '>
                             <div className=''>
-                                <img className='w-full h-full rounded-t-lg' src={"/home/bannerNew.jpg"} />
+                                <img className='w-full h-full rounded-t-lg' src={"https://mindfultms1.s3.us-east-1.amazonaws.com/tms%20%281%29.png"} />
                             </div>
                             <div className='grid grid-cols-2 gap-2'>
                                 {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.box?.para }} /> */}
                                 <div className='flex  items-center gap-1'>
-                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>NON-INVASIVE</p>
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg><p className='text-left text-gray-700 text-[13px] font-semibold'>NON-INVASIVE</p>
                                 </div>
                                 <div className='flex  items-center gap-1'>
-                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>NO MEDICATION</p>
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg><p className='text-left text-gray-700 text-[13px] font-semibold'>NO MEDICATION</p>
                                 </div>
                                 <div className='flex  items-center gap-1'>
-                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>SAFE</p>
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg><p className='text-left text-gray-700 text-[13px] font-semibold'>SAFE</p>
                                 </div>
                                 <div className='flex  items-center gap-1'>
-                                    <img src='/home/Tick.png' className=' w-[17px]' /> <p className='text-left text-gray-700 text-[13px] font-semibold'>US FDA Approved</p>
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg><p className='text-left text-gray-700 text-[13px] font-semibold'>US FDA Approved</p>
                                 </div>
                             </div>
                         </div>
@@ -253,7 +275,8 @@ const HomePage = ({ allSection }) => {
                 {/* client speaks */}
                 <section className='py-8 px-4'>
                     {/* <VideoComponent /> */}
-                    <NewComponent videos={videos} />
+                    {/* <NewComponent videos={videos} /> */}
+                    <TestimonialComponent />
                 </section>
                 {/* locations */}
                 {/* no more needed now */}
@@ -293,9 +316,9 @@ const HomePage = ({ allSection }) => {
 
                 </section> */}
                 {/* our experts */}
-               <div className='bg-primary-div'>
-               <OurDoctorSection/>
-               </div>
+                <div className='bg-primary-div'>
+                    <OurDoctorSection />
+                </div>
             </>
         )
     }
