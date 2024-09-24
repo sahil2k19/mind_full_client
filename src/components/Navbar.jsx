@@ -51,7 +51,7 @@ const links = [
       },
       {
         id: 13,
-        title: 'Self Assessment',
+        title: 'Clinical Assessments',
         path: '/assesment',
         active: '/assesment',
       },

@@ -6,6 +6,7 @@ import CounterComponent from './CounterComponent';
 import { Container } from '@mui/material';
 import OurDoctorSection from '../clinicLocation/[city]/OurDoctorSection';
 import TestimonialComponent from './TestimonialComponent';
+import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 // import Footer from '@/components/Footer'
 const videos = [
     { id: 1, service: 'Therapy for Depression', speaker: 'Sanjana Mathur', src: '/home/random.mp4' },
@@ -115,14 +116,18 @@ const HomePage = ({ allSection }) => {
                                 </div>
                             </div>
                             <div className='flex justify-center'>
-                                <Link href={allSection?.heroSection?.button?.link}>
+                                {/* <Link href={allSection?.heroSection?.button?.link}>
                                     <button
 
                                         className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 text-white text-sm font-semibold'
                                     >
                                         {allSection?.heroSection?.button?.text}
                                     </button>
-                                </Link>
+                                </Link> */}
+                                <div className='w-[70%]'>
+                                <RequestAppointment name={"SCHEDULE CONSULTATION"}/>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -278,43 +283,7 @@ const HomePage = ({ allSection }) => {
                     {/* <NewComponent videos={videos} /> */}
                     <TestimonialComponent />
                 </section>
-                {/* locations */}
-                {/* no more needed now */}
-                {/* <section className='py-8 px-4'>
-                    <div className='mb-8 flex flex-col justify-center items-center'>
-                        <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section6?.header}</h1>
-                        <p className='text-center text-sm text-gray-500'>{allSection?.section6?.para}</p>
-                    </div>
-
-                    <div className='md:px-8'>
-                        {
-                            allSection?.section6?.locations?.map((location, index) => (
-                                <div key={index} className='md:mb-11'>
-                                    <div className="flex items-center justify-center py-4 ">
-                                        <div className="">
-                                            <p className="text-xl text-center font-semibold top-[13px] left-[35%] px-2 bg-white ">{location?.title}</p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className='flex flex-col md:grid grid-cols-4 md:gap-5 justify-center'>
-                                        {location?.locationArray?.map((i, index) => (
-                                            <div key={index} className='bg-primary-div px-4 mb-4 py-4 rounded-lg'>
-                                                <h1 className='text-xl font-semibold text-gray-700 '>{i?.title}</h1>
-                                                <p className='text-sm text-[#EF6623]'>{i?.address}</p>
-                                            </div>
-                                        ))}
-
-                                    </div>
-                                </div>
-                            ))
-                        }
-
-                    </div>
-
-
-                </section> */}
+               
                 {/* our experts */}
                 <div className='bg-primary-div'>
                     <OurDoctorSection />

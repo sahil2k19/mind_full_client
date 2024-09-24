@@ -36,7 +36,7 @@ const locations = [
       params:"New-Delhi"
     }
   ];
-const RequestAppointment = ({city}) => {
+const RequestAppointment = ({city, name}) => {
     const pathname = usePathname()
    
     // console.log(city, pathname)
@@ -49,6 +49,7 @@ const RequestAppointment = ({city}) => {
         location: '',
         message: ''
     });
+    const [isValid, setIsValid] = useState(false);
     const [isBusinessHours, setIsBusinessHours] = useState(false);
     const currentLocation = locations.find((location)=>{
         if(city===location.params){
@@ -113,8 +114,16 @@ const RequestAppointment = ({city}) => {
     }
 
     const isFormValid = () => {
-        return formData.name && formData.email && formData.phone ;
+        return formData.name && formData.email && formData.phone && formData.location;
     }
+    useEffect(()=>{
+        const isFormValidBool = isFormValid();
+        setIsValid(isFormValidBool)
+        if(isFormValidBool){
+            console.log('storedata', formData);
+            console.log('isFormValid', isFormValidBool);
+        }
+    },[formData])
 
     useEffect(() => {
         const newWhatsappNumber =locations?.find((location) => {
@@ -128,7 +137,10 @@ const RequestAppointment = ({city}) => {
     },[formData?.location])
     return (
         <>
-            <button onClick={toggleRequestModal} className='text-xl w-full active:bg-orange-400 active:shadow-lg bg-primary-orange text-white px-6 py-2 rounded-lg font-semibold text-center'>Request an Appointment</button>
+            {
+                name?<button onClick={toggleRequestModal} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 text-white text-sm font-semibold'>{name}</button>
+                :<button onClick={toggleRequestModal} className='text-xl w-full active:bg-orange-400 active:shadow-lg bg-primary-orange text-white px-6 py-2 rounded-lg font-semibold text-center'>Request an Appointment</button>
+            }
 
             <Dialog open={requestModal} onClose={toggleRequestModal}>
                 <DialogTitle className='text-center font-semibold'>Request an Appointment</DialogTitle>

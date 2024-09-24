@@ -27,12 +27,12 @@ export default function TestimonialComponent() {
             </svg>
           </button>
         </div>
-        <button 
+        {/* <button 
           className="w-full bg-gray-100 text-orange-500 py-3 px-4 rounded-md hover:bg-gray-200 transition duration-300 font-medium"
           onClick={() => setIsTestimonialModalOpen(true)}
         >
           Read Full Testimonial
-        </button>
+        </button> */}
       </div>
 
       {isVideoModalOpen && (
