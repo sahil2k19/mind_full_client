@@ -6,7 +6,12 @@ import React from 'react';
 const pages = [
   {
     name: 'Home Page',
-    slug: 'homesection'
+    slug: 'homesection',
+    disable: true,
+  },
+  {
+    name: 'Doctors ',
+    slug: 'doctors'
   },
   
   {
@@ -47,12 +52,12 @@ const Admin = () => {
         <h1 className='text-3xl font-semibold'>Admin</h1>
       </div>
       
-      <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-4 select-none'>
         {pages.map((page, index) => (
           <div
-            className='px-2 py-5 rounded-lg hover:shadow-lg bg-orange-400 cursor-pointer flex justify-center'
+            className={`px-2 py-5 rounded-lg hover:shadow-lg  flex justify-center ${page.disable ? 'opacity-50 bg-gray-600 cursor-not-allowed' : 'bg-orange-400 cursor-pointer'}`}
             key={index}
-            onClick={() => router.push(`/admin/${page.slug}`)}
+            onClick={() => router.push(`${page.disable ? '' : `/admin/${page.slug}`}`)}
           >
             <h1 className='text-white text-xl whitespace-nowrap font-semibold'>{page.name}</h1>
           </div>
