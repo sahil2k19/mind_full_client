@@ -120,13 +120,13 @@ export default function TestimonialComponent() {
 
         <div className="flex justify-between">
           <button
-            className="bg-gray-100 text-orange-500 py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 font-medium"
+            className="bg-primary-orange text-white py-2 px-4 rounded-md active:bg-orange-400 transition duration-300 font-medium"
             onClick={prevTestimonial}
           >
             Previous
           </button>
           <button
-            className="bg-gray-100 text-orange-500 py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 font-medium"
+            className="bg-primary-orange text-white py-2 px-4 rounded-md active:bg-orange-400 transition duration-300 font-medium"
             onClick={nextTestimonial}
           >
             Next
