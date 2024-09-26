@@ -13,6 +13,10 @@ const pages = [
     name: 'Doctors ',
     slug: 'doctors'
   },
+  {
+    name: 'Testimonials ',
+    slug: 'testimonials'
+  },
   
   {
     name: 'Self Assessment',
