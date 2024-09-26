@@ -40,6 +40,7 @@ export default function TestimonialComponent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFullTestimonial, setShowFullTestimonial] = useState(false);
   const videoRef = useRef(null); // Ref for the video element
+  const modalRef = useRef(null); // Ref for the modal content
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -58,9 +59,36 @@ export default function TestimonialComponent() {
     : fullTestimonial;
 
   useEffect(() => {
-    if (isVideoModalOpen && videoRef.current) {
-      videoRef.current.play(); // Play the video when modal is open
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setIsVideoModalOpen(false); // Close the modal if clicked outside
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsVideoModalOpen(false); // Close the modal when "Escape" is pressed
+      }
+    };
+
+    const handlePopState = () => {
+      setIsVideoModalOpen(false); // Close modal when back button is pressed on mobile
+    };
+
+    if (isVideoModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
+
+      // Push a new state to the history to handle mobile back button
+      window.history.pushState(null, null, window.location.href);
+      window.addEventListener("popstate", handlePopState);
     }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, [isVideoModalOpen]);
 
   return (
@@ -137,7 +165,7 @@ export default function TestimonialComponent() {
       {/* Video Modal */}
       {isVideoModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-lg w-full">
+          <div ref={modalRef} className="bg-white rounded-lg max-w-lg w-full">
             <div className="flex justify-between items-center p-4 border-b">
               <h3 className="text-lg font-medium">Testimonial Video</h3>
               <button

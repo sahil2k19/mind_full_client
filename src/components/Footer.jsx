@@ -82,7 +82,7 @@ function Footer() {
     const officeClose = formData?.officeClose ?? 11; // Default to 11 if formData?.officeClose is undefined
 
     if (hours >= officeOpen && hours < officeClose) {
-      console.log('inside', hours, officeOpen, officeClose);
+      // console.log('inside', hours, officeOpen, officeClose);
       setIsBusinessHours(true);
     } else {
       console.log('outside', hours, officeOpen, officeClose);

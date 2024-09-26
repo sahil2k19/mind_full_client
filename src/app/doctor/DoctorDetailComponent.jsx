@@ -41,7 +41,7 @@ const DoctorDetailComponent = () => {
               <span className="font-semibold">Experience:</span> {doctorDetail.experience} years
             </p>
             <p className="text-gray-600">
-              <span className="font-semibold">Consultation Fees:</span> ₹{doctorDetail.fees}
+              {/* <span className="font-semibold">Consultation Fees:</span> ₹{doctorDetail.fees} */}
             </p>
           </div>
         </div>
