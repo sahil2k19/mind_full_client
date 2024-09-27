@@ -12,7 +12,7 @@ const Testimonials = () => {
       shortQuote: `"I feel more balanced and equipped to face challenges."`,
       fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
       videoUrl:
-        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
     },
     {
       patientName: "Jane Smith",
@@ -24,7 +24,7 @@ const Testimonials = () => {
       shortQuote: `"I finally feel hopeful after years of struggling."`,
       fullTestimonial: `"I finally feel hopeful after years of struggling. The care and attention I received through these sessions have changed my perspective on life. I'm more optimistic and have learned to manage my depression in healthier ways."`,
       videoUrl:
-        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     },
     {
       patientName: "Emily Johnson",
@@ -36,7 +36,7 @@ const Testimonials = () => {
       shortQuote: `"These sessions have helped me find peace in chaos."`,
       fullTestimonial: `"These sessions have helped me find peace in chaos. I'm now able to handle stressful situations much more effectively. The techniques I've learned are easy to implement, and they work wonders in calming my mind."`,
       videoUrl:
-        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     },
     {
       patientName: "Michael Brown",
@@ -48,7 +48,7 @@ const Testimonials = () => {
       shortQuote: `"I've learned to love and respect myself more."`,
       fullTestimonial: `"I've learned to love and respect myself more. The self-reflection and exercises provided in therapy have empowered me to build my confidence. I'm truly grateful for this transformation."`,
       videoUrl:
-        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     },
     {
       patientName: "Sarah Wilson",

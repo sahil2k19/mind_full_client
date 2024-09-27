@@ -6,7 +6,7 @@ const EditTestimonial = () => {
     title: "Therapy for Anxiety & Stress",
     shortQuote: `"I feel more balanced and equipped to face challenges."`,
     fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
-    videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
     doctor: "",
     location: ""
   });
