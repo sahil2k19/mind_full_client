@@ -1,9 +1,9 @@
 import React from 'react'
-import Testimonials from './Testimonials'
+import EditTestimonial from '../../components/EditTestimonial'
 const page = () => {
   return (
     <>
-      <Testimonials/>
+        <EditTestimonial />
     </>
   )
 }
