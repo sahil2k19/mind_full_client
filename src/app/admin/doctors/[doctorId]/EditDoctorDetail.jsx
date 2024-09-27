@@ -143,9 +143,10 @@ const EditDoctorDetail = () => {
             />
             <label
               htmlFor="imageUpload"
-              className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity"
+              className="absolute inset-0 flex justify-center text-white items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity"
             >
               {/* <FaEdit className="text-white text-2xl" /> */}
+              Edit
             </label>
             <input
               id="imageUpload"
