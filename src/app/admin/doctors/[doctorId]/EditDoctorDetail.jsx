@@ -1,14 +1,17 @@
 "use client"
+import { Avatar } from '@mui/material';
+import axios from 'axios';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 const doctorDetail ={
   name: 'Dr Subham',
+  designation: 'Clinical Psychologist',
   about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
   profession_background: ['M.Phill - Clinical Psychologist', 'M.Sc. - Psychology', 'B.Sc. - Psychology'],
   language_spoken: ['English', 'Kannada', 'Malayalam', 'Hindi', 'Tamil'],
   specialization: ['Anxiety', 'Depression', 'Bipolar Disorder', 'EMDR'],
   experience: 30,
-  fees: 500,
   image: '/doctor/Dr Subham.jpg',
   phone: '123-456-7890',
   email: '5bIaS@example.com',
@@ -22,8 +25,22 @@ const EditDoctorDetail = () => {
   const [newSpecialization, setNewSpecialization] = useState('');
   const [newLanguage, setNewLanguage] = useState('');
   const [newProfessionBackground, setNewProfessionBackground] = useState('');
-
+  const [loading, setLoading] = useState(false);
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  const doctorId = pathname.split('/').pop();
+
+  const fetchDoctorDetail = () => {
+    if (doctorId) {
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`)
+        .then((res) => {
+          setFormData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
     // UseEffect to populate formData based on route
     useEffect(() => {
@@ -38,7 +55,6 @@ const EditDoctorDetail = () => {
           language_spoken: [],
           specialization: [],
           experience: '',
-          fees: '',
           image: '',
           phone: '',
           email: '',
@@ -49,7 +65,8 @@ const EditDoctorDetail = () => {
 
       } else {
         // Pre-fill form data with existing doctor details
-        setFormData(doctorDetail);
+        fetchDoctorDetail()
+        // setFormData(doctorDetail);
       }
     }, [router.pathname]);
 
@@ -126,9 +143,57 @@ const EditDoctorDetail = () => {
     }));
   };
 
+  const createDoctor = ()=>{
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}doctors`, formData)
+    .then((res)=>{
+      router.push('/admin/doctors');
+      toast.dismiss();
+      toast.success('Doctor added successfully');
+    }).catch(err=>{
+      console.log(err);
+      toast.dismiss();
+      toast.error('Something went wrong');
+    })
+  }
+  const EditDoctorDetail = ()=>{
+    axios.put(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`, formData)
+    .then((res)=>{
+      router.push('/admin/doctors');
+      toast.dismiss();
+      toast.success('Doctor updated successfully');
+    }).catch(err=>{
+      console.log(err);
+      toast.dismiss();
+      toast.error('Something went wrong');
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
+    if(pathname === '/admin/doctors/add'){
+      createDoctor();
+    }else{
+      EditDoctorDetail()
+    }
+  };
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("image", file);
+      // Simulate API call
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}uploads/file`, formData)
+      .then((res) => {
+        setFormData((prevData) => ({
+          ...prevData,
+          image: res.data.result,
+        }));
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    }
   };
 
   return (
@@ -136,23 +201,22 @@ const EditDoctorDetail = () => {
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
         <div className="relative group">
-            <img
+            {formData?.image ?<img
               src={formData?.image}
               alt="Doctor's profile"
               className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"
-            />
+            />:<Avatar className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"  />}
             <label
               htmlFor="imageUpload"
               className="absolute inset-0 flex justify-center text-white items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity"
             >
-              {/* <FaEdit className="text-white text-2xl" /> */}
               Edit
             </label>
             <input
               id="imageUpload"
               type="file"
               accept="image/*"
-              // onChange={handleImageChange}
+              onChange={handleImageChange} // Handle image change
               className="hidden"
             />
           </div>
@@ -167,6 +231,17 @@ const EditDoctorDetail = () => {
                 className="w-full mt-2 border p-2 rounded"
               />
             </label>
+            <label className="block mt-3 text-gray-600">
+              Designation:
+              <input
+                type="text"
+                name="designation"
+                value={formData?.designation}
+                onChange={handleChange}
+                className="w-full mt-2 border p-2 rounded"
+              />
+            </label>
+            
             <label className="block mt-3 text-gray-600">
               Experience:
               <input

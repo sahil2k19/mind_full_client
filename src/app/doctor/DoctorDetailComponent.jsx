@@ -4,6 +4,7 @@ import TestimonialComponent from '../component/TestimonialComponent';
 const doctorDetail = {
   _id: 1,
   name: 'Dr Subham',
+  designation: 'Clinical Psychologist',
   about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
   profession_background: [
     'M.Phill - Clinical Psychologist',
@@ -13,7 +14,6 @@ const doctorDetail = {
   language_spoken: ['English', 'Kannada', 'Malayalam', 'Hindi', 'Tamil'],
   specialization: ['Anxiety', 'Depression', 'Bipolar Disorder', 'EMDR'],
   experience: 30,
-  fees: 500,
   image: '/doctor/Dr Subham.jpg',
   address: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
   phone: '123-456-7890',
@@ -36,7 +36,11 @@ const DoctorDetailComponent = () => {
           />
           <div className="text-center lg:text-left">
             <h2 className="text-2xl font-semibold">{doctorDetail.name}</h2>
-            <p className="text-lg text-primary-orange mt-2">{doctorDetail.specialization.join(', ')}</p>
+            <p className="text-lg text-primary-orange mt-2">
+
+             {doctorDetail.designation} 
+            </p>
+
             <p className="mt-3 text-gray-600">
               <span className="font-semibold">Experience:</span> {doctorDetail.experience} years
             </p>

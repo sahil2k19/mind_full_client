@@ -1,8 +1,10 @@
 "use client"
 import React, { useState } from "react";
+
 const Testimonials = () => {
   const testimonials = [
     {
+      type: "text",
       patientName: "John Doe",
       doctor: "Dr. Smith",
       condition: "Anxiety and Stress",
@@ -11,22 +13,20 @@ const Testimonials = () => {
       title: "Therapy for Anxiety & Stress",
       shortQuote: `"I feel more balanced and equipped to face challenges."`,
       fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
-      videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
     },
     {
+      type: "video",
       patientName: "Jane Smith",
       doctor: "Dr. Williams",
       condition: "Depression",
       treatment: "Depression Management",
       location: "Bangalore 2",
       title: "Depression Management",
-      shortQuote: `"I finally feel hopeful after years of struggling."`,
-      fullTestimonial: `"I finally feel hopeful after years of struggling. The care and attention I received through these sessions have changed my perspective on life. I'm more optimistic and have learned to manage my depression in healthier ways."`,
       videoUrl:
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     },
     {
+      type: "text",
       patientName: "Emily Johnson",
       doctor: "Dr. Smith",
       condition: "Stress",
@@ -35,22 +35,20 @@ const Testimonials = () => {
       title: "Stress Relief Techniques",
       shortQuote: `"These sessions have helped me find peace in chaos."`,
       fullTestimonial: `"These sessions have helped me find peace in chaos. I'm now able to handle stressful situations much more effectively. The techniques I've learned are easy to implement, and they work wonders in calming my mind."`,
-      videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     },
     {
+      type: "video",
       patientName: "Michael Brown",
       doctor: "Dr. Williams",
       condition: "Low Self-Esteem",
       treatment: "Therapy for Self-Esteem Improvement",
       location: "Bangalore 1",
       title: "Improved Self-Esteem",
-      shortQuote: `"I've learned to love and respect myself more."`,
-      fullTestimonial: `"I've learned to love and respect myself more. The self-reflection and exercises provided in therapy have empowered me to build my confidence. I'm truly grateful for this transformation."`,
       videoUrl:
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     },
     {
+      type: "text",
       patientName: "Sarah Wilson",
       doctor: "Dr. Smith",
       condition: "Personal Growth",
@@ -59,7 +57,6 @@ const Testimonials = () => {
       title: "Personal Growth Journey",
       shortQuote: `"This experience has helped me grow emotionally and mentally."`,
       fullTestimonial: `"This experience has helped me grow emotionally and mentally. I'm more aware of my thoughts and emotions, and I've gained tools to continuously improve myself. It's been a fulfilling journey."`,
-      videoUrl: "https://www.example.com/personal-growth-video.mp4",
     },
   ];
 
@@ -192,14 +189,23 @@ const Testimonials = () => {
               <p className="text-gray-700 mb-4">
                 <strong>Location:</strong> {testimonial.location}
               </p>
-              <p className="italic mb-4">{testimonial.shortQuote}</p>
-              <p className="text-gray-700 mb-4">{testimonial.fullTestimonial}</p>
+
+              {/* Render either the full testimonial text or video based on the type */}
+              {testimonial.type === "text" ? (
+                <>
+                  <p className="italic mb-4">{testimonial.shortQuote}</p>
+                  <p className="text-gray-700 mb-4">
+                    {testimonial.fullTestimonial}
+                  </p>
+                </>
+              ) : (
+                <video
+                  controls
+                  className="w-full h-48 rounded-lg object-cover"
+                  src={testimonial.videoUrl}
+                ></video>
+              )}
             </div>
-            <video
-              controls
-              className="w-full h-48 rounded-lg object-cover"
-              src={testimonial.videoUrl}
-            ></video>
           </div>
         ))}
       </div>

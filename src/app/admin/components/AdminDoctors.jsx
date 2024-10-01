@@ -1,96 +1,108 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DoctorCard from '../../component/DoctorCard';
 import AddDoctorModal from "./AddDoctorModal "
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 const doctors = [
-    {
-      _id: 1,
-      name: 'Dr. John Smith',
-      profilePic: '/doctor/Dr Subham.jpg',
-      experience: 10,
-      location: 'New York, USA',
-      qualification: 'MD, PhD in Cardiology',
-    },
-    {
-      _id: 2,
-      name: 'Dr. Jane Doe',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 8,
-      location: 'Los Angeles, USA',
-      qualification: 'MBBS, MS in Surgery',
-    },
-    {
-      _id: 3,
-      name: 'Dr. Mark Lee',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 12,
-      location: 'San Francisco, USA',
-      qualification: 'MD, PhD in Neurology',
-    },
-    {
-      _id: 4,
-      name: 'Dr. Jane Doe',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 8,
-      location: 'Los Angeles, USA',
-      qualification: 'MBBS, MS in Surgery',
-    },
-    {
-      _id: 5,
-      name: 'Dr. Mark Lee',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 12,
-      location: 'San Francisco, USA',
-      qualification: 'MD, PhD in Neurology',
-    },
-    {
-      _id: 6,
-      name: 'Dr. Jane Doe',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 8,
-      location: 'Los Angeles, USA',
-      qualification: 'MBBS, MS in Surgery',
-    },
-    {
-      _id: 7,
-      name: 'Dr. Mark Lee',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 12,
-      location: 'San Francisco, USA',
-      qualification: 'MD, PhD in Neurology',
-    },
-    {
-      _id: 8,
-      name: 'Dr. Jane Doe',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 8,
-      location: 'Los Angeles, USA',
-      qualification: 'MBBS, MS in Surgery',
-    },
-    {
-      _id: 9,
-      name: 'Dr. Mark Lee',
-          profilePic: '/doctor/Dr Subham.jpg',
-  
-      experience: 12,
-      location: 'San Francisco, USA',
-      qualification: 'MD, PhD in Neurology',
-    },
-  ];
+  {
+    _id: 1,
+    name: 'Dr. John Smith',
+    image: '/doctor/Dr Subham.jpg',
+    experience: 10,
+    location: 'New York, USA',
+    designation: 'MD, PhD in Cardiology',
+  },
+  {
+    _id: 2,
+    name: 'Dr. Jane Doe',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 8,
+    location: 'Los Angeles, USA',
+    designation: 'MBBS, MS in Surgery',
+  },
+  {
+    _id: 3,
+    name: 'Dr. Mark Lee',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 12,
+    location: 'San Francisco, USA',
+    designation: 'MD, PhD in Neurology',
+  },
+  {
+    _id: 4,
+    name: 'Dr. Jane Doe',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 8,
+    location: 'Los Angeles, USA',
+    designation: 'MBBS, MS in Surgery',
+  },
+  {
+    _id: 5,
+    name: 'Dr. Mark Lee',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 12,
+    location: 'San Francisco, USA',
+    designation: 'MD, PhD in Neurology',
+  },
+  {
+    _id: 6,
+    name: 'Dr. Jane Doe',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 8,
+    location: 'Los Angeles, USA',
+    designation: 'MBBS, MS in Surgery',
+  },
+  {
+    _id: 7,
+    name: 'Dr. Mark Lee',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 12,
+    location: 'San Francisco, USA',
+    designation: 'MD, PhD in Neurology',
+  },
+  {
+    _id: 8,
+    name: 'Dr. Jane Doe',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 8,
+    location: 'Los Angeles, USA',
+    designation: 'MBBS, MS in Surgery',
+  },
+  {
+    _id: 9,
+    name: 'Dr. Mark Lee',
+    image: '/doctor/Dr Subham.jpg',
+
+    experience: 12,
+    location: 'San Francisco, USA',
+    designation: 'MD, PhD in Neurology',
+  },
+];
 const AdminDoctors = () => {
   const [doctorsList, setDoctorsList] = useState(doctors);
-
   const router = useRouter();
 
- 
+  const getAllDoctor =()=>{
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors`)
+    .then(res=>{
+      setDoctorsList(res.data)
+    })
+    .catch(err=>console.log(err))
+  }
+
+  useEffect(()=>{
+    getAllDoctor()
+  },[])
+
+
   return (
     <div className="m-[50px] select-none">
       <div className="flex justify-center">
@@ -110,7 +122,7 @@ const AdminDoctors = () => {
         ))}
       </div>
 
-   
+
     </div>
   );
 };
