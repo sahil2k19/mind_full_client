@@ -194,8 +194,8 @@ export default function TestimonialComponent() {
       {isVideoModalOpen && type === "video" && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div ref={modalRef} className="bg-white rounded-lg max-w-lg w-full">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-lg font-medium">Testimonial Video</h3>
+            <div className="flex justify-between bg-primary-div items-center p-4 border-b">
+              <h3 className="text-lg font-medium">{title}</h3>
               <button
                 onClick={() => setIsVideoModalOpen(false)}
                 className="text-gray-400 hover:text-gray-500"

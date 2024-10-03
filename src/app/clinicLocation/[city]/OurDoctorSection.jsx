@@ -1,57 +1,21 @@
+"use client"
+import axios from 'axios'
 import Link from 'next/link'
-import React from 'react'
-const  ourExperts= [
-    {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },
-    {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },
-    {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },   {
-        img: '/doctor/Dr Subham.jpg',
-        name: 'Dr Subham',
-        desig: 'Clinical Psychologist',
-        location: 'Bangalore',
-    },
+import React, { useEffect } from 'react'
 
-]
 const OurDoctorSection = () => {
+    const [ourExperts, setOurExperts] = React.useState([])
+
+
+    const getAllDoctors = ()=>{
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors`)
+        .then(res=>{
+            setOurExperts(res.data)
+        }).catch((err)=>console.log(err))
+    }
+    useEffect(()=>{
+        getAllDoctors()
+    },[])
   return (
     <section className='py-8 px-4 '>
     <div className='mb-11 flex flex-col justify-center items-center'>
@@ -62,7 +26,7 @@ const OurDoctorSection = () => {
             ourExperts?.map((expert, index) => (
                 <Link href='/doctor/1' key={index} className=' flex flex-col items-center justify-center'>
                     <div className='mb-2 h-[71] w-[71]'>
-                        <img className='h-[75px] w-[75px] object-cover border-[3px] border-orange-400 rounded-full' src={expert?.img} />
+                        <img className='h-[75px] w-[75px] object-cover border-[3px] border-orange-400 rounded-full' src={expert?.image} />
                     </div>
                     <div className='mb-1'>
                         <p className='font-semibold  text-[13px] text-gray-800'>{expert?.name}</p>
