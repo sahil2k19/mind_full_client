@@ -1,9 +1,10 @@
 import React from 'react'
 import DoctorDetailComponent from '../DoctorDetailComponent'
-const page = () => {
+const page = ({ params }) => {
+  const { doctorId } = params
   return (
    <>
-    <DoctorDetailComponent/>
+    <DoctorDetailComponent doctorId={doctorId}/>
    </>
   )
 }
