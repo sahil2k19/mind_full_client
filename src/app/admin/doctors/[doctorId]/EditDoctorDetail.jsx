@@ -1,38 +1,27 @@
-"use client"
-import { Avatar } from '@mui/material';
-import axios from 'axios';
-import { usePathname, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-const doctorDetail ={
-  name: 'Dr Subham',
-  designation: 'Clinical Psychologist',
-  about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-  profession_background: ['M.Phill - Clinical Psychologist', 'M.Sc. - Psychology', 'B.Sc. - Psychology'],
-  language_spoken: ['English', 'Kannada', 'Malayalam', 'Hindi', 'Tamil'],
-  specialization: ['Anxiety', 'Depression', 'Bipolar Disorder', 'EMDR'],
-  experience: 30,
-  image: '/doctor/Dr Subham.jpg',
-  phone: '123-456-7890',
-  email: '5bIaS@example.com',
-  website: 'www.davidsamson.com',
-  availability: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], // Initial availability
-}
+"use client";
+import { Avatar, CircularProgress } from "@mui/material";
+import axios from "axios";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
 const EditDoctorDetail = () => {
   const [formData, setFormData] = useState();
   const router = useRouter();
   const pathname = usePathname();
-  const [newSpecialization, setNewSpecialization] = useState('');
-  const [newLanguage, setNewLanguage] = useState('');
-  const [newProfessionBackground, setNewProfessionBackground] = useState('');
+  const [newSpecialization, setNewSpecialization] = useState("");
+  const [newLanguage, setNewLanguage] = useState("");
+  const [newProfessionBackground, setNewProfessionBackground] = useState("");
   const [loading, setLoading] = useState(false);
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const [location, setLocation] = useState(""); // New location field
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  const doctorId = pathname.split('/').pop();
+  const doctorId = pathname.split("/").pop();
 
   const fetchDoctorDetail = () => {
     if (doctorId) {
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`)
+      axios
+        .get(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`)
         .then((res) => {
           setFormData(res.data);
         })
@@ -42,33 +31,29 @@ const EditDoctorDetail = () => {
     }
   };
 
-    // UseEffect to populate formData based on route
-    useEffect(() => {
-      // Check if the current route is /admin/doctors/add
-      console.log(pathname);
-      if (pathname === '/admin/doctors/add') {
-        // Clear form data for adding a new doctor
-        setFormData({
-          name: '',
-          about: '',
-          profession_background: [],
-          language_spoken: [],
-          specialization: [],
-          experience: '',
-          image: '',
-          phone: '',
-          email: '',
-          website: '',
-          availability: [],
-        });
-
-
-      } else {
-        // Pre-fill form data with existing doctor details
-        fetchDoctorDetail()
-        // setFormData(doctorDetail);
-      }
-    }, [router.pathname]);
+  // UseEffect to populate formData based on route
+  useEffect(() => {
+    // Check if the current route is /admin/doctors/add
+    if (pathname === "/admin/doctors/add") {
+      // Clear form data for adding a new doctor
+      setFormData({
+        name: "",
+        about: "",
+        profession_background: [],
+        language_spoken: [],
+        specialization: [],
+        experience: "",
+        image: "",
+        phone: "",
+        email: "",
+        website: "",
+        availability: [],
+      });
+    } else {
+      // Pre-fill form data with existing doctor details
+      fetchDoctorDetail();
+    }
+  }, [router.pathname]);
 
   // Handle toggling availability
   const toggleAvailability = (day) => {
@@ -85,12 +70,12 @@ const EditDoctorDetail = () => {
 
   // Other handlers (add/remove specializations, languages, and profession background)
   const addSpecialization = () => {
-    if (newSpecialization.trim() !== '') {
+    if (newSpecialization.trim() !== "") {
       setFormData((prevData) => ({
         ...prevData,
         specialization: [...prevData.specialization, newSpecialization.trim()],
       }));
-      setNewSpecialization('');
+      setNewSpecialization("");
     }
   };
 
@@ -102,12 +87,12 @@ const EditDoctorDetail = () => {
   };
 
   const addLanguage = () => {
-    if (newLanguage.trim() !== '') {
+    if (newLanguage.trim() !== "") {
       setFormData((prevData) => ({
         ...prevData,
         language_spoken: [...prevData.language_spoken, newLanguage.trim()],
       }));
-      setNewLanguage('');
+      setNewLanguage("");
     }
   };
 
@@ -119,12 +104,12 @@ const EditDoctorDetail = () => {
   };
 
   const addProfessionBackground = () => {
-    if (newProfessionBackground.trim() !== '') {
+    if (newProfessionBackground.trim() !== "") {
       setFormData((prevData) => ({
         ...prevData,
         profession_background: [...prevData.profession_background, newProfessionBackground.trim()],
       }));
-      setNewProfessionBackground('');
+      setNewProfessionBackground("");
     }
   };
 
@@ -143,56 +128,76 @@ const EditDoctorDetail = () => {
     }));
   };
 
-  const createDoctor = ()=>{
-    axios.post(`${process.env.NEXT_PUBLIC_API_URL}doctors`, formData)
-    .then((res)=>{
-      router.push('/admin/doctors');
-      toast.dismiss();
-      toast.success('Doctor added successfully');
-    }).catch(err=>{
-      console.log(err);
-      toast.dismiss();
-      toast.error('Something went wrong');
-    })
-  }
-  const EditDoctorDetail = ()=>{
-    axios.put(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`, formData)
-    .then((res)=>{
-      router.push('/admin/doctors');
-      toast.dismiss();
-      toast.success('Doctor updated successfully');
-    }).catch(err=>{
-      console.log(err);
-      toast.dismiss();
-      toast.error('Something went wrong');
-    })
-  }
+  const createDoctor = () => {
+    axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}doctors`, formData)
+      .then((res) => {
+        router.push("/admin/doctors");
+        toast.dismiss();
+        toast.success("Doctor added successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.dismiss();
+        toast.error("Something went wrong");
+      });
+  };
+
+  const editDoctorDetail = () => {
+    axios
+      .put(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`, formData)
+      .then((res) => {
+        router.push("/admin/doctors");
+        toast.dismiss();
+        toast.success("Doctor updated successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.dismiss();
+        toast.error("Something went wrong");
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
-    if(pathname === '/admin/doctors/add'){
+    // Validation for required fields
+    if (
+      !formData?.name ||
+      !formData?.designation ||
+      !formData?.experience ||
+      !formData?.location ||
+      formData?.availability.length === 0
+    ) {
+      toast.error("Please fill all required fields");
+      return;
+    }
+
+    if (pathname === "/admin/doctors/add") {
       createDoctor();
-    }else{
-      EditDoctorDetail()
+    } else {
+      editDoctorDetail();
     }
   };
+
   const handleImageChange = async (e) => {
+    setLoading(true);
     const file = e.target.files[0];
     if (file) {
       const formData = new FormData();
       formData.append("image", file);
-      // Simulate API call
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL}uploads/file`, formData)
-      .then((res) => {
-        setFormData((prevData) => ({
-          ...prevData,
-          image: res.data.result,
-        }));
-      })
-      .catch(err=>{
-        console.log(err);
-      })
+      axios
+        .post(`${process.env.NEXT_PUBLIC_API_URL}uploads/file`, formData)
+        .then((res) => {
+          setLoading(false);
+          setFormData((prevData) => ({
+            ...prevData,
+            image: res.data.result,
+          }));
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+        });
     }
   };
 
@@ -200,12 +205,24 @@ const EditDoctorDetail = () => {
     <div className="p-5 md:p-10">
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
-        <div className="relative group">
-            {formData?.image ?<img
-              src={formData?.image}
-              alt="Doctor's profile"
-              className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"
-            />:<Avatar className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"  />}
+          <div className="relative group">
+            {loading ? (
+              <div className='w-32 h-32 flex justify-center items-center lg:w-40 lg:h-40 rounded-full'>
+                <CircularProgress />
+              </div>
+            ) : (
+              <>
+                {formData?.image ? (
+                  <img
+                    src={formData?.image}
+                    alt="Doctor's profile"
+                    className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"
+                  />
+                ) : (
+                  <Avatar className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover" />
+                )}
+              </>
+            )}
             <label
               htmlFor="imageUpload"
               className="absolute inset-0 flex justify-center text-white items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity"
@@ -216,13 +233,14 @@ const EditDoctorDetail = () => {
               id="imageUpload"
               type="file"
               accept="image/*"
-              onChange={handleImageChange} // Handle image change
+              onChange={handleImageChange}
               className="hidden"
             />
           </div>
+
           <div className="text-center lg:text-left">
-            <label className="block text-xl font-semibold">
-              Name:
+            <label className="block text-gray-600">
+              Name <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="name"
@@ -231,8 +249,9 @@ const EditDoctorDetail = () => {
                 className="w-full mt-2 border p-2 rounded"
               />
             </label>
+
             <label className="block mt-3 text-gray-600">
-              Designation:
+              Designation <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="designation"
@@ -241,9 +260,9 @@ const EditDoctorDetail = () => {
                 className="w-full mt-2 border p-2 rounded"
               />
             </label>
-            
+
             <label className="block mt-3 text-gray-600">
-              Experience:
+              Experience <span className="text-red-500">*</span>
               <input
                 type="number"
                 name="experience"
@@ -256,13 +275,19 @@ const EditDoctorDetail = () => {
         </div>
 
         <div className="px-6 py-4 border-t">
-          <h3 className="text-xl font-bold text-primary-orange">About</h3>
-          <textarea
-            name="about"
-            value={formData?.about}
+          <h3 className="text-xl font-bold text-primary-orange">Location <span className="text-red-500">*</span></h3>
+          <select
+            name="location"
+            value={formData?.location}
             onChange={handleChange}
             className="w-full mt-2 border p-2 rounded"
-          />
+            required
+          >
+            <option value="">Select Location</option>
+            <option value="Bangalore 1">Bangalore 1</option>
+            <option value="Bangalore 2">Bangalore 2</option>
+            <option value="New Delhi">New Delhi</option>
+          </select>
         </div>
 
         <div className="px-6 py-4 border-t">
@@ -306,7 +331,7 @@ const EditDoctorDetail = () => {
                 {item}
                 <button
                   type="button"
-                  className="text-red-500 ml-2"
+                  className="text-red-500 ml-2" 
                   onClick={() => removeProfessionBackground(index)}
                 >
                   Remove
@@ -365,14 +390,16 @@ const EditDoctorDetail = () => {
         </div>
 
         <div className="px-6 py-4 border-t">
-          <h3 className="text-xl font-bold text-primary-orange">Availability</h3>
+          <h3 className="text-xl font-bold text-primary-orange">Availability <span className="text-red-500">*</span></h3>
           <div className="flex space-x-2">
             {daysOfWeek.map((day) => (
               <button
                 key={day}
                 type="button"
                 onClick={() => toggleAvailability(day)}
-                className={`px-4 py-2 rounded ${formData?.availability.includes(day) ? 'bg-primary-orange text-white' : 'bg-gray-300 text-black'}`}
+                className={`px-4 py-2 rounded ${
+                  formData?.availability.includes(day) ? "bg-primary-orange text-white" : "bg-gray-300 text-black"
+                }`}
               >
                 {day}
               </button>
