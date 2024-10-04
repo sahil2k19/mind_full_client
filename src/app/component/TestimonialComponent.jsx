@@ -97,20 +97,23 @@ export default function TestimonialComponent() {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setIsVideoModalOpen(false);
+        setisQuoteModal(false);
       }
     };
 
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setIsVideoModalOpen(false);
+        setisQuoteModal(false);
       }
     };
 
     const handlePopState = () => {
       setShowVideoModal(false); // Close modal on back press
+      setisQuoteModal(false);
     };
 
-    if (isVideoModalOpen || showVideoModal) {
+    if (isVideoModalOpen || showVideoModal || isQuoteModal) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleKeyDown);
       window.history.pushState(null, null, window.location.href);
@@ -122,7 +125,7 @@ export default function TestimonialComponent() {
       document.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("popstate", handlePopState);
     };
-  }, [isVideoModalOpen, showVideoModal]);
+  }, [isVideoModalOpen, showVideoModal, isQuoteModal]);
 
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
@@ -173,16 +176,27 @@ export default function TestimonialComponent() {
               open={showVideoModal}
               onClose={() => setShowVideoModal(false)}
               className="m-0"
+              PaperProps={{
+            style: {
+              borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+              overflow: 'hidden' // Ensure content doesn't overflow the edges
+            }
+          }}
+          BackdropProps={{
+            style: {
+              // borderRadius: '16px' // Ensures backdrop follows the same rounding 
+            }
+          }}
             >
               <DialogTitle
-                className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-4"
+                className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-2"
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <span>{title}</span>
+                <span className="text-lg px-5 max-w-[405px] truncate">{title}</span>
                 <IconButton onClick={() => setShowVideoModal(false)}>
-                  X
+                <img className="w-[30px]" src="/iconsNew/close.svg"/>
                 </IconButton>
               </DialogTitle>
               <DialogContent className="h-full flex justify-center items-center p-0 bg-black">
@@ -226,29 +240,45 @@ export default function TestimonialComponent() {
           </div>
         </div>
 
-        <Dialog open={isQuoteModal} className="m-0" onClose={() => { setisQuoteModal(false) }}>
+        <Dialog
+          open={isQuoteModal}
+          onClose={() => setisQuoteModal(false)}
+          PaperProps={{
+            style: {
+              borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+              overflow: 'hidden' // Ensure content doesn't overflow the edges
+            }
+          }}
+          BackdropProps={{
+            style: {
+              // borderRadius: '16px' // Ensures backdrop follows the same rounding 
+            }
+          }}
+          className="m-0"
+        >
           <DialogTitle
-            className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-4"
+            className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
             display="flex"
             justifyContent="space-between"
             alignItems="center"
           >
-            <span>{title}</span>
+            <span className="px-8 max-w-[405px] truncate">{title}</span>
             <IconButton onClick={() => setisQuoteModal(false)}>
-              X
+            <img className="w-[30px]" src="/iconsNew/close.svg"/>
             </IconButton>
           </DialogTitle>
           <DialogContent>
             <blockquote className="text-gray-600 mb-6">
-              <span className="text-3xl text-gray-400 leading-none"><img className="h-[32px]" src="/iconsNew/quote2.svg" /></span>
+              <span className="text-3xl text-gray-400 leading-none">
+                <img className="h-[32px]" src="/iconsNew/quote2.svg" />
+              </span>
               <div>
                 <span className="text-gray-600 text-lg font-semibold">
                   {fullTestimonial}
                 </span>
-
               </div>
             </blockquote>
-            <div className="flex ">
+            <div className="flex">
               <div className="w-1 h-10 bg-primary-orange mr-3"></div>
               <div>
                 <p className="text-lg font-semibold text-gray-700">{patientName}</p>
@@ -257,6 +287,7 @@ export default function TestimonialComponent() {
             </div>
           </DialogContent>
         </Dialog>
+
 
         {/* prev next button */}
         <div className="flex justify-between px-2 pb-6">
