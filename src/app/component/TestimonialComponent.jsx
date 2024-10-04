@@ -127,6 +127,20 @@ export default function TestimonialComponent() {
     };
   }, [isVideoModalOpen, showVideoModal, isQuoteModal]);
 
+  const QuoteComponent = ()=>{
+    return (
+      <blockquote className="text-gray-600">
+      <div className="text-3xl text-gray-400 leading-none"><img className="h-[32px]" src="/iconsNew/quote2.svg" /></div>
+      <div className=" px-5">
+        <span className="text-gray-600 text-lg font-semibold">
+          {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
+        </span>
+      
+      </div>
+    </blockquote>
+    )
+  }
+
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
       <div className="p-3 text-center bg-primary-div">
@@ -134,30 +148,7 @@ export default function TestimonialComponent() {
       </div>
       <div className="space-y-4 mt-5">
         {type === "text" ? (
-          <blockquote className="text-gray-600">
-            <span className="text-3xl text-gray-400 leading-none"><img className="h-[32px]" src="/iconsNew/quote2.svg" /></span>
-            <div>
-              <span className="text-gray-600 text-lg font-semibold">
-                {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
-              </span>
-              {/* {!showFullTestimonial && fullTestimonial && (
-              <button
-                className="text-blue-500 hover:underline"
-                onClick={() => setShowFullTestimonial(true)}
-              >
-                Read More
-              </button>
-            )}
-            {showFullTestimonial && fullTestimonial && (
-              <button
-                className="text-blue-500 ml-4 hover:underline"
-                onClick={() => setShowFullTestimonial(false)}
-              >
-                Show Less
-              </button>
-            )} */}
-            </div>
-          </blockquote>
+         <QuoteComponent />
         ) : (
           <>
             <div className="relative" onClick={() => setShowVideoModal(true)}>
@@ -203,22 +194,14 @@ export default function TestimonialComponent() {
                 <TestimonialComponents2 currentVideo={videoUrl} />
               </DialogContent>
             </Dialog>
-            <blockquote className="text-gray-600 mb-6">
-              <span className="text-3xl text-gray-400 leading-none"><img className="h-[32px]" src="/iconsNew/quote2.svg" /></span>
-              <div>
-                <span className="text-gray-600 text-lg font-semibold">
-                  {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
-                </span>
-
-              </div>
-            </blockquote>
+         {fullTestimonial &&   <QuoteComponent />}
           </>
         )}
 
 
         {/* patient name */}
-        <div className="flex justify-between items-center">
-          <div className="flex ">
+        <div className="flex justify-between items-center px-3">
+          <div className="flex px-3">
             <div className="w-1 h-10 bg-primary-orange mr-3"></div>
             <div>
               <p className="text-lg font-semibold text-gray-700">{patientName}</p>
@@ -235,7 +218,7 @@ export default function TestimonialComponent() {
               //   }
               // }} 
               onClick={() => setisQuoteModal(true)}
-              className="px-3 py-2 bg-gray-200 hover:bg-gray-300 active:bg-gray-200 rounded-xl text-orange-500 font-semibold">
+              className="px-3 py-2  bg-gray-200 hover:bg-gray-300 active:bg-gray-200 rounded-xl text-orange-500 font-semibold">
               {showFullTestimonial ? "Show Less" : "Read More"}</button>}
           </div>
         </div>
@@ -268,8 +251,8 @@ export default function TestimonialComponent() {
             </IconButton>
           </DialogTitle>
           <DialogContent>
-            <blockquote className="text-gray-600 mb-6">
-              <span className="text-3xl text-gray-400 leading-none">
+            <blockquote className="text-gray-600 mb-6 mt-3">
+              <span className="text-3xl text-gray-400 ">
                 <img className="h-[32px]" src="/iconsNew/quote2.svg" />
               </span>
               <div>
@@ -290,7 +273,7 @@ export default function TestimonialComponent() {
 
 
         {/* prev next button */}
-        <div className="flex justify-between px-2 pb-6">
+        <div className="flex justify-between px-4 pb-6">
           <img
             onClick={prevTestimonial}
             className="text-white cursor-pointer"

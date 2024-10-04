@@ -50,7 +50,7 @@ const HomePage = ({ allSection }) => {
                 <section className='mb-5'>
                     <div className='md:grid grid-cols-2 items-center'>
                         <div className='flex justify-center w-full  mb-4'>
-                            <img className='w-full object-cover' src='/home/mindfullbanner2.png' />
+                            <img className='w-full object-cover' src='/iconsNew/hero2.png' />
                         </div>
                         <div>
                             <div className='flex flex-col justify-center px-2'>
