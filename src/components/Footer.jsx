@@ -643,7 +643,7 @@ function Footer() {
         <MobileFooter2 />
       </div>
       <div className='flex justify-center '>
-        <p className='text-primary-orange text-center'>Copyright © 2024 MindfulTMS | All rights reserved. Developed and Maintained  by InsideOut</p>
+        <p className='text-primary-orange text-sm text-center'>Copyright © 2024 MindfulTMS | All rights reserved. Developed and Maintained  by InsideOut</p>
       </div>
     </footer>
   );
