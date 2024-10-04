@@ -634,7 +634,7 @@ function Footer() {
       </>
     )
   }
-  return (
+  return ( 
     <footer className="py-6 footer-gradient">
       <div className='hidden md:block'>
         <DesktopFooter />
