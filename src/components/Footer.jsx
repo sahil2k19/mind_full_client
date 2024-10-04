@@ -642,6 +642,9 @@ function Footer() {
       <div className='md:hidden'>
         <MobileFooter2 />
       </div>
+      <div className='flex justify-center'>
+        <p className='text-primary-orange text-center'>Copyright © 2024 MindfulTMS <br/> All rights reserved. Powered by InsideOut</p>
+      </div>
     </footer>
   );
 }
