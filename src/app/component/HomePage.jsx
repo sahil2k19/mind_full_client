@@ -6,6 +6,7 @@ import CounterComponent from './CounterComponent';
 import { Container } from '@mui/material';
 import OurDoctorSection from '../clinicLocation/[city]/OurDoctorSection';
 import TestimonialComponent from './TestimonialComponent';
+import TestimonialComponents2 from './TestimonialComponents2';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 // import Footer from '@/components/Footer'
 const videos = [
@@ -17,20 +18,27 @@ const videos = [
 
 const servicesIcon = [
     {
-        icon: '/home/therapyIcon.svg',
-        link: '/services/therapy'
+        icon: '/iconsNew/therapy.png',
+        link: '/services/therapy', 
+        name:'Therapy'
     },
     {
-        icon: '/home/Psychiatry.svg',
-        link: '/services/psychiatry'
+        icon: '/iconsNew/psychiatry.png',
+        link: '/services/psychiatry',
+        name:'Psychiatry'
+
     },
     {
-        icon: '/home/assessmentsIcon.svg',
-        link: '/assesment'
+        icon: '/iconsNew/assessment.png',
+        link: '/assesment',
+        name:'Professional Assessment'
+
     },
     {
-        icon: '/home/tmsIcon.svg',
-        link: '/services/tms-treatment-page'
+        icon: '/iconsNew/tms.png',
+        link: '/services/tms-treatment-page',
+        name:'TMS'
+
     },
 ]
 const HomePage = ({ allSection }) => {
@@ -174,7 +182,7 @@ const HomePage = ({ allSection }) => {
                                             service?.array?.map((i, index) => (
                                                 <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer justify-start mb-2  items-center  '>
                                                     <img src={servicesIcon[index]?.icon} className='w-[40px] h-[40px]   mr-4 ' />
-                                                    <p className=' text-lg ml-1 font-semibold '>{i?.name}</p>
+                                                    <p className=' text-lg ml-1 font-semibold '>{servicesIcon[index]?.name}</p>
                                                 </Link>
                                             ))
                                         }
@@ -282,6 +290,8 @@ const HomePage = ({ allSection }) => {
                     {/* <VideoComponent /> */}
                     {/* <NewComponent videos={videos} /> */}
                     <TestimonialComponent />
+                    {/* <TestimonialComponents2/> */}
+
                 </section>
                
                 {/* our experts */}

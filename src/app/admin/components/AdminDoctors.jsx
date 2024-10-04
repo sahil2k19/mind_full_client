@@ -87,7 +87,7 @@ const doctors = [
   },
 ];
 const AdminDoctors = () => {
-  const [doctorsList, setDoctorsList] = useState(doctors);
+  const [doctorsList, setDoctorsList] = useState([]);
   const router = useRouter();
 
   const getAllDoctor =()=>{
