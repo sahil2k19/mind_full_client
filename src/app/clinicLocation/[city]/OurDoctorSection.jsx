@@ -15,6 +15,7 @@ const OurDoctorSection = async() => {
                 'Expires': '0',
             },
     })
+    console.log("doctor", res.data)
      ourExperts = res.data
   return (
     <section className='py-8 px-4 '>
