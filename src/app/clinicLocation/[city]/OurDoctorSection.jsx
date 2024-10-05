@@ -1,13 +1,15 @@
-// "use client"
+"use client"
 import axios from 'axios'
 import Link from 'next/link'
-import React  from 'react'
+import React, { useEffect, useState }  from 'react'
 
-const OurDoctorSection = async() => {
+const OurDoctorSection = () => {
 
-    let ourExperts = []
+    const [ourExperts, setOurExperts] = useState([])
 
 
+ const getOurExperts = async () => {
+    console.log('getOurExperts')
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors`,{
         headers: {
                 'Cache-Control': 'no-cache',
@@ -15,8 +17,14 @@ const OurDoctorSection = async() => {
                 'Expires': '0',
             },
     })
-    console.log("doctor", res.data)
-     ourExperts = res.data
+
+    setOurExperts(res.data)
+ }
+
+    useEffect(()=>{
+        getOurExperts()
+    },[])
+ 
   return (
     <section className='py-8 px-4 '>
     <div className='mb-11 flex flex-col justify-center items-center'>
