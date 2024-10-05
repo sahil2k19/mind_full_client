@@ -295,7 +295,7 @@ const HomePage = ({ allSection }) => {
                 </section>
                
                 {/* our experts */}
-                <div className='bg-primary-div'>
+                <div className=''>
                     <OurDoctorSection />
                 </div>
             </>
