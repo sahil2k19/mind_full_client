@@ -1,84 +1,84 @@
-"use client"
-import React, { useEffect, useState } from 'react'
+// "use client"
+import React from 'react'
 import ImageGallary from './ImageGallary';
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
-import PractoWidget from './PractoWidget';
+// import PractoWidget from './PractoWidget';
 import RequestAppointment from './RequestAppointment';
 import ClinicAddress from './ClinicAddress';
 import OurDoctorSection from './OurDoctorSection';
 
 const MobileComponent = ({ data, images, city }) => {
-    const [requestModal, setRequestModal] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        doctor: '',
-        location: '',
-        message: ''
-    });
-    const [isBusinessHours, setIsBusinessHours] = useState(false);
+    // const [requestModal, setRequestModal] = useState(false);
+    // const [formData, setFormData] = useState({
+    //     name: '',
+    //     email: '',
+    //     phone: '',
+    //     doctor: '',
+    //     location: '',
+    //     message: ''
+    // });
+    // const [isBusinessHours, setIsBusinessHours] = useState(false);
 
-    useEffect(() => {
-        const handlePopState = () => {
-            if (requestModal) {
-                setRequestModal(false);
-            }
-        };
+    // useEffect(() => {
+    //     const handlePopState = () => {
+    //         if (requestModal) {
+    //             setRequestModal(false);
+    //         }
+    //     };
 
-        if (requestModal) {
-            window.history.pushState(null, '');
-            window.addEventListener('popstate', handlePopState);
-        }
+    //     if (requestModal) {
+    //         window.history.pushState(null, '');
+    //         window.addEventListener('popstate', handlePopState);
+    //     }
 
-        return () => {
-            window.removeEventListener('popstate', handlePopState);
-        };
-    }, [requestModal]);
+    //     return () => {
+    //         window.removeEventListener('popstate', handlePopState);
+    //     };
+    // }, [requestModal]);
 
-    useEffect(() => {
-        const checkBusinessHours = () => {
-            const now = new Date();
-            const hours = now.getHours();
-            if (hours >= 10 && hours < 18) {
-                setIsBusinessHours(true);
-            } else {
-                setIsBusinessHours(false);
-            }
-        };
-        checkBusinessHours();
-    }, []);
+    // useEffect(() => {
+    //     const checkBusinessHours = () => {
+    //         const now = new Date();
+    //         const hours = now.getHours();
+    //         if (hours >= 10 && hours < 18) {
+    //             setIsBusinessHours(true);
+    //         } else {
+    //             setIsBusinessHours(false);
+    //         }
+    //     };
+    //     checkBusinessHours();
+    // }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    }
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    // }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        toggleRequestModal();
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(formData);
+    //     toggleRequestModal();
+    // }
 
-    const toggleRequestModal = () => {
-        setRequestModal(prev => !prev);
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            doctor: '',
-            location: '',
-            message: '',
-            preferredTime: ''
-        });
-    }
+    // const toggleRequestModal = () => {
+    //     setRequestModal(prev => !prev);
+    //     setFormData({
+    //         name: '',
+    //         email: '',
+    //         phone: '',
+    //         doctor: '',
+    //         location: '',
+    //         message: '',
+    //         preferredTime: ''
+    //     });
+    // }
 
-    const isFormValid = () => {
-        return formData.name && formData.email && formData.phone && formData.location;
-    }
+    // const isFormValid = () => {
+    //     return formData.name && formData.email && formData.phone && formData.location;
+    // }
 
     return (
         <div className='px-4 py-3'>
@@ -101,7 +101,7 @@ const MobileComponent = ({ data, images, city }) => {
                 <ClinicAddress images={images} data={data} />
             </div>
 
-            <Dialog open={requestModal} onClose={toggleRequestModal}>
+            {/* <Dialog open={requestModal} onClose={toggleRequestModal}>
                 <DialogTitle className='text-center font-semibold'>Request an Appointment</DialogTitle>
                 <DialogContent>
                     {!isFormValid() && <div>
@@ -209,7 +209,7 @@ const MobileComponent = ({ data, images, city }) => {
                     </FormControl>
                 </DialogContent>
 
-            </Dialog>
+            </Dialog> */}
         </div>
     );
 }

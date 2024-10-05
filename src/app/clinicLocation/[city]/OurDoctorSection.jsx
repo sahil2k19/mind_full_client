@@ -8,7 +8,13 @@ const OurDoctorSection = async() => {
     let ourExperts = []
 
 
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors`,{
+        headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0',
+            },
+    })
      ourExperts = res.data
   return (
     <section className='py-8 px-4 '>
