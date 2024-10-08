@@ -412,12 +412,79 @@ const FooterLocationDetails =  [
     }
   ];
 
+     const testimonials = [
+    {
+      _id:1,
+      type: "text",
+      patientName: "John Doe",
+      doctor: "Dr. Smith",
+      condition: "Anxiety and Stress",
+      treatment: "Therapy for Anxiety & Stress",
+      location: "Bangalore 1",
+      title: "Therapy for Anxiety & Stress",
+      shortQuote: `"I feel more balanced and equipped to face challenges."`,
+      fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
+    },
+    {
+      _id:2,
+      type: "video",
+      patientName: "Jane Smith",
+      doctor: "Dr. Williams",
+      condition: "Depression",
+      treatment: "Depression Management",
+      location: "Bangalore 2",
+      title: "Depression Management",
+      videoUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
+
+    },
+    {
+      _id:3,
+      type: "text",
+      patientName: "Emily Johnson",
+      doctor: "Dr. Smith",
+      condition: "Stress",
+      treatment: "Stress Relief Techniques",
+      location: "New Delhi",
+      title: "Stress Relief Techniques",
+      shortQuote: `"These sessions have helped me find peace in chaos."`,
+      fullTestimonial: `"These sessions have helped me find peace in chaos. I'm now able to handle stressful situations much more effectively. The techniques I've learned are easy to implement, and they work wonders in calming my mind."`,
+    },
+    {
+      _id:4,
+      type: "video",
+      patientName: "Michael Brown",
+      doctor: "Dr. Williams",
+      condition: "Low Self-Esteem",
+      treatment: "Therapy for Self-Esteem Improvement",
+      location: "Bangalore 1",
+      title: "Improved Self-Esteem",
+      videoUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
+
+    },
+    {
+      _id:5,
+      type: "text",
+      patientName: "Sarah Wilson",
+      doctor: "Dr. Smith",
+      condition: "Personal Growth",
+      treatment: "Therapy for Personal Growth",
+      location: "Bangalore 2",
+      title: "Personal Growth Journey",
+      shortQuote: `"This experience has helped me grow emotionally and mentally."`,
+      fullTestimonial: `"This experience has helped me grow emotionally and mentally. I'm more aware of my thoughts and emotions, and I've gained tools to continuously improve myself. It's been a fulfilling journey."`,
+    },
+  ];
 
 module.exports = { 
     HomePageSections, 
     assesmentPageSection, 
     blog ,
     clinicLocation,
-    FooterLocationDetails
+    FooterLocationDetails,
+    testimonials
     
 }

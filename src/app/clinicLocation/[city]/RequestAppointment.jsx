@@ -36,7 +36,7 @@ const locations = [
       params:"New-Delhi"
     }
   ];
-const RequestAppointment = ({city, name}) => {
+const RequestAppointment = ({city, name, customStyle}) => {
     const pathname = usePathname()
    
     // console.log(city, pathname)
@@ -138,7 +138,7 @@ const RequestAppointment = ({city, name}) => {
     return (
         <>
             {
-                name?<button onClick={toggleRequestModal} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 text-white text-sm font-semibold'>{name}</button>
+                name?<button onClick={toggleRequestModal} className={`${customStyle?customStyle:"bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 text-white text-sm font-semibold"} `}>{name}</button>
                 :<button onClick={toggleRequestModal} className='text-xl w-full active:bg-orange-400 active:shadow-lg bg-primary-orange text-white px-6 py-2 rounded-lg font-semibold text-center'>Request an Appointment</button>
             }
 

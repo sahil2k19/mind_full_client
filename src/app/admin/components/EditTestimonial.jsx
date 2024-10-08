@@ -1,15 +1,14 @@
-"use client"
-import React, { useState } from 'react';
-const EditTestimonial = () => {
+"use client";
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
+const EditTestimonial = ({testimonialId}) => {
+  const router = useRouter();
   // Initial state for form fields
-  const [formData, setFormData] = useState({
-    title: "Therapy for Anxiety & Stress",
-    shortQuote: `"I feel more balanced and equipped to face challenges."`,
-    fullTestimonial: `"I feel more balanced and equipped to face challenges. The therapy sessions have provided me with valuable tools and insights that I use in my daily life. It's been a transformative experience, and I'm grateful for the support I've received."`,
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
-    doctor: "",
-    location: ""
-  });
+  const [formData, setFormData] = useState({});
+  const [allDoctors, setAllDoctors] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,23 +18,123 @@ const EditTestimonial = () => {
     });
   };
 
+
+
+  const fetchDoctor = () => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}testimonials/doctor`)
+    .then((res) => {
+      setAllDoctors(res.data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const fetchData = () => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}testimonials/${testimonialId}`)
+    .then((res) => {
+      const doctor = res.data.doctor?._id;
+      console.log(res.data);
+      setFormData({...res.data, doctor: doctor});
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const updateData = ()=>{
+    
+    axios.put(`${process.env.NEXT_PUBLIC_API_URL}testimonials/${testimonialId}`, formData)
+    .then(res=>{
+      toast.dismiss();
+      toast.success('Testimonial updated successfully');
+      fetchData();
+    }).catch(err=>{
+      console.log(err);
+      toast.dismiss();
+      toast.error('Something went wrong');
+    })
+  }
+  const createData = ()=>{
+    
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}testimonials`, formData)
+    .then(res=>{
+      toast.dismiss();
+      toast.success('Testimonial added successfully');
+      router.push('/admin/testimonials');
+    }).catch(err=>{
+      console.log(err);
+      toast.dismiss();
+      toast.error('Something went wrong');
+    })
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Submitted data:', formData);
+    if(testimonialId=="new"){
+      createData();
+    }
+    else{
+      updateData()
+    }
   };
+
+  useEffect(() => {
+    fetchDoctor();
+    if(testimonialId!=="new"){
+      fetchData();
+    }
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-6">Edit Testimonial</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Patient Name */}
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="patientName">Patient Name</label>
+          <input
+            type="text"
+            name="patientName"
+            value={formData.patientName || ''}
+            onChange={handleInputChange}
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter patient name"
+          />
+        </div>
+
+        {/* Condition */}
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="condition">Condition</label>
+          <input
+            type="text"
+            name="condition"
+            value={formData.condition || ''}
+            onChange={handleInputChange}
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter patient's condition"
+          />
+        </div>
+
+        {/* Treatment */}
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="treatment">Treatment</label>
+          <input
+            type="text"
+            name="treatment"
+            value={formData.treatment || ''}
+            onChange={handleInputChange}
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter treatment received"
+          />
+        </div>
+
         {/* Title */}
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">Title</label>
           <input
             type="text"
             name="title"
-            value={formData.title}
+            value={formData.title || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
@@ -47,7 +146,7 @@ const EditTestimonial = () => {
           <input
             type="text"
             name="shortQuote"
-            value={formData.shortQuote}
+            value={formData.shortQuote || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
@@ -59,7 +158,7 @@ const EditTestimonial = () => {
           <textarea
             name="fullTestimonial"
             rows="4"
-            value={formData.fullTestimonial}
+            value={formData.fullTestimonial || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           ></textarea>
@@ -69,13 +168,13 @@ const EditTestimonial = () => {
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2">Video</label>
           <video controls className="w-full h-auto rounded-md shadow-md mb-4">
-            <source src={formData.videoUrl} type="video/mp4" />
+            <source src={formData.videoUrl || ''} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <input
             type="text"
             name="videoUrl"
-            value={formData.videoUrl}
+            value={formData.videoUrl || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Video URL"
@@ -87,14 +186,14 @@ const EditTestimonial = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="doctor">Doctor</label>
           <select
             name="doctor"
-            value={formData.doctor}
+            value={formData.doctor || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="">Select Doctor</option>
-            <option value="Dr. Smith">Dr. Smith</option>
-            <option value="Dr. John">Dr. John</option>
-            <option value="Dr. Maria">Dr. Maria</option>
+            {allDoctors.map((doctor) => (
+              <option key={doctor._id} value={doctor._id}>{doctor.name}</option>
+            ))}
           </select>
         </div>
 
@@ -103,7 +202,7 @@ const EditTestimonial = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">Location</label>
           <select
             name="location"
-            value={formData.location}
+            value={formData.location || ''}
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >

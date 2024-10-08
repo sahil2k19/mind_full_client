@@ -52,8 +52,8 @@ const links = [
       {
         id: 13,
         title: 'Clinical Assessments',
-        path: '/assesment',
-        active: '/assesment',
+        path: '/clinicalAssessment',
+        active: '/clinicalAssessment',
       },
     ]
   },
