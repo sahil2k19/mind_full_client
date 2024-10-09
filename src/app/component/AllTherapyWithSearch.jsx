@@ -88,7 +88,7 @@ const AllTherapyWithSearch = () => {
                 ) : (
                     <div className="flex flex-col items-center  bg-white shadow-lg rounded-lg p-4">
                         <h3 className="text-lg font-semibold text-gray-800">No tests found</h3>
-                        <p className="text-gray-600 text-center mb-4">We couldn't find any tests matching your search.</p>
+                        <p className="text-gray-600 text-center mb-4">{`We couldn't find any tests matching your search.`}</p>
                         <RequestAppointment
                             name={"Contact Us"}
                             customStyle={" bg-[#EF6623] hover:bg-orange-500 text-lg font-semibold active:bg-orange-700 rounded-lg text-white py-2 px-4"}

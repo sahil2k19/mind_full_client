@@ -32,7 +32,7 @@ const PsychiatryPage = () => {
                         Rediscovering Happiness
                     </h1>
                     <p className='text-lg md:text-xl text-gray-600 mt-4'>
-                        Your mental well-being matters. Consult our expert psychiatrists today!
+                      {`  Your mental well-being matters. Consult our expert psychiatrists today!`}
                     </p>
                 </div>
 
@@ -43,7 +43,7 @@ const PsychiatryPage = () => {
                             When to Consult a <span className='font-bold'>Psychiatrist</span>?
                         </h3>
                         <p className='text-center md:text-start text-gray-500 mt-2 '>
-                            If you're experiencing prolonged periods of sadness, anxiety, or overwhelming stress, it's time to seek help from a professional. If you're experiencing prolonged periods of sadness, anxiety, or overwhelming stress,
+                          {`  If you're experiencing prolonged periods of sadness, anxiety, or overwhelming stress, it's time to seek help from a professional. If you're experiencing prolonged periods of sadness, anxiety, or overwhelming stress,`}
                         </p>
                     </div>
                     <div className='flex justify-center'>
