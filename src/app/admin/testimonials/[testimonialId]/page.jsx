@@ -2,7 +2,7 @@
 import React from 'react'
 import EditTestimonial from '../../components/EditTestimonial'
 import { useParams } from 'next/navigation'
-const page = () => {
+const Page = () => {
   const {testimonialId} = useParams()
   return (
     <>
@@ -11,4 +11,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
