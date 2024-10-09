@@ -38,9 +38,9 @@ const links = [
       },
       {
         id: 2,
-        title: 'TMS Treatment Page',
-        path: '/services/tms-treatment-page',
-        active: '/services/tms-treatment-page',
+        title: 'TMS Treatment',
+        path: '/pages/tmsPage',
+        active: '/pages/tmsPage',
       },
       {
         id: 3,

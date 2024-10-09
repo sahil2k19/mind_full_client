@@ -2,6 +2,7 @@ import React from 'react'
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment'
 import { Container } from '@mui/material'
 import TakeTest from './TakeTest'
+import AllTestWithSearch from './AllTestWithSearch'
 const conditions=[
     {
         id:1,
@@ -27,7 +28,7 @@ const TherapyPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center mb-12 gap-8">
                     {/* Text Section */}
                     <div className="text-center md:text-left">
-                        <h1 className="text-3xl md:text-[38px] font-bold leading-snug text-primary mb-6">
+                        <h1 className="text-3xl md:text-[38px] font-semibold leading-snug text-primary mb-6">
                             Get the best of empathy and expertise
                         </h1>
                         <p className="text-lg md:text-xl text-gray-600 mb-8">
@@ -47,7 +48,7 @@ const TherapyPage = () => {
             
             {/* Feeling Section */}
             <div className="bg-primary-div py-12">
-                <h3 className="text-3xl md:text-4xl font-bold text-center mb-8 text-primary">
+                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 text-primary">
                     Are You Feeling
                 </h3>
                 <div className="grid grid-cols-3 md:grid-cols-3 gap-6 px-2 justify-center items-center">
@@ -64,6 +65,13 @@ const TherapyPage = () => {
            <div className='md:hidden'>
             <TakeTest/>
            </div>
+
+           <div className='px-4  py-12'>
+            <AllTestWithSearch/>
+           </div>
+
+
+           
         </>
     )
 }

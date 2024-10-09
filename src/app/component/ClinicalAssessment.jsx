@@ -1,28 +1,7 @@
-"use client"
-import React, { useState } from 'react';
-import { TextField, IconButton } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Collapse from '@mui/material/Collapse';
-import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
-
+import React from 'react';
+import AllTestWithSearch from './AllTestWithSearch';
 const ClinicalAssessment = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [expanded, setExpanded] = useState({});
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const toggleExpand = (id) => {
-        setExpanded((prevExpanded) => ({
-            ...prevExpanded,
-            [id]: !prevExpanded[id],
-        }));
-    };
-
-    const filteredTests = allTest.filter((test) =>
-        test.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     return (
         <div className="mx-auto px-4 py-8 ">
@@ -38,11 +17,11 @@ const ClinicalAssessment = () => {
             </div>
 
             {/* Grid of Assessments */}
-            <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+            <div className="flex flex-wrap justify-center gap-6 mb-8">
                 {tests.map((test, index) => (
                     <div
                         key={index}
-                        className="bg-white shadow-lg rounded-lg flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300"
+                        className="bg-white shadow-lg rounded-lg flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300 w-1/4 sm:w-1/3 md:w-1/4 lg:w-1/5"
                     >
                         <img
                             src={test.icon}
@@ -54,66 +33,8 @@ const ClinicalAssessment = () => {
                 ))}
             </div>
 
-            {/* Search Bar */}
-            <div className="mb-6">
-                <div className="relative flex items-center">
-                    <input
-                        type="text"
-                        className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Search by test name..."
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
-                    <div className="absolute right-3">
-                        {/* Search Icon */}
-                        <img src="/home/search.svg" alt="search" className="w-5 h-5" />
-                    </div>
-                </div>
-            </div>
 
-
-            {/* Search Results */}
-            <div className="grid grid-cols-1  gap-6 h-[400px] overflow-y-scroll">
-                {filteredTests.map((test) => (
-                    <div
-                        key={test._id}
-                        className="bg-white shadow-lg rounded-lg px-2 flex "
-                    >
-                        <div className="  mb-4 w-[80px] md:min-w-[120px] mr-2">
-                            <img
-                                src={test.icon}
-                                alt={test.name}
-                                className="w-full  object-cover mr-4"
-                            />
-
-                        </div>
-                        <div className='w-full'>
-                            <h3 className="text-[14px] md:text-lg font-semibold text-gray-800 capitalize">{test.name}</h3>
-                            <p className="text-gray-600 text-[12px] md:text-sm">
-                                {expanded[test._id]
-                                    ? test.detail
-                                    : test.detail.substring(0, 50) + '...'}
-                            </p>
-                            {/* Read More Button */}
-                            <div className='flex justify-between items-center'>
-                                <IconButton
-                                    onClick={() => toggleExpand(test._id)}
-                                    className="text-blue-500 text-[12px]"
-                                >
-                                    <ExpandMoreIcon />
-                                    {expanded[test._id] ? 'Read Less' : 'Read More'}
-                                </IconButton>
-                                <div className=''>
-                                    <RequestAppointment name={"Contact Us"} customStyle={" bg-[#EF6623] hover:bg-orange-500 text-[12px] active:bg-orange-700 rounded-lg text-white py-1 px-2"} />
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                ))}
-            </div>
+            <AllTestWithSearch />
         </div>
     );
 };
