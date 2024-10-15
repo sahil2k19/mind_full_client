@@ -64,7 +64,7 @@ const TherapyPage = () => {
     return (
         <>
             <div maxWidth="lg" className="mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center mb-12 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center mb-8 gap-8">
                     {/* Text Section */}
                     <div className="text-center md:text-left mx-2">
                         <h1 className="text-3xl md:text-[38px] font-semibold leading-snug text-primary mb-6">

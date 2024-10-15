@@ -93,8 +93,8 @@ const links = [
   {
     id: 51,
     title: 'Health Library',
-    path: '/contact-us',
-    active: '/contact-us',
+    path: '/healthLibrary',
+    active: '/healthLibrary',
   },
 ]
 

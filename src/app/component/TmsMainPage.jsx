@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import React from 'react';
+import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 
 const TmsMainPage = () => {
     const fourConditions = [
@@ -85,12 +86,12 @@ const TmsMainPage = () => {
     ];
 
     return (
-        <div className="min-h-screen pt-8">
+        <div className="min-h-screen">
             <div className="">
                 {/* TMS Introduction Section */}
                 <div className=" p-6 lg:p-10 mb-10">
                     <h3 className="text-3xl font-bold text-gray-800 mb-4 sm:text-xl">
-                        {`What is Transcranial Magnetic Stimulation (TMS)?`}
+                        {`Transcranial Magnetic Stimulation (TMS)`}
                     </h3>
                     <div className="mb-5 md:h-[360px]">
                         <img src="/tmsPage/tms1.png" className="object-cover h-full" />
@@ -111,9 +112,9 @@ const TmsMainPage = () => {
                     <p className="text-gray-700 text-l sm:text-base">
                         {`TMS is often a treatment that can help when other treatment options are unsuccessful. It’s also an important option if you're considering a non-invasive option that does not involve medication. TMS can also offer an alternative to treatments that are riskier like electroconvulsive therapy (ECT).`}
                     </p>
-                    <button className="mt-6 w-full sm:w-auto bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
-                        {`Book Consultation`}
-                    </button>
+                   <div className='flex justify-center mt-5'>
+                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] hover:bg-orange-500 uppercase active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold "}/>
+                   </div>
                 </div>
 
                 {/* Conditions Section */}
@@ -153,11 +154,9 @@ const TmsMainPage = () => {
                     </div>
 
                     {/* Book Consultation Button */}
-                    <div className="flex justify-center">
-                        <button className="mt-6 w-full sm:w-auto bg-orange-600 text-white px-5 py-3 rounded-md font-medium shadow-md hover:bg-orange-700 transition-colors focus:ring-4 focus:ring-orange-500 focus:outline-none">
-                            {`Book Consultation`}
-                        </button>
-                    </div>
+                    <div className='flex justify-center mt-5'>
+                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] uppercase hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold"}/>
+                   </div>
                 </div>
 
                 {/* How TMS Works Section */}
@@ -253,11 +252,9 @@ const TmsMainPage = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className='flex justify-center px-5'>
-                <button className="mt-6 w-full sm:w-auto bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
-                        {`Book Consultation`}
-                    </button>
-                </div>
+                    <div className='flex justify-center mt-5'>
+                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] uppercase hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold"}/>
+                   </div>
                 </div>
 
                
