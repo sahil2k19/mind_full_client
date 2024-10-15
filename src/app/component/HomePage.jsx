@@ -132,7 +132,7 @@ const HomePage = ({ allSection }) => {
                                         {allSection?.heroSection?.button?.text}
                                     </button>
                                 </Link> */}
-                                <div className='w-[70%]'>
+                                <div className=''>
                                 <RequestAppointment name={"SCHEDULE CONSULTATION"}/>
 
                                 </div>

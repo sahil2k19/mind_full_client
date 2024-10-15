@@ -12,28 +12,26 @@ const ClinicalAssessment = () => {
             </div>
 
             <div className=''>
-                
-            {/* Featured Assessments Heading */}
-            <div className="mb-6">
-                <h3 className="text-xl text-center font-semibold text-gray-700">Featured Assessments</h3>
-            </div>
 
-            {/* Grid of Assessments */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-6 mb-8 px-10 bg-primary-div p-6">
-                {tests.map((test, index) => (
-                    <div
-                        key={index}
-                        className="bg-white shadow-lg rounded-lg flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300 w-full"
-                    >
-                        <div className='border-2 border-primary-orange rounded-lg p-2 w-full flex justify-center'>
-                            <h1>{test.shortForm}</h1>
+                {/* Featured Assessments Heading */}
+                <div className="mb-6">
+                    <h3 className="text-xl text-center font-semibold text-gray-700">Featured Assessments</h3>
+                </div>
+
+                {/* Grid of Assessments */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-6 mb-8 px-10 bg-primary-div p-6">
+                    {tests.map((test, index) => (
+                        <div
+                            key={index}
+                            className="bg-white shadow-md p-4 rounded-lg flex  items-center justify-start  w-full"
+                        >
+                            <h1 className='text-xl font-semibold whitespace-nowrap'>{test.shortForm} -</h1>
+                            <div className='p-2'>
+                                <h3 className="text-sm  text-gray-800 capitalize">{test.name}</h3>
+                            </div>
                         </div>
-                       <div className='p-2'>
-                       <h3 className="text-lg md:text-lg font-medium text-gray-800 capitalize">{test.name}</h3>
-                       </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
             </div>
 
 

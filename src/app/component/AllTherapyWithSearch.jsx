@@ -40,7 +40,7 @@ const AllTherapyWithSearch = () => {
                         <input
                             type="text"
                             className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search by test name..."
+                            placeholder="Search by therapy name..."
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
@@ -69,7 +69,7 @@ const AllTherapyWithSearch = () => {
                                             : test.detail.substring(0, 50) + '...'}
                                     </p>
                                     {/* Read More Button */}
-                                    <div className="flex justify-between items-center">
+                                    <div className="flex justify-end items-center">
                                         <IconButton
                                             onClick={() => toggleExpand(test._id)}
                                             className="text-blue-500 text-[12px]"
@@ -83,8 +83,8 @@ const AllTherapyWithSearch = () => {
                         ))
                     ) : (
                         <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4">
-                            <h3 className="text-lg font-semibold text-gray-800">No tests found</h3>
-                            <p className="text-gray-600 text-center mb-4">{`We couldn't find any tests matching your search.`}</p>
+                            <h3 className="text-lg font-semibold text-gray-800">No Therapy found</h3>
+                            <p className="text-gray-600 text-center mb-4">{`We couldn't find any Therapy  matching your search.`}</p>
                             <RequestAppointment
                                 name={"Contact Us"}
                                 customStyle={" bg-[#EF6623] hover:bg-orange-500 text-lg font-semibold active:bg-orange-700 rounded-lg text-white py-2 px-4"}
@@ -96,9 +96,9 @@ const AllTherapyWithSearch = () => {
                     <div className="flex justify-center mb-6">
                         <button
                             onClick={loadMoreTests}
-                            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                            className="bg-white  text-black py-2 px-4 rounded-lg border-2 border-gray-200 "
                         >
-                            Load More
+                            Load More...
                         </button>
                     </div>
                 )}

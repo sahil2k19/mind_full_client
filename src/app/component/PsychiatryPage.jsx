@@ -128,7 +128,7 @@ const PsychiatryPage = () => {
                             </p>
                         </div>
 
-                        <div className="text-orange-600 font-bold">
+                        <div className="text-orange-600 font-bold text-xl">
                             {`If you’re uncertain about what you need, our team will guide you.`}
                         </div>
                     </div>
