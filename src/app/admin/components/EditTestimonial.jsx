@@ -6,10 +6,10 @@ import toast from 'react-hot-toast';
 
 const EditTestimonial = ({testimonialId}) => {
   const router = useRouter();
-  // Initial state for form fields
   const [formData, setFormData] = useState({});
   const [allDoctors, setAllDoctors] = useState([]);
-
+  const [videoFile, setVideoFile] = useState(null); // State to hold the selected video file
+  const [currentVideoLink, setCurrentVideoLink] = useState(null); // State to hold the current video link
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,8 +17,6 @@ const EditTestimonial = ({testimonialId}) => {
       [name]: value
     });
   };
-
-
 
   const fetchDoctor = () => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}testimonials/doctor`)
@@ -33,53 +31,86 @@ const EditTestimonial = ({testimonialId}) => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}testimonials/${testimonialId}`)
     .then((res) => {
       const doctor = res.data.doctor?._id;
-      console.log(res.data);
       setFormData({...res.data, doctor: doctor});
+      setCurrentVideoLink(res.data.videoUrl);
     }).catch((err) => {
       console.log(err);
     });
   };
 
-  const updateData = ()=>{
-    
+  const updateData = () => {
     axios.put(`${process.env.NEXT_PUBLIC_API_URL}testimonials/${testimonialId}`, formData)
-    .then(res=>{
+    .then(res => {
       toast.dismiss();
       toast.success('Testimonial updated successfully');
       fetchData();
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err);
       toast.dismiss();
       toast.error('Something went wrong');
-    })
-  }
-  const createData = ()=>{
-    
+    });
+  };
+
+  const createData = () => {
     axios.post(`${process.env.NEXT_PUBLIC_API_URL}testimonials`, formData)
-    .then(res=>{
+    .then(res => {
       toast.dismiss();
       toast.success('Testimonial added successfully');
       router.push('/admin/testimonials');
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err);
       toast.dismiss();
       toast.error('Something went wrong');
-    })
-  }
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitted data:', formData);
-    if(testimonialId=="new"){
+    if (testimonialId === "new") {
       createData();
+    } else {
+      updateData();
     }
-    else{
-      updateData()
+  };
+
+  const handleVideoUpload = (e) => {
+    const file = e.target.files[0];
+
+    if (file && file.size > 3 * 1024 * 1024) { // 3MB limit
+      toast.error("File size exceeds 3MB");
+      return;
     }
+
+    setVideoFile(file);
+
+    // Create FormData object to send video file
+    const formDataVideo = new FormData();
+    formDataVideo.append('video', file);
+
+    // Make API call to upload video and receive a URL
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}uploads/video`, formDataVideo, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(res => {
+      const videoUrl = res.data.result; // Assuming the API responds with a video URL
+      setFormData({
+        ...formData,
+        videoUrl: videoUrl
+      });
+      setCurrentVideoLink(videoUrl);
+      toast.success("Video uploaded successfully");
+    })
+    .catch(err => {
+      console.log(err);
+      toast.error("Error uploading video");
+    });
   };
 
   useEffect(() => {
     fetchDoctor();
-    if(testimonialId!=="new"){
+    if (testimonialId !== "new") {
       fetchData();
     }
   }, []);
@@ -166,19 +197,19 @@ const EditTestimonial = ({testimonialId}) => {
 
         {/* Video */}
         <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2">Video</label>
-          <video controls className="w-full h-auto rounded-md shadow-md mb-4">
-            <source src={formData.videoUrl || ''} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Upload Video (Max 3MB)</label>
           <input
-            type="text"
-            name="videoUrl"
-            value={formData.videoUrl || ''}
-            onChange={handleInputChange}
+            type="file"
+            accept="video/*"
+            onChange={handleVideoUpload}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Video URL"
           />
+          {currentVideoLink && (
+            <video controls className="w-full h-auto rounded-md shadow-md mb-4">
+              <source src={currentVideoLink} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
 
         {/* Doctor Dropdown */}

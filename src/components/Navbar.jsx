@@ -21,8 +21,8 @@ const links = [
   {
     id: 2,
     title: 'TMS',
-    path: '/pages/tmsPage',
-    active: '/pages/tmsPage',
+    path: '/pages/tms',
+    active: '/pages/tms',
   },
   {
     id: 3,
@@ -36,12 +36,12 @@ const links = [
         path: '/services/therapy',
         active: '/services/therapy',
       },
-      {
-        id: 2,
-        title: 'TMS Treatment',
-        path: '/pages/tmsPage',
-        active: '/pages/tmsPage',
-      },
+      // {
+      //   id: 2,
+      //   title: 'TMS Treatment',
+      //   path: '/pages/tmsPage',
+      //   active: '/pages/tmsPage',
+      // },
       {
         id: 3,
         title: 'Psychiatry',

@@ -165,42 +165,31 @@ const HomePage = ({ allSection }) => {
                         </Link>
                     </div>
                 </section>
-                {/* services */}
-                <section className='py-5 px-4'>
-                    <div className='mb-'>
-                        <div className='mb-8'>
-                            {/* <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1> */}
-                            <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Services</h1>
+             {/* services */}
+<section className='py-5 px-4'>
+  <div className='mb-'>
+    <div className='mb-8'>
+      <h1 className='text-3xl font-semibold text-gray-800 text-center'>Services</h1>
+    </div>
+    {
+      allSection?.section5?.services?.map((service, index) => (
+        <div key={index} className='mb-6'>
+          <div className='grid grid-cols-2 items-center gap-6 justify-center'>
+            {
+              service?.array?.map((i, index) => (
+                <Link href={servicesIcon[index]?.link} key={index} className='flex flex-col cursor-pointer justify-center items-center mb-6'>
+                  <img src={servicesIcon[index]?.icon} className='w-[80px] h-[80px] mb-4' />
+                  <p className='text- font-semibold text-center'>{servicesIcon[index]?.name}</p>
+                </Link>
+              ))
+            }
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
 
-                        </div>
-                        {
-                            allSection?.section5?.services?.map((service, index) => (
-                                <div key={index} className='mb-6'>
-                                    {/* <h1 className='text-xl font-semibold mb-5 text-center'>{service?.title}</h1> */}
-                                    <div className='grid grid-cols-1 md:grid-cols-4 items-center  gap-3 justify-center px-[70px]'>
-                                        {
-                                            service?.array?.map((i, index) => (
-                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer justify-start mb-2  items-center  '>
-                                                    <img src={servicesIcon[index]?.icon} className='w-[40px] h-[40px]   mr-4 ' />
-                                                    <p className=' text-lg ml-1 font-semibold '>{servicesIcon[index]?.name}</p>
-                                                </Link>
-                                            ))
-                                        }
-
-                                    </div>
-                                    {/* <div className='flex justify-center '>
-                                            <Link href={service?.button?.link || "/"}>
-                                                <button className='bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
-                                                    {service?.button?.text}
-                                                </button>
-                                            </Link>
-                                        </div> */}
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                </section>
                 {/* More about tms */}
                 <section className=' py-10 px-4  bg-primary-div'>
                     <div className='mb-10'>

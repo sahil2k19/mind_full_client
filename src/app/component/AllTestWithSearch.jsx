@@ -7,6 +7,7 @@ import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 const AllTestWithSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [expanded, setExpanded] = useState({});
+    const [testsToShow, setTestsToShow] = useState(4); // State to manage how many tests to show
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -18,10 +19,15 @@ const AllTestWithSearch = () => {
             [id]: !prevExpanded[id],
         }));
     };
+    const loadMoreTests = () => {
+        setTestsToShow((prev) => prev + 4); // Increase tests shown by 4
+    };
 
     const filteredTests = allTest.filter((test) =>
         test.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    const testsToDisplay = filteredTests.slice(0, testsToShow); // Show only the specified number of tests
+
 
     return (
         <div className=' flex flex-col justify-center items-center'>
@@ -44,20 +50,20 @@ const AllTestWithSearch = () => {
             </div>
 
             {/* Search Results */}
-            <div className="grid grid-cols-1 gap-6 h-[400px] overflow-y-scroll">
-                {filteredTests.length > 0 ? (
-                    filteredTests.map((test) => (
+            <div className="grid grid-cols-1 gap-6 h-[400px] overflow-y-scroll mb-6">
+                {testsToDisplay.length > 0 ? (
+                    testsToDisplay.map((test) => (
                         <div
                             key={test._id}
                             className="bg-white shadow-lg rounded-lg px-2 flex "
                         >
-                            <div className="mb-4 w-[80px] md:min-w-[120px] mr-2">
+                            {/* <div className="mb-4 w-[80px] md:min-w-[120px] mr-2">
                                 <img
                                     src={test.icon}
                                     alt={test.name}
                                     className="w-full object-cover mr-4"
                                 />
-                            </div>
+                            </div> */}
                             <div className="w-full">
                                 <h3 className="text-[14px] md:text-lg font-semibold text-gray-800 capitalize">
                                     {test.name}
@@ -76,12 +82,7 @@ const AllTestWithSearch = () => {
                                         <ExpandMoreIcon />
                                         {expanded[test._id] ? 'Read Less' : 'Read More'}
                                     </IconButton>
-                                    <div className="">
-                                        <RequestAppointment
-                                            name={"Contact Us"}
-                                            customStyle={" bg-[#EF6623] hover:bg-orange-500 text-[12px] active:bg-orange-700 rounded-lg text-white py-1 px-2"}
-                                        />
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -96,7 +97,24 @@ const AllTestWithSearch = () => {
                         />
                     </div>
                 )}
+                        {/* Load More Button */}
+                        {testsToDisplay.length < filteredTests.length && (
+                    <div className="flex justify-center mb-6">
+                        <button
+                            onClick={loadMoreTests}
+                            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                        >
+                            Load More
+                        </button>
+                    </div>
+                )}
             </div>
+            <div className="flex justify-center">
+                    <RequestAppointment
+                        name={"Contact Us"}
+                        customStyle={" bg-[#EF6623] hover:bg-orange-500 text-xl active:bg-orange-700 rounded-lg text-white py-1 px-2"}
+                    />
+                </div>
           </div>
         </div>
     );
