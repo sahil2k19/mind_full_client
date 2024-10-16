@@ -72,7 +72,7 @@ export default function CounterComponent() {
     <div className="mt-3">
       <div className="text-center">
         {/* Loop through each counter and display them */}
-        {counters.map((counter, index) => (
+        {/* {counters.map((counter, index) => (
           <div key={index} className="mb-5">
             <div className="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">
               {counts[index].toLocaleString()}
@@ -80,8 +80,25 @@ export default function CounterComponent() {
             </div>
             <p className="text-md font-semibold">{counter.label}</p>
           </div>
-        ))}
-      </div>
+        ))} */}
+
+        <div className='flex flex-row justify-between gap-2'>
+          <div class="mb-5">
+            <div class="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">5+</div>
+            <p class="text-md font-semibold">Years of Experience</p>
+            </div>
+            <div className='border-[1px] mb-4 border-orange-600'>
+
+            </div>
+            
+          <div class="mb-5">
+            <div class="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">10+</div>
+            <p class="text-md font-semibold">Clinics (India &amp; USA)</p>
+          </div>
+        </div>
+        <div class="mb-5">
+          <div class="text-4xl font-bold mb-1 tabular-nums text-orange-600" aria-live="polite">400,000+</div>
+          <p class="text-md font-semibold">Treatments Administered</p></div></div>
     </div>
   )
 }

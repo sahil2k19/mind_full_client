@@ -4,9 +4,9 @@ const ClinicalAssessment = () => {
 
 
     return (
-        <div className="mx-auto px-4 py-8 ">
+        <div className="mx-auto py-8 ">
             {/* Main Heading */}
-            <div className="text-center mb-8 ">
+            <div className="text-center  px-4 mb-8 ">
                 <h1 className="text-2xl font-bold text-primary-orange mb-2">Comprehensive Clinical Assessments</h1>
                 <p className="text-gray-600">Whether for a diagnosis or progress tracking, our therapists and RCI-certified Clinical Psychologists will provide you with evidence-based, effective care that is customized to meet your needs.</p>
             </div>
@@ -14,16 +14,17 @@ const ClinicalAssessment = () => {
             <div className=''>
 
                 {/* Featured Assessments Heading */}
+       
+                {/* Grid of Assessments */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-2 mb-8 px-10 bg-primary-div p-6">
                 <div className="mb-6">
                     <h3 className="text-xl text-center font-semibold text-gray-700">Featured Assessments</h3>
                 </div>
 
-                {/* Grid of Assessments */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-6 mb-8 px-10 bg-primary-div p-6">
                     {tests.map((test, index) => (
                         <div
                             key={index}
-                            className="bg-white shadow-md p-4 rounded-lg flex  items-center justify-start  w-full"
+                            className="bg-orange-100  p-4 rounded-lg flex  items-center justify-start  w-full"
                         >
                             <h1 className='text-xl font-semibold whitespace-nowrap'>{test.shortForm} -</h1>
                             <div className='p-2'>

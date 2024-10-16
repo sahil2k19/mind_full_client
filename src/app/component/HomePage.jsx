@@ -19,25 +19,25 @@ const videos = [
 const servicesIcon = [
     {
         icon: '/iconsNew/therapy.png',
-        link: '/services/therapy', 
-        name:'Therapy'
+        link: '/services/therapy',
+        name: 'Therapy'
     },
     {
         icon: '/iconsNew/psychiatry.png',
         link: '/services/psychiatry',
-        name:'Psychiatry'
+        name: 'Psychiatry'
 
     },
     {
         icon: '/iconsNew/assessment.png',
         link: '/assesment',
-        name:'Professional Assessment'
+        name: 'Professional Assessment'
 
     },
     {
         icon: '/iconsNew/tms.png',
         link: '/services/tms-treatment-page',
-        name:'TMS'
+        name: 'TMS'
 
     },
 ]
@@ -49,11 +49,11 @@ const HomePage = ({ allSection }) => {
                 {/* hero section */}
                 <section className='mb-5'>
                     <div className='md:grid grid-cols-2 items-center'>
-                        <div className='flex justify-center w-full  mb-4'>
+                        <div className='flex justify-center w-full  mb-7'>
                             <img className='w-full object-cover' src='/iconsNew/hero2.png' />
                         </div>
                         <div>
-                            <div className='flex flex-col justify-center px-2'>
+                            <div className='flex flex-col justify-center'>
                                 {/* <h1 className=' text-3xl mb-5  text-center font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1> */}
@@ -92,12 +92,12 @@ const HomePage = ({ allSection }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <p className=' mb-2 text-center text-[16px] text-[#737373]'>We help you win over</p>
+                                    <div className='bg-primary-div p-4'>
+                                        <p className=' mb-2 text-center text-[16px] text-black'>We help you win over</p>
                                         <div className='mb-2'>
-                                            <p className='text-[16px] text-center font-semibold'>OCD | ANXIETY | DEPRESSION | TRAUMA</p>
+                                            <p className='text-[16px] text-center text-primary-orange font-semibold'>OCD | ANXIETY | DEPRESSION | TRAUMA</p>
                                         </div>
-                                        <p className='mb-2   text-center text-[16px] text-[#737373]'>and various other conditions</p>
+                                        <p className='  text-center text-[16px] text-black'>and various other conditions</p>
 
                                     </div>
                                     {/* <div className='flex gap-3 justify-center mb-8'>
@@ -115,7 +115,7 @@ const HomePage = ({ allSection }) => {
                                         </div>
 
                                     </div> */}
-                                    <p className='mb-4 mt-5  text-[16px]  text-center text-[#737373]'>With empathy and confidence,
+                                    <p className='mb-0 mt-5  text-[16px] px-6  text-center text-[#737373]'>With empathy and confidence,
                                         our professionals will guide you
                                         through every challenge. </p>
 
@@ -133,7 +133,7 @@ const HomePage = ({ allSection }) => {
                                     </button>
                                 </Link> */}
                                 <div className=''>
-                                <RequestAppointment name={"SCHEDULE CONSULTATION"}/>
+                                    <RequestAppointment name={"SCHEDULE CONSULTATION"} />
 
                                 </div>
                             </div>
@@ -141,16 +141,16 @@ const HomePage = ({ allSection }) => {
                     </div>
                 </section>
                 {/* free test */}
-                <section className='bg-primary-div py-10'>
+                <section className='bg-primary-div py-5'>
                     <div>
-                        <h1 className='text-2xl  text-center font-sans mb-4 font-semibold'>
+                        <h1 className='text-2xl  text-center font-sans font-semibold'>
                             {/* {allSection?.section2?.para1} */}
-                            Not Sure where to begin?
+                            Not sure where to begin?
                         </h1>
-                        <p className='text-center font-semibold text-lg'>Take our self-assessment</p>
+                        {/* <p className='text-center font-semibold text-lg'>Take our self-assessment</p> */}
                     </div>
 
-                    <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)]'>
+                    <div className='flex flex-col justify-center  bg-[rgba(239, 102, 35, 0.3)]'>
                         {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                         <div>
                             <img className='w-full' src='https://mindfultms1.s3.us-east-1.amazonaws.com/take_assessment_image_4__1_-removebg-preview.png' />
@@ -165,45 +165,45 @@ const HomePage = ({ allSection }) => {
                         </Link>
                     </div>
                 </section>
-             {/* services */}
-<section className='py-5 px-4'>
-  <div className='mb-'>
-    <div className='mb-8'>
-      <h1 className='text-3xl font-semibold text-gray-800 text-center'>Services</h1>
-    </div>
-    {
-      allSection?.section5?.services?.map((service, index) => (
-        <div key={index} className='mb-6'>
-          <div className='grid grid-cols-2 items-center gap-6 justify-center'>
-            {
-              service?.array?.map((i, index) => (
-                <Link href={servicesIcon[index]?.link} key={index} className='flex flex-col cursor-pointer justify-center items-center mb-6'>
-                  <img src={servicesIcon[index]?.icon} className='w-[80px] h-[80px] mb-4' />
-                  <p className='text- font-semibold text-center'>{servicesIcon[index]?.name}</p>
-                </Link>
-              ))
-            }
-          </div>
-        </div>
-      ))
-    }
-  </div>
-</section>
+                {/* services */}
+                <section className='py-5 px-4'>
+                    <div className=''>
+                        <div className='mb-5'>
+                            <h1 className='text-3xl font-semibold text-gray-800 text-center'>Services</h1>
+                        </div>
+                        {
+                            allSection?.section5?.services?.map((service, index) => (
+                                <div key={index} className=''>
+                                    <div className='grid grid-cols-2 items-center gap-6 justify-center'>
+                                        {
+                                            service?.array?.map((i, index) => (
+                                                <Link href={servicesIcon[index]?.link} key={index} className='flex flex-col cursor-pointer justify-center items-center mb-2'>
+                                                    <img src={servicesIcon[index]?.icon} className='w-[80px] h-[80px] mb-4' />
+                                                    <p className='text- font-semibold text-center'>{servicesIcon[index]?.name}</p>
+                                                </Link>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </section>
 
                 {/* More about tms */}
                 <section className=' py-10 px-4  bg-primary-div'>
-                    <div className='mb-10'>
+                    <div className='mb-5'>
                         <h1 className='text-3xl text-center font-sans font-semibold'>
                             {allSection?.section3?.title}
                         </h1>
-                        <p className='text-center mt-2 mb-5 text-[16px] text-[#545454] font-semibold'>{allSection?.section3?.para1}</p>
+                        <p className='text-center mt-2 mb-2 text-[16px] text-[#545454] font-semibold'>A safe approach using magnets to treat <strong>Depression, Anxiety, OCD and more.</strong></p>
                     </div>
 
                     <div className='md:grid grid-cols-6 items-center justify-center md:bg-primary-div'>
                         {/* hide this on medium and show alternate */}
-                        <div className='flex flex-col justify-between mb-5 items-center pb-4  md:px-8 rounded-lg gap-6 col-span-2  bg-white '>
+                        <div className='flex flex-col justify-between mb-10 items-center pb-4  md:px-8 rounded-lg gap-6 col-span-2 bg-orange-100  '>
                             <div className=''>
-                                <img className='w-full h-full rounded-t-lg' src={"https://mindfultms1.s3.us-east-1.amazonaws.com/tms%20%281%29.png"} />
+                                <img className='w-full h-full border-2 border-white  rounded-lg' src={"https://mindfultms1.s3.us-east-1.amazonaws.com/tms%20%281%29.png"} />
                             </div>
                             <div className='grid grid-cols-2 gap-2'>
                                 {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.box?.para }} /> */}
@@ -238,11 +238,11 @@ const HomePage = ({ allSection }) => {
                                 <CounterComponent />
                             </div>
                             <div>
-                                <p className='text-center mb-8 text-gray-700 text-lg font-semibold'>Is TMS for me? Learn how it works and
+                                <p className='text-center mb-8 text-gray-700 text-lg font-semibold'><strong>Is TMS for me?</strong> <br/>Learn how it works and
                                     if it is the right option for you.</p>
                             </div>
                             <div className='flex justify-center'>
-                                <Link href={allSection?.section3?.button?.link} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
+                                <Link href={"/pages/tms"} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
                                     {allSection?.section3?.button?.text}
                                 </Link>
                             </div>
@@ -252,11 +252,11 @@ const HomePage = ({ allSection }) => {
 
 
                 {/* wy tms */}
-                <section className='py-8 px-4 mb-11'>
+                <section className='py-8 px-4 mb-3'>
                     <div className='mb-8'>
                         <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.header }} />
 
-                        <div dangerouslySetInnerHTML={{ __html: allSection?.section4?.para }} />
+                        <div className='mt-2' dangerouslySetInnerHTML={{ __html: allSection?.section4?.para }} />
                     </div>
                     <div className='flex justify-center'>
                         <div className='grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0  items-center  justify-center'>
@@ -282,7 +282,7 @@ const HomePage = ({ allSection }) => {
                     {/* <TestimonialComponents2/> */}
 
                 </section>
-               
+
                 {/* our experts */}
                 <div className='bg-primary-div'>
                     <OurDoctorSection />
@@ -300,7 +300,7 @@ const HomePage = ({ allSection }) => {
                         backgroundSize: 'cover',  // This makes the background image cover the entire div
                         backgroundPosition: 'center', // This centers the background image
                     }}>
-                    <div></div>
+                        <div></div>
                         {/* <img className='w-full object-cover' src='/home/banner02.svg' /> */}
                         <div className='flex flex-col justify-center items-end'>
                             <div className='flex flex-col justify-center  items-end px-8'>
@@ -339,8 +339,8 @@ const HomePage = ({ allSection }) => {
                         <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
                     </div>
 
-                    <div className='flex justify-around items-center bg-primary-div p-8 rounded-xl'>
-                        <div className='flex flex-col justify-center mb-5  bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
+                    <div className='flex justify-around items-center bg-primary-div p-5 rounded-xl'>
+                        <div className='flex flex-col justify-center mb-2  bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
                             {/* <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                             <span className='text-3xl  mb-2'>Take a <span className='font-semibold'>FREE TEST </span></span>
                             <span className=' text-3xl'>to identify your symptoms</span>

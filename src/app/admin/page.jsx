@@ -7,7 +7,7 @@ const pages = [
   {
     name: 'Home Page',
     slug: 'homesection',
-    disable: true,
+    // disable: true,
   },
   {
     name: 'Doctors ',

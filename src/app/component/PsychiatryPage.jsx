@@ -47,11 +47,11 @@ const PsychiatryPage = () => {
                 </Container>
 
                 {/* Psychiatrists List */}
-                <div className='mt-12 bg-primary-div px-3 py-4 mb-6'>
+                <div className='mt-12 bg-primary-div px-3 pt-4 pb-8 '>
                     <h3 className='text-3xl md:text-4xl text-center text-gray-700 font-semibold'>
                         Our Psychiatrists
                     </h3>
-                    <div className='grid grid-cols-3 gap-2 md:gap-8 mt-8 '>
+                    <div className='grid grid-cols-3 gap-2 md:gap-8 mt-4 '>
                         {
                             psychiatryData.map((item) => (
                                 <Link
@@ -82,10 +82,13 @@ const PsychiatryPage = () => {
 
 
                 <div className="bg-white p-6  mx-auto rounded-lg ">
+                <h3 className='text-2xl md:text-3xl text-center text-[#f6881f] font-bold mb-4'>
+                When should I consider seeing a psychiatrist?
+                    </h3>
                     <div className="space-y-6 text-center">
                         <div>
                             <h2 className="text-xl font-bold text-gray-800">
-                               {` Therapy hasn’t provided relief`}
+                               {` Therapy hasn’t provided expected relief`}
                             </h2>
                             <p className="text-gray-600 mt-2">
                               {`  If you’re not finding the support you need through therapy, a psychiatrist can offer additional options.`}
@@ -133,6 +136,9 @@ const PsychiatryPage = () => {
                         </div>
                     </div>
                 </div>
+                <div className="flex justify-center ">
+                            <RequestAppointment name="Book a Consultation" customStyle="px-6 py-3 rounded-full text-lg transition bg-primary-orange text-white font-semibold hover:bg-orange-500 active:bg-orange-600" />
+                        </div>
             </div>
         </>
     )

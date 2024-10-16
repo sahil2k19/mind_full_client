@@ -118,9 +118,14 @@ export default function TestimonialComponent() {
       <div className="p-3 text-center bg-primary-div">
         <h2 className="text-lg font-medium text-gray-800">{title}</h2>
       </div>
-      <div className="space-y-4 mt-5">
+      <div className="space-y-4 ">
         {type === "text" ? (
+        <>
+        <div>
+            <img className="h-[184.5px] object-cover" src="https://placehold.co/1920x1080" />
+          </div>
          <QuoteComponent />
+        </>
         ) : (
           <>
             <div className="relative" onClick={() => setShowVideoModal(true)}>
@@ -132,7 +137,7 @@ export default function TestimonialComponent() {
               </div>
              <div className="md:flex justify-center">
              <video
-                className="w-full  h-[350px] object-cover md:px-11 md:w-[700px]  md:rounded-lg"
+                className="w-full  h-[184.5px] object-cover md:px-11 md:w-[700px]  md:rounded-lg"
                 src={videoUrl}
               />
              </div>
@@ -182,19 +187,7 @@ export default function TestimonialComponent() {
               <p className="text-[12px] text-gray-500">Review on Google</p>
             </div>
           </div>
-          <div>
-            {fullTestimonial && <button
-              // onClick={() => {
-              //   if (!showFullTestimonial && fullTestimonial) {
-              //     setShowFullTestimonial(true)
-              //   } else {
-              //     setShowFullTestimonial(false)
-              //   }
-              // }} 
-              onClick={() => setisQuoteModal(true)}
-              className="px-3 py-2  bg-gray-200 hover:bg-gray-300 active:bg-gray-200 rounded-xl text-orange-500 font-semibold">
-              {showFullTestimonial ? "Show Less" : "Read More"}</button>}
-          </div>
+         
         </div>
 
         <Dialog
@@ -247,13 +240,26 @@ export default function TestimonialComponent() {
 
 
         {/* prev next button */}
-        <div className="flex justify-between px-4 pb-6">
+        <div className="flex justify-between items-center px-4 pb-6">
           <img
             onClick={prevTestimonial}
             className="text-white cursor-pointer"
             src="/icons/left arrow.svg"
             alt="Previous"
           />
+           <div>
+            {fullTestimonial && <button
+              // onClick={() => {
+              //   if (!showFullTestimonial && fullTestimonial) {
+              //     setShowFullTestimonial(true)
+              //   } else {
+              //     setShowFullTestimonial(false)
+              //   }
+              // }} 
+              onClick={() => setisQuoteModal(true)}
+              className="px-3 py-2 rounded-xl underline text-orange-500 font-semibold">
+              {showFullTestimonial ? "Show Less" : "Read More"}</button>}
+          </div>
           <img
             onClick={nextTestimonial}
             className="text-white cursor-pointer"

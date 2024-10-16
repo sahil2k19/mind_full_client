@@ -33,13 +33,14 @@ const OurDoctorSection = () => {
     <div className='grid grid-cols-3 md:grid-cols-6 gap-4 text-center'>
         {
             ourExperts?.map((expert, index) => (
-                <Link href={`/doctor/${expert?._id}`} key={index} className=' flex flex-col items-center justify-center'>
-                    <div className='mb-2 h-[71] w-[71]'>
-                        <img className='h-[75px] w-[75px] object-cover border-[3px] border-orange-400 rounded-full' src={expert?.image} />
+                <Link href={`/doctor/${expert?._id}`} key={index} className=' flex flex-col items-top'>
+                    <div className='mb-2 h-[71] w-[71] flex flex-col items-center'>
+                        <img className='h-[75px] w-[75px] object-cover border-[3px]   border-orange-400 rounded-full' style={{objectPosition:"top"}} src={expert?.image} />
                     </div>
                     <div className='mb-1'>
-                    <p className='font-semibold text-[13px] text-gray-800 max-w-[105px] truncate'>{expert?.name}</p>
-                
+                    <p className='font-semibold text-[14px] text-gray-800 max-w-[105px] '>{expert?.name}</p>
+                    <p className=' text-[10px] text-gray-800 max-w-[105px] '>{expert?.location}</p>
+
 
                     </div>
                  

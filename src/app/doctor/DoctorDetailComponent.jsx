@@ -92,24 +92,24 @@ const DoctorDetailComponent = async ({ doctorId }) => {
 
         {/* Contact and Availability */}
         <div className="px-6 py-4 border-t flex flex-col lg:flex-row lg:justify-between">
-          <div>
+          <div className=''>
             <h3 className="text-xl font-bold text-primary-orange">Contact Information</h3>
-            <p className="mt-2 text-gray-700">
+            <p className="mt-2 text-gray-700 mb-1">
               <span className="font-semibold">Phone:</span> {doctorDetail?.phone}
             </p>
-            <p className="text-gray-700">
+            <p className="text-gray-700 mb-1">
               <span className="font-semibold">Email:</span> {doctorDetail?.email}
             </p>
-            <p className="text-gray-700">
+            <p className="text-gray-700 mb-1">
               <span className="font-semibold">Website:</span> {doctorDetail?.website}
             </p>
           </div>
           <div className="mt-6 lg:mt-0">
-            <h3 className="text-xl font-bold text-primary-orange">Availability</h3>
+            <h3 className="text-base font-medium text-primary-orange">Availability</h3>
             <div className="mt-2 text-gray-700">
               {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, index) => (
                 <div key={index} className="flex items-center space-x-2">
-                  <span className="font-semibold">{day}:</span>
+                  <span className="text-sm">{day}</span>
                   {doctorDetail?.availability.includes(day) ? (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500" fill="none" strokeWidth="3" viewBox="0 0 24 24" stroke="currentColor" >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

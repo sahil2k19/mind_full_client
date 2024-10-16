@@ -2,6 +2,7 @@
 import React , { useState } from 'react'
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 
 const AllTestWithSearch = () => {
@@ -55,7 +56,7 @@ const AllTestWithSearch = () => {
                     testsToDisplay.map((test) => (
                         <div
                             key={test._id}
-                            className="bg-white shadow-lg rounded-lg px-2 flex "
+                            className="bg-white shadow-md max-w-[320px] rounded-lg px-2 flex"
                         >
                             {/* <div className="mb-4 w-[80px] md:min-w-[120px] mr-2">
                                 <img
@@ -79,8 +80,8 @@ const AllTestWithSearch = () => {
                                         onClick={() => toggleExpand(test._id)}
                                         className="text-blue-500 text-[12px]"
                                     >
-                                        <ExpandMoreIcon />
-                                        {expanded[test._id] ? 'Read Less' : 'Read More'}
+                                           {expanded[test._id]? <ExpandLessIcon />:<ExpandMoreIcon />}
+                                           {expanded[test._id] ? 'Read less' : 'Read more'}
                                     </IconButton>
                                    
                                 </div>

@@ -99,7 +99,7 @@ const SelfAssesment = () => {
             <p className='text-primary-orange'>I understand</p>
         </div>
 
-        <div className='flex justify-center'>
+        <div className='flex justify-center mb-5'>
             <button disabled={!checked} onClick={() => router.push(test?.link)} className={` text-white p-3 rounded-lg font-semibold px-10 ${!checked ? 'cursor-not-allowed bg-gray-300' : 'bg-primary-orange active:bg-orange-500'}`}>TAKE THE TEST</button>
         </div>
     </div>

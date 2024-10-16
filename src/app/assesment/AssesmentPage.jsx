@@ -17,32 +17,32 @@ const AssesmentPage = ({ allSection }) => {
                     {/* {
                         <div className='text-primary-orange font-semibold' dangerouslySetInnerHTML={{ __html: allSection?.section1?.para1 }}></div>
                     } */}
-                    <p>RCI Certified Clinicians provide various tests and Assessments</p>
+                    <p>Take a moment to assess your well-being </p>
                 </div>
-                <div className='text-center text-xl mx-5 mb-6 md:text-2xl text-[#3A3A3A] font-semibold'>
-                    <span className=' '>If you are looking for a psychological assessment</span>
+                <div className='text-center text-xl mx-5  md:text-2xl text-[#3A3A3A] font-semibold'>
+                    <span className=' '>If you are seeking for a professional help </span>
                     <br className='md:block hidden'/>
-                  <span>  reach out to your nearest clinic.</span>
+                  <span>  reach out to our nearest clinic.</span>
                 </div>
 
-                <div className='min-h-[70vh] py-5'>
+                <div className=' pb-5'>
                     {/* <div>
                         <h1 className='text-center text-xl md:text-2xl mb-4 underline'>Available tests:</h1>
                     </div> */}
-                    <div className='flex justify-center mb-8'>
-                        <div className='grid grid-cols-1 md:grid-cols-3  px-4 py-2 gap-4 '>
+                    <div className='flex justify-center mb-2'>
+                        <div className='grid grid-cols-2 items-center justify-center  md:grid-cols-3  px-4 py-2 gap-2 '>
                             {
                                 allSection?.section1?.AvailableTest?.map((test, index) => (
                                     <Link key={index} href={test?.link ?? '#'} className='min-h-[60px] '>
                                         <div className='overflow-hidden rounded-xl  h-full  active:shadow-sm'>
                                             <div
-                                                className=" flex justify-between flex-col items-center p-3 gap-4  bg-center w-full "
+                                                className="flex flex-col items-center p-3 gap-2  bg-center w-full "
 
                                             >
-                                                <div className='md:w-[300px] w-[150px]  rounded-full overflow-hidden'>
+                                                <div className='md:w-[150px] w-[100px]  rounded-full overflow-hidden'>
                                                     <img className='w-full' src={test?.img} />
                                                 </div>
-                                                <p className="text-start text-primary-orange text-lg font-bold ">{test?.title2}</p>
+                                                <p className="text-center text-primary-orange text-sm font-bold ">{test?.title2}</p>
                                                 {/* <p className="text-white text-center">{test?.para}</p> */}
                                             </div>
                                             {/* <div className='p-4'>
@@ -82,6 +82,8 @@ const AssesmentPage = ({ allSection }) => {
                         </div>
                     </div> */}
                 </div>
+
+                
 
                 {/* <div className='p-8'>
                     <div className='grid grid-cols-3 gap-5 md:hidden justify-center items-center mb-6'>
