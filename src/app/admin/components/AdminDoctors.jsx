@@ -118,7 +118,7 @@ const AdminDoctors = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-10">
         {doctorsList.map((doctor, index) => (
-          <DoctorCard key={index} doctor={doctor} />
+          <DoctorCard key={index} doctor={doctor} onMove={getAllDoctor}/>
         ))}
       </div>
 
