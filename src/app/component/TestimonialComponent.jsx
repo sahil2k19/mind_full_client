@@ -99,10 +99,13 @@ export default function TestimonialComponent() {
   const QuoteComponent = ()=>{
     return (
       <blockquote className="text-gray-600">
-      <div className="text-3xl text-gray-400 leading-none"><img className="h-[32px]" src="/iconsNew/quote2.svg" /></div>
+      <div className="text-3xl text-gray-400 leading-none "><img className="h-[32px]" src="/iconsNew/quote2.svg" /></div>
       <div className=" px-5">
-        <span className="text-gray-600 text-lg font-semibold">
+        <span className="text-gray-600 text-lg font-semibold md:hidden">
           {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
+        </span>
+        <span className="text-gray-600 text-lg font-semibold hidden md:block">
+        {fullTestimonial}
         </span>
       
       </div>
@@ -111,7 +114,7 @@ export default function TestimonialComponent() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
+    <div className=" mx-auto bg-white rounded-lg overflow-hidden shadow-md">
       <div className="p-3 text-center bg-primary-div">
         <h2 className="text-lg font-medium text-gray-800">{title}</h2>
       </div>
@@ -127,10 +130,12 @@ export default function TestimonialComponent() {
               >
                 <img className="h-[66px]" src="/iconsNew/newplay.svg" />
               </div>
-              <video
-                className="w-full h-[350px] object-cover"
+             <div className="md:flex justify-center">
+             <video
+                className="w-full  h-[350px] object-cover md:px-11 md:w-[700px]  md:rounded-lg"
                 src={videoUrl}
               />
+             </div>
             </div>
             <Dialog
               open={showVideoModal}

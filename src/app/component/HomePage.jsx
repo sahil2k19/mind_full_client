@@ -296,25 +296,26 @@ const HomePage = ({ allSection }) => {
             <>
                 <section className='mb-5'>
                     <div className='grid grid-cols-2  w-full px-3 cover mb-4 h-[545px] rounded-xl ' style={{
-                        backgroundImage: `url('/home/banner02.svg')`,
+                        backgroundImage: `url('/iconsNew/hero2.png')`,
                         backgroundSize: 'cover',  // This makes the background image cover the entire div
                         backgroundPosition: 'center', // This centers the background image
                     }}>
+                    <div></div>
                         {/* <img className='w-full object-cover' src='/home/banner02.svg' /> */}
-                        <div className='flex flex-col justify-center items-start'>
-                            <div className='flex flex-col justify-center  items-start px-8'>
-                                <h1 className=' text-6xl mb-5 text-[#3A3A3A]  text-start font-sans font-semibold '>
+                        <div className='flex flex-col justify-center items-end'>
+                            <div className='flex flex-col justify-center  items-end px-8'>
+                                <h1 className=' text-6xl mb-5 text-white  text-end font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1>
                                 {
-                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-[#3A3A3A] '>{para}</p>
+                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-white text-end'>{para}</p>
 
                                     )
                                 }
                                 {/* <div dangerouslySetInnerHTML={{ __html: allSection?.heroSection?.para }} /> */}
 
                             </div>
-                            <div className='flex justify-start px-8'>
+                            <div className='flex justify-end px-8'>
                                 <Link href={allSection?.heroSection?.button?.link}>
                                     <button
 
@@ -457,7 +458,9 @@ const HomePage = ({ allSection }) => {
                 {/* client speaks */}
                 <section className='py-8 px-4'>
                     {/* <VideoComponent /> */}
-                    <NewComponent videos={allSection?.section8?.videos} />
+                    {/* <NewComponent videos={allSection?.section8?.videos} /> */}
+                    <TestimonialComponent />
+
                 </section>
 
                 {/* locations */}

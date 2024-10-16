@@ -90,7 +90,7 @@ const TmsMainPage = () => {
             <div className="">
                 {/* TMS Introduction Section */}
                 <div className=" p-6 lg:p-10 mb-10">
-                    <h3 className="text-3xl font-bold text-gray-800 mb-4 sm:text-xl">
+                    <h3 className="text-3xl font-bold text-gray-800 mb-4 text-center">
                         {`Transcranial Magnetic Stimulation (TMS)`}
                     </h3>
                     <div className="mb-5 md:h-[360px]">
