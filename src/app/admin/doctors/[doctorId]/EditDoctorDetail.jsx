@@ -284,8 +284,8 @@ const EditDoctorDetail = () => {
             required
           >
             <option value="">Select Location</option>
-            <option value="Bangalore Whitefield">Bangalore Whitefield</option>
-            <option value="Bangalore Hebbal">Bangalore Hebbal</option>
+            <option value="Bangalore - Whitefield">Bangalore - Whitefield</option>
+            <option value="Bangalore - Hebbal">Bangalore - Hebbal</option>
             <option value="Delhi - Greater Kailash 1">Delhi - Greater Kailash 1</option>
           </select>
         </div>

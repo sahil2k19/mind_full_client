@@ -95,11 +95,11 @@ export default function TestimonialComponent() {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [isVideoModalOpen, showVideoModal, isQuoteModal]);
-
+// quote 
   const QuoteComponent = ()=>{
     return (
       <blockquote className="text-gray-600">
-      <div className="text-3xl text-gray-400 leading-none "><img className="h-[32px]" src="/iconsNew/quote2.svg" /></div>
+      <div className="text-3xl text-gray-400 leading-none ml-3"><img className="h-[32px]" src="/iconsNew/quote1.png" /></div>
       <div className=" px-5">
         <span className="text-gray-600 text-lg font-semibold md:hidden">
           {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
@@ -122,7 +122,7 @@ export default function TestimonialComponent() {
         {type === "text" ? (
         <>
         <div>
-            <img className="h-[184.5px] object-cover" src="https://placehold.co/1920x1080" />
+            <img className="h-[184.5px] object-cover w-full" src="https://placehold.co/1920x1080" />
           </div>
          <QuoteComponent />
         </>
@@ -217,11 +217,12 @@ export default function TestimonialComponent() {
             <img className="w-[30px]" src="/iconsNew/close.svg"/>
             </IconButton>
           </DialogTitle>
-          <DialogContent>
-            <blockquote className="text-gray-600 mb-6 mt-3">
-              <span className="text-3xl text-gray-400 ">
-                <img className="h-[32px]" src="/iconsNew/quote2.svg" />
-              </span>
+          <DialogContent className="px-0">
+              <div className="text-3xl text-gray-400 mt-3 px-2">
+                <img className="h-[32px]" src="/iconsNew/quote1.png" />
+              </div>
+        <div className="px-4">
+        <blockquote className="text-gray-600 mb-6 mt-3">
               <div>
                 <span className="text-gray-600 text-lg font-semibold">
                   {fullTestimonial}
@@ -235,6 +236,7 @@ export default function TestimonialComponent() {
                 <p className="text-[12px] text-gray-500">Review on Google</p>
               </div>
             </div>
+        </div>
           </DialogContent>
         </Dialog>
 
