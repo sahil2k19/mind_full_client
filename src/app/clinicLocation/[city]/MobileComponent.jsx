@@ -8,77 +8,7 @@ import ClinicAddress from './ClinicAddress';
 import OurDoctorSection from './OurDoctorSection';
 
 const MobileComponent = ({ data, images, city }) => {
-    // const [requestModal, setRequestModal] = useState(false);
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     email: '',
-    //     phone: '',
-    //     doctor: '',
-    //     location: '',
-    //     message: ''
-    // });
-    // const [isBusinessHours, setIsBusinessHours] = useState(false);
-
-    // useEffect(() => {
-    //     const handlePopState = () => {
-    //         if (requestModal) {
-    //             setRequestModal(false);
-    //         }
-    //     };
-
-    //     if (requestModal) {
-    //         window.history.pushState(null, '');
-    //         window.addEventListener('popstate', handlePopState);
-    //     }
-
-    //     return () => {
-    //         window.removeEventListener('popstate', handlePopState);
-    //     };
-    // }, [requestModal]);
-
-    // useEffect(() => {
-    //     const checkBusinessHours = () => {
-    //         const now = new Date();
-    //         const hours = now.getHours();
-    //         if (hours >= 10 && hours < 18) {
-    //             setIsBusinessHours(true);
-    //         } else {
-    //             setIsBusinessHours(false);
-    //         }
-    //     };
-    //     checkBusinessHours();
-    // }, []);
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData(prev => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    // }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(formData);
-    //     toggleRequestModal();
-    // }
-
-    // const toggleRequestModal = () => {
-    //     setRequestModal(prev => !prev);
-    //     setFormData({
-    //         name: '',
-    //         email: '',
-    //         phone: '',
-    //         doctor: '',
-    //         location: '',
-    //         message: '',
-    //         preferredTime: ''
-    //     });
-    // }
-
-    // const isFormValid = () => {
-    //     return formData.name && formData.email && formData.phone && formData.location;
-    // }
+    
 
     return (
         <div className='px-4 py-3'>

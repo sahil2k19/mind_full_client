@@ -14,12 +14,13 @@ const ClinicalAssessment = () => {
             <div className=''>
 
                 {/* Featured Assessments Heading */}
-       
+
                 {/* Grid of Assessments */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-2 mb-8 px-10 bg-primary-div p-6">
-                <div className="mb-6">
-                    <h3 className="text-xl text-center font-semibold text-gray-700">Featured Assessments</h3>
-                </div>
+                    <div className="mb-4 text-center">
+                        <h3 className="text-xl text-center font-semibold text-gray-700 mb-2">Featured Assessments</h3>
+                        <p className="text-gray-600">We offer over 90 assessments </p>
+                    </div>
 
                     {tests.map((test, index) => (
                         <div

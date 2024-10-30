@@ -1,18 +1,14 @@
 "use client"
 import React, { useState } from 'react'
-import { IconButton } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 
 const AllTherapyWithSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [expanded, setExpanded] = useState({});
-    const [testsToShow, setTestsToShow] = useState(4); // State to manage how many tests to show
+    const [testsToShow, setTestsToShow] = useState(4);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
-        setTestsToShow(4); // Reset tests shown when a new search is made
     };
 
     const toggleExpand = (id) => {
@@ -22,18 +18,19 @@ const AllTherapyWithSearch = () => {
         }));
     };
 
-    const loadMoreTests = () => {
-        setTestsToShow((prev) => prev + 4); // Increase tests shown by 4
-    };
-
     const filteredTests = allTest.filter((test) =>
         test.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const testsToDisplay = filteredTests.slice(0, testsToShow); // Show only the specified number of tests
+    const testsToDisplay = filteredTests
+
+    const quickLinks = ["Talk Therapy", "CBT", "Art Therapy"]; // Array for Quick Links
 
     return (
         <div className='flex flex-col justify-center items-center'>
+            <div className='mb-6'>
+                <h1 className='text-4xl font-semibold text-gray-800' >FAQs</h1>
+            </div>
             <div className='md:w-[60%]'>
                 {/* Search Bar */}
                 <div className="mb-6">
@@ -46,66 +43,52 @@ const AllTherapyWithSearch = () => {
                             onChange={handleSearchChange}
                         />
                         <div className="absolute right-3">
-                            {/* Search Icon */}
                             <img src="/home/search.svg" alt="search" className="w-5 h-5" />
                         </div>
                     </div>
                 </div>
 
+                {/* Quick Links */}
+                <div className='flex mb-6 gap-2'>
+                    {quickLinks.map((link, index) => (
+                        <div onClick={()=>setSearchTerm(link)} key={index} className="flex items-center bg-green-100 text-sm text-gray-700 px-4 py-2 rounded-full">
+                            <span>{link}</span>
+                        </div>
+                    ))}
+                </div>
+
                 {/* Search Results */}
-                <div className="grid grid-cols-1 gap-6 h-[400px] overflow-y-scroll mb-6 border-2 border-gray-200 rounded-lg">
+                <div className="grid grid-cols-1 gap-2 h-[400px] overflow-y-scroll mb-6  rounded-lg">
                     {testsToDisplay.length > 0 ? (
                         testsToDisplay.map((test) => (
                             <div
                                 key={test._id}
-                                className="bg-white shadow-md max-w-[320px] rounded-lg px-2 flex "
+                                onClick={() => toggleExpand(test._id)}
+                                className={`bg-white  max-w-[320px] rounded-lg cursor-pointer ${expanded[test._id]}`}
                             >
-                                <div className="w-full">
-                                    <h3 className="text-[14px] md:text-lg text-gray-800 capitalize">
-                                        What is <span className='font-bold'>{test.name}</span>?
-                                    </h3>
-                                    <p className="text-gray-600 text-[12px] md:text-sm">
-                                        {expanded[test._id]
-                                            ? test.detail
-                                            : test.detail.substring(0, 50) + '...'}
-                                    </p>
-                                    {/* Read More Button */}
-                                    <div className="flex justify-end items-center">
-                                        <IconButton
-                                            onClick={() => toggleExpand(test._id)}
-                                            className="text-blue-500 text-[12px]"
-                                        >
-                                           {expanded[test._id]? <ExpandLessIcon />:<ExpandMoreIcon />}
-                                            {expanded[test._id] ? 'Read less' : 'Read more'}
-                                        </IconButton>
-                                    </div>
-                                </div>
+                              <div className='bg-primary-div p-2 rounded-md'>
+                              <h3 className="text-[14px] md:text-lg text-gray-800 capitalize">
+                                    What is <span className='font-bold'>{test.name}</span>?
+                                </h3>
+                              </div>
+                           {   expanded[test._id] && <div className='p-2'>
+                               <p className="text-gray-600 text-[12px] md:text-sm">
+                                    {test.detail }
+                                </p>
+                               </div>}
                             </div>
                         ))
                     ) : (
                         <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4">
                             <h3 className="text-lg font-semibold text-gray-800">No Therapy found</h3>
-                            <p className="text-gray-600 text-center mb-4">{`We couldn't find any Therapy  matching your search.`}</p>
+                            <p className="text-gray-600 text-center mb-4">{`We couldn't find any Therapy matching your search.`}</p>
                             <RequestAppointment
                                 name={"Contact Us"}
                                 customStyle={" bg-[#EF6623] hover:bg-orange-500 text-lg font-semibold active:bg-orange-700 rounded-lg text-white py-2 px-4"}
                             />
                         </div>
                     )}
-                       {/* Load More Button */}
-                {testsToDisplay.length < filteredTests.length && (
-                    <div className="flex justify-center mb-6">
-                        <button
-                            onClick={loadMoreTests}
-                            className="bg-white  text-black py-2 px-4 rounded-lg border-2 border-gray-200 "
-                        >
-                            Load More...
-                        </button>
-                    </div>
-                )}
                 </div>
-
-             
 
                 <div className="flex justify-center">
                     <RequestAppointment
@@ -124,67 +107,55 @@ const allTest = [
     {
         _id: 1,
         name: "Talk Therapy",
-        icon: "/iconsNew/therapy.png", // Reusing the icon for Blood Test
+        icon: "/iconsNew/therapy.png",
         detail: "Talk therapy, also known as psychotherapy, involves discussing emotional or psychological issues with a licensed therapist to improve mental well-being."
     },
     {
         _id: 2,
         name: "Cognitive Behavioral Therapy (CBT)",
-        icon: "/iconsNew/psychiatry.png", // Reusing the icon for MRI Scan
+        icon: "/iconsNew/psychiatry.png",
         detail: "CBT is a structured, short-term therapy that helps individuals identify and challenge negative thought patterns and behaviors."
     },
     {
         _id: 3,
         name: "Art Therapy",
-        icon: "/iconsNew/assessment.png", // Reusing the icon for X-ray
+        icon: "/iconsNew/assessment.png",
         detail: "Art therapy encourages self-expression through creative techniques like drawing or painting to improve mental health and emotional well-being."
     },
     {
         _id: 4,
         name: "Music Therapy",
-        icon: "/iconsNew/tms.png", // Reusing the icon for Ultrasound
+        icon: "/iconsNew/tms.png",
         detail: "Music therapy uses music and sound to help improve physical and mental health through activities like singing or listening to music."
     },
     {
         _id: 5,
         name: "Family Therapy",
-        icon: "/iconsNew/therapy.png", // Reusing the icon for COVID-19 Test
-        detail: "Family therapy involves treating the entire family as a system to improve communication, resolve conflicts, and strengthen family bonds."
-    },    
-    {
-        _id: 3,
-        name: "Art Therapy",
-        icon: "/iconsNew/assessment.png", // Reusing the icon for X-ray
-        detail: "Art therapy encourages self-expression through creative techniques like drawing or painting to improve mental health and emotional well-being."
-    },
-    {
-        _id: 4,
-        name: "Music Therapy",
-        icon: "/iconsNew/tms.png", // Reusing the icon for Ultrasound
-        detail: "Music therapy uses music and sound to help improve physical and mental health through activities like singing or listening to music."
-    },
-    {
-        _id: 5,
-        name: "Family Therapy",
-        icon: "/iconsNew/therapy.png", // Reusing the icon for COVID-19 Test
+        icon: "/iconsNew/therapy.png",
         detail: "Family therapy involves treating the entire family as a system to improve communication, resolve conflicts, and strengthen family bonds."
     },
     {
-        _id: 3,
-        name: "Art Therapy",
-        icon: "/iconsNew/assessment.png", // Reusing the icon for X-ray
-        detail: "Art therapy encourages self-expression through creative techniques like drawing or painting to improve mental health and emotional well-being."
-    },
-    {
         _id: 4,
         name: "Music Therapy",
-        icon: "/iconsNew/tms.png", // Reusing the icon for Ultrasound
+        icon: "/iconsNew/tms.png",
         detail: "Music therapy uses music and sound to help improve physical and mental health through activities like singing or listening to music."
     },
     {
         _id: 5,
         name: "Family Therapy",
-        icon: "/iconsNew/therapy.png", // Reusing the icon for COVID-19 Test
+        icon: "/iconsNew/therapy.png",
+        detail: "Family therapy involves treating the entire family as a system to improve communication, resolve conflicts, and strengthen family bonds."
+    },
+    {
+        _id: 4,
+        name: "Music Therapy",
+        icon: "/iconsNew/tms.png",
+        detail: "Music therapy uses music and sound to help improve physical and mental health through activities like singing or listening to music."
+    },
+    {
+        _id: 5,
+        name: "Family Therapy",
+        icon: "/iconsNew/therapy.png",
         detail: "Family therapy involves treating the entire family as a system to improve communication, resolve conflicts, and strengthen family bonds."
     }
 ];

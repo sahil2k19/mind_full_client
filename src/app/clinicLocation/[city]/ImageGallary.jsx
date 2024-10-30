@@ -52,7 +52,8 @@ export default function ImageGallary({ images }) {
                 ))}
 
                 {/* Show more section with a blurry background */}
-                <div className="col-span-2 relative flex items-center justify-center bg-muted  overflow-hidden">
+          {images.length > 6 &&
+            <div className="col-span-2 relative flex items-center justify-center bg-muted  overflow-hidden">
                     {/* Blurry image background */}
                     <Image
                         src={images[6]?.src} // using the 7th image as the background
@@ -67,6 +68,7 @@ export default function ImageGallary({ images }) {
                         </div>
                     </div>
                 </div>
+          }
             </div>
 
 
@@ -85,7 +87,6 @@ export default function ImageGallary({ images }) {
                             aria-label="close"
 
                         >
-                            Close
                             <CloseIcon />
                         </IconButton>
                     </div>

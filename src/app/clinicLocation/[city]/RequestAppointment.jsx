@@ -210,7 +210,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
                                 }
                             </div>
 
-                            {isFormValid() ? <div>
+                            {/* {isFormValid() ? <div>
                                 <PractoWidget />
                             </div>
                                 : <div className='w-full'>
@@ -222,7 +222,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
                                         Request an Appointment
                                     </button>
                                 </div>
-                            }
+                            } */}
                             {isBusinessHours ? (
                                 <button
                                     className={`select-none flex gap-2 w-full items-center justify-center text-white rounded-lg px-4 py-2 font-semibold text-center ${isFormValid() ? 'cursor-pointer active:shadow-xl active:bg-green-600 bg-green-500' : 'cursor-not-allowed bg-gray-300'}`}

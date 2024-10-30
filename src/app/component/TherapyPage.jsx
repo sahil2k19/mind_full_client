@@ -84,21 +84,10 @@ const TherapyPage = () => {
                 </div>
             </div>
 
-            {/* Feeling Section */}
-            {/* <div className="bg-primary-div py-12 mb-8">
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8 text-primary">
-                    Are You Feeling ?
-                </h3>
-                <div className="grid grid-cols-3 md:grid-cols-3 gap-6 px-2 justify-center items-center">
-                    {conditions?.map((feeling, idx) => (
-                        <div key={feeling.id} className="flex flex-col items-center ">
-                            <img className="w-[100px] h-[100px] md:w-[250px] md:h-[250px] rounded-full border-4 border-orange-400 object-cover shadow-md" src={feeling.icon} alt={feeling.name} />
-                            <span className="mt-4 text-lg font-semibold text-gray-700">{feeling.name}</span>
-                        </div>
-                    ))}
-                </div>
-            </div> */}
+           
+
             <div className="max-w-4xl mx-auto px-4 pt-4 pb-[50px]">
+             
                 <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">
                  {`   MindfulTMS's experts specialise in treating a variety of conditions`}
                 </h2>
