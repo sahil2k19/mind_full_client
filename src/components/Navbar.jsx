@@ -90,12 +90,12 @@ const links = [
     path: '/pages/ourExpert',
     active: '/location',
   },
-  {
-    id: 51,
-    title: 'Health Library',
-    path: '/healthLibrary',
-    active: '/healthLibrary',
-  },
+  // {
+  //   id: 51,
+  //   title: 'Health Library',
+  //   path: '/healthLibrary',
+  //   active: '/healthLibrary',
+  // },
 ]
 
 
@@ -181,6 +181,10 @@ function Navbar() {
       router.push(path);
       setOpen(false); // Close the drawer after navigation
     }
+  };
+  const handleNavigateButton = (path) => {
+    router.push(path);
+    setOpen(false); // Close the drawer after navigation
   };
 
 
@@ -329,6 +333,9 @@ function Navbar() {
               ))}
             </div>
             <div className="mb-4">
+            <button onClick={()=>handleNavigateButton('/assesment')}  className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
+                SELF ASSESSMENT
+              </button>
               <button onClick={contactUsClick}  className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
                 SCHEDULE CONSULTATION
               </button>
