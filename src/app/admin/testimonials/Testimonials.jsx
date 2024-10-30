@@ -7,7 +7,8 @@ import axios from "axios";
 const Testimonials = () => {
   const router = useRouter(); // Initialize useRouter
   const [testimonials, setTestimonials] = useState([]);
-
+  const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
+  const [bulkFile, setBulkFile] = useState(null);
   const fetchTestimonials =  () => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}testimonials`)
     .then((response) => {
@@ -20,6 +21,36 @@ const Testimonials = () => {
   useEffect(() => {
     fetchTestimonials()
   },[])
+
+  const handleBulkFileChange = (event) => {
+    setBulkFile(event.target.files[0]);
+  };
+
+  const handleBulkUpload = () => {
+    if (!bulkFile) {
+      alert("Please select a file to upload.");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("file", bulkFile); // Append the file to the FormData
+  
+    axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}testimonials/bulk-upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Set the content type for file upload
+        },
+      })
+      .then((response) => {
+        setShowBulkUploadModal(false);
+        fetchTestimonials(); // Refresh testimonials after successful upload
+        alert("Bulk upload successful!");
+      })
+      .catch((error) => {
+        console.error("Bulk upload error:", error);
+        alert("Failed to upload testimonials.");
+      });
+  };
   // State for the filter values
   const [selectedDoctor, setSelectedDoctor] = useState("");
   const [selectedCondition, setSelectedCondition] = useState("");
@@ -141,7 +172,53 @@ const Testimonials = () => {
         >
           Add New Testimonial
         </button>
+        <button
+          onClick={() => setShowBulkUploadModal(true)}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Bulk Upload
+        </button>
       </div>
+
+      {showBulkUploadModal && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+            <h3 className="text-xl font-semibold mb-4 text-center">
+              Bulk Upload Testimonials
+            </h3>
+            <div className="flex justify-between items-center mb-4">
+              <input
+                type="file"
+                // accept=".csv, .xlsx"
+                onChange={handleBulkFileChange}
+                className="w-full mb-4 p-2 border rounded-lg"
+              />
+              {/* Download Example Button */}
+              <a
+                href="/bulkUpload/format.xlsx"
+                download
+                className="text-blue-500 hover:text-blue-700 underline ml-2"
+              >
+                Download Example Excel
+              </a>
+            </div>
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={() => setShowBulkUploadModal(false)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleBulkUpload}
+                className="bg-primary-orange text-white px-4 py-2 rounded-lg hover:bg-primary-orange-dark"
+              >
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Testimonials Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
