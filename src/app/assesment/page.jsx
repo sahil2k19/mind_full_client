@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import AssesmentPage from './AssesmentPage'
+import TakeAssessment from './TakeAssessment'
 import {assesmentPageSection} from '@/example'
 import axios from 'axios'
 
@@ -94,7 +95,8 @@ const Assesment = async() => {
     allSection = res.data
   return (
     <>
-      {allSection &&  <AssesmentPage allSection={allSection} />}
+      {/* {allSection &&  <AssesmentPage allSection={allSection} />} */}
+      {allSection &&  <TakeAssessment allSection={allSection} />}
         {/* <AssesmentPage allSection={assesmentPageSection} /> */}
     </>
   )
