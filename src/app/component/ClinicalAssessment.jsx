@@ -50,7 +50,12 @@ const ClinicalAssessment = () => {
            <p className="text-gray-600">We offer over 90 assessments </p>
            </div>
             <AllTestWithSearch />
-        </div>
+            
+            <div className='flex justify-center '>
+                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] uppercase hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold"}/>
+                   </div>
+               
+            </div>
     );
 };
 

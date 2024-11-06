@@ -162,7 +162,7 @@ const TmsMainPage = () => {
                     <h3 className="text-3xl text-center mb-6 font-bold text-[#f6881f] sm:text-xl">
                         {`Is TMS for me?`}
                     </h3>
-                    <p className="text-start font-bold text-gray-700 mb-5">
+                    <p className="text-start  text-gray-700 mb-5">
                     Consider TMS if you
                     </p>
                     <ul className=" list-disc text-gray-700 text-md px-5">
@@ -241,6 +241,10 @@ const TmsMainPage = () => {
                <TmsPageFaqs />
                </div>
 
+
+               <div className='flex justify-center '>
+                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] uppercase hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold"}/>
+                   </div>
                
             </div>
         </div>

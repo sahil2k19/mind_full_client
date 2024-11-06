@@ -98,7 +98,7 @@ export default function TestimonialComponent() {
 // quote 
   const QuoteComponent = ()=>{
     return (
-      <blockquote className="text-gray-600">
+      <blockquote className="text-gray-600 mt-3">
       <div className="text-3xl text-gray-400 leading-none ml-3"><img className="h-[32px]" src="/iconsNew/quote1.png" /></div>
       <div className=" px-5">
         <span className="text-gray-600 text-lg font-semibold md:hidden">
@@ -121,14 +121,14 @@ export default function TestimonialComponent() {
       <div className="space-y-4 ">
         {type === "text" ? (
         <>
-        <div>
+        {/* <div>
             <img className="h-[184.5px] object-cover w-full" src="https://placehold.co/1920x1080" />
-          </div>
+          </div> */}
          <QuoteComponent />
         </>
         ) : (
           <>
-            <div className="relative" onClick={() => setShowVideoModal(true)}>
+            {/* <div className="relative" onClick={() => setShowVideoModal(true)}>
               <div
                 // onClick={togglePlay}
                 className="absolute inset-0 flex items-center justify-center text-white"
@@ -141,7 +141,7 @@ export default function TestimonialComponent() {
                 src={videoUrl}
               />
              </div>
-            </div>
+            </div> */}
             <Dialog
               open={showVideoModal}
               onClose={() => setShowVideoModal(false)}
@@ -189,10 +189,11 @@ export default function TestimonialComponent() {
           </div>
          
         </div>
+        {/* treatment section */}
         <div className="px-3 ">
          <div className="mb-5">
             <h3 className="text-xl font-semibold text-gray-900">Treatment: </h3>
-            <div className="mt-3 flex flex-col gap-3">
+            <div className="mt-3 flex  gap-3">
               <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
                   <span className="text-sm">   Therapy</span>
               </div>
@@ -203,7 +204,7 @@ export default function TestimonialComponent() {
          </div>
          <div className="">
             <h3 className="text-xl font-semibold text-gray-900">Conditions: </h3>
-            <div className="mt-3 flex flex-col gap-3">
+            <div className="mt-3 flex  gap-3">
               <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
                   <span className="text-sm">   Depresion</span>
               </div>
