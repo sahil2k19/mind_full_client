@@ -1,28 +1,29 @@
 import { Container } from '@mui/material';
 import React from 'react';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
+import TmsPageFaqs from './TmsPageFaqs';
 
 const TmsMainPage = () => {
     const fourConditions = [
         {
             _id: 2,
-            name: "Obsessive-compulsive disorder"
+            name: "Depression"
         },
         {
             _id: 3,
-            name: "Migraines"
+            name: "OCD"
         },
         {
             _id: 4,
-            name: "Chronic pain"
+            name: "Migraines"
         },
         {
             _id: 5,
-            name: "Smoking cessation"
+            name: "Chronic pain"
         },
         {
             _id: 1,
-            name: "Major depressive disorder"
+            name: "Smoking Addiction"
         },
     ];
 
@@ -126,7 +127,7 @@ const TmsMainPage = () => {
                             {fourConditions.map((condition) => (
                                 <div
                                     key={condition.name}
-                                    className="flex items-center bg-green-100 text-sm text-green-700 px-3 py-1.5 rounded-full "
+                                    className="flex items-center bg-white text-sm font-bold text-black px-3 py-1.5 rounded-full "
                                 >
                                     <span className='font-semibold'>{condition.name}</span>
                                 </div>
@@ -158,11 +159,11 @@ const TmsMainPage = () => {
                 </div>
                  {/* Is TMS for me Section */}
                  <div className="bg-white   px-4 py-8 lg:p-10 ">
-                    <h3 className="text-3xl text-center font-bold text-[#f6881f] sm:text-xl">
+                    <h3 className="text-3xl text-center mb-6 font-bold text-[#f6881f] sm:text-xl">
                         {`Is TMS for me?`}
                     </h3>
-                    <p className="text-center text-gray-700 mb-5">
-                    Consider TMS if you,
+                    <p className="text-start font-bold text-gray-700 mb-5">
+                    Consider TMS if you
                     </p>
                     <ul className=" list-disc text-gray-700 text-md px-5">
                             <li className='mb-5'>
@@ -192,7 +193,7 @@ const TmsMainPage = () => {
                 </div>
 
                 {/* How TMS Works Section */}
-                <div className=" p-6 lg:p-10 mb-10 bg-primary-div">
+                <div className=" p-6 lg:p-10  mb-4 bg-primary-div">
                     <h3 className="text-2xl font-semibold text-gray-800 mb-3 text-center">
                         {`How TMS works?`}
                     </h3>
@@ -234,73 +235,11 @@ const TmsMainPage = () => {
                     
                 </div>
 
-                {/* TMS Coil Section */}
-                {/* <div className=" p-6 lg:p-10 mb-10 ">
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-5 text-center">
-                        {`The TMS Coil`}
-                    </h3>
-                    <div className="space-y-4">
-                        <ul className="list-decimal list-inside space-y-2 text-gray-700 text-md">
-                            <li className='mb-5'>
-                                <strong>{`Creates Magnetic Fields:`}</strong> {` The coil makes strong magnetic fields that are directed to specific parts of your brain that need treatment.`}
-                            </li>
-                            <li className='mb-5'>
-                               <strong>{`Targets Specific Brain Areas:`}</strong>  {` The shape of the coil helps focus the magnetic fields on exact areas of your brain related to your condition (like depression, OCD, or anxiety).`}
-                                <ul className="list-disc list-inside ml-4">
-                                    <li>{`This precise targeting ensures the treatment is effective.`}</li>
-                                </ul>
-                            </li>
-                            <div className="mb-5 md:h-[360px]">
-                                <img src="/tmsPage/tms4.png" className="object-cover h-full" />
-                            </div>
-                            <li className='mb-5'>
-                               <strong>{`Non-Invasive Application:`}</strong> 
-                                <ul className="list-disc list-inside ml-4">
-                                    <li>{`The coil is placed against your scalp near the area being treated.`}</li>
-                                    <li>{`The treatment is done from outside your head.`}</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div> */}
-                
-                {/* Magnetic Pulses Section */}
-                {/* <div className=" p-6 lg:p-10 mb-10 bg-primary-div">
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-3 text-center ">
-                        {`What Do the Magnetic Pulses Do?`}
-                    </h3>
-                    <p className="text-gray-700 text-md font-semibold  mb-4">
-                        {`Magnetic pulses are what make TMS effective. Here's how they work:`}
-                    </p>
-                    <div className="space-y-6">
-                        <ul className="list-decimal list-inside space-y-4 text-gray-700 text-md">
-                            <li className='mb-5'> <strong>{`Stimulate Brain Cells:`}</strong>
-                                {` The magnetic pulses help activate or regulate the brain cells (neurons) in those regions where the coil is targeted.`}
-                                <div className="mb-5 md:h-[360px] mt-5">
-                                    <img src="/tmsPage/tms5.png" className="object-cover h-full" />
-                                </div>
-                            </li>
-                            <li className='mb-5'> <strong>{`Boost Brain Activity:`}</strong>
-                                {` For conditions like Major Depressive Disorder (MDD), some brain areas may be less active. The pulses help increase activity in these areas, improving your mood.`}
-                                <ul className="list-disc list-inside ml-4">
-                                    <li>{`For Obsessive-Compulsive Disorder (OCD) or Generalized Anxiety Disorder (GAD), a different protocol (or recipe) is used where the pulses can calm down overactive brain areas, reducing anxiety and unwanted thoughts.`}</li>
-                                </ul>
-                                <div className="mb-5 md:h-[360px] mt-5">
-                                    <img src="/tmsPage/tms6.png" className="object-cover h-full" />
-                                </div>
-                            </li>
-                            <li className='mb-5'> <strong>{`Promote Brain Flexibility:`}</strong>
-                                {` Your brain can change and adapt, a feature called neuroplasticity, but it takes time.`}
-                                <ul className="list-disc list-inside ml-4">
-                                    <li>{`By giving 25-30 sessions over 5-6 weeks, the magnetic pulses encourage your brain to form new, healthier connections and maintain them, which can help reduce symptoms of your condition.`}</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className='flex justify-center mt-5'>
-                   <RequestAppointment name={"Book Consultation"} customStyle={"bg-[#EF6623] uppercase hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-sm font-semibold"}/>
-                   </div>
-                </div> */}
+                {/* FAQ Section */}
+
+               <div className='px-4  py-6'>
+               <TmsPageFaqs />
+               </div>
 
                
             </div>

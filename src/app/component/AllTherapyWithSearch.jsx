@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 
 const AllTherapyWithSearch = () => {
@@ -22,19 +22,18 @@ const AllTherapyWithSearch = () => {
         test.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const testsToDisplay = filteredTests
+    const testsToDisplay = filteredTests;
 
-    const quickLinks =
-        [
-            "Is therapy Confidential?",
-            "How Long Does therapy Take?",
-            "How Do I Get Started with therapy?"
-        ];
+    const quickLinks = [
+        "Is therapy Confidential?",
+        "How Long Does therapy Take?",
+        "How Do I Get Started with therapy?"
+    ];
 
     return (
         <div className='flex flex-col justify-center items-center'>
             <div className='mb-6'>
-                <h1 className='text-4xl font-semibold text-gray-800' >FAQs</h1>
+                <h1 className='text-3xl font-semibold text-gray-800'>Therapy FAQs</h1>
             </div>
             <div className='md:w-[60%]'>
                 {/* Search Bar */}
@@ -43,7 +42,7 @@ const AllTherapyWithSearch = () => {
                         <input
                             type="text"
                             className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search by therapy name..."
+                            placeholder="Search..."
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
@@ -53,36 +52,39 @@ const AllTherapyWithSearch = () => {
                     </div>
                 </div>
 
-                {/* Quick Links */}
-                <div className='flex flex-wrap justify-center mb-6 gap-2'>
-                    {quickLinks.map((link, index) => (
-                        <div onClick={() => setSearchTerm(link)} key={index} className="flex items-center bg-green-100 text-sm text-gray-700 px-4 py-2 rounded-full">
-                            <span>{link}</span>
-                        </div>
-                    ))}
-                </div>
-
                 {/* Search Results */}
-                <div className="grid grid-cols-1 gap-2  justify-center items-center mb-6  rounded-lg">
+                <div className="grid grid-cols-1 gap-2 justify-center items-center mb-6 rounded-lg">
                     {testsToDisplay.length > 0 ? (
                         testsToDisplay.map((test) => (
                             <div
                                 key={test._id}
                                 onClick={() => toggleExpand(test._id)}
-                                className={`bg-white   rounded-lg cursor-pointer ${expanded[test._id]}`}
+                                className="bg-white rounded-lg cursor-pointer"
                             >
-                                <div className='bg-primary-div p-2 rounded-md'>
-                                    <h3 className="text-[14px] md:text-lg text-gray-800 capitalize">
-                                        <span className='font-bold'>{test.name}</span>?
+                                <div className='bg-primary-div p-2 rounded-md flex justify-between items-center'>
+                                    <h3 className="text-[14px] md:text-lg text-gray-800 font-bold">
+                                        {test.name}
                                     </h3>
+                                    {/* Arrow Icon */}
+                                   <div>
+                                   <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className={`w-6 h-6 transform transition-transform ${
+                                            expanded[test._id] ? 'rotate-180' : 'rotate-0'
+                                        }`}
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="#26303e"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                                    </svg>
+                                   </div>
                                 </div>
-                                {expanded[test._id] && <div className='p-2'>
-                                    {/* <p className="text-gray-600 text-[12px] md:text-sm">
-                                    {test.detail }
-                                </p> */}
-                                    <div dangerouslySetInnerHTML={{ __html: test.detail }} />
-
-                                </div>}
+                                {expanded[test._id] && (
+                                    <div className='p-2'>
+                                        <div dangerouslySetInnerHTML={{ __html: test.detail }} />
+                                    </div>
+                                )}
                             </div>
                         ))
                     ) : (
@@ -106,7 +108,7 @@ const AllTherapyWithSearch = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AllTherapyWithSearch;
 

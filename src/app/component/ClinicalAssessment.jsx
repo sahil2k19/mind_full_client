@@ -1,5 +1,6 @@
 import React from 'react';
 import AllTestWithSearch from './AllTestWithSearch';
+import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 const ClinicalAssessment = () => {
 
 
@@ -11,12 +12,19 @@ const ClinicalAssessment = () => {
                 <p className="text-gray-600">Whether for a diagnosis or progress tracking, our therapists and RCI-certified Clinical Psychologists will provide you with evidence-based, effective care that is customized to meet your needs.</p>
             </div>
 
+            <div className='flex justify-center mb-6'>
+            <RequestAppointment
+                        name={"Get in Touch"}
+                        customStyle={" bg-[#EF6623] hover:bg-orange-500 text-xl active:bg-orange-700 rounded-lg text-white py-1 px-5"}
+                    />
+            </div>
+
             <div className=''>
 
                 {/* Featured Assessments Heading */}
 
                 {/* Grid of Assessments */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-2 mb-8 px-10 bg-primary-div p-6">
+                {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-2 mb-8 px-10 bg-primary-div p-6">
                     <div className="mb-4 text-center">
                         <h3 className="text-xl text-center font-semibold text-gray-700 mb-2">Featured Assessments</h3>
                         
@@ -33,7 +41,7 @@ const ClinicalAssessment = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
 
            <div className='text-center mb-6'>
