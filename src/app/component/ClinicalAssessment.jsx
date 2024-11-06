@@ -12,12 +12,14 @@ const ClinicalAssessment = () => {
                 <p className="text-gray-600">Whether for a diagnosis or progress tracking, our therapists and RCI-certified Clinical Psychologists will provide you with evidence-based, effective care that is customized to meet your needs.</p>
             </div>
 
-            <div className='flex justify-center mb-6'>
-            <RequestAppointment
-                        name={"Get in Touch"}
-                        customStyle={" bg-[#EF6623] hover:bg-orange-500 text-xl active:bg-orange-700 rounded-lg text-white py-1 px-5"}
-                    />
-            </div>
+            <div className="flex justify-center md:justify-start mb-5">
+                            <RequestAppointment name="Get in Touch" customStyle="px-6 py-3 rounded-full text-lg transition bg-primary-orange text-white font-semibold hover:bg-orange-500 active:bg-orange-600" />
+                        </div>
+
+                        {/* Image Section */}
+                    <div className="flex justify-center mb-5">
+                        <img className="w-full md:w-[400px] lg:w-[450px] transition-transform duration-300 transform " alt="Therapy Banner" src="/assessment/clinicalAssessment.jpg" />
+                    </div>
 
             <div className=''>
 

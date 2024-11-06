@@ -110,12 +110,12 @@ const AllTestWithSearch = () => {
                     </div>
                 )}
             </div>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
                     <RequestAppointment
                         name={"Contact Us"}
                         customStyle={" bg-[#EF6623] hover:bg-orange-500 text-xl active:bg-orange-700 rounded-lg text-white py-1 px-2"}
                     />
-                </div>
+                </div> */}
           </div>
         </div>
     );
