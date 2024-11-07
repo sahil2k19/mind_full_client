@@ -99,7 +99,9 @@ export default function TestimonialComponent() {
   const QuoteComponent = ()=>{
     return (
       <blockquote className="text-gray-600 mt-3">
-      <div className="text-3xl text-gray-400 leading-none ml-3"><img className="h-[32px]" src="/iconsNew/quote1.png" /></div>
+    <div className="text-3xl text-gray-400 leading-none ml-3">
+  <img className="h-[24px] scale-x-[1] scale-y-[-1]" src="/iconsNew/quote.svg" />
+</div>
       <div className=" px-5">
         <span className="text-gray-600 text-lg font-semibold md:hidden">
           {showFullTestimonial ? fullTestimonial : truncatedTestimonial}

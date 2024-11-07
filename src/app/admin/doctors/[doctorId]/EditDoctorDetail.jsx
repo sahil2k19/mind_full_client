@@ -275,6 +275,17 @@ const EditDoctorDetail = () => {
         </div>
 
         <div className="px-6 py-4 border-t">
+        <label className="block mt-3 text-gray-600">
+        <h3 className="text-xl font-bold text-primary-orange">About <span className="text-red-500">*</span></h3>
+              <textarea
+                name="about"
+                value={formData?.about}
+                onChange={handleChange}
+                className="w-full mt-2 border-2 border-gray-200 outline-none p-2 rounded"
+                placeholder="Write a short description about the doctor"
+                rows="8"
+              />
+            </label>
           <h3 className="text-xl font-bold text-primary-orange">Location <span className="text-red-500">*</span></h3>
           <select
             name="location"

@@ -2,7 +2,7 @@ import React from 'react';
 import TestimonialComponent from '../component/TestimonialComponent';
 import axios from 'axios';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
-
+import AboutComponent from './AboutComponent';
 const DoctorDetailComponent = async ({ doctorId }) => {
   let doctorDetail = {};
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`);
@@ -33,12 +33,9 @@ const DoctorDetailComponent = async ({ doctorId }) => {
 
         </div>
 
-        {/* Doctor's About Section */}
-        {doctorDetail?.about && (
-          <div className="px-6 py-4 border-t">
-            <h3 className="text-xl font-bold text-primary-orange">About</h3>
-            <p className="mt-2 text-gray-700">{doctorDetail.about}</p>
-          </div>
+          {/* About Section with Read More */}
+          {doctorDetail?.about && (
+          <AboutComponent aboutText={doctorDetail.about} />
         )}
 
         {/* Specialization Section */}
@@ -94,7 +91,7 @@ const DoctorDetailComponent = async ({ doctorId }) => {
 
           {/* Contact and Availability Section */}
           <div className="px-6 py-4 border-t flex flex-col lg:flex-row lg:justify-between">
-          <div>
+          {/* <div>
             <h3 className="text-xl font-bold text-primary-orange">Contact Information</h3>
             <p className="mt-2 text-gray-700 mb-1">
               <span className="font-semibold">Phone:</span> {doctorDetail?.phone}
@@ -105,7 +102,7 @@ const DoctorDetailComponent = async ({ doctorId }) => {
             <p className="text-gray-700 mb-1">
               <span className="font-semibold">Website:</span> {doctorDetail?.website}
             </p>
-          </div>
+          </div> */}
           <div className="mt-6 lg:mt-0">
             <h3 className="text-base font-medium text-primary-orange">Availability</h3>
             <div className="mt-2 text-gray-700">

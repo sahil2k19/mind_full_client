@@ -50,7 +50,7 @@ const TakeAssessment = ({ allSection }) => {
                         </div>
                     </div>
 
-                    <div className="bg-primary-div rounded-lg shadow-md p-6">
+                    {/* <div className="bg-primary-div rounded-lg shadow-md p-6">
                         <h2 className="text-2xl font-semibold mb-4">Not sure which test to take?</h2>
                         <p className="text-gray-600 mb-6">
                             The K10 is designed to measure general psychological distress and can be an effective initial screening
@@ -67,7 +67,7 @@ const TakeAssessment = ({ allSection }) => {
                                 Take the K10 Test
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

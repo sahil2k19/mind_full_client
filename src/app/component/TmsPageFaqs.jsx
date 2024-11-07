@@ -70,7 +70,7 @@ const TmsPageFaqs = () => {
                                    <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className={`w-6 h-6 transform transition-transform ${
-                                            expanded[test._id] ? 'rotate-180' : 'rotate-0'
+                                            expanded[test._id] ? 'rotate-0' : 'rotate-180'
                                         }`}
                                         fill="none"
                                         viewBox="0 0 24 24"

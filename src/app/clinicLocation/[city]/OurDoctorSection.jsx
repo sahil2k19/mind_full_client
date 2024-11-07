@@ -40,13 +40,13 @@ const OurDoctorSection = () => {
   }, []);
 
   return (
-    <section className="py-8 px-4">
+    <section className="pt-8 pb-4 px-1">
       <div className="mb-11 flex flex-col justify-center items-center">
         <h1 className="text-3xl font-semibold text-gray-800 text-center">Our Experts</h1>
       </div>
       
       {Object.entries(filteredExperts).map(([location, experts], index) => (
-        <div key={index} className="mb-10">
+        <div key={index} className="mb-5">
           {/* Location Header */}
           <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">{location}</h2>
           
