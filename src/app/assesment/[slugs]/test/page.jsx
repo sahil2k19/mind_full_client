@@ -1,66 +1,65 @@
-"use client"
+"use client";
 
+import { Container } from '@mui/material';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
-import { Container } from '@mui/material'
-import axios from 'axios'
-import { useParams, useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-
+// Define test data
 const tests = [
   {
-      title: 'PHQ-9 Depression Test',
-      link: '/assesment-page/phq9',
-      id: 'phq9',
-      condition:"Depression",
-      paragraph: `The PHQ-9 consists of 9 questions that ask about feelings of sadness, hopelessness, and loss of interest in activities, among
-other symptoms.
+    title: 'PHQ-9 Depression Test',
+    link: '/assesment-page/phq9',
+    id: 'phq9',
+    condition: "Depression",
+    paragraph: `The PHQ-9 consists of 9 questions that ask about feelings of sadness, hopelessness, and loss of interest in activities, among other symptoms.
 
 By answering these questions, you can gain insights into your depressive symptoms and determine if you might benefit from further support or professional help.`
   },
   {
-      title: 'PSS-10 Stress Assessment',
-      link: '/assesment-page/pss10',
-      id: 'pss10',
-      condition:"Stress",
-      paragraph: `This test measures your perception of stress and how you handle life's challenges
+    title: 'PSS-10 Stress Assessment',
+    link: '/assesment-page/pss10',
+    id: 'pss10',
+    condition: "Stress",
+    paragraph: `This test measures your perception of stress and how you handle life's challenges.
 
 The PSS-10 consists of 10 questions that ask about your feelings and thoughts during the last month, including how often you felt nervous, stressed, or unable to control important things in your life.`
   },
   {
-      title: 'GAD-7 Anxiety Test',
-      link: '/assesment-page/gad7',
-      id: 'gad7',
-      condition:"Anxiety",
-      paragraph: `This questionnaire helps you evaluate the severity of your anxiety symptoms over the past two weeks.
+    title: 'GAD-7 Anxiety Test',
+    link: '/assesment-page/gad7',
+    id: 'gad7',
+    condition: "Anxiety",
+    paragraph: `This questionnaire helps you evaluate the severity of your anxiety symptoms over the past two weeks.
 
 The GAD-7 consists of 7 questions that ask about feelings of nervousness, worry, and restlessness, among other symptoms. By answering these questions honestly, you can get a clearer picture of your anxiety levels and determine if you might benefit from further support or professional help.`
   },
   {
-      title: 'K10 (Kessler Psychological Distress Scale)',
-      link: '/assesment-page/k10',
-      id: 'k10',
-      paragraph: `The K10 is a simple and effective tool designed to measure your level of psychological distress over the past month. This test can help you gain insights into your mental health, especially if you're feeling anxious, depressed, or generally overwhelmed.
+    title: 'K10 (Kessler Psychological Distress Scale)',
+    link: '/assesment-page/k10',
+    id: 'k10',
+    paragraph: `The K10 is a simple and effective tool designed to measure your level of psychological distress over the past month. This test can help you gain insights into your mental health, especially if you're feeling anxious, depressed, or generally overwhelmed.
 
-The K10 consists of 10 questions that ask about feelings of nervousness, hopelessness, restlessness, and fatigue, among other symptoms. By answering these questions, you can get a better understanding of your current emotional state and whether you might benefit from further support or professional help.`    
+The K10 consists of 10 questions that ask about feelings of nervousness, hopelessness, restlessness, and fatigue, among other symptoms. By answering these questions, you can get a better understanding of your current emotional state and whether you might benefit from further support or professional help.`
   }
-
-]
+];
 
 const Test = () => {
-  const {slugs} = useParams()
+  const { slugs } = useParams();
   const router = useRouter();
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [totalScore, setTotalScore] = useState(null);
   const [testId, setTestId] = useState(null);
-  const test = tests.find(t => t.id === slugs)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const test = tests.find(t => t.id === slugs);
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}tests/getQuestions/${test.condition}`);
         setQuestions(response.data.questions);
-        // console.log(response.data.questions);
         setTestId(response.data.questions[0].testId);
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -68,7 +67,7 @@ const Test = () => {
     };
 
     if (test) fetchQuestions();
-  }, []);
+  }, [test]);
 
   const handleAnswerChange = (questionId, selectedChoiceIndex) => {
     setAnswers({
@@ -77,10 +76,21 @@ const Test = () => {
     });
   };
 
-  const handleSubmit = async () => {
+  const openModal = () => {
+    setIsModalOpen(true);
+    window.history.pushState({ modalOpen: true }, "modal");
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.history.back();
+  };
+
+  const handleEmailSubmit = async () => {
+    closeModal(); // Close the modal after email input
     try {
       const payload = {
-        email:"sahilgagan227@gmail.com" , // replace with actual user ID
+        email: userEmail,
         testId: testId,
         answers: Object.keys(answers).map((questionId) => ({
           questionId,
@@ -90,15 +100,38 @@ const Test = () => {
 
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}tests/submitTest`, payload);
       setTotalScore(response.data.totalScore);
-      router.push(`/assesment/${slugs}/result?score=${response.data.totalScore}&test=${test.condition}&email=${encodeURIComponent("sahilgagan227@gmail.com")}`);
+      router.push(`/assesment/${slugs}/result?score=${response.data.totalScore}&test=${test.condition}&email=${encodeURIComponent(userEmail)}`);
     } catch (error) {
       console.error("Error submitting answers:", error);
     }
   };
 
+  // Close modal on Escape key and handle back button
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === "Escape" && isModalOpen) {
+        closeModal();
+      }
+    };
 
-return (
-   <Container maxWidth="lg">
+    const handleBackButton = () => {
+      if (isModalOpen) {
+        setIsModalOpen(false);
+        window.history.forward();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    window.addEventListener("popstate", handleBackButton);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [isModalOpen]);
+
+  return (
+    <Container maxWidth="lg">
       <div className="flex p-6 items-center">
         <div className="mr" onClick={() => router.back()}>
           <svg
@@ -144,21 +177,52 @@ return (
 
         <div className="flex justify-center mb-6">
           <button
-            onClick={handleSubmit}
+            onClick={openModal}
             className="bg-primary-orange text-white py-3 px-14 rounded-lg font-semibold"
           >
             SUBMIT
           </button>
         </div>
 
-        {totalScore !== null && (
-          <div className="text-center mt-6">
-            <h2 className="text-lg font-bold text-primary">Your Total Score: {totalScore}</h2>
+        {/* Modal for Email Input */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+            onClick={closeModal} // Close modal when clicking on the overlay
+          >
+            <div
+              className="bg-white p-6 rounded-lg shadow-lg  mx-4 w-96"
+              onClick={(e) => e.stopPropagation()} // Prevent click from propagating to overlay
+            >
+              <h2 className="text-lg font-semibold mb-4">Enter your Email</h2>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                className="border-2 border-gray-300 p-2 rounded-lg w-full mb-4"
+                required
+              />
+              <div className="flex justify-end">
+                <button
+                  onClick={closeModal}
+                  className="mr-2 text-gray-500"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleEmailSubmit}
+                  className="bg-primary-orange text-white py-2 px-4 rounded-lg"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>
     </Container>
-)
-}
+  );
+};
 
-export default Test
+export default Test;
