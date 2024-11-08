@@ -90,6 +90,7 @@ const Test = () => {
 
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}tests/submitTest`, payload);
       setTotalScore(response.data.totalScore);
+      router.push(`/assesment/${slugs}/result?score=${response.data.totalScore}&test=${test.condition}&email=${encodeURIComponent("sahilgagan227@gmail.com")}`);
     } catch (error) {
       console.error("Error submitting answers:", error);
     }
