@@ -49,7 +49,7 @@ const MobileComponent = ({ data, images, city }) => {
                <section className='py-5 px-4 bg-primary-div'>
                     <div className=''>
                         <div className='mb-5'>
-                            <h1 className='text-3xl font-semibold text-gray-800 text-center'>Services</h1>
+                            <h1 className='text-3xl font-semibold text-gray-800 text-center'>Services We Offer</h1>
                         </div>
                         {
                             allSection?.section5?.services?.map((service, index) => (

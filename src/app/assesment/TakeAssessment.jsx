@@ -8,17 +8,20 @@ const TakeAssessment = ({ allSection }) => {
         {
             title: "Test for Depression",
             description: "This test helps evaluate the severity of depression symptoms.",
-            action: "Take the PHQ-9 Test"
+            action: "Take the PHQ-9 Test",
+            link:'/assesment/phq9/selfAssesment'
         },
         {
             title: "Test for Anxiety",
             description: "This test helps evaluate the severity of anxiety symptoms.",
-            action: "Take the GAD-7 Test"
+            action: "Take the GAD-7 Test",
+            link:'/assesment/gad7/selfAssesment'
         },
         {
             title: "Test for Stress",
             description: "This test assesses how stressful you find your life situations.",
-            action: "Take the PSS-10 Test"
+            action: "Take the PSS-10 Test",
+            link:'/assesment/pss10/selfAssesment'
         }
     ]
     return (
@@ -41,9 +44,9 @@ const TakeAssessment = ({ allSection }) => {
                                     <div className="p-6">
                                         <h3 className="text-lg font-semibold mb-2">{test.title}</h3>
                                         <p className="text-gray-600 mb-4">{test.description}</p>
-                                        <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300">
+                                        <Link href={test?.link ?? '#'} className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300">
                                             {test.action}
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
