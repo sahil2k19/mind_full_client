@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 export default function Component({ params }) {
-    console.log('location', params.location)
+    // console.log('location', params.location)
     const city = params.location
     const location = city === 'gk' ? 'New Delhi - Greater Kailash 1' : city === 'wf' ? 'Bengaluru - Whitefield' : city === 'hb' ? 'Bengaluru - Hebbal': '';
 
@@ -141,7 +141,7 @@ export default function Component({ params }) {
                                 type="submit"
                                 className="flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500"
                             >
-                                <Image
+                                 <img
                                     src="/home/whatsapp2.svg"
                                     alt="WhatsApp"
                                     width={24}
@@ -160,7 +160,7 @@ export default function Component({ params }) {
                             {conditions.map((condition) => (
                                 <div key={condition.name} className="rounded-lg p-4 ">
                                     <div>
-                                        <Image
+                                         <img
                                             src={condition.image}
                                             alt={condition.name}
                                             width={100}
@@ -190,7 +190,7 @@ export default function Component({ params }) {
                                 {symptoms.map((symptom) => (
                                     <div key={symptom.name} className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow">
                                         {/* <span className="mb-2 text-3xl">{symptom.icon}</span> */}
-                                        <Image
+                                         <img
                                             src={symptom.icon}
                                             alt={symptom.name}
                                             width={100}
@@ -210,12 +210,12 @@ export default function Component({ params }) {
                     </section>
 
                     {/* Expert Team */}
-                    <section className="mx-auto py-6">
+                    <section className="mx-3 py-6">
                         <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
                             Our Expert Team of <span className="text-orange-500">Psychologists</span>
                         </h2>
                         <div className="mx-auto max-w-md text-center">
-                            <Image
+                             <img
                                 src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
                                 alt="Ms. Shilpi Sharma"
                                 width={200}
@@ -358,7 +358,7 @@ export default function Component({ params }) {
                                     type="submit"
                                     className="flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500"
                                 >
-                                    <Image
+                                     <img
                                         src="/home/whatsapp2.svg"
                                         alt="WhatsApp"
                                         width={24}
@@ -381,7 +381,7 @@ export default function Component({ params }) {
                             {conditions.map((condition) => (
                                 <div key={condition.name} className="rounded-lg p-4 ">
                                     <div>
-                                        <Image
+                                         <img
                                             src={condition.image}
                                             alt={condition.name}
                                             width={100}
@@ -411,7 +411,7 @@ export default function Component({ params }) {
                                 {symptoms.map((symptom) => (
                                     <div key={symptom.name} className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow">
                                         {/* <span className="mb-2 text-3xl">{symptom.icon}</span> */}
-                                        <Image
+                                         <img
                                             src={symptom.icon}
                                             alt={symptom.name}
                                             width={100}
@@ -442,7 +442,7 @@ export default function Component({ params }) {
                             <div className="mx-auto py-6">
 
                                 <div className="mx-auto max-w-md text-center">
-                                    <Image
+                                     <img
                                         src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
                                         alt="Ms. Shilpi Sharma"
                                         width={200}
@@ -490,7 +490,7 @@ export default function Component({ params }) {
                     <div className="bg-gray-100 grid grid-cols-3 p-10 rounded-lg ">
                         {/* Image Section */}
                         <div className=" mb-6 md:mb-0">
-                            <Image
+                             <img
                                 src="/ads/why.jpg"
                                 alt="Mindful TMS"
                                 width={500}
