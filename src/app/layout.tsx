@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
 import Head from "next/head"; // Import Head from next/head
-
+import AdsNavbar from "@/components/AdsNavbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -17,7 +17,9 @@ export default function RootLayout({
   const pathname = usePathname(); // Get the current route path
 
   const noFooterPaths = ["/admin", "/assesment"];
+  const noNavbarPaths = ["/ads"];
   const shouldHideFooter = noFooterPaths.some((path) => pathname.startsWith(path));
+  const shouldHideNavbar = noNavbarPaths.some((path) => pathname.startsWith(path));
 
   // Set dynamic title based on the path or other conditions
   const getTitle = () => {
@@ -32,7 +34,7 @@ export default function RootLayout({
         <title>{getTitle()}</title>
       </Head>
       <body className={inter.className}>
-        <Navbar />
+     {  shouldHideNavbar?<AdsNavbar/>: <Navbar />}
         <Toaster position="top-right" />
         {children}
         {!shouldHideFooter && <Footer />}

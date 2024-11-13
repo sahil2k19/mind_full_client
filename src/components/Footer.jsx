@@ -365,9 +365,9 @@ function Footer() {
                   </div>
                 
                   <div className='flex justify-center '>
-                   <button onClick={()=>router.push(`/clinicLocation/${location?.redirect}`)} className='text-white border-2 border-white flex gap-3 items-center px-4 py-2 rounded-lg hover:opacity-90 shadow-lg hover:shadow-none'>
+                   <button onClick={()=>router.push(`/clinicLocation/${location?.redirect}`)} className='text-orange-500 border-2 border-white bg-white flex gap-3 items-center px-4 py-2 rounded-lg hover:opacity-90 shadow-lg hover:shadow-none'>
                    Learn More 
-                   <svg xmlns="http://www.w3.org/2000/svg" fill='white' width="24" height="24" viewBox="0 0 24 24"><g data-name="Circle kanan"><path d="M12 22a10 10 0 1 1 10-10 10.011 10.011 0 0 1-10 10zm0-18a8 8 0 1 0 8 8 8.009 8.009 0 0 0-8-8z" /><path d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z" /></g></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" fill='orange' width="24" height="24" viewBox="0 0 24 24"><g data-name="Circle kanan"><path d="M12 22a10 10 0 1 1 10-10 10.011 10.011 0 0 1-10 10zm0-18a8 8 0 1 0 8 8 8.009 8.009 0 0 0-8-8z" /><path d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z" /></g></svg>
                    </button>
                   </div>
                 </div>

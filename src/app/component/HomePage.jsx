@@ -295,20 +295,21 @@ const HomePage = ({ allSection }) => {
         return (
             <>
                 <section className='mb-5'>
-                    <div className='grid grid-cols-2  w-full px-3 cover mb-4 h-[545px] rounded-xl ' style={{
-                        backgroundImage: `url('/iconsNew/hero2.png')`,
+                    <div className='grid grid-cols-2  w-full cover mb-4 h-[545px]  ' style={{
+                        backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,188,77,1) 110%), url('/iconsNew/hero2.png')`,
+                        
                         backgroundSize: 'cover',  // This makes the background image cover the entire div
                         backgroundPosition: 'center', // This centers the background image
                     }}>
                         <div></div>
                         {/* <img className='w-full object-cover' src='/home/banner02.svg' /> */}
-                        <div className='flex flex-col justify-center items-end'>
+                        <div className='flex flex-col justify-center items-end mr-[70px] lg:mr-[100px]'>
                             <div className='flex flex-col justify-center  items-end px-8'>
-                                <h1 className=' text-6xl mb-5 text-white  text-end font-sans font-semibold '>
+                                <h1 className=' text-6xl mb-5 text-gray-900  text-end font-sans font-semibold '>
                                     {allSection?.heroSection?.title}
                                 </h1>
                                 {
-                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-white text-end'>{para}</p>
+                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-gray-800 text-end'>{para}</p>
 
                                     )
                                 }
@@ -316,14 +317,10 @@ const HomePage = ({ allSection }) => {
 
                             </div>
                             <div className='flex justify-end px-8'>
-                                <Link href={allSection?.heroSection?.button?.link}>
-                                    <button
+                            <div className=''>
+                                    <RequestAppointment name={"SCHEDULE CONSULTATION"} />
 
-                                        className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-10 py-3 text-white text-lg hover:shadow-lg font-semibold'
-                                    >
-                                        {allSection?.heroSection?.button?.text}
-                                    </button>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -339,7 +336,7 @@ const HomePage = ({ allSection }) => {
                         <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
                     </div>
 
-                    <div className='flex justify-around items-center bg-primary-div p-5 rounded-xl'>
+                    <div className='flex justify-around items-center md:mx-[100px] lg:mx-[120px] bg-primary-div p-5 rounded-xl'>
                         <div className='flex flex-col justify-center mb-2  bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
                             {/* <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
                             <span className='text-3xl  mb-2'>Take a <span className='font-semibold'>FREE TEST </span></span>
@@ -358,7 +355,7 @@ const HomePage = ({ allSection }) => {
 
                 {/* More about tms */}
 
-                <section className=' py-10 px-4 mb-6'>
+                <section className=' py-10 px-4 mb-6 bg-primary-div'>
                     <div className='mb-10'>
                         <h1 className='text-4xl text-center font-sans mb-4 font-semibold'>
                             {allSection?.section3?.title}
@@ -368,7 +365,8 @@ const HomePage = ({ allSection }) => {
 
                     <div className=''>
                         {/* hide this on medium and show alternate */}
-                        <div className='flex justify-center gap-8 mb-5 items-center py-6 px-12 rounded-lg   bg-primary-div '>
+                        <div className='flex justify-center gap-8 mb-5 items-center py-6 rounded-lg '>
+                            <div className=' flex p-6 rounded-lg bg-primary-div '>
                             <div className='h-[300px] w-[400px]'>
                                 <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
                             </div>
@@ -377,6 +375,7 @@ const HomePage = ({ allSection }) => {
                                 <h3 className='font-semibold py-5 text-2xl'>NO MEDICATION</h3>
                                 <h3 className='font-semibold py-5 text-2xl'>SAFE</h3>
                                 <h3 className='font-semibold py-5 text-2xl'>US FDA Approved</h3>
+                            </div>
                             </div>
                         </div>
 
@@ -387,7 +386,7 @@ const HomePage = ({ allSection }) => {
                                 <p className='text-lg text-center'><span className='font-bold'>Is TMS for me? </span>Learn how it works and if it is the right option for you.</p>
                             </div>
                             <div className='flex justify-center  '>
-                                <Link href={allSection?.section3?.button?.link} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
+                                <Link href={"/pages/tms"} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
                                     {allSection?.section3?.button?.text}
                                 </Link>
                             </div>
@@ -456,76 +455,19 @@ const HomePage = ({ allSection }) => {
                 </section>
 
                 {/* client speaks */}
-                <section className='py-8 px-4'>
+                <section className='py-8 px-4 md:px-[100px] mt-4'>
                     {/* <VideoComponent /> */}
                     {/* <NewComponent videos={allSection?.section8?.videos} /> */}
+                    <h1 className='text-3xl text-gray-800 font-semibold  text-center  mb-6'>Clients Speak</h1>
                     <TestimonialComponent />
 
                 </section>
 
-                {/* locations */}
-                <section className='py-8 px-4'>
-                    <div className='mb-8 flex flex-col justify-center items-center'>
-                        <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section6?.header}</h1>
-                        <p className='text-center text-sm text-gray-500'>{allSection?.section6?.para}</p>
-                    </div>
-
-                    <div className='md:px-8 grid grid-cols-2 gap-8 justify-between'>
-                        {
-                            allSection?.section6?.locations?.map((location, index) => (
-                                <div key={index} className='md:mb-11'>
-                                    <div className="flex items-center justify-center py-4 ">
-                                        <div className="">
-                                            <p className="text-xl text-center font-semibold top-[13px] left-[35%] px-2 bg-white ">{location?.title}</p>
-
-                                            {/* <div className="w-[30vw] h-px bg-black"></div> */}
-                                        </div>
-
-                                    </div>
-
-                                    <div className='flex flex-col  justify-center'>
-                                        {location?.locationArray?.map((i, index) => (
-                                            <div key={index} className='bg-primary-div px-4 mb-4 py-4 rounded-lg'>
-                                                <h1 className='text-xl font-semibold text-gray-700 '>{i?.title}</h1>
-                                                <p className='text-sm text-[#EF6623]'>{i?.address}</p>
-                                            </div>
-                                        ))}
-
-                                    </div>
-                                </div>
-                            ))
-                        }
-
-                    </div>
-
-
-                </section>
+         \
                 {/* our experts */}
-                <section className='py-8 px-4'>
-                    <div className='mb-11 flex flex-col justify-center items-center'>
-                        <h1 className='text-3xl  font-semibold text-gray-800  text-center'>Our Experts</h1>
-                    </div>
-                    <div className='grid grid-cols-3 md:grid-cols-6 gap-4 text-center'>
-                        {
-                            allSection?.section7?.expertArray?.map((expert, index) => (
-                                <div key={index} className=' flex flex-col items-center justify-center'>
-                                    <div className='mb-2 h-[71] w-[71] rounded-full'>
-                                        <img className='w-full h-full rounded-full' src={expert?.img} />
-                                    </div>
-                                    <div className='mb-1'>
-                                        <h1 className='font-semibold mb-1 text-[13px] text-gray-800'>{expert?.name}</h1>
-                                        <p className='text-[11px] text-gray-500'>{expert?.desig}</p>
-                                    </div>
-                                    <div className='mb-2'>
-                                        <p className='text-[12px] text-gray-500 font-bold'>{expert?.location}</p>
-                                    </div>
-                                </div>
-                            ))
-                        }
-
-
-                    </div>
-                </section>
+                <div className='bg-primary-div'>
+                    <OurDoctorSection />
+                </div>
 
 
             </>
@@ -540,9 +482,9 @@ const HomePage = ({ allSection }) => {
                     <div className='md:hidden'>
                         <MobileScreen />
                     </div>
-                    <Container className='md:block hidden'>
+                    <div className='md:block hidden'>
                         <DesktopHeroSection />
-                    </Container>
+                    </div>
 
 
                 </div>
