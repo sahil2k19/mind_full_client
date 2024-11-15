@@ -240,10 +240,7 @@ export default function Component({ params }) {
                         </div>
                     </section> */}
 
-                    {/* client speaks */}
-                    <section className='py-8 px-4'>
-                        <TestimonialComponent />
-                    </section>
+                    
 
                     {/* our experts */}
 
@@ -273,6 +270,11 @@ export default function Component({ params }) {
                     {/* <div className='bg-primary-div'>
                         <ClinicLocationDoctors city={city} />
                     </div> */}
+
+                    {/* client speaks */}
+                    <section className='py-8 px-4'>
+                        <TestimonialComponent />
+                    </section>
 
 
 
