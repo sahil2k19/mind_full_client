@@ -94,7 +94,7 @@ export default function Component({ params }) {
                     {/* Hero Section */}
                     <section
                         className="relative min-h-[200px] bg-cover bg-center flex items-center"
-                        style={{ backgroundImage: "url('/ads/ad1.png')" }}
+                        style={{ backgroundImage: "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,188,77,1) 110%), url('/ads/ad1.png')" }}
                     >
                         <div className="bg-opacity-75 w-full h-full flex items-center">
                             <div className="w-full p-2">
@@ -105,7 +105,7 @@ export default function Component({ params }) {
                                         </span>
                                     </div>
                                 </div>
-                                <p className="text-sm md:text-lg text-orange-400 font-bold text-end">
+                                <p className="text-sm md:text-lg text-white font-bold text-end">
                                     Our Experienced Psychologists are here to help you at our {location}
                                 </p>
                             </div>
