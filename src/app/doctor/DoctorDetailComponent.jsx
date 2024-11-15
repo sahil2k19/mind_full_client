@@ -3,6 +3,7 @@ import TestimonialComponent from '../component/TestimonialComponent';
 import axios from 'axios';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 import AboutComponent from './AboutComponent';
+import BackButton from '@/app/component/BackButton';
 const DoctorDetailComponent = async ({ doctorId }) => {
   let doctorDetail = {};
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}doctors/${doctorId}`);
@@ -10,8 +11,10 @@ const DoctorDetailComponent = async ({ doctorId }) => {
 
   return (
     <div className="p-5 md:p-10">
+    <BackButton />
       <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         {/* Doctor's Basic Info */}
+
         <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
           <img
             src={doctorDetail?.image}
