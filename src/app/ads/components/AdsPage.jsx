@@ -34,10 +34,14 @@ const servicesIcon = [
 
     },
 ]
-export default function Component({ params }) {
+export default function AdsPage({ params, condition }) {
     // console.log('location', params.location)
-    const city = params.location
+    const city = params.location;
+    const expertCondition = params.general;
     const location = city === 'gk' ? 'New Delhi - Greater Kailash 1' : city === 'wf' ? 'Bengaluru - Whitefield' : city === 'hb' ? 'Bengaluru - Hebbal' : '';
+
+    const expertText = expertCondition === 'psychology' ? 'Psychologist' : expertCondition === 'psychiatry' ? 'Psychiatrist' : '';
+
 
 
 
@@ -105,9 +109,14 @@ export default function Component({ params }) {
                                         </span>
                                     </div>
                                 </div>
-                                <p className="text-sm md:text-lg text-white font-bold text-end">
-                                    Our Experienced Psychologists are here to help you at our {location}
+                               {location ? <p className="text-sm md:text-lg text-white font-bold text-end">
+                                    Our Experienced {expertText} are here to help you at our {location}
                                 </p>
+                                :
+                                <p className="text-sm md:text-lg text-white font-bold text-end">
+                                Our Experts are available to assist you at a center near your location.
+                                </p>
+                                }
                             </div>
                         </div>
                     </section>
@@ -161,28 +170,29 @@ export default function Component({ params }) {
                     </section>
 
                     {/* What We Treat */}
-                    <section className="bg-primary-div mx-auto py-6">
-                        <h2 className="mb-12 text-center text-3xl font-bold text-orange-500">What We Treat</h2>
-                        <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
-                            {conditions.map((condition) => (
-                                <div key={condition.name} className="rounded-lg p-4 ">
-                                    <div>
-                                        <img
-                                            src={condition.image}
-                                            alt={condition.name}
-                                            width={100}
-                                            height={100}
-                                            className="mb-4 h-[150px] w-full rounded object-cover"
-                                        />
-                                        <p className="text-center text-orange-500">{condition.name}</p>
+                    {!condition &&
+                        <section className="bg-primary-div mx-auto py-6">
+                            <h2 className="mb-12 text-center text-3xl font-bold text-orange-500">What We Treat</h2>
+                            <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
+                                {conditions.map((condition) => (
+                                    <div key={condition.name} className="rounded-lg p-4 ">
+                                        <div>
+                                            <img
+                                                src={condition.image}
+                                                alt={condition.name}
+                                                width={100}
+                                                height={100}
+                                                className="mb-4 h-[150px] w-full rounded object-cover"
+                                            />
+                                            <p className="text-center text-orange-500">{condition.name}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='flex items-center justify-center'>
-                            <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Book a Consultation" />
-                        </div>
-                    </section>
+                                ))}
+                            </div>
+                            <div className='flex items-center justify-center'>
+                                <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Book a Consultation" />
+                            </div>
+                        </section>}
 
                     {/* Symptoms */}
                     <section className="bg-gray-100 py-6">
@@ -240,13 +250,13 @@ export default function Component({ params }) {
                         </div>
                     </section> */}
 
-                    
+
 
                     {/* our experts */}
 
                     <section className="mx-3 py-6">
                         <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
-                            Our Expert Team of <span className="text-orange-500">Psychologists</span>
+                            Our Expert Team of <span className="text-orange-500">{expertText}</span>
                         </h2>
                         <div className="mx-auto max-w-md text-center">
                             <img
@@ -287,7 +297,7 @@ export default function Component({ params }) {
                         <div className="mx-5 space-y-8 ">
                             <div>
                                 <h3 className="mb-2 text-xl  text-orange-500">
-                                    Experienced Clinical Psychologists:
+                                    Experienced Clinical {expertText}:
                                 </h3>
                                 <p className="text-gray-600">
                                     They are trained to assess and diagnose and provide right therapy for you.
@@ -302,6 +312,10 @@ export default function Component({ params }) {
                                 </p>
                             </div>
                         </div>
+
+                        <div className='flex items-center justify-center mt-6'>
+                                    <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                                </div>
                     </section>
                 </div>
             </>
@@ -326,7 +340,7 @@ export default function Component({ params }) {
                                 </div>
                             </div>
                             <p className="text-sm md:text-lg text-white font-bold text-end">
-                                Our Experienced Psychologists are here to help you at our {location}
+                                Our Experienced {expertText} are here to help you at our {location}
                             </p>
                         </div>
                     </div>
@@ -523,7 +537,7 @@ export default function Component({ params }) {
                                     </span>
                                 </div>
                                 <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
-                                    Our Experienced Psychologists are here to help you at our {location}
+                                    Our Experienced {expertText} are here to help you at our {location}
                                 </p>
                             </div>
                         </div>
@@ -576,8 +590,8 @@ export default function Component({ params }) {
                         </div>
 
                     </section>
-                   
-                    
+
+
 
                     {/* Symptoms */}
                     <section className="bg-gray-100 py-6">
@@ -611,7 +625,7 @@ export default function Component({ params }) {
                         </div>
                     </section>
                     {/* What We Treat */}
-                    <section className="bg-primary-div mx-auto py-6">
+                 {!condition &&   <section className="bg-primary-div mx-auto py-6">
                         <h2 className="mb-12 text-center text-3xl font-bold text-orange-500">What We Treat</h2>
                         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
                             {conditions.map((condition) => (
@@ -632,39 +646,39 @@ export default function Component({ params }) {
                         <div className='flex items-center justify-center'>
                             <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 py-3 px-8 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Book a Consultation" />
                         </div>
-                    </section>
+                    </section>}
 
-                  <div className='grid grid-cols-2 items-center gap-4 mx-10'>
-                    {/* Expert Team */}
-                    <section className="mx-3 py-6">
-                        <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
-                            Our Expert Team of <span className="text-orange-500">Psychologists</span>
-                        </h2>
-                        <div className="mx-auto max-w-md text-center">
-                            <img
-                                src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
-                                alt="Ms. Shilpi Sharma"
-                                width={200}
-                                height={200}
-                                className="mx-auto mb-4 rounded-full"
-                            />
-                            <h3 className="text-xl font-bold text-blue-600">Ms. Shilpi Sharma</h3>
-                            <p className="font-semibold text-pink-500 text-base">SERVICES</p>
-                            <p className="mb-2">Therapy & Assessment</p>
-                            <p className="text-pink-500 font-semibold text-base">SPECIALIZATION</p>
-                            <p className="mb-4 font-semibold text-sm">Depression, Anxiety, OCD, Bipolar, Marital counselling</p>
-                            <div className='flex items-center justify-center'>
-                                <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                    <div className='grid grid-cols-2 items-center gap-4 mx-10'>
+                        {/* Expert Team */}
+                        <section className="mx-3 py-6">
+                            <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
+                                Our Expert Team of <span className="text-orange-500">{expertText}</span>
+                            </h2>
+                            <div className="mx-auto max-w-md text-center">
+                                <img
+                                    src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
+                                    alt="Ms. Shilpi Sharma"
+                                    width={200}
+                                    height={200}
+                                    className="mx-auto mb-4 rounded-full"
+                                />
+                                <h3 className="text-xl font-bold text-blue-600">Ms. Shilpi Sharma</h3>
+                                <p className="font-semibold text-pink-500 text-base">SERVICES</p>
+                                <p className="mb-2">Therapy & Assessment</p>
+                                <p className="text-pink-500 font-semibold text-base">SPECIALIZATION</p>
+                                <p className="mb-4 font-semibold text-sm">Depression, Anxiety, OCD, Bipolar, Marital counselling</p>
+                                <div className='flex items-center justify-center'>
+                                    <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                                </div>
                             </div>
-                        </div>
-                    </section>
-                      {/* client speaks */}
-                      <section className='py-8 '>
-                        <TestimonialComponent />
-                    </section>
+                        </section>
+                        {/* client speaks */}
+                        <section className='py-8 '>
+                            <TestimonialComponent />
+                        </section>
 
-                    
-                  </div>
+
+                    </div>
                     {/* our experts */}
                     {/* <div className='bg-primary-div'>
                         <ClinicLocationDoctors city={city} />
@@ -675,32 +689,35 @@ export default function Component({ params }) {
                         <h2 className="mb-4 text-center text-3xl font-bold text-orange-500">
                             Why Choose Us?
                         </h2>
-                       <div className='flex justify-center'>
-                       <div className='flex items-center justify-between  gap-2 mx-10 w-[800px]'>
-                       <img src="/ads/why.jpg"  className='h-[300px]'/>
-                       <div className="mx-4 space-y-8 ">
-                            <div>
-                                <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
-                                    Experienced Clinical Psychologists:
-                                </h3>
-                                <p className="text-gray-600">
-                                    They are trained to assess and diagnose and provide right therapy for you.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
-                                    Confidential and Supportive Environment:
-                                </h3>
-                                <p className="text-gray-600">
-                                    Your privacy is our priority. We provide a safe and welcoming space for you to discuss your concerns and work towards recovery.
-                                </p>
+                        <div className='flex justify-center'>
+                            <div className='flex items-center justify-between  gap-2 mx-10 w-[800px]'>
+                                <img src="/ads/why.jpg" className='h-[300px]' />
+                                <div className="mx-4 space-y-8 ">
+                                    <div>
+                                        <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
+                                            Experienced Clinical {expertText}:
+                                        </h3>
+                                        <p className="text-gray-600">
+                                            They are trained to assess and diagnose and provide right therapy for you.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
+                                            Confidential and Supportive Environment:
+                                        </h3>
+                                        <p className="text-gray-600">
+                                            Your privacy is our priority. We provide a safe and welcoming space for you to discuss your concerns and work towards recovery.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                       </div>
-                       </div>
+                        <div className='flex items-center justify-center mt-6'>
+                                    <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                                </div>
                     </section>
 
-                   
+
 
 
                 </div>

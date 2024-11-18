@@ -145,9 +145,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
             <Dialog open={requestModal} onClose={toggleRequestModal}>
                 <DialogTitle className='text-center font-semibold'>Request an Appointment</DialogTitle>
                 <DialogContent>
-                    {!isFormValid() && <div>
-                        <p className='text-center text-red-600 font-semibold'>Please fill in the form below to request an appointment.</p>
-                    </div>}
+                    
                     <TextField
                         autoFocus
                         margin="dense"
@@ -246,6 +244,10 @@ const RequestAppointment = ({city, name, customStyle}) => {
 
                                 </>
                             )}
+
+                            {!isFormValid() && <div>
+                        <p className='text-center text-red-600 font-semibold'>Please fill in the form below to request an appointment.</p>
+                    </div>}
                         </div>
                     </FormControl>
                 </DialogContent>
