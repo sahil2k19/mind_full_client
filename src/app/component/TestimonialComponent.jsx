@@ -46,6 +46,13 @@ export default function TestimonialComponent() {
     setShowFullTestimonial(false);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   const prevTestimonial = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length

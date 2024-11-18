@@ -7,7 +7,7 @@ import TestimonialComponent from '@/app/component/TestimonialComponent'
 import { HomePageSections as allSection } from '@/example'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import AdsExperts from '../../component/AdsExperts'
 
 const servicesIcon = [
     {
@@ -227,59 +227,15 @@ export default function AdsPage({ params, condition }) {
                     </section>
 
                     {/* Expert Team */}
-                    {/* <section className=" py-8 bg-primary-div">
-                        <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
-                            Our Expert Team of <span className="text-orange-500">Psychologists</span>
-                        </h2>
-                        <div className="mx-auto max-w-md text-center">
-                            <img
-                                src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
-                                alt="Ms. Shilpi Sharma"
-                                width={200}
-                                height={200}
-                                className="mx-auto mb-4 rounded-full"
-                            />
-                            <h3 className="text-xl font-bold text-blue-600">Ms. Shilpi Sharma</h3>
-                            <p className="font-semibold text-pink-500 text-base">SERVICES</p>
-                            <p className="mb-2">Therapy & Assessment</p>
-                            <p className="text-pink-500 font-semibold text-base">SPECIALIZATION</p>
-                            <p className="mb-4 font-semibold text-sm">Depression, Anxiety, OCD, Bipolar, Marital counselling</p>
-                            <div className='flex items-center justify-center'>
-                                <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
-                            </div>
-                        </div>
-                    </section> */}
+               
 
 
 
                     {/* our experts */}
 
-                    <section className="mx-3 py-6">
-                        <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
-                            Our Expert Team of <span className="text-orange-500">{expertText}</span>
-                        </h2>
-                        <div className="mx-auto max-w-md text-center">
-                            <img
-                                src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
-                                alt="Ms. Shilpi Sharma"
-                                width={200}
-                                height={200}
-                                className="mx-auto mb-4 rounded-full"
-                            />
-                            <h3 className="text-xl font-bold text-blue-600">Ms. Shilpi Sharma</h3>
-                            <p className="font-semibold text-pink-500 text-base">SERVICES</p>
-                            <p className="mb-2">Therapy & Assessment</p>
-                            <p className="text-pink-500 font-semibold text-base">SPECIALIZATION</p>
-                            <p className="mb-4 font-semibold text-sm">Depression, Anxiety, OCD, Bipolar, Marital counselling</p>
-                            <div className='flex items-center justify-center'>
-                                <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
-                            </div>
-                        </div>
-                    </section>
+                    <AdsExperts condition={condition}  expertText={expertText} location={location}/>
                     {/* our experts */}
-                    {/* <div className='bg-primary-div'>
-                        <ClinicLocationDoctors city={city} />
-                    </div> */}
+                 
 
                     {/* client speaks */}
                     <section className='py-8 px-4'>
@@ -290,29 +246,35 @@ export default function AdsPage({ params, condition }) {
 
 
                     {/* Why Choose Us */}
-                    <section className="py-8 bg-primary-div ">
+                    <section className="py-8 bg-primary-div">
                         <h2 className="mb-4 text-center text-3xl font-bold text-orange-500">
                             Why Choose Us?
                         </h2>
-                        <div className="mx-5 space-y-8 ">
-                            <div>
-                                <h3 className="mb-2 text-xl  text-orange-500">
-                                    Experienced Clinical {expertText}:
-                                </h3>
-                                <p className="text-gray-600">
-                                    They are trained to assess and diagnose and provide right therapy for you.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="mb-2 text-xl  text-orange-500">
-                                    Confidential and Supportive Environment:
-                                </h3>
-                                <p className="text-gray-600">
-                                    Your privacy is our priority. We provide a safe and welcoming space for you to discuss your concerns and work towards recovery.
-                                </p>
+                        <div className=''>
+                            <div className='grid grid-cols-1 justify-center gap-2 '>
+                               <div className='flex justify-center'>
+                               <img src="/ads/why.jpg" className='h-[300px]' />
+                               </div>
+                                <div className="mx-4 space-y-8 ">
+                                    <div>
+                                        <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
+                                            Experienced Clinical {expertText}:
+                                        </h3>
+                                        <p className="text-gray-600">
+                                            They are trained to assess and diagnose and provide right therapy for you.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
+                                            Confidential and Supportive Environment:
+                                        </h3>
+                                        <p className="text-gray-600">
+                                            Your privacy is our priority. We provide a safe and welcoming space for you to discuss your concerns and work towards recovery.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                         <div className='flex items-center justify-center mt-6'>
                                     <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
                                 </div>
@@ -650,28 +612,7 @@ export default function AdsPage({ params, condition }) {
 
                     <div className='grid grid-cols-2 items-center gap-4 mx-10'>
                         {/* Expert Team */}
-                        <section className="mx-3 py-6">
-                            <h2 className="mb-12 text-center text-3xl font-bold text-teal-700">
-                                Our Expert Team of <span className="text-orange-500">{expertText}</span>
-                            </h2>
-                            <div className="mx-auto max-w-md text-center">
-                                <img
-                                    src="https://mindfultms1.s3.us-east-1.amazonaws.com/1730960278075-Dr.Shilpi.jpg"
-                                    alt="Ms. Shilpi Sharma"
-                                    width={200}
-                                    height={200}
-                                    className="mx-auto mb-4 rounded-full"
-                                />
-                                <h3 className="text-xl font-bold text-blue-600">Ms. Shilpi Sharma</h3>
-                                <p className="font-semibold text-pink-500 text-base">SERVICES</p>
-                                <p className="mb-2">Therapy & Assessment</p>
-                                <p className="text-pink-500 font-semibold text-base">SPECIALIZATION</p>
-                                <p className="mb-4 font-semibold text-sm">Depression, Anxiety, OCD, Bipolar, Marital counselling</p>
-                                <div className='flex items-center justify-center'>
-                                    <RequestAppointment customStyle={"flex w-full items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
-                                </div>
-                            </div>
-                        </section>
+                        <AdsExperts condition={condition}  expertText={expertText} location={location}/>
                         {/* client speaks */}
                         <section className='py-8 '>
                             <TestimonialComponent />

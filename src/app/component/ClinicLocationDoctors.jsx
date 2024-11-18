@@ -19,11 +19,11 @@ const ClinicLocationDoctors = ({ city }) => {
         // Filter doctors based on the city
         const filteredExperts = res.data.filter(expert => {
             if (city === "New-Delhi") {
-                return expert.location === "Delhi - Greater Kailash 1";
+                return expert.location === "New Delhi - Greater Kailash 1";
             } else if (city === "Bengaluru-Whitefield") {
-                return expert.location === "Bangalore - Whitefield";
+                return expert.location === "Bengaluru - Whitefield";
             } else if (city === "Bengaluru-Hebbal") {
-                return expert.location === "Bangalore - Hebbal";
+                return expert.location === "Bengaluru - Hebbal";
             }
             return true; // If no specific city match, return all experts (or you can change this to return an empty array)
         });

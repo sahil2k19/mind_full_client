@@ -19,12 +19,12 @@ const OurDoctorSection = () => {
 
       // Group doctors by location
       const groupedExperts = res.data.reduce((acc, expert) => {
-        if (expert.location === "Bangalore - Whitefield") {
-          acc["Bangalore - Whitefield"] = [...(acc["Bangalore - Whitefield"] || []), expert];
-        } else if (expert.location === "Bangalore - Hebbal") {
-          acc["Bangalore - Hebbal"] = [...(acc["Bangalore - Hebbal"] || []), expert];
-        } else if (expert.location === "Delhi - Greater Kailash 1") {
-          acc["Delhi - GK 1"] = [...(acc["Delhi - GK 1"] || []), expert];
+        if (expert.location === "Bengaluru - Whitefield") {
+          acc["Bengaluru - Whitefield"] = [...(acc["Bengaluru - Whitefield"] || []), expert];
+        } else if (expert.location === "Bengaluru - Hebbal") {
+          acc["Bengaluru - Hebbal"] = [...(acc["Bengaluru - Hebbal"] || []), expert];
+        } else if (expert.location === "New Delhi - Greater Kailash 1") {
+          acc["New Delhi - GK 1"] = [...(acc["New Delhi - GK 1"] || []), expert];
         }
         return acc;
       }, {});
