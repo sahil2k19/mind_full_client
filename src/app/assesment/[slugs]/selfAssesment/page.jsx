@@ -74,7 +74,7 @@ const SelfAssesment = () => {
                 <div className="bg-white p-2  rounded-lg w-full">
                     <h1 className="text-2xl font-bold mb-6">Test Instructions:</h1>
 
-                    <h2 className="text-xl font-semibold mb-4 underline">{test?.condition} Screener:</h2>
+                    <h2 className="text-xl font-semibold mb-4 text-orange-500 underline">{test?.condition} Screener:</h2>
 
                     <p className="mb-4 text-gray-700">
                         This quiz is designed to help you assess your current levels of [condition]
@@ -100,7 +100,7 @@ const SelfAssesment = () => {
             </div>
             <div className=" flex items-center justify-center bg-gray-100 p-2">
                 <div className="bg-white p-2 md:p-8  rounded-lg max-w-xl w-full">
-                    <h1 className="text-2xl font-bold mb-4 md:mb-6">Disclaimer</h1>
+                    <h1 className="text-2xl font-bold mb-4 text-orange-500 md:mb-6">Disclaimer</h1>
 
                     <h2 className="text-lg font-semibold mb-3 md:mb-4">Important Notice</h2>
 
