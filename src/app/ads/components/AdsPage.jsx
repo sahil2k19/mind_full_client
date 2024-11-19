@@ -109,8 +109,11 @@ export default function AdsPage({ params, condition }) {
                                         </span>
                                     </div>
                                 </div>
-                               {location ? <p className="text-sm md:text-lg text-white font-bold text-end">
+                               {(location && expertText)? <p className="text-sm md:text-lg text-white font-bold text-end">
                                     Our Experienced {expertText} are here to help you at our {location}
+                                </p>:
+                                (location )? <p className="text-sm md:text-lg text-white font-bold text-end">
+                                    Our Expert are here to help you at our {location}
                                 </p>
                                 :
                                 <p className="text-sm md:text-lg text-white font-bold text-end">
@@ -239,7 +242,7 @@ export default function AdsPage({ params, condition }) {
 
                     {/* client speaks */}
                     <section className='py-8 px-4'>
-                        <TestimonialComponent />
+                        <TestimonialComponent location={location} condition={condition}/>
                     </section>
 
 
@@ -498,9 +501,17 @@ export default function AdsPage({ params, condition }) {
                                         Are you or a loved one experiencing symptoms of depression, anxiety, ADHD, OCD or any other condition?
                                     </span>
                                 </div>
-                                <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                {(location && expertText)? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
                                     Our Experienced {expertText} are here to help you at our {location}
+                                </p>:
+                                (location )? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                    Our Expert are here to help you at our {location}
                                 </p>
+                                :
+                                <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                Our Experts are available to assist you at a center near your location.
+                                </p>
+                                }
                             </div>
                         </div>
                         {/* Contact Form */}

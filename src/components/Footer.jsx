@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Dialog, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import axios from 'axios';
@@ -43,6 +43,10 @@ const locations = [
 
 function Footer() {
   const router = useRouter();
+  const pathname = usePathname();
+  const noFooterPaths = ["/ads"];
+  const shouldHideFooter = noFooterPaths.some((path) => pathname.startsWith(path));
+
   const [requestModal, setRequestModal] = useState(false);
   // const [locations, setLocations] = useState(locations);
   const [formData, setFormData] = useState({
@@ -343,7 +347,7 @@ function Footer() {
           </div>
 
           {/* Call Us Section */}
-          <div className='mb-8'>
+       {!shouldHideFooter&&   <div className='mb-8'>
 
             <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
               {locations.map((location, index) => (
@@ -375,7 +379,7 @@ function Footer() {
               ))}
             </div>
             
-          </div>
+          </div>}
           
 
           {/* WhatsApp Us Section */}
@@ -498,7 +502,7 @@ function Footer() {
           </div>
 
           {/* Call Us Section */}
-          <div className='mb-8'>
+       { !shouldHideFooter&&  <div className='mb-8'>
 
             <div className='p-4 flex items-center overflow-x-scroll gap-4 md:justify-center'>
               {locations.map((location, index) => (
@@ -528,7 +532,7 @@ function Footer() {
                 </div>
               ))}
             </div>
-          </div>
+          </div>}
 
           {/* WhatsApp Us Section */}
 

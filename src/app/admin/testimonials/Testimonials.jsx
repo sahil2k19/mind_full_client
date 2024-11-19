@@ -79,6 +79,18 @@ const Testimonials = () => {
     router.push(`/admin/testimonials/${_id}`);
   };
 
+
+  const handleDeleteTestimonial = (id) => {
+      axios
+        .delete(`${process.env.NEXT_PUBLIC_API_URL}testimonials/${id}`)
+        .then(() => {
+          fetchTestimonials(); // Refresh the testimonials list
+        })
+        .catch((error) => {
+          console.error("Error deleting testimonial:", error);
+        });
+  };
+
   return (
     <div className="p-8">
       <h2 className="text-3xl text-primary-orange font-bold text-center mb-6">
@@ -225,16 +237,16 @@ const Testimonials = () => {
         {filteredTestimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="bg-primary-div flex flex-col  rounded-lg shadow-lg overflow-hidden p-6 cursor-pointer"
-            onClick={() => router.push(`/admin/testimonials/${testimonial._id}`)}
+            className="bg-primary-div flex flex-col  rounded-lg shadow-lg overflow-hidden p-6 "
+           
           >
-            <div>
-              <h3 className="text-xl text-primary-orange font-semibold mb-4">
+            <div  onClick={() => router.push(`/admin/testimonials/${testimonial._id}`)}>
+              <h3 className="text-xl cursor-pointer hover:underline text-primary-orange font-semibold mb-4">
                 {testimonial.title}
               </h3>
             </div>
 
-            <div className="flex flex-col justify-between min-h-[90%]">
+            <div className="flex flex-col justify-between ">
               <div>
                 <p className="text-gray-700 mb-2">
                   <strong>Patient Name:</strong> {testimonial.patientName}
@@ -263,7 +275,16 @@ const Testimonials = () => {
                 className="w-full h-48 rounded-lg object-cover"
                 src={testimonial.videoUrl}
               ></video>}
+
+               
             </div>
+            {/* Delete Button */}
+            <button
+                onClick={() => handleDeleteTestimonial(testimonial._id)}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-red-600"
+              >
+                Delete
+              </button>
           </div>
         ))}
       </div>

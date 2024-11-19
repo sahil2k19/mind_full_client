@@ -237,10 +237,10 @@ const EditTestimonial = ({testimonialId}) => {
             onChange={handleInputChange}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
-            <option value="">Select Location</option>
-            <option value="Bangalore 1">Bangalore 1</option>
-            <option value="Bangalore 2">Bangalore 2</option>
-            <option value="Delhi">Delhi</option>
+          <option value="">Select Location</option>
+            <option value="Bengaluru - Whitefield">Bengaluru - Whitefield</option>
+            <option value="Bengaluru - Hebbal">Bengaluru - Hebbal</option>
+            <option value="New Delhi - Greater Kailash 1">New Delhi - Greater Kailash 1</option>
           </select>
         </div>
 
