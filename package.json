@@ -15,6 +15,7 @@
     "@fontsource/roboto": "^5.0.14",
     "@mui/material": "^5.16.7",
     "@mui/material-nextjs": "^5.16.6",
+    "@react-spring/web": "^9.7.5",
     "axios": "^1.7.4",
     "lodash": "^4.17.21",
     "next": "14.2.5",
@@ -22,6 +23,7 @@
     "quill": "^2.0.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-gauge-chart": "^0.5.1",
     "react-hot-toast": "^2.4.1",
     "react-material-ui-carousel": "^3.4.2",
     "react-quill": "^2.0.0"

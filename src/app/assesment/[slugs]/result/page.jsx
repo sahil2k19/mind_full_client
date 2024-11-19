@@ -1,11 +1,10 @@
 "use client";
 
-import RequestAppointment from '@/app/clinicLocation/[city]/RequestAppointment';
-import { Container } from '@mui/material';
-import { useSearchParams } from 'next/navigation';
-import React from 'react';
+import React from "react";
+import { Container } from "@mui/material";
+import { useSearchParams } from "next/navigation";
+import AnimatedMeter from "@/app/component/AnimatedMeter";
 
-// Define score ranges, messages, and emojis for each test type
 const resultMessages = {
     Depression: [
         { range: [0, 4], label: "Minimal Depression", message: "You're experiencing minimal symptoms of depression. Continue to take care of your mental health.", emoji: "😊" },
@@ -26,63 +25,65 @@ const resultMessages = {
         { range: [27, 40], label: "High Stress", message: "You're experiencing high levels of stress. It's advisable to seek support from a mental health expert.", emoji: "😟" }
     ]
 };
-
-// Function to get the message based on score and test type, including the emoji
 const getMessageForScore = (score, testType) => {
-    const messages = resultMessages[testType];
-    if (!messages) return { label: "Unknown", message: "No message available for this score.", emoji: "🤔" };
+  const messages = resultMessages[testType];
+  if (!messages) return { label: "Unknown", message: "No message available for this score.", emoji: "🤔" };
 
-    for (let i = 0; i < messages.length; i++) {
-        const { range, label, message, emoji } = messages[i];
-        if (score >= range[0] && score <= range[1]) {
-            return { label, message, emoji };
-        }
+  for (let i = 0; i < messages.length; i++) {
+    const { range, label, message, emoji } = messages[i];
+    if (score >= range[0] && score <= range[1]) {
+      return { label, message, emoji };
     }
-    return { label: "Unknown", message: "No message available for this score.", emoji: "🤔" };
+  }
+  return { label: "Unknown", message: "No message available for this score.", emoji: "🤔" };
 };
 
 const Result = () => {
-    const searchParams = useSearchParams();
-    const score = parseInt(searchParams.get('score'), 10);
-    const testType = searchParams.get('test');
+  const searchParams = useSearchParams();
+  const score = parseInt(searchParams.get("score"), 10) || 0;
+  const testType = searchParams.get("test") || "Depression";
 
-    // Get the appropriate label, message, and emoji based on the score and test type
-    const { label, message, emoji } = getMessageForScore(score, testType);
+  const { label, message } = getMessageForScore(score, testType);
 
-    return (
-        <Container maxWidth="lg">
-            <div>
-                <div className='mt-8 flex justify-center'>
-                    <span className="text-6xl bounce">{emoji}</span> {/* Display the moving emoji */}
-                </div>
-                <div className="items-center p-4 gap-4">
+  const maxScores = {
+    Depression: 27,
+    Anxiety: 21,
+    Stress: 40
+};
 
-                    <div className="text-center">
-                        <p className="text-primary-orange mt-4 font-semibold mb-4">Your score is</p>
-                        <p className="text-6xl font-bold">{score}</p>
-                        <div className="p-2 rounded-lg mt-2 mb-5">
-                            <h1 className="font-semibold mb-1 text-lg text-gray-700">{label}</h1>
-                            <p className='text-sm'>{message}</p>
-                        </div>
-                    </div>
-                    <div className='flex justify-center flex-col items-center gap-4 mb-4'>
-                        <p className="font-semibold">Get a detailed report</p>
-                        <input type="text" placeholder="Enter your WhatsApp Number" className="border-2 border-orange-400 outline-none p-2 rounded-lg px-6 text-center" />
-                    </div>
-                    <div className='flex justify-center mb-6'>
-                        <button className="bg-primary-orange text-white font-semibold w-[75%] md:w-1/3 rounded-lg py-3">GET OTP</button>
-                    </div>
-                    <div className='flex justify-center flex-col items-center px-4 mb-3 '>
-                        <p className="text-center text-sm text-muted-foreground mb-4">You&apos;ll receive a message on WhatsApp shortly. If you haven&apos;t received it yet, <a href="#" className="font-bold underline text-blue-800">click here</a></p>
-                        <hr/>
-                        <div className=''>
-                            <RequestAppointment name={"BOOK A CONSULTATION"} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Container>
-    );
+const maxScore = maxScores[testType] || 100; // Default to 100 if testType is unknown
+const percentage = Math.min((score / maxScore) * 100, 100); // Clamp percentage to 100
+
+
+  return (
+    <Container maxWidth="lg">
+      <div className="flex flex-col items-center gap-6 mt-10">
+        {/* Animated Gauge Chart */}
+        <AnimatedMeter value={percentage} />
+
+        {/* Score Display */}
+        <div className="text-center">
+          <p className="text-primary-orange text-lg font-semibold">Your score is</p>
+          <p className="text-5xl font-bold mt-2">{score}</p>
+          <p className="text-lg text-gray-700 mt-4 font-semibold">{label}</p>
+          <p className="text-sm text-gray-500 mt-2">{message}</p>
+        </div>
+
+        {/* Additional Elements */}
+        <div className="flex flex-col items-center gap-4">
+          <p className="font-semibold">Get a detailed report</p>
+          <input
+            type="text"
+            placeholder="Enter your WhatsApp Number"
+            className="border-2 border-orange-400 outline-none p-2 rounded-lg px-6 text-center"
+          />
+          <button className="bg-primary-orange text-white font-semibold px-6 py-2 rounded-lg">
+            GET OTP
+          </button>
+        </div>
+      </div>
+    </Container>
+  );
 };
 
 export default Result;

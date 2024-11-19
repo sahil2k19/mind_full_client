@@ -108,7 +108,7 @@ const SelfAssesment = () => {
                         The symptom checker, depression, anxiety, and stress screening self-assessments available on this website are designed solely for informational and educational purposes. While these quizzes are based on widely recognized assessment tools such as the <strong>PHQ-9</strong> (<em>Patient Health Questionnaire-9</em>), <strong>GAD-7</strong> (<em>Generalized Anxiety Disorder-7</em>), and <strong>PSS-10</strong> (<em>Perceived Stress Scale-10</em>), they <strong>do not constitute a professional diagnosis</strong> of any mental health condition.
                     </p>
 
-                    <p className="font-semibold mb-2 text-sm md:text-base">Read Full</p>
+                    {/* <p className="font-semibold mb-2 text-sm md:text-base">Read Full</p> */}
 
                     <div className="flex items-center mb-4 md:mb-6">
                         <input
