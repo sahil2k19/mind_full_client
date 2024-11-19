@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import TestimonialComponents2 from "./TestimonialComponents2";
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import { motion, AnimatePresence } from "framer-motion";
+
 import axios from "axios";
 
 export default function TestimonialComponent({ location, condition }) {
@@ -12,6 +14,24 @@ export default function TestimonialComponent({ location, condition }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFullTestimonial, setShowFullTestimonial] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [direction, setDirection] = useState(1); // To track the animation direction
+
+  const variants = {
+    enter: (direction) => ({
+        x: direction > 0 ? 300 : -300,
+        opacity: 0,
+    }),
+    center: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5 },
+    },
+    exit: (direction) => ({
+        x: direction > 0 ? -300 : 300,
+        opacity: 0,
+        transition: { duration: 0.5 },
+    }),
+};
   const modalRef = useRef(null);
 
   const fetchTestimonials = async () => {
@@ -39,8 +59,11 @@ export default function TestimonialComponent({ location, condition }) {
   useEffect(() => {
     if (testimonials.length > 0) {
       const interval = setInterval(() => {
-        nextTestimonial();
-      }, 3500);
+        // nextTestimonial();
+        setDirection(1); // Slide right
+
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      }, 5000);
       return () => clearInterval(interval);
     }
   }, [testimonials]);
@@ -59,7 +82,7 @@ export default function TestimonialComponent({ location, condition }) {
 
   const truncatedTestimonial =
     fullTestimonial && fullTestimonial.length > 100
-      ? fullTestimonial.substring(0, 80) + "..."
+      ? fullTestimonial.substring(0, 380) + "..."
       : fullTestimonial;
 
   useEffect(() => {
@@ -124,8 +147,18 @@ export default function TestimonialComponent({ location, condition }) {
   }
 
   return (
-    <div className="mx-auto bg-white rounded-lg overflow-hidden shadow-md">
-      <div className="p-3 text-center bg-primary-div">
+    <div className="mx-auto bg-white rounded-lg overflow-hidden py-3 shadow-md">
+      
+      <motion.div
+                    className="mx-auto max-w-md text-center"
+                    key={testimonials[currentIndex]?._id}
+                    custom={direction}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    variants={variants}
+                >
+                <div className="p-3 text-center bg-primary-div">
         <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
       </div>
       <div className="space-y-4">
@@ -153,7 +186,8 @@ export default function TestimonialComponent({ location, condition }) {
             </DialogContent>
           </Dialog>
         )}
-        <div className="flex justify-between items-center px-4 pb-6">
+        {/* prev next buttons */}
+        {/* <div className="flex justify-between items-center px-4 pb-6">
           <img
             onClick={prevTestimonial}
             className="text-white cursor-pointer"
@@ -174,8 +208,9 @@ export default function TestimonialComponent({ location, condition }) {
             src="/icons/right arrow.svg"
             alt="Next"
           />
-        </div>
+        </div> */}
       </div>
+      </motion.div>
     </div>
   );
 }
