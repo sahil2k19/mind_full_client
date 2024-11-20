@@ -9,7 +9,7 @@ const AnimatedMeter = ({ value }) => {
         id="gauge-chart"
         nrOfLevels={4} // Number of gradient levels (3 boxes)
         percent={value / 100} // Convert value to percentage
-        colors={["#FFCCCC", "#FF6666", "#990000"]} // Light red to dark red
+        colors={[ "#FF6666", "#990000"]} // Light red to dark red
         arcWidth={0.3} // Width of the arc
         textColor="#000" // Text color
         animate={true} // Enable animation
