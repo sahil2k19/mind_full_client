@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import axios from "axios";
 
-export default function TestimonialComponent({ location, condition }) {
+export default function TestimonialComponent({ location, condition, disableSlide, setDisableSlide }) {
   const [testimonials, setTestimonials] = useState([]);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isQuoteModal, setisQuoteModal] = useState(false);
@@ -57,7 +57,7 @@ export default function TestimonialComponent({ location, condition }) {
   };
 
   useEffect(() => {
-    if (testimonials.length > 0 && !isQuoteModal) {
+    if (testimonials.length > 0 && (!isQuoteModal || !disableSlide)) {
       const interval = setInterval(() => {
         // nextTestimonial();
         setDirection(1); // Slide right
@@ -66,7 +66,7 @@ export default function TestimonialComponent({ location, condition }) {
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, [testimonials, isQuoteModal]);
+  }, [testimonials, isQuoteModal, disableSlide]);
 
   const prevTestimonial = () => {
     if (testimonials.length > 0) {
@@ -90,6 +90,7 @@ export default function TestimonialComponent({ location, condition }) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setIsVideoModalOpen(false);
         setisQuoteModal(false);
+        disableSlide(false)
       }
     };
 
@@ -97,12 +98,16 @@ export default function TestimonialComponent({ location, condition }) {
       if (event.key === "Escape") {
         setIsVideoModalOpen(false);
         setisQuoteModal(false);
+        disableSlide(false)
+
       }
     };
 
     const handlePopState = () => {
       setShowVideoModal(false);
       setisQuoteModal(false);
+      disableSlide(false)
+
     };
 
     if (isVideoModalOpen || showVideoModal || isQuoteModal) {
@@ -147,10 +152,10 @@ export default function TestimonialComponent({ location, condition }) {
   }
 
   return (
-    <div className="mx-auto bg-white rounded-lg overflow-hidden  ">
+    <div className=" bg-white rounded-lg overflow-hidden w-full ">
       
       <motion.div
-                    className="mx-auto max-w-md text-center"
+                    className=" text-center"
                     key={testimonials[currentIndex]?._id}
                     custom={direction}
                     initial="enter"
@@ -158,7 +163,7 @@ export default function TestimonialComponent({ location, condition }) {
                     exit="exit"
                     variants={variants}
                 >
-                <div className="p-3 text-center bg-primary-div">
+                <div className="p-3 w-full text-center bg-primary-div">
         <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
       </div>
       <div className="space-y-4">
@@ -196,7 +201,10 @@ export default function TestimonialComponent({ location, condition }) {
           />
           {fullTestimonial && (
             <button
-              onClick={() => setisQuoteModal(true)}
+              onClick={() => {
+                setisQuoteModal(true)
+                setDisableSlide(true)
+              }}
               className="px-3 py-2 rounded-xl underline text-orange-500 font-semibold"
             >
               {showFullTestimonial ? "Show Less" : "Read More"}
@@ -212,7 +220,11 @@ export default function TestimonialComponent({ location, condition }) {
       
         <Dialog
           open={isQuoteModal}
-          onClose={() => setisQuoteModal(false)}
+          onClose={() =>{
+            setisQuoteModal(false)
+            setDisableSlide(false)
+
+          }}
           PaperProps={{
             style: {
               borderRadius: '16px',  // Set the dialog corners to be 30px rounded
@@ -229,7 +241,10 @@ export default function TestimonialComponent({ location, condition }) {
             alignItems="center"
           >
             <span className="px-8 max-w-[405px] truncate">{title}</span>
-            <IconButton onClick={() => setisQuoteModal(false)}>
+            <IconButton onClick={() => {
+              setisQuoteModal(false)
+              setDisableSlide(false)
+            }}>
             <img className="w-[30px]" src="/iconsNew/close.svg"/>
             </IconButton>
           </DialogTitle>

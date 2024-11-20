@@ -8,6 +8,7 @@ import { HomePageSections as allSection } from '@/example'
 import Image from 'next/image'
 import Link from 'next/link'
 import AdsExperts from '../../component/AdsExperts'
+import AdsCombinePage from '../components/AdsCombinePage'
 
 const servicesIcon = [
     {
@@ -237,14 +238,16 @@ export default function AdsPage({ params, condition }) {
 
                     {/* our experts */}
 
-                    <AdsExperts condition={condition}  expertText={expertText} location={location}/>
+                    {/* <AdsExperts condition={condition}  expertText={expertText} location={location}/> */}
                     {/* our experts */}
                  
 
                     {/* client speaks */}
-                    <section className='py-8 px-4'>
+                    {/* <section className='py-8 px-4'>
                         <TestimonialComponent location={location} condition={condition}/>
-                    </section>
+                    </section> */}
+                    <AdsCombinePage condition={condition}  expertText={expertText} location={location}/>
+
 
 
 
@@ -622,16 +625,7 @@ export default function AdsPage({ params, condition }) {
                         </div>
                     </section>}
 
-                    <div className='grid grid-cols-2 items-center gap-4 mx-10'>
-                        {/* Expert Team */}
-                        <AdsExperts condition={condition}  expertText={expertText} location={location}/>
-                        {/* client speaks */}
-                        <section className='py-8 '>
-                            <TestimonialComponent />
-                        </section>
-
-
-                    </div>
+                    <AdsCombinePage condition={condition}  expertText={expertText} location={location}/>
                     {/* our experts */}
                     {/* <div className='bg-primary-div'>
                         <ClinicLocationDoctors city={city} />
