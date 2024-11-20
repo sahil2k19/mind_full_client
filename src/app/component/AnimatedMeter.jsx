@@ -7,15 +7,14 @@ const AnimatedMeter = ({ value }) => {
       {/* Gauge Chart */}
       <GaugeChart
         id="gauge-chart"
-        nrOfLevels={5} // Number of gradient levels
+        nrOfLevels={4} // Number of gradient levels (3 boxes)
         percent={value / 100} // Convert value to percentage
-        colors={["#4CAF50", "#FFC107", "#F44336"]} // Green to Yellow to Red
+        colors={["#FFCCCC", "#FF6666", "#990000"]} // Light red to dark red
         arcWidth={0.3} // Width of the arc
         textColor="#000" // Text color
         animate={true} // Enable animation
-        
       />
-       <style jsx global>{`
+      <style jsx global>{`
         #gauge-chart text {
           display: none; /* Hides the text inside the gauge */
         }
