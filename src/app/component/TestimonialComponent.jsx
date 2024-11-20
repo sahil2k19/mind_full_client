@@ -225,6 +225,11 @@ export default function TestimonialComponent({ location, condition, disableSlide
             setDisableSlide(false)
 
           }}
+          BackdropProps={{
+    style: {
+      backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darker backdrop
+    },
+  }}
           PaperProps={{
             style: {
               borderRadius: '16px',  // Set the dialog corners to be 30px rounded
