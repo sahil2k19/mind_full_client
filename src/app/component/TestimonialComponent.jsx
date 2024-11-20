@@ -57,7 +57,7 @@ export default function TestimonialComponent({ location, condition }) {
   };
 
   useEffect(() => {
-    if (testimonials.length > 0) {
+    if (testimonials.length > 0 && !isQuoteModal) {
       const interval = setInterval(() => {
         // nextTestimonial();
         setDirection(1); // Slide right
@@ -66,7 +66,7 @@ export default function TestimonialComponent({ location, condition }) {
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, [testimonials]);
+  }, [testimonials, isQuoteModal]);
 
   const prevTestimonial = () => {
     if (testimonials.length > 0) {
@@ -147,7 +147,7 @@ export default function TestimonialComponent({ location, condition }) {
   }
 
   return (
-    <div className="mx-auto bg-white rounded-lg overflow-hidden py-3 shadow-md">
+    <div className="mx-auto bg-white rounded-lg overflow-hidden  ">
       
       <motion.div
                     className="mx-auto max-w-md text-center"
@@ -187,7 +187,7 @@ export default function TestimonialComponent({ location, condition }) {
           </Dialog>
         )}
         {/* prev next buttons */}
-        {/* <div className="flex justify-between items-center px-4 pb-6">
+        <div className="flex justify-between items-center px-4 pb-6">
           <img
             onClick={prevTestimonial}
             className="text-white cursor-pointer"
@@ -208,7 +208,53 @@ export default function TestimonialComponent({ location, condition }) {
             src="/icons/right arrow.svg"
             alt="Next"
           />
-        </div> */}
+        </div>
+      
+        <Dialog
+          open={isQuoteModal}
+          onClose={() => setisQuoteModal(false)}
+          PaperProps={{
+            style: {
+              borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+              overflow: 'hidden' // Ensure content doesn't overflow the edges
+            }
+          }}
+         
+          className="m-0"
+        >
+          <DialogTitle
+            className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <span className="px-8 max-w-[405px] truncate">{title}</span>
+            <IconButton onClick={() => setisQuoteModal(false)}>
+            <img className="w-[30px]" src="/iconsNew/close.svg"/>
+            </IconButton>
+          </DialogTitle>
+          <DialogContent className="px-0">
+              <div className="text-3xl text-gray-400 mt-3 px-2">
+                <img className="h-[32px]" src="/iconsNew/quote1.png" />
+              </div>
+        <div className="px-4">
+        <blockquote className="text-gray-600 mb-6 mt-3">
+              <div>
+                <span className="text-gray-600 text-lg font-semibold">
+                  {fullTestimonial}
+                </span>
+              </div>
+            </blockquote>
+            <div className="flex">
+              <div className="w-1 h-10 bg-primary-orange mr-3"></div>
+              <div>
+                <p className="text-lg font-semibold text-gray-700">{patientName}</p>
+                <p className="text-[12px] text-gray-500">Review on Google</p>
+              </div>
+            </div>
+        </div>
+          </DialogContent>
+        </Dialog>
       </div>
       </motion.div>
     </div>

@@ -35,6 +35,7 @@ const servicesIcon = [
     },
 ]
 export default function AdsPage({ params, condition }) {
+    
     // console.log('location', params.location)
     const city = params.location;
     const expertCondition = params.general;

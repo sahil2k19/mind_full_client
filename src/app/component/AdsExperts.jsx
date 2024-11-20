@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import RequestAppointment from "../clinicLocation/[city]/RequestAppointment";
 import axios from "axios";
-const AdsExperts = ({ expertText, location, condition }) => {
+const AdsExperts = ({ expertText, location, condition, disableSlide, setDisableSlide  }) => {
     const [doctorsData, setDoctorsData] = useState([]); // To store doctors data
     const [currentIndex, setCurrentIndex] = useState(0); // To track the current doctor index
     const [direction, setDirection] = useState(1); // To track the animation direction
