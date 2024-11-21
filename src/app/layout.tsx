@@ -8,6 +8,9 @@ import { usePathname } from "next/navigation";
 import Head from "next/head"; // Import Head from next/head
 import AdsNavbar from "@/components/AdsNavbar";
 const inter = Inter({ subsets: ["latin"] });
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 export default function RootLayout({
   children,

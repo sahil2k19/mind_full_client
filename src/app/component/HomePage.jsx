@@ -6,6 +6,7 @@ import CounterComponent from './CounterComponent';
 import { Container } from '@mui/material';
 import OurDoctorSection from '../clinicLocation/[city]/OurDoctorSection';
 import TestimonialComponent from './TestimonialComponent';
+import TestimonialComponentSlide from './TestimonialComponentSlide';
 import TestimonialComponents2 from './TestimonialComponents2';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
 // import Footer from '@/components/Footer'
@@ -531,7 +532,7 @@ const HomePage = ({ allSection }) => {
                     {/* <VideoComponent /> */}
                     {/* <NewComponent videos={allSection?.section8?.videos} /> */}
                     <h1 className='text-3xl text-gray-800 font-semibold  text-center  mb-6'>Clients Speak</h1>
-                    <TestimonialComponent />
+                    <TestimonialComponentSlide />
 
                 </section>
 
