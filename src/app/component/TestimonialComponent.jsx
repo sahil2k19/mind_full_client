@@ -218,25 +218,37 @@ export default function TestimonialComponent({ location, condition, disableSlide
             />
           </div>
           <div className="px-3 ">
-     {testimonials[currentIndex]?.treatment &&    <div className="mb-5">
-            <h3 className="text-xl font-semibold text-gray-900">Treatment: </h3>
-            <div className="mt-3 flex  gap-3">
-              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
-                  <span className="text-sm">   {testimonials[currentIndex]?.treatment}</span>
+            {testimonials[currentIndex]?.treatment && <div className="mb-5">
+              <h3 className="text-xl font-semibold text-gray-900">Treatment: </h3>
+              <div className="mt-3 flex gap-3">
+                {testimonials[currentIndex]?.treatment
+                  ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
+                  .map((treatment, index) => (
+                    <div
+                      key={index}
+                      className="px-3 py-2 bg-green-100 text-green-800 rounded-full"
+                    >
+                      <span className="text-sm">{treatment}</span>
+                    </div>
+                  ))}
               </div>
-              
-            </div>
-         </div>}
-      {testimonials[currentIndex]?.conditions &&   <div className="">
-            <h3 className="text-xl font-semibold text-gray-900">Condition: </h3>
-            <div className="mt-3 flex  gap-3">
-              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
-                  <span className="text-sm">   {testimonials[currentIndex]?.conditions}</span>
-              </div>
-             
-            </div>
-         </div>}
-        </div>
+            </div>}
+            {testimonials[currentIndex]?.condition && <div className="">
+              <h3 className="text-xl font-semibold text-gray-900">Condition: </h3>
+              <div className="mt-3 flex gap-3">
+              {testimonials[currentIndex]?.condition
+                ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
+                .map((condition, index) => (
+                  <div
+                    key={index}
+                    className="px-3 py-2 bg-green-100 text-green-800 rounded-full"
+                  >
+                    <span className="text-sm">{condition}</span>
+                  </div>
+                ))}
+                </div>
+            </div>}
+          </div>
 
           <Dialog
             open={isQuoteModal}
