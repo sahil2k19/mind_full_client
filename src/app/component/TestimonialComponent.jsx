@@ -124,7 +124,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
     };
   }, [isVideoModalOpen, showVideoModal, isQuoteModal]);
 
-  const QuoteComponent = () => {
+  const QuoteComponent = ({modalOpen}) => {
     if (!fullTestimonial) return null;
     return (
       <blockquote className="text-gray-600 mt-3">
@@ -135,14 +135,20 @@ export default function TestimonialComponent({ location, condition, disableSlide
             alt="Quote"
           />
         </div>
-        <div className="px-5">
-          <span className="text-gray-600 text-lg font-semibold md:hidden">
+        <div className={`px-5 mb-6  ${modalOpen?"":"h-[300px]"} overflow-hidden `}>
+          <span className="text-gray-600 text-lg font-semibold ">
             {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
           </span>
-          <span className="text-gray-600 text-lg font-semibold hidden md:block">
-            {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
-          </span>
+         
         </div>
+         {/* patient name */}
+         <div className="flex ml-6 mb-4">
+                  <div className="w-1 h-10 bg-primary-orange mr-3"></div>
+                  <div>
+                    <p className="text-lg font-semibold text-gray-700">{patientName}</p>
+                    {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
+                  </div>
+                </div>
       </blockquote>
     );
   };
@@ -167,37 +173,9 @@ export default function TestimonialComponent({ location, condition, disableSlide
           <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
         </div>
         <div className="space-y-4 mb-3">
-          {type === "text" ? (
-            <QuoteComponent />
-          ) : (
-            <Dialog
-              open={showVideoModal}
-              onClose={() => setShowVideoModal(false)}
-              PaperProps={{
-                style: {
-                  borderRadius: "16px",
-                  overflow: "hidden",
-                },
-              }}
-            >
-              <DialogTitle className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-2">
-                <span className="text-lg px-5 max-w-[405px] truncate">{title}</span>
-                <IconButton onClick={() => setShowVideoModal(false)}>
-                  <img className="w-[30px]" src="/iconsNew/close.svg" alt="Close" />
-                </IconButton>
-              </DialogTitle>
-              <DialogContent className="h-full flex justify-center items-center p-0 bg-black">
-                <TestimonialComponents2 currentVideo={videoUrl} />
-              </DialogContent>
-            </Dialog>
-          )}
-          <div className="flex ml-6 mb-4">
-                  <div className="w-1 h-10 bg-primary-orange mr-3"></div>
-                  <div>
-                    <p className="text-lg font-semibold text-gray-700">{patientName}</p>
-                    {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
-                  </div>
-                </div>
+        {/* quote */}
+            <QuoteComponent modalOpen={false}/>
+          
           {/* prev next buttons */}
           <div className="flex justify-between items-center px-4 mb-5 ">
             <img
@@ -294,25 +272,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
               </IconButton>
             </DialogTitle>
             <DialogContent className="px-0">
-              <div className="text-3xl text-gray-400 mt-3 px-2">
-                <img className="h-[32px]" src="/iconsNew/quote1.png" />
-              </div>
-              <div className="px-4">
-                <blockquote className="text-gray-600 mb-6 mt-3">
-                  <div>
-                    <span className="text-gray-600 text-lg font-semibold">
-                      {fullTestimonial}
-                    </span>
-                  </div>
-                </blockquote>
-                <div className="flex">
-                  <div className="w-1 h-10 bg-primary-orange mr-3"></div>
-                  <div>
-                    <p className="text-lg font-semibold text-gray-700">{patientName}</p>
-                    {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
-                  </div>
-                </div>
-              </div>
+              <QuoteComponent modalOpen={true} />
             </DialogContent>
           </Dialog>
         </div>
