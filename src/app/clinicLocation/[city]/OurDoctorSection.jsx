@@ -51,7 +51,7 @@ const OurDoctorSection = () => {
           <h2 className="text-xl md:text-xl font-semibold text-center text-gray-600 mb-4">{location}</h2>
 
           {/* Experts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center justify-center ">
+          <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center justify-center ">
             {experts.map((expert, idx) => (
               <Link href={`/doctor/${expert?._id}`} key={idx} className="flex flex-col items-center mb-2">
                 <div className="mb-2 h-[75px] w-[75px] md:h-[100px] md:w-[100px] lg:h-[110px] lg:w-[110px] flex items-center">
