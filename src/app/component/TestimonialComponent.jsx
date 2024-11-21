@@ -18,20 +18,20 @@ export default function TestimonialComponent({ location, condition, disableSlide
 
   const variants = {
     enter: (direction) => ({
-        x: direction > 0 ? 300 : -300,
-        opacity: 0,
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
     }),
     center: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 0.5 },
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.5 },
     },
     exit: (direction) => ({
-        x: direction > 0 ? -300 : 300,
-        opacity: 0,
-        transition: { duration: 0.5 },
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+      transition: { duration: 0.5 },
     }),
-};
+  };
   const modalRef = useRef(null);
 
   const fetchTestimonials = async () => {
@@ -140,7 +140,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
             {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
           </span>
           <span className="text-gray-600 text-lg font-semibold hidden md:block">
-            {fullTestimonial}
+            {showFullTestimonial ? fullTestimonial : truncatedTestimonial}
           </span>
         </div>
       </blockquote>
@@ -153,129 +153,129 @@ export default function TestimonialComponent({ location, condition, disableSlide
 
   return (
     <div className=" bg-white rounded-lg overflow-hidden w-full ">
-      
-      <motion.div
-                    className=" text-center"
-                    key={testimonials[currentIndex]?._id}
-                    custom={direction}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    variants={variants}
-                >
-                <div className="p-3 w-full text-center bg-primary-div">
-        <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
-      </div>
-      <div className="space-y-4">
-        {type === "text" ? (
-          <QuoteComponent />
-        ) : (
-          <Dialog
-            open={showVideoModal}
-            onClose={() => setShowVideoModal(false)}
-            PaperProps={{
-              style: {
-                borderRadius: "16px",
-                overflow: "hidden",
-              },
-            }}
-          >
-            <DialogTitle className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-2">
-              <span className="text-lg px-5 max-w-[405px] truncate">{title}</span>
-              <IconButton onClick={() => setShowVideoModal(false)}>
-                <img className="w-[30px]" src="/iconsNew/close.svg" alt="Close" />
-              </IconButton>
-            </DialogTitle>
-            <DialogContent className="h-full flex justify-center items-center p-0 bg-black">
-              <TestimonialComponents2 currentVideo={videoUrl} />
-            </DialogContent>
-          </Dialog>
-        )}
-        {/* prev next buttons */}
-        <div className="flex justify-between items-center px-4 pb-6">
-          <img
-            onClick={prevTestimonial}
-            className="text-white cursor-pointer"
-            src="/icons/left arrow.svg"
-            alt="Previous"
-          />
-          {fullTestimonial && (
-            <button
-              onClick={() => {
-                setisQuoteModal(true)
-                setDisableSlide(true)
-              }}
-              className="px-3 py-2 rounded-xl underline text-orange-500 font-semibold"
-            >
-              {showFullTestimonial ? "Show Less" : "Read More"}
-            </button>
-          )}
-          <img
-            onClick={nextTestimonial}
-            className="text-white cursor-pointer"
-            src="/icons/right arrow.svg"
-            alt="Next"
-          />
-        </div>
-      
-        <Dialog
-          open={isQuoteModal}
-          onClose={() =>{
-            setisQuoteModal(false)
-            setDisableSlide(false)
 
-          }}
-          BackdropProps={{
-    style: {
-      backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darker backdrop
-    },
-  }}
-          PaperProps={{
-            style: {
-              borderRadius: '16px',  // Set the dialog corners to be 30px rounded
-              overflow: 'hidden' // Ensure content doesn't overflow the edges
-            }
-          }}
-         
-          className="m-0"
-        >
-          <DialogTitle
-            className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <span className="px-8 max-w-[405px] truncate">{title}</span>
-            <IconButton onClick={() => {
+      <motion.div
+        className=" text-center"
+        key={testimonials[currentIndex]?._id}
+        custom={direction}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        variants={variants}
+      >
+        <div className="p-3 w-full text-center bg-primary-div">
+          <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
+        </div>
+        <div className="space-y-4">
+          {type === "text" ? (
+            <QuoteComponent />
+          ) : (
+            <Dialog
+              open={showVideoModal}
+              onClose={() => setShowVideoModal(false)}
+              PaperProps={{
+                style: {
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                },
+              }}
+            >
+              <DialogTitle className="text-gray-900 font-semibold bg-primary-div rounded-t-xl p-2">
+                <span className="text-lg px-5 max-w-[405px] truncate">{title}</span>
+                <IconButton onClick={() => setShowVideoModal(false)}>
+                  <img className="w-[30px]" src="/iconsNew/close.svg" alt="Close" />
+                </IconButton>
+              </DialogTitle>
+              <DialogContent className="h-full flex justify-center items-center p-0 bg-black">
+                <TestimonialComponents2 currentVideo={videoUrl} />
+              </DialogContent>
+            </Dialog>
+          )}
+          {/* prev next buttons */}
+          <div className="flex justify-between items-center px-4 pb-6">
+            <img
+              onClick={prevTestimonial}
+              className="text-white cursor-pointer"
+              src="/icons/left arrow.svg"
+              alt="Previous"
+            />
+            {fullTestimonial && (
+              <button
+                onClick={() => {
+                  setisQuoteModal(true)
+                  setDisableSlide(true)
+                }}
+                className="px-3 py-2 rounded-xl underline text-orange-500 font-semibold"
+              >
+                {showFullTestimonial ? "Show Less" : "Read More"}
+              </button>
+            )}
+            <img
+              onClick={nextTestimonial}
+              className="text-white cursor-pointer"
+              src="/icons/right arrow.svg"
+              alt="Next"
+            />
+          </div>
+
+          <Dialog
+            open={isQuoteModal}
+            onClose={() => {
               setisQuoteModal(false)
               setDisableSlide(false)
-            }}>
-            <img className="w-[30px]" src="/iconsNew/close.svg"/>
-            </IconButton>
-          </DialogTitle>
-          <DialogContent className="px-0">
+
+            }}
+            BackdropProps={{
+              style: {
+                backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darker backdrop
+              },
+            }}
+            PaperProps={{
+              style: {
+                borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+                overflow: 'hidden' // Ensure content doesn't overflow the edges
+              }
+            }}
+
+            className="m-0"
+          >
+            <DialogTitle
+              className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <span className="px-8 max-w-[405px] truncate">{title}</span>
+              <IconButton onClick={() => {
+                setisQuoteModal(false)
+                setDisableSlide(false)
+              }}>
+                <img className="w-[30px]" src="/iconsNew/close.svg" />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent className="px-0">
               <div className="text-3xl text-gray-400 mt-3 px-2">
                 <img className="h-[32px]" src="/iconsNew/quote1.png" />
               </div>
-        <div className="px-4">
-        <blockquote className="text-gray-600 mb-6 mt-3">
-              <div>
-                <span className="text-gray-600 text-lg font-semibold">
-                  {fullTestimonial}
-                </span>
+              <div className="px-4">
+                <blockquote className="text-gray-600 mb-6 mt-3">
+                  <div>
+                    <span className="text-gray-600 text-lg font-semibold">
+                      {fullTestimonial}
+                    </span>
+                  </div>
+                </blockquote>
+                <div className="flex">
+                  <div className="w-1 h-10 bg-primary-orange mr-3"></div>
+                  <div>
+                    <p className="text-lg font-semibold text-gray-700">{patientName}</p>
+                    <p className="text-[12px] text-gray-500">Review on Google</p>
+                  </div>
+                </div>
               </div>
-            </blockquote>
-            <div className="flex">
-              <div className="w-1 h-10 bg-primary-orange mr-3"></div>
-              <div>
-                <p className="text-lg font-semibold text-gray-700">{patientName}</p>
-                <p className="text-[12px] text-gray-500">Review on Google</p>
-              </div>
-            </div>
+            </DialogContent>
+          </Dialog>
         </div>
-          </DialogContent>
-        </Dialog>
-      </div>
       </motion.div>
     </div>
   );

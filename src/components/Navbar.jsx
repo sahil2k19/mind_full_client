@@ -66,19 +66,19 @@ const links = [
     child: [
       {
         id: 1,
-        title: 'New Delhi',
+        title: 'Greater Kailash, New Delhi',
         path: '/clinicLocation/New-Delhi',
         active: '/clinicLocation/New-Delhi',
       },
       {
         id: 2,
-        title: 'Bengaluru Whitefield',
+        title: 'Whitefield, Bengaluru',
         path: '/clinicLocation/Bengaluru-Whitefield',
         active: '/clinicLocation/Bengaluru-Whitefield',
       },
       {
         id: 3,
-        title: 'Bengaluru Hebbal',
+        title: 'Hebbal, Bengaluru',
         path: '/clinicLocation/Bengaluru-Hebbal',
         active: '/clinicLocation/Bengaluru-Hebbal',
       },
