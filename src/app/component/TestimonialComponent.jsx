@@ -166,7 +166,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
         <div className="p-3 w-full text-center bg-primary-div">
           <h2 className="text-lg font-medium text-gray-800">{title || "No Title Available"}</h2>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 mb-3">
           {type === "text" ? (
             <QuoteComponent />
           ) : (
@@ -191,8 +191,15 @@ export default function TestimonialComponent({ location, condition, disableSlide
               </DialogContent>
             </Dialog>
           )}
+          <div className="flex ml-6 mb-4">
+                  <div className="w-1 h-10 bg-primary-orange mr-3"></div>
+                  <div>
+                    <p className="text-lg font-semibold text-gray-700">{patientName}</p>
+                    <p className="text-[12px] text-gray-500">Review on Google</p>
+                  </div>
+                </div>
           {/* prev next buttons */}
-          <div className="flex justify-between items-center px-4 pb-6">
+          <div className="flex justify-between items-center px-4 mb-5 ">
             <img
               onClick={prevTestimonial}
               className="text-white cursor-pointer"
@@ -217,9 +224,10 @@ export default function TestimonialComponent({ location, condition, disableSlide
               alt="Next"
             />
           </div>
+         {/* condition and treatment */}
           <div className="px-3 ">
             {testimonials[currentIndex]?.treatment && <div className="mb-5">
-              <h3 className="text-xl font-semibold text-gray-900">Treatment: </h3>
+              <h3 className="text-xl text-start font-semibold text-gray-900">Treatment: </h3>
               <div className="mt-3 flex gap-3">
                 {testimonials[currentIndex]?.treatment
                   ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
@@ -234,7 +242,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
               </div>
             </div>}
             {testimonials[currentIndex]?.condition && <div className="">
-              <h3 className="text-xl font-semibold text-gray-900">Condition: </h3>
+              <h3 className="text-xl text-start font-semibold text-gray-900">Condition: </h3>
               <div className="mt-3 flex gap-3">
               {testimonials[currentIndex]?.condition
                 ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
