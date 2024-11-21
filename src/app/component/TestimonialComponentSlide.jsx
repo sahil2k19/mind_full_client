@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "react-slick";
+import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 
 export default function TestimonialComponentSlide({
     location,
@@ -11,7 +12,8 @@ export default function TestimonialComponentSlide({
     setDisableSlide,
 }) {
     const [testimonials, setTestimonials] = useState([]);
-
+    const [currentTestimonial, setCurrentTestimonial] = useState({});
+    const [isQuoteModal, setisQuoteModal] = useState(false);
     // Fetch testimonials from the API
     const fetchTestimonials = async () => {
         try {
@@ -91,6 +93,85 @@ export default function TestimonialComponentSlide({
         ],
     };
 
+    const QuoteComponent = ({ testimonial, modalOpen, index }) => {
+        const {
+            title,
+            fullTestimonial,
+            patientName,
+            condition,
+            treatment,
+        } = testimonial;
+        return (
+            <>
+
+                <div className="">
+                    <div className="text-3xl text-gray-400 mt-3 mb-3 leading-none ml-3">
+                        <img
+                            className="h-[24px] scale-x-[1] scale-y-[-1]"
+                            src="/iconsNew/quote.svg"
+                            alt="Quote"
+                        />
+                    </div>
+                    <div className={`px-5   ${modalOpen ? "" : "h-[145px] "} overflow-hidden `}>
+                        <span className="text-gray-600 text-sm font-semibold ">
+                            {fullTestimonial?.length > 100
+                                ? `${fullTestimonial.substring(0, 390)}...`
+                                : fullTestimonial || "No Testimonial Available"}
+                        </span>
+
+                    </div>
+                    {!isQuoteModal && <span onClick={() => {
+                        setCurrentTestimonial(testimonial);
+                        setisQuoteModal(true)
+                    }} className="text-sm ml-6 text-orange-500 cursor-pointer">Read More...</span>}
+                    {/* patient name */}
+                    <div className="flex items-center ml-6 mb-4 mt-3">
+                        <div className="w-[2px] h-[30px] bg-primary-orange mr-3"></div>
+                        <div>
+                            <span className="text-[16px] font-semibold text-gray-700">{patientName}</span>
+                            {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
+                        </div>
+                    </div>
+                </div>
+
+                {/* condition and treatmen */}
+
+                <div className="px-3 ">
+                    {treatment && <div className="mb-5">
+                        <h3 className="text-base text-start font-semibold text-gray-900">Treatment: </h3>
+                        <div className="mt-3 flex gap-3">
+                            {treatment
+                                ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
+                                .map((treatment, index) => (
+                                    <div
+                                        key={index}
+                                        className="px-2 py-1 bg-green-100 text-green-800 rounded-full"
+                                    >
+                                        <span className="text-sm">{treatment}</span>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>}
+                    {condition && <div className="">
+                        <h3 className="text-base text-start font-semibold text-gray-900">Condition: </h3>
+                        <div className="mt-3 flex gap-3">
+                            {condition
+                                ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
+                                .map((condition, index) => (
+                                    <div
+                                        key={index}
+                                        className="px-2 py-1 bg-green-100 text-green-800 rounded-full"
+                                    >
+                                        <span className="text-sm">{condition}</span>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>}
+                </div>
+            </>
+        )
+    }
+
     return (
         <div className="bg-white rounded-lg  w-full p-4">
             <Slider {...settings}>
@@ -104,77 +185,63 @@ export default function TestimonialComponentSlide({
                     } = testimonial;
 
                     return (
-                        <div key={index} className="px-2">
-                            <div className="bg-gray-100 rounded-lg  h-[500px]">
-                                <div className="p-3 w-full text-center h-[75px] overflow-hidden rounded-t-md bg-primary-div">
-                                    <h2 className="text-lg font-medium text-gray-800">
-                                        {title || "No Title Available"}
-                                    </h2>
-                                </div>
-                                <div className="">
-                                    <div className="text-3xl text-gray-400 mt-3 mb-3 leading-none ml-3">
-                                        <img
-                                            className="h-[24px] scale-x-[1] scale-y-[-1]"
-                                            src="/iconsNew/quote.svg"
-                                            alt="Quote"
-                                        />
+                        <>
+                            <div key={index} className="px-2">
+                                <div className="bg-gray-100 rounded-lg  h-[500px]">
+                                    <div className="p-3 w-full text-center h-[75px] overflow-hidden rounded-t-md bg-primary-div">
+                                        <h2 className="text-lg font-medium text-gray-800">
+                                            {title || "No Title Available"}
+                                        </h2>
                                     </div>
-                                    <div className="px-5 mb-6 h-[145px] overflow-hidden ">
-                                        <span className="text-gray-600 text-sm font-semibold ">
-                                            {fullTestimonial?.length > 100
-                                                ? `${fullTestimonial.substring(0, 390)}...`
-                                                : fullTestimonial || "No Testimonial Available"}
-                                        </span>
+                                    <div className="">
+                                        <QuoteComponent key={index} testimonial={testimonial} modalOpen={isQuoteModal} index={index} />
                                     </div>
-                                    {/* patient name */}
-                                    <div className="flex items-center ml-6 mb-4">
-                                        <div className="w-[2px] h-[30px] bg-primary-orange mr-3"></div>
-                                        <div>
-                                            <span className="text-[16px] font-semibold text-gray-700">{patientName}</span>
-                                            {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* condition and treatmen */}
-
-                                <div className="px-3 ">
-                                    {treatment && <div className="mb-5">
-                                        <h3 className="text-base text-start font-semibold text-gray-900">Treatment: </h3>
-                                        <div className="mt-3 flex gap-3">
-                                            {treatment
-                                                ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
-                                                .map((treatment, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className="px-2 py-1 bg-green-100 text-green-800 rounded-full"
-                                                    >
-                                                        <span className="text-sm">{treatment}</span>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                    </div>}
-                                    {condition && <div className="">
-                                        <h3 className="text-base text-start font-semibold text-gray-900">Condition: </h3>
-                                        <div className="mt-3 flex gap-3">
-                                            {condition
-                                                ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
-                                                .map((condition, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className="px-2 py-1 bg-green-100 text-green-800 rounded-full"
-                                                    >
-                                                        <span className="text-sm">{condition}</span>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                    </div>}
                                 </div>
                             </div>
-                        </div>
+
+                        </>
                     );
                 })}
             </Slider>
+            <Dialog
+                open={isQuoteModal}
+                onClose={() => {
+                    setisQuoteModal(false)
+                    //   setDisableSlide(false)
+
+                }}
+                BackdropProps={{
+                    style: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darker backdrop
+                    },
+                }}
+                PaperProps={{
+                    style: {
+                        borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+                        overflow: 'hidden' // Ensure content doesn't overflow the edges
+                    }
+                }}
+
+                className="m-0"
+            >
+                <DialogTitle
+                    className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                >
+                    <span className="px-8 max-w-[405px] truncate">{currentTestimonial?.title}</span>
+                    <IconButton onClick={() => {
+                        setisQuoteModal(false)
+                        // setDisableSlide(false)
+                    }}>
+                        <img className="w-[30px]" src="/iconsNew/close.svg" />
+                    </IconButton>
+                </DialogTitle>
+                <DialogContent className="px-0">
+                    <QuoteComponent modalOpen={true} index={1} testimonial={currentTestimonial} />
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

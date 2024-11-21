@@ -277,6 +277,45 @@ export default function TestimonialComponent({ location, condition, disableSlide
           </Dialog>
         </div>
       </motion.div>
+      <Dialog
+            open={isQuoteModal}
+            onClose={() => {
+              setisQuoteModal(false)
+              setDisableSlide(false)
+
+            }}
+            BackdropProps={{
+              style: {
+                backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darker backdrop
+              },
+            }}
+            PaperProps={{
+              style: {
+                borderRadius: '16px',  // Set the dialog corners to be 30px rounded
+                overflow: 'hidden' // Ensure content doesn't overflow the edges
+              }
+            }}
+
+            className="m-0"
+          >
+            <DialogTitle
+              className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <span className="px-8 max-w-[405px] truncate">{title}</span>
+              <IconButton onClick={() => {
+                setisQuoteModal(false)
+                setDisableSlide(false)
+              }}>
+                <img className="w-[30px]" src="/iconsNew/close.svg" />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent className="px-0">
+              <QuoteComponent modalOpen={true} />
+            </DialogContent>
+          </Dialog>
     </div>
   );
 }

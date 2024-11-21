@@ -396,44 +396,7 @@ const HomePage = ({ allSection }) => {
 
                 </section>
 
-                {/* More about tms */}
-
-                {/* <section className=' py-10 px-4 mb-6 '>
-                    <div className='mb-10'>
-                        <h1 className='text-4xl text-center font-sans mb-4 font-semibold'>
-                            {allSection?.section3?.title}
-                        </h1>
-                        <p className='text-center mb-5 font-[15px] text-[#3A3A3A]'>{allSection?.section3?.para1}</p>
-                    </div>
-
-                    <div className=''>
-                        <div className='flex justify-center gap-8 mb-5 items-center py-6 rounded-lg '>
-                            <div className=' flex p-6 rounded-lg bg-primary-div '>
-                                <div className='h-[300px] w-[400px]'>
-                                    <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
-                                </div>
-                                <div className='flex flex-col justify-center px-8 text-gray-700'>
-                                    <h3 className='font-semibold py-5 text-2xl'>NON-INVASIVE</h3>
-                                    <h3 className='font-semibold py-5 text-2xl'>NO MEDICATION</h3>
-                                    <h3 className='font-semibold py-5 text-2xl'>SAFE</h3>
-                                    <h3 className='font-semibold py-5 text-2xl'>US FDA Approved</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='col-span-4 md:bg-primary-div'>
-                            <div className='flex flex-col justify-center mb-5 px-8  py-6 bg-[rgba(239, 102, 35, 0.3)]'>
-                                <p className='text-lg text-center'>At MindfulTMS, we bring 5+ years of TMS experience with 10+ clinics in India and USA.</p>
-                                <p className='text-lg text-center'><span className='font-bold'>Is TMS for me? </span>Learn how it works and if it is the right option for you.</p>
-                            </div>
-                            <div className='flex justify-center  '>
-                                <Link href={"/pages/tms"} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
-                                    {allSection?.section3?.button?.text}
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </section> */}
+              
 
                 <section>
                     <div className="xl:mx-[180px] p-6 bg-white  rounded-lg">
@@ -475,36 +438,36 @@ const HomePage = ({ allSection }) => {
                                     </svg> <span className='ml-2 font-semibold text-xl text-gray-800'> US FDA Approved</span>
                                     </div>
                                 </div>
-                                <p className="text-gray-600 mt-4">
+                                <p className="text-gray-600 mt-4 text-xl">
                                     At MindfulTMS, we bring 5+ years of TMS experience with 10+ clinics in India and USA.
                                 </p>
-                                <p className="text-gray-600 mt-2">
+                                <p className="text-gray-600 mt-2 text-xl">
                                     <strong>Is TMS for me?</strong> Learn how it works and if it is the right option for you.
                                 </p>
-                                <button className="mt-4 px-6 py-2 bg-orange-500 text-white font-bold rounded-lg">
+                                <button className="mt-4 px-6 py-2 bg-orange-500 text-white font-semibold rounded-lg">
                                     MORE ABOUT TMS
                                 </button>
                             </div>
                         </div>
                         <div className="flex justify-around mt-8 text-center">
                             <div>
-                                <p className="text-4xl font-bold text-orange-500">5+</p>
-                                <p className="text-gray-900">Years of Experience</p>
+                                <p className="text-5xl font-bold text-orange-500">5+</p>
+                                <p className="text-gray-900 font-bold">Years of Experience</p>
                             </div>
                             <div>
-                                <p className="text-4xl font-bold text-orange-500">10+</p>
-                                <p className="text-gray-900">Clinics (India & USA)</p>
+                                <p className="text-5xl font-bold text-orange-500">10+</p>
+                                <p className="text-gray-900 font-bold">Clinics (India & USA)</p>
                             </div>
                             <div>
-                                <p className="text-4xl font-bold text-orange-500">400,000+</p>
-                                <p className="text-gray-900">Treatments Administered</p>
+                                <p className="text-5xl font-bold text-orange-500">400,000+</p>
+                                <p className="text-gray-900 font-bold">Treatments Administered</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* wy tms */}
-                <section className='py-4 px-4 mb-11'>
+                <section className='py-4 px-4 mb-11 bg-primary-div'>
                     <div className='mb-10'>
                         <h1 className='text-4xl text-center font-sans mb-4'>Why Choose <span className='font-semibold'> MindfulTMS?</span></h1>
 
