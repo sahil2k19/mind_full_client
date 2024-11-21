@@ -331,7 +331,7 @@ const HomePage = ({ allSection }) => {
                 <section className=' pb-5 lg:mx-[91px]' >
 
                     <div className='grid grid-cols-2 justify-around mx-10  items-center h-full'>
-                    {/* left image */}
+                        {/* left image */}
                         <div className='h-full'>
                             <img className='w-full  object-contain h-[500px]' src="https://mindfultms1.s3.us-east-1.amazonaws.com/take_assessment_image_4__1_-removebg-preview.png" alt="" />
                         </div>
@@ -363,10 +363,41 @@ const HomePage = ({ allSection }) => {
                         </div>
                     </div>
                 </section>
+                {/* services */}
+                <section className='py-3 px-4 bg-primary-div rounded-lg'>
+                    <div className='mb-3'>
+                        <div className='mb-3 py-3'>
+                            <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1>
+                        </div>
+                        {
+                            allSection?.section5?.services?.map((service, index) => (
+                                <div key={index} className='mb-6 '>
+                                    {/* <h1 className='text-xl font-semibold mb-5 text-center'>{service?.title}</h1> */}
+                                    <div className='grid grid-cols-2 md:grid-cols-4 items-center mb-5 gap-8 justify-center'>
+                                        {
+                                            service?.array?.map((i, index) => (
+                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer flex-col justify-center  items-center text-center '>
+                                                    {/* <div className='w-[164px] h-[164px] rounded-full bg-[#EF6623] mb-3 '></div> */}
+                                                    <div className='w-[164px] h-[164px] flex justify-center'>
+                                                        <img src={servicesIcon[index]?.icon} className=' p-4 h-full w-full object-contain    mb-3 ' />
+                                                    </div>
+                                                    <p className='text-xl text-center font-semibold'>{i?.name}</p>
+                                                </Link>
+                                            ))
+                                        }
+
+                                    </div>
+
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                </section>
 
                 {/* More about tms */}
 
-                <section className=' py-10 px-4 mb-6 bg-primary-div'>
+                {/* <section className=' py-10 px-4 mb-6 '>
                     <div className='mb-10'>
                         <h1 className='text-4xl text-center font-sans mb-4 font-semibold'>
                             {allSection?.section3?.title}
@@ -375,7 +406,6 @@ const HomePage = ({ allSection }) => {
                     </div>
 
                     <div className=''>
-                        {/* hide this on medium and show alternate */}
                         <div className='flex justify-center gap-8 mb-5 items-center py-6 rounded-lg '>
                             <div className=' flex p-6 rounded-lg bg-primary-div '>
                                 <div className='h-[300px] w-[400px]'>
@@ -392,7 +422,6 @@ const HomePage = ({ allSection }) => {
 
                         <div className='col-span-4 md:bg-primary-div'>
                             <div className='flex flex-col justify-center mb-5 px-8  py-6 bg-[rgba(239, 102, 35, 0.3)]'>
-                                {/* <div dangerouslySetInnerHTML={{ __html: allSection?.section3?.para2 }} /> */}
                                 <p className='text-lg text-center'>At MindfulTMS, we bring 5+ years of TMS experience with 10+ clinics in India and USA.</p>
                                 <p className='text-lg text-center'><span className='font-bold'>Is TMS for me? </span>Learn how it works and if it is the right option for you.</p>
                             </div>
@@ -400,6 +429,74 @@ const HomePage = ({ allSection }) => {
                                 <Link href={"/pages/tms"} className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
                                     {allSection?.section3?.button?.text}
                                 </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section> */}
+
+                <section>
+                    <div className="xl:mx-[180px] p-6 bg-white  rounded-lg">
+                    <h2 className="text-4xl font-bold text-gray-900 text-center">TMS Treatment</h2>
+                    <p className="text-gray-600 mt-2 text-center">
+                                    A safe approach using magnets to treat Depression, Anxiety, OCD and more.
+                                </p>
+                        <div className="flex flex-col md:flex-row items-center">
+                            <div className="md:w-1/2">
+                                <img
+                                    src="https://mindfultms1.s3.us-east-1.amazonaws.com/1731475215316-TMS-Illustration-Square-logo-min.png"
+                                    alt="TMS Treatment"
+                                    width={600}
+                                    height={400}
+                                    className="rounded-lg h-[500px] w-[500px]"
+                                />
+                            </div>
+                            <div className="md:w-1/2 mt-6 md:mt-0 md:pl-8">
+                          
+                                <div className="mt-4 space-y-2">
+                                    <div className="flex items-center">
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg><span className='ml-2 font-semibold text-xl text-gray-800'> NON-INVASIVE</span>
+                                    </div>
+                                    <div className="flex  items-center">
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg> <span className='ml-2 font-semibold text-xl text-gray-800'> NO MEDICATION</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg> <span className='ml-2 font-semibold text-xl text-gray-800'> SAFE</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                    <svg fill="#ea580c" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 24 24">
+                                        <path d="M 12 2 C 6.486 2 2 6.486 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 10.874 21.803984 9.7942031 21.458984 8.7832031 L 19.839844 10.402344 C 19.944844 10.918344 20 11.453 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 7.589 7.589 4 12 4 C 13.633 4 15.151922 4.4938906 16.419922 5.3378906 L 17.851562 3.90625 C 16.203562 2.71225 14.185 2 12 2 z M 21.292969 3.2929688 L 11 13.585938 L 7.7070312 10.292969 L 6.2929688 11.707031 L 11 16.414062 L 22.707031 4.7070312 L 21.292969 3.2929688 z"></path>
+                                    </svg> <span className='ml-2 font-semibold text-xl text-gray-800'> US FDA Approved</span>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600 mt-4">
+                                    At MindfulTMS, we bring 5+ years of TMS experience with 10+ clinics in India and USA.
+                                </p>
+                                <p className="text-gray-600 mt-2">
+                                    <strong>Is TMS for me?</strong> Learn how it works and if it is the right option for you.
+                                </p>
+                                <button className="mt-4 px-6 py-2 bg-orange-500 text-white font-bold rounded-lg">
+                                    MORE ABOUT TMS
+                                </button>
+                            </div>
+                        </div>
+                        <div className="flex justify-around mt-8 text-center">
+                            <div>
+                                <p className="text-4xl font-bold text-orange-500">5+</p>
+                                <p className="text-gray-900">Years of Experience</p>
+                            </div>
+                            <div>
+                                <p className="text-4xl font-bold text-orange-500">10+</p>
+                                <p className="text-gray-900">Clinics (India & USA)</p>
+                            </div>
+                            <div>
+                                <p className="text-4xl font-bold text-orange-500">400,000+</p>
+                                <p className="text-gray-900">Treatments Administered</p>
                             </div>
                         </div>
                     </div>
@@ -427,43 +524,7 @@ const HomePage = ({ allSection }) => {
                     </div>
                 </section>
 
-                {/* services */}
-                <section className='py-8 px-4 bg-primary-div rounded-lg'>
-                    <div className='mb-8'>
-                        <div className='mb-8 py-5'>
-                            <h1 className='text-3xl  font-semibold text-gray-800  text-center'>{allSection?.section5?.header}</h1>
-                        </div>
-                        {
-                            allSection?.section5?.services?.map((service, index) => (
-                                <div key={index} className='mb-6 '>
-                                    {/* <h1 className='text-xl font-semibold mb-5 text-center'>{service?.title}</h1> */}
-                                    <div className='grid grid-cols-2 md:grid-cols-4 items-center mb-11 gap-8 justify-center'>
-                                        {
-                                            service?.array?.map((i, index) => (
-                                                <Link href={servicesIcon[index]?.link} key={index} className='flex cursor-pointer flex-col justify-center  items-center text-center '>
-                                                    {/* <div className='w-[164px] h-[164px] rounded-full bg-[#EF6623] mb-3 '></div> */}
-                                                    <div className='w-[164px] h-[164px] flex justify-center'>
-                                                        <img src={servicesIcon[index]?.icon} className=' p-4 h-full w-full object-contain    mb-3 ' />
-                                                    </div>
-                                                    <p className='text-xl text-center font-semibold'>{i?.name}</p>
-                                                </Link>
-                                            ))
-                                        }
 
-                                    </div>
-                                    {/* <div className='flex justify-center '>
-                                            <Link href={service?.button?.link || "/"}>
-                                                <button className='bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg px-8 py-3 font-semibold text-sm text-white'>
-                                                    {service?.button?.text}
-                                                </button>
-                                            </Link>
-                                        </div> */}
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                </section>
 
                 {/* client speaks */}
                 <section className='py-8 px-4 md:px-[100px] mt-4'>
