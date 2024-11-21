@@ -217,6 +217,30 @@ export default function TestimonialComponent({ location, condition, disableSlide
               alt="Next"
             />
           </div>
+          <div className="px-3 ">
+         <div className="mb-5">
+            <h3 className="text-xl font-semibold text-gray-900">Treatment: </h3>
+            <div className="mt-3 flex  gap-3">
+              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
+                  <span className="text-sm">   Therapy</span>
+              </div>
+              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
+              <span className="text-sm">   TMS</span>
+              </div>
+            </div>
+         </div>
+         <div className="">
+            <h3 className="text-xl font-semibold text-gray-900">Conditions: </h3>
+            <div className="mt-3 flex  gap-3">
+              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
+                  <span className="text-sm">   Depresion</span>
+              </div>
+              <div className="px-3 py-2 bg-green-100 text-green-800 rounded-full">
+              <span className="text-sm">   Stress</span>
+              </div>
+            </div>
+         </div>
+        </div>
 
           <Dialog
             open={isQuoteModal}
