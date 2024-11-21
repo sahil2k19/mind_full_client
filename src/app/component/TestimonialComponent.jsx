@@ -195,7 +195,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
                   <div className="w-1 h-10 bg-primary-orange mr-3"></div>
                   <div>
                     <p className="text-lg font-semibold text-gray-700">{patientName}</p>
-                    <p className="text-[12px] text-gray-500">Review on Google</p>
+                    {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
                   </div>
                 </div>
           {/* prev next buttons */}
@@ -309,7 +309,7 @@ export default function TestimonialComponent({ location, condition, disableSlide
                   <div className="w-1 h-10 bg-primary-orange mr-3"></div>
                   <div>
                     <p className="text-lg font-semibold text-gray-700">{patientName}</p>
-                    <p className="text-[12px] text-gray-500">Review on Google</p>
+                    {/* <p className="text-[12px] text-gray-500">Review on Google</p> */}
                   </div>
                 </div>
               </div>
