@@ -238,7 +238,7 @@ const HomePage = ({ allSection }) => {
                                 <CounterComponent />
                             </div>
                             <div>
-                                <p className='text-center mb-8 text-gray-700 text-lg font-semibold'><strong>Is TMS for me?</strong> <br/>Learn how it works and
+                                <p className='text-center mb-8 text-gray-700 text-lg font-semibold'><strong>Is TMS for me?</strong> <br />Learn how it works and
                                     if it is the right option for you.</p>
                             </div>
                             <div className='flex justify-center'>
@@ -297,7 +297,7 @@ const HomePage = ({ allSection }) => {
                 <section className='mb-5'>
                     <div className='grid grid-cols-2  w-full cover mb-4 h-[545px]  ' style={{
                         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,188,77,1) 110%), url('/iconsNew/hero2.png')`,
-                        
+
                         backgroundSize: 'cover',  // This makes the background image cover the entire div
                         backgroundPosition: 'center', // This centers the background image
                     }}>
@@ -305,11 +305,11 @@ const HomePage = ({ allSection }) => {
                         {/* <img className='w-full object-cover' src='/home/banner02.svg' /> */}
                         <div className='flex flex-col justify-center items-end mr-[70px] lg:mr-[100px]'>
                             <div className='flex flex-col justify-center  items-end px-8'>
-                                <h1 className=' text-6xl mb-5 text-gray-900  text-end font-sans font-semibold '>
-                                    {allSection?.heroSection?.title}
+                                <h1 className=' text-6xl mb-5 text-white  text-end font-sans font-semibold '>
+                                    {`You Deserve to Feel Better `}
                                 </h1>
                                 {
-                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-gray-800 text-end'>{para}</p>
+                                    allSection?.heroSection?.para?.split("\n").map((para, index) => <p key={index} className=' mb-5 font-[400] text-[18px] text-white text-end'>{para}</p>
 
                                     )
                                 }
@@ -317,7 +317,7 @@ const HomePage = ({ allSection }) => {
 
                             </div>
                             <div className='flex justify-end px-8'>
-                            <div className=''>
+                                <div className=''>
                                     <RequestAppointment name={"SCHEDULE CONSULTATION"} />
 
                                 </div>
@@ -328,27 +328,38 @@ const HomePage = ({ allSection }) => {
                 </section>
 
                 {/* free test */}
-                <section className=' py-10'>
-                    <div className='mb-8'>
-                        <h1 className='text-4xl  text-center font-sans mb-4 font-semibold'>
-                            {allSection?.section2?.para1}
-                        </h1>
-                        <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
-                    </div>
+                <section className=' pb-5 lg:mx-[91px]' >
 
-                    <div className='flex justify-around items-center md:mx-[100px] lg:mx-[120px] bg-primary-div p-5 rounded-xl'>
-                        <div className='flex flex-col justify-center mb-2  bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
-                            {/* <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
-                            <span className='text-3xl  mb-2'>Take a <span className='font-semibold'>FREE TEST </span></span>
-                            <span className=' text-3xl'>to identify your symptoms</span>
+                    <div className='grid grid-cols-2 justify-around mx-10  items-center h-full'>
+                    {/* left image */}
+                        <div className='h-full'>
+                            <img className='w-full  object-contain h-[500px]' src="https://mindfultms1.s3.us-east-1.amazonaws.com/take_assessment_image_4__1_-removebg-preview.png" alt="" />
                         </div>
-                        <div className='flex justify-center'>
-                            <Link href={allSection?.section2?.button?.link}>
-                                <button className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-12 py-3 font-semibold text-lg text-white'>
-                                    {/* {allSection?.section2?.button?.text} */}
-                                    Start Test
-                                </button>
-                            </Link>
+                        {/* right section */}
+                        <div className='flex flex-col justify-center items-center  h-full'>
+                            <div className='mb-8'>
+                                <h1 className='text-4xl  text-center font-sans mb-4 font-semibold'>
+                                    {allSection?.section2?.para1}
+                                </h1>
+                                <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
+                            </div>
+                            {/* right section box */}
+                            {/* right section box is under that is under underline ant */}
+                            <div className='flex flex-col w-[80%] h-[53%] justify-around items-center  bg-primary-div p-5 rounded-xl'>
+                                <div className='flex flex-col justify-center mb-2 text-center bg-[rgba(239, 102, 35, 0.3)] text-[#3A3A3A]'>
+                                    {/* <div className='text-3xl' dangerouslySetInnerHTML={{ __html: allSection?.section2?.html1 }} /> */}
+                                    <span className='text-3xl  mb-2 '>Take a <span className='font-semibold'>FREE TEST </span></span>
+                                    <span className=' text-3xl'>to identify your </span><span className='text-3xl'> symptoms</span>
+                                </div>
+                                <div className='flex justify-center'>
+                                    <Link href={allSection?.section2?.button?.link}>
+                                        <button className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-12 py-3 font-semibold text-lg text-white'>
+                                            {/* {allSection?.section2?.button?.text} */}
+                                            Start Test
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -367,15 +378,15 @@ const HomePage = ({ allSection }) => {
                         {/* hide this on medium and show alternate */}
                         <div className='flex justify-center gap-8 mb-5 items-center py-6 rounded-lg '>
                             <div className=' flex p-6 rounded-lg bg-primary-div '>
-                            <div className='h-[300px] w-[400px]'>
-                                <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
-                            </div>
-                            <div className='flex flex-col justify-center px-8 text-gray-700'>
-                                <h3 className='font-semibold py-5 text-2xl'>NON-INVASIVE</h3>
-                                <h3 className='font-semibold py-5 text-2xl'>NO MEDICATION</h3>
-                                <h3 className='font-semibold py-5 text-2xl'>SAFE</h3>
-                                <h3 className='font-semibold py-5 text-2xl'>US FDA Approved</h3>
-                            </div>
+                                <div className='h-[300px] w-[400px]'>
+                                    <img className='w-full h-full' src={allSection?.section3?.box?.banner} />
+                                </div>
+                                <div className='flex flex-col justify-center px-8 text-gray-700'>
+                                    <h3 className='font-semibold py-5 text-2xl'>NON-INVASIVE</h3>
+                                    <h3 className='font-semibold py-5 text-2xl'>NO MEDICATION</h3>
+                                    <h3 className='font-semibold py-5 text-2xl'>SAFE</h3>
+                                    <h3 className='font-semibold py-5 text-2xl'>US FDA Approved</h3>
+                                </div>
                             </div>
                         </div>
 
@@ -463,7 +474,7 @@ const HomePage = ({ allSection }) => {
 
                 </section>
 
-         \
+                \
                 {/* our experts */}
                 <div className='bg-primary-div'>
                     <OurDoctorSection />
