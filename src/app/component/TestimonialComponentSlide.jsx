@@ -113,7 +113,7 @@ export default function TestimonialComponentSlide({
                         />
                     </div>
                     <div className={`px-5   ${modalOpen ? "" : "h-[145px] "} overflow-hidden `}>
-                        <span className="text-gray-600 text-sm font-semibold ">
+                        <span className="text-gray-600 text-base font-semibold ">
                             {fullTestimonial?.length > 100
                                 ? `${fullTestimonial.substring(0, 390)}...`
                                 : fullTestimonial || "No Testimonial Available"}
@@ -123,7 +123,7 @@ export default function TestimonialComponentSlide({
                     {!isQuoteModal && <span onClick={() => {
                         setCurrentTestimonial(testimonial);
                         setisQuoteModal(true)
-                    }} className="text-sm ml-6 text-orange-500 cursor-pointer">Read More...</span>}
+                    }} className="text-base ml-6 text-orange-500 cursor-pointer">Read More...</span>}
                     {/* patient name */}
                     <div className="flex items-center ml-6 mb-4 mt-3">
                         <div className="w-[2px] h-[30px] bg-primary-orange mr-3"></div>
@@ -186,8 +186,8 @@ export default function TestimonialComponentSlide({
 
                     return (
                         <>
-                            <div key={index} className="px-2">
-                                <div className="bg-gray-100 rounded-lg  h-[500px]">
+                            <div key={index} className="px-2 ">
+                                <div className="bg-gray-100 rounded-lg h-[550px]">
                                     <div className="p-3 w-full text-center h-[75px] overflow-hidden rounded-t-md bg-primary-div">
                                         <h2 className="text-lg font-medium text-gray-800">
                                             {title || "No Title Available"}

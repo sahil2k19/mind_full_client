@@ -331,7 +331,7 @@ const HomePage = ({ allSection }) => {
                 {/* free test */}
                 <section className=' pb-5 lg:mx-[91px]' >
 
-                    <div className='grid grid-cols-2 justify-around mx-10  items-center h-full'>
+                    <div className='flex justify-center mx-10  items-center h-full'>
                         {/* left image */}
                         <div className='h-full'>
                             <img className='w-full  object-contain h-[500px]' src="https://mindfultms1.s3.us-east-1.amazonaws.com/take_assessment_image_4__1_-removebg-preview.png" alt="" />
@@ -342,7 +342,8 @@ const HomePage = ({ allSection }) => {
                                 <h1 className='text-4xl  text-center font-sans mb-4 font-semibold'>
                                     {allSection?.section2?.para1}
                                 </h1>
-                                <p className='text-lg text-center'>{allSection?.section2?.para2}</p>
+                                <br/>
+                                <p className='text-xl text-center'>{allSection?.section2?.para2}</p>
                             </div>
                             {/* right section box */}
                             {/* right section box is under that is under underline ant */}
@@ -352,7 +353,7 @@ const HomePage = ({ allSection }) => {
                                     <span className='text-3xl  mb-2 '>Take a <span className='font-semibold'>FREE TEST </span></span>
                                     <span className=' text-3xl'>to identify your </span><span className='text-3xl'> symptoms</span>
                                 </div>
-                                <div className='flex justify-center'>
+                                <div className='flex justify-center mt-5'>
                                     <Link href={allSection?.section2?.button?.link}>
                                         <button className='bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg px-12 py-3 font-semibold text-lg text-white'>
                                             {/* {allSection?.section2?.button?.text} */}
@@ -398,23 +399,23 @@ const HomePage = ({ allSection }) => {
 
               
 
-                <section>
+                <section className='py-8'>
                     <div className="xl:mx-[180px] p-6 bg-white  rounded-lg">
                     <h2 className="text-4xl font-bold text-gray-900 text-center">TMS Treatment</h2>
                     <p className="text-gray-600 mt-2 text-center">
                                     A safe approach using magnets to treat Depression, Anxiety, OCD and more.
                                 </p>
                         <div className="flex flex-col md:flex-row items-center">
-                            <div className="md:w-1/2">
+                            <div className="md">
                                 <img
                                     src="https://mindfultms1.s3.us-east-1.amazonaws.com/1731475215316-TMS-Illustration-Square-logo-min.png"
                                     alt="TMS Treatment"
                                     width={600}
                                     height={400}
-                                    className="rounded-lg h-[500px] w-[500px]"
+                                    className="rounded-lg h-[370px] object-contain "
                                 />
                             </div>
-                            <div className="md:w-1/2 mt-6 md:mt-0 md:pl-8">
+                            <div className="md: mt-6 md:mt-0 md:pl-8">
                           
                                 <div className="mt-4 space-y-2">
                                     <div className="flex items-center">
@@ -467,7 +468,7 @@ const HomePage = ({ allSection }) => {
                 </section>
 
                 {/* wy tms */}
-                <section className='py-4 px-4 mb-11 bg-primary-div'>
+                <section className='py-8 px-4 mb-11 bg-primary-div'>
                     <div className='mb-10'>
                         <h1 className='text-4xl text-center font-sans mb-4'>Why Choose <span className='font-semibold'> MindfulTMS?</span></h1>
 
@@ -491,7 +492,7 @@ const HomePage = ({ allSection }) => {
 
 
                 {/* client speaks */}
-                <section className='py-8 px-4 md:px-[100px] mt-4'>
+                <section className='py-2 px-4 md:px-[100px] '>
                     {/* <VideoComponent /> */}
                     {/* <NewComponent videos={allSection?.section8?.videos} /> */}
                     <h1 className='text-3xl text-gray-800 font-semibold  text-center  mb-6'>Clients Speak</h1>

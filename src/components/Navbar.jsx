@@ -1,9 +1,12 @@
 "use client"
 import PractoWidget from "@/app/clinicLocation/[city]/PractoWidget";
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, Select, FormControl, InputLabel, Button, Container } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, Select, FormControl, InputLabel, Button, Container, Popover } from '@mui/material';
 import React, { useEffect, useState } from "react";
 import Drawer from '@mui/material/Drawer';
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { ChevronDown } from 'lucide-react'
+
 
 const links = [
   {
@@ -47,7 +50,7 @@ const links = [
         title: 'Psychiatry',
         path: '/services/psychiatry',
         active: '/services/psychiatry',
-        
+
       },
       {
         id: 13,
@@ -57,7 +60,7 @@ const links = [
       },
     ]
   },
- 
+
   {
     id: 4,
     title: 'Our Clinic Locations',
@@ -88,7 +91,7 @@ const links = [
     id: 5,
     title: 'Our Experts',
     path: '/pages/ourExpert',
-    active: '/location',
+    active: '/pages/ourExpert',
   },
   // {
   //   id: 51,
@@ -133,6 +136,7 @@ function Navbar() {
   const router = useRouter();
   const location = { pathname: usePathname() };
   const [requestModal, setRequestModal] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -147,6 +151,9 @@ function Navbar() {
   const [activeParent, setActiveParent] = useState(null); // Track which parent link is expanded
   const [drawerAnchor, setDrawerAnchor] = useState("left"); // State to manage drawer anchor position
 
+  // const toggleDropdown = (id) => {
+  //   setOpenDropdown(openDropdown === id ? null : id)
+  // }
 
 
   useEffect(() => {
@@ -278,9 +285,35 @@ function Navbar() {
     // console.log(newWhatsappNumber)
   }, [formData?.location])
 
-  return (
-    <div  className=' bg-white p-0 top-0 left-0 right-0 z-50'>
-      <div className="select-none">
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const toggleDropdown = (event, id) => {
+    if (openDropdown === id) {
+      setAnchorEl(null);
+      setOpenDropdown(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpenDropdown(id);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (anchorEl && !anchorEl.contains(event.target)) {
+        setOpenDropdown(null);
+        setAnchorEl(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [anchorEl]);
+
+  const MobileView = () => {
+    return (
+      <>
+
         <header className="flex items-center flex-row-reverse md:flex-row justify-between px-6 md:px-16 py-0">
           <div onClick={() => setOpen(true)} className="cursor-pointer">
             <img src="/home/menu.svg" />
@@ -288,7 +321,7 @@ function Navbar() {
           <div onClick={() => router.push("/")} className="cursor-pointer  w-[129px] h-[90px] ">
             <img className="cursor-pointer w-full h-full" src="/home/logoMain.svg" />
           </div>
-        
+
         </header>
         <Drawer
           anchor={drawerAnchor}
@@ -333,10 +366,10 @@ function Navbar() {
               ))}
             </div>
             <div className="mb-4">
-            <button onClick={()=>handleNavigateButton('/assesment')}  className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
+              <button onClick={() => handleNavigateButton('/assesment')} className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
                 SELF ASSESSMENT
               </button>
-              <button onClick={contactUsClick}  className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
+              <button onClick={contactUsClick} className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
                 SCHEDULE CONSULTATION
               </button>
               <button onClick={contactUsClick} className="bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg w-full py-3 text-white text-sm font-semibold">
@@ -345,8 +378,137 @@ function Navbar() {
             </div>
           </div>
         </Drawer>
+      </>
+    )
+  }
+
+  const DesktopView = () => {
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const location = { pathname: usePathname() };
+
+    const toggleDropdown = (event, id) => {
+      if (openDropdown === id) {
+        setAnchorEl(null);
+        setOpenDropdown(null);
+      } else {
+        setAnchorEl(event.currentTarget);
+        setOpenDropdown(id);
+      }
+    };
+
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (anchorEl && !anchorEl.contains(event.target)) {
+          setOpenDropdown(null);
+          setAnchorEl(null);
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [anchorEl]);
+
+    return (
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <div
+                onClick={() => router.push("/")}
+                className="cursor-pointer w-[129px] h-[90px]"
+              >
+                <img
+                  className="cursor-pointer w-full h-full"
+                  src="/home/logoMain.svg"
+                  alt="Logo"
+                />
+              </div>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              {links.map((link) => (
+                <div key={link.id} className="relative">
+                  {link.child ? (
+                    <div>
+                      <button
+                        onClick={(event) => toggleDropdown(event, link.id)}
+                        className={`flex items-center space-x-1 text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold ${location.pathname === link.active
+                          ? "underline decoration-2"
+                          : ""
+                          }`}
+                      >
+                        <span>{link.title}</span>
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
+                      {openDropdown === link.id && (
+                        <div
+                          ref={setAnchorEl}
+                          className="absolute z-10 -ml-4 mt-3 transform px-2 w-[300px]"
+                        >
+                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                            <div className="relative grid bg-white">
+                              {link.child.map((childLink) => (
+                                <Link
+                                  key={childLink.id}
+                                  href={childLink.path}
+                                  className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === childLink.active
+                                      ? "bg-orange-500 text-white"
+                                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                    }`}
+                                >
+                                  {childLink.title}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      href={link.path}
+                      className={` px-3 py-2 rounded-md text-sm font-semibold ${location.pathname === link.active
+                        ? "underline decoration-2 text-orange-500 hover:text-orange-500"
+                        : ""
+                        }`}
+                    >
+                      {link.title}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Contact Button */}
+            <div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#F8A51C] hover:bg-[#e69919] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              >
+                CONTACT US
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  };
+
+
+  return (
+    <div className=' bg-white p-0 top-0 left-0 right-0 z-50'>
+      <div className="select-none">
+        <div className=" md:hidden">
+          <MobileView />
+        </div>
       </div>
 
+      <div className="hidden md:block">
+        <DesktopView />
+      </div>
 
       <Dialog open={requestModal} onClose={toggleRequestModal}>
         <DialogTitle className='text-center font-semibold'>Request an Appointment</DialogTitle>
