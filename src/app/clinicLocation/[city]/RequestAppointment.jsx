@@ -114,7 +114,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
     }
 
     const isFormValid = () => {
-        return formData.name && formData.email && formData.phone && formData.location;
+        return formData.name && formData.phone && formData.location;
     }
     useEffect(()=>{
         const isFormValidBool = isFormValid();
@@ -156,7 +156,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
                         value={formData.name}
                         onChange={handleChange}
                     />
-                    <TextField
+                    {/* <TextField
                         margin="dense"
                         name="email"
                         label="Email"
@@ -164,7 +164,7 @@ const RequestAppointment = ({city, name, customStyle}) => {
                         fullWidth
                         value={formData.email}
                         onChange={handleChange}
-                    />
+                    /> */}
                     <TextField
                         margin="dense"
                         name="phone"

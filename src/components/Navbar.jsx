@@ -6,6 +6,7 @@ import Drawer from '@mui/material/Drawer';
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from 'lucide-react'
+import RequestAppointment from "@/app/clinicLocation/[city]/RequestAppointment";
 
 
 const links = [
@@ -369,12 +370,15 @@ function Navbar() {
               <button onClick={() => handleNavigateButton('/assesment')} className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
                 SELF ASSESSMENT
               </button>
-              <button onClick={contactUsClick} className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
+              {/* <button onClick={contactUsClick} className="bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold">
                 SCHEDULE CONSULTATION
-              </button>
-              <button onClick={contactUsClick} className="bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg w-full py-3 text-white text-sm font-semibold">
+              </button> */}
+              <RequestAppointment name={'SCHEDULE CONSULTATION'} customStyle={`bg-[#EF6623] hover:bg-orange-500 active:bg-orange-700 rounded-lg w-full py-3 mb-4 text-white text-sm font-semibold`}/>
+
+              {/* <button onClick={contactUsClick} className="bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg w-full py-3 text-white text-sm font-semibold">
                 CONTACT US
-              </button>
+              </button> */}
+              <RequestAppointment name={'CONTACT US'} customStyle={`bg-[#F8A51C] hover:bg-yellow-500 active:bg-yellow-600 rounded-lg w-full py-3 text-white text-sm font-semibold`}/>
             </div>
           </div>
         </Drawer>
@@ -484,12 +488,8 @@ function Navbar() {
 
             {/* Contact Button */}
             <div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#F8A51C] hover:bg-[#e69919] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-              >
-                CONTACT US
-              </Link>
+             
+              <RequestAppointment name={"CONTACT US"}  customStyle={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#F8A51C] hover:bg-[#e69919] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500`}/>
             </div>
           </div>
         </div>
