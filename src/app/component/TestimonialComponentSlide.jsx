@@ -112,18 +112,27 @@ export default function TestimonialComponentSlide({
                             alt="Quote"
                         />
                     </div>
-                    <div className={`px-5   ${modalOpen ? "" : "h-[145px] "} overflow-hidden `}>
-                        <span className="text-gray-600 text-base font-semibold ">
-                            {fullTestimonial?.length > 100
-                                ? `${fullTestimonial.substring(0, 390)}...`
-                                : fullTestimonial || "No Testimonial Available"}
-                        </span>
+                    <div className={`px-5   ${modalOpen ? "" : "h-[115px] "} overflow-hidden `}>
+                        {isQuoteModal ? <span className="text-gray-600 text-base font-semibold ">
+                            {fullTestimonial}
+                        </span> :
+                            <span className="text-gray-600 text-base font-semibold ">
+                                <span>
+                                        {`${title}... `}
+                                        {!isQuoteModal && <span onClick={() => {
+                                            setCurrentTestimonial(testimonial);
+                                            setisQuoteModal(true)
+                                        }} className="text-base  text-orange-500 cursor-pointer">Read_More</span>}
+                                    </span>
+                                  
+                            </span>
+                        }
 
                     </div>
-                    {!isQuoteModal && <span onClick={() => {
+                    {/* {!isQuoteModal && <span onClick={() => {
                         setCurrentTestimonial(testimonial);
                         setisQuoteModal(true)
-                    }} className="text-base ml-6 text-orange-500 cursor-pointer">Read More...</span>}
+                    }} className="text-base ml-6 text-orange-500 cursor-pointer">Read More...</span>} */}
                     {/* patient name */}
                     <div className="flex items-center ml-6 mb-4 mt-3">
                         <div className="w-[2px] h-[30px] bg-primary-orange mr-3"></div>
@@ -187,12 +196,12 @@ export default function TestimonialComponentSlide({
                     return (
                         <>
                             <div key={index} className="px-2 ">
-                                <div className="bg-gray-100 rounded-lg h-[550px]">
-                                    <div className="p-3 w-full text-center h-[75px] overflow-hidden rounded-t-md bg-primary-div">
+                                <div className="bg-gray-100 rounded-lg h-[440px] py-2">
+                                    {/* <div className="p-3 w-full text-center h-[75px] overflow-hidden rounded-t-md bg-primary-div">
                                         <h2 className="text-lg font-medium text-gray-800">
                                             {title || "No Title Available"}
                                         </h2>
-                                    </div>
+                                    </div> */}
                                     <div className="">
                                         <QuoteComponent key={index} testimonial={testimonial} modalOpen={isQuoteModal} index={index} />
                                     </div>

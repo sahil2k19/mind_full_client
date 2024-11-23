@@ -42,7 +42,7 @@ const OurDoctorSection = () => {
   return (
     <section className="pt-8 pb-4 px-1">
       <div className="mb-11 flex flex-col justify-center items-center">
-        <h1 className="text-3xl md:text-5xl font-semibold text-gray-800 text-center">Our Experts</h1>
+        <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 text-center">Our Experts</h1>
       </div>
 
       {Object.entries(filteredExperts).map(([location, experts], index) => (

@@ -432,14 +432,14 @@ function Navbar() {
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center ">
               {links.map((link) => (
                 <div key={link.id} className="relative">
                   {link.child ? (
                     <div>
                       <button
                         onClick={(event) => toggleDropdown(event, link.id)}
-                        className={`flex items-center space-x-1 text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold ${location.pathname === link.active
+                        className={`flex items-center space-x-1 text-black  px-3 py-2 rounded-md text-sm font-semibold ${location.pathname === link.active
                           ? "underline decoration-2"
                           : ""
                           }`}
