@@ -83,7 +83,7 @@ const TmsPageFaqs = () => {
                                    </div>
                                 </div>
                                 {expanded[test._id] && (
-                                    <div className='p-2 md:font-semibold' >
+                                    <div className='p-2 ' >
                                         <div dangerouslySetInnerHTML={{ __html: test.detail }} />
                                     </div>
                                 )}

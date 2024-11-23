@@ -7,6 +7,7 @@ import ImageCarousel from './ImageCarousel';
 import RequestAppointment from './RequestAppointment';
 import ClinicAddress from './ClinicAddress';
 import OurDoctorSection from './OurDoctorSection';
+import ClinicLocationDoctors from '@/app/component/ClinicLocationDoctors';
 const DesktopComponent = ({ images, data, city }) => {
     return (
         <>
@@ -18,39 +19,7 @@ const DesktopComponent = ({ images, data, city }) => {
                         </h1>
                     </div>
                 </Container>
-                {/* 
-            <Container maxWidth="lg" className="">
-                <div className="flex gap-4 pb-6 md:p-0 overflow-x-scroll">
-                    <a
-                        href="#clinic-location"
-                        // onClick={() => scrollToSection(addressRef)}
-                        className="p-2 whitespace-nowrap rounded bg-orange-400 hover:bg-orange-600 text-sm text-white font-semibold"
-                    >
-                        Clinic Address
-                    </a>
-                    <a
-                        href="#request-appointment"
-                        // onClick={() => scrollToSection(appointmentRef)}
-                        className="p-2 whitespace-nowrap rounded bg-orange-400  hover:bg-orange-600 text-sm text-white font-semibold"
-                    >
-                        Request Appointment
-                    </a>
-                    <a
-                        href="#our-doctors"
-                        // onClick={() => scrollToSection(doctorsRef)}
-                        className="p-2 whitespace-nowrap rounded bg-orange-400  hover:bg-orange-600 text-sm text-white font-semibold"
-                    >
-                        Our Doctors
-                    </a>
-                    <a
-                        href="#photo-gallery"
-                        // onClick={() => scrollToSection(galleryRef)}
-                        className="p-2 whitespace-nowrap rounded bg-orange-400 hover:bg-orange-600 text-sm text-white font-semibold"
-                    >
-                        Photo Gallery
-                    </a>
-                </div>
-            </Container> */}
+             
             </div>
 
             <Container maxWidth="lg" className="py-5">
@@ -70,7 +39,7 @@ const DesktopComponent = ({ images, data, city }) => {
                 </div>
 
                 <div>
-                    <OurDoctorSection />
+                <ClinicLocationDoctors city={city}/>
                 </div>
 
 

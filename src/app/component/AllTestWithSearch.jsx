@@ -32,7 +32,7 @@ const AllTestWithSearch = () => {
 
     return (
         <div className=' flex flex-col justify-center items-center'>
-          <div className=' md:w-[60%]'>
+          <div className=' md:w-full'>
               {/* Search Bar */}
               <div className="mb-6">
                 <div className="relative flex items-center">
@@ -56,7 +56,7 @@ const AllTestWithSearch = () => {
                     testsToDisplay.map((test) => (
                         <div
                             key={test._id}
-                            className="bg-white shadow-md max-w-[320px] rounded-lg px-2 flex"
+                            className="bg-white shadow-md max-w-[320px] md:max-w-full rounded-lg px-2 flex"
                         >
                             {/* <div className="mb-4 w-[80px] md:min-w-[120px] mr-2">
                                 <img
@@ -65,7 +65,9 @@ const AllTestWithSearch = () => {
                                     className="w-full object-cover mr-4"
                                 />
                             </div> */}
-                            <div className="w-full">
+
+                            {/* for small device */}
+                            <div className="w-full md:hidden">
                                 <h3 className="text-[14px] md:text-lg font-semibold text-gray-800 capitalize">
                                     {test.name}
                                 </h3>
@@ -74,6 +76,7 @@ const AllTestWithSearch = () => {
                                         ? test.detail
                                         : test.detail.substring(0, 50) + '...'}
                                 </p>
+                                
                                 {/* Read More Button */}
                                 <div className="flex justify-end items-center">
                                     <IconButton
@@ -85,6 +88,18 @@ const AllTestWithSearch = () => {
                                     </IconButton>
                                    
                                 </div>
+                            </div>
+
+                            {/* for large device only */}
+                            <div className="w-full hidden md:block">
+                                <h3 className="text-[14px] md:text-lg font-semibold text-gray-800 capitalize">
+                                    {test.name}
+                                </h3>
+                                <p className="text-gray-600 text-[12px] md:text-sm">
+                                {    test.detail}
+                                </p>
+                                
+                                
                             </div>
                         </div>
                     ))

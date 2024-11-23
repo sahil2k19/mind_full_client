@@ -1,18 +1,18 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
-const ImageCarousel = () => {
-    const images = [
-        { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
-        { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
-        { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
-        { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
-        { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
-        { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
-        { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
-        { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
-        { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
-    ];
+const ImageCarousel = ({images}) => {
+    // const images = [
+    //     { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
+    //     { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
+    //     { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
+    //     { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
+    //     { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
+    //     { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
+    //     { src: '/home/clinicImg2.jpg', alt: 'Company Image 1' },
+    //     { src: '/home/clinicImg3.jpg', alt: 'Company Image 2' },
+    //     { src: '/home/clinicImg4.jpg', alt: 'Company Image 2' },
+    // ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);

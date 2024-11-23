@@ -35,7 +35,7 @@ const AllTherapyWithSearch = () => {
             <div className='mb-6'>
                 <h1 className='text-3xl font-semibold text-gray-800'>Therapy FAQs</h1>
             </div>
-            <div className='md:w-[60%]'>
+            <div className='md:w-full'>
                 {/* Search Bar */}
                 <div className="mb-6">
                     <div className="relative flex items-center">
