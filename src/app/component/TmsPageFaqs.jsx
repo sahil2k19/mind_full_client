@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import RequestAppointment from '../clinicLocation/[city]/RequestAppointment';
+import { Container } from '@mui/material';
 
 const TmsPageFaqs = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -31,11 +32,12 @@ const TmsPageFaqs = () => {
     ];
 
     return (
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex flex-col justify-center items-center '>
+            <Container maxWidth="lg">
             <div className='mb-6'>
                 <h1 className='text-3xl font-semibold text-gray-800'>TMS FAQs</h1>
             </div>
-            <div className='md:w-[60%]'>
+            <div className='md:w-full'>
                 {/* Search Bar */}
                 <div className="mb-6">
                     <div className="relative flex items-center">
@@ -53,7 +55,7 @@ const TmsPageFaqs = () => {
                 </div>
 
                 {/* Search Results */}
-                <div className="grid grid-cols-1 gap-2 justify-center items-center mb-6 rounded-lg">
+                <div className="grid grid-cols-1 gap-2 justify-center items-center mb-6  rounded-lg md:w-full">
                     {testsToDisplay.length > 0 ? (
                         testsToDisplay.map((test) => (
                             <div
@@ -81,7 +83,7 @@ const TmsPageFaqs = () => {
                                    </div>
                                 </div>
                                 {expanded[test._id] && (
-                                    <div className='p-2'>
+                                    <div className='p-2 md:font-semibold' >
                                         <div dangerouslySetInnerHTML={{ __html: test.detail }} />
                                     </div>
                                 )}
@@ -106,6 +108,7 @@ const TmsPageFaqs = () => {
                     />
                 </div> */}
             </div>
+            </Container>
         </div>
     );
 };

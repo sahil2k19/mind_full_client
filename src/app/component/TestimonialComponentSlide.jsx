@@ -145,9 +145,9 @@ export default function TestimonialComponentSlide({
 
                 {/* condition and treatmen */}
 
-                <div className="px-3 ">
+                <div className={`px-3 ${isQuoteModal ? "grid grid-cols-2 px-8" : ""}`}>
                     {treatment && <div className="mb-5">
-                        <h3 className="text-base text-start font-semibold text-gray-900">Treatment: </h3>
+                        <h3 className={`text-base text-start font-semibold text-gray-900 `}>Treatment: </h3>
                         <div className="mt-3 flex gap-3">
                             {treatment
                                 ?.split(",") // Split the string into an array (use space, comma, or any delimiter)
@@ -233,7 +233,7 @@ export default function TestimonialComponentSlide({
 
                 className="m-0"
             >
-                <DialogTitle
+                {/* <DialogTitle
                     className="text-gray-800 font-semibold bg-primary-div text-lg rounded-t-xl p-2"
                     display="flex"
                     justifyContent="space-between"
@@ -246,7 +246,7 @@ export default function TestimonialComponentSlide({
                     }}>
                         <img className="w-[30px]" src="/iconsNew/close.svg" />
                     </IconButton>
-                </DialogTitle>
+                </DialogTitle> */}
                 <DialogContent className="px-0">
                     <QuoteComponent modalOpen={true} index={1} testimonial={currentTestimonial} />
                 </DialogContent>
