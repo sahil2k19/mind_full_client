@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AdsExperts from '../../component/AdsExperts'
 import AdsCombinePage from '../components/AdsCombinePage'
+import { Container } from '@mui/material'
 
 const servicesIcon = [
     {
@@ -36,7 +37,7 @@ const servicesIcon = [
     },
 ]
 export default function AdsPage({ params, condition }) {
-    
+
     // console.log('location', params.location)
     const city = params.location;
     const expertCondition = params.general;
@@ -111,16 +112,16 @@ export default function AdsPage({ params, condition }) {
                                         </span>
                                     </div>
                                 </div>
-                               {(location && expertText)? <p className="text-sm md:text-lg text-white font-bold text-end">
+                                {(location && expertText) ? <p className="text-sm md:text-lg text-white font-bold text-end">
                                     Our Experienced {expertText} are here to help you at our {location}
-                                </p>:
-                                (location )? <p className="text-sm md:text-lg text-white font-bold text-end">
-                                    Our Expert are here to help you at our {location}
-                                </p>
-                                :
-                                <p className="text-sm md:text-lg text-white font-bold text-end">
-                                Our Experts are available to assist you at a center near your location.
-                                </p>
+                                </p> :
+                                    (location) ? <p className="text-sm md:text-lg text-white font-bold text-end">
+                                        Our Expert are here to help you at our {location}
+                                    </p>
+                                        :
+                                        <p className="text-sm md:text-lg text-white font-bold text-end">
+                                            Our Experts are available to assist you at a center near your location.
+                                        </p>
                                 }
                             </div>
                         </div>
@@ -232,7 +233,7 @@ export default function AdsPage({ params, condition }) {
                     </section>
 
                     {/* Expert Team */}
-               
+
 
 
 
@@ -240,13 +241,13 @@ export default function AdsPage({ params, condition }) {
 
                     {/* <AdsExperts condition={condition}  expertText={expertText} location={location}/> */}
                     {/* our experts */}
-                 
+
 
                     {/* client speaks */}
                     {/* <section className='py-8 px-4'>
                         <TestimonialComponent location={location} condition={condition}/>
                     </section> */}
-                    <AdsCombinePage condition={condition}  expertText={expertText} location={location}/>
+                    <AdsCombinePage condition={condition} expertText={expertText} location={location} />
 
 
 
@@ -259,9 +260,9 @@ export default function AdsPage({ params, condition }) {
                         </h2>
                         <div className=''>
                             <div className='grid grid-cols-1 justify-center gap-2 '>
-                               <div className='flex justify-center'>
-                               <img src="/ads/why.jpg" className='h-[300px]' />
-                               </div>
+                                <div className='flex justify-center'>
+                                    <img src="/ads/why.jpg" className='h-[300px]' />
+                                </div>
                                 <div className="mx-4 space-y-8 ">
                                     <div>
                                         <h3 className="mb-2 text-xl  text-orange-500 font-semibold">
@@ -283,8 +284,8 @@ export default function AdsPage({ params, condition }) {
                             </div>
                         </div>
                         <div className='flex items-center justify-center mt-6'>
-                                    <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
-                                </div>
+                            <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                        </div>
                     </section>
                 </div>
             </>
@@ -309,16 +310,16 @@ export default function AdsPage({ params, condition }) {
                                         Are you or a loved one experiencing symptoms of depression, anxiety, ADHD, OCD or any other condition?
                                     </span>
                                 </div>
-                                {(location && expertText)? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                {(location && expertText) ? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
                                     Our Experienced {expertText} are here to help you at our {location}
-                                </p>:
-                                (location )? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
-                                    Our Expert are here to help you at our {location}
-                                </p>
-                                :
-                                <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
-                                Our Experts are available to assist you at a center near your location.
-                                </p>
+                                </p> :
+                                    (location) ? <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                        Our Expert are here to help you at our {location}
+                                    </p>
+                                        :
+                                        <p className="text-sm md:text-2xl text-orange-400 font-bold text-start">
+                                            Our Experts are available to assist you at a center near your location.
+                                        </p>
                                 }
                             </div>
                         </div>
@@ -376,60 +377,64 @@ export default function AdsPage({ params, condition }) {
 
                     {/* Symptoms */}
                     <section className="bg-gray-100 py-8">
-                        <div className="mx-auto">
-                            <h2 className="mb-4 text-center text-4xl font-bold text-orange-500">
-                                Are you experiencing any of the following symptoms?
-                            </h2>
-                            <p className="mb-8 text-xl text-center text-gray-600">
-                                If Yes, you may benefit from talking to someone
-                            </p>
-                            <div className="grid grid-cols-2 gap-6 md:grid-cols-3 px-4 lg:grid-cols-6">
-                                {symptoms.map((symptom) => (
-                                    <div key={symptom.name} className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow">
-                                        {/* <span className="mb-2 text-3xl">{symptom.icon}</span> */}
-                                        <img
-                                            src={symptom.icon}
-                                            alt={symptom.name}
-                                            width={100}
-                                            height={100}
-                                            className="mb-4 h-[100px] w-full rounded object-cover"
-                                        />
-                                        <span className="text-sm text-gray-600">{symptom.name}</span>
+                        <Container maxWidth="lg">
+                            <div className="mx-auto">
+                                <h2 className="mb-4 text-center text-4xl font-bold text-orange-500">
+                                    Are you experiencing any of the following symptoms?
+                                </h2>
+                                <p className="mb-8 text-xl text-center text-gray-600">
+                                    If Yes, you may benefit from talking to someone
+                                </p>
+                                <div className="grid grid-cols-2 gap-6 md:grid-cols-3 px-4 lg:grid-cols-6">
+                                    {symptoms.map((symptom) => (
+                                        <div key={symptom.name} className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow">
+                                            {/* <span className="mb-2 text-3xl">{symptom.icon}</span> */}
+                                            <img
+                                                src={symptom.icon}
+                                                alt={symptom.name}
+                                                width={100}
+                                                height={100}
+                                                className="mb-4 h-[100px] w-full rounded object-cover"
+                                            />
+                                            <span className="text-sm text-gray-600">{symptom.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-8 text-center">
+                                    <button className="rounded bg-orange-500 px-8 py-3 text-white hover:bg-orange-600">
+                                        Request an Appointment
+                                    </button>
+                                </div>
+                            </div>
+                        </Container>
+                    </section>
+                    {/* What We Treat */}
+                    {!condition && <section className="bg-primary-div mx-auto py-6">
+                        <Container maxWidth="lg">
+                            <h2 className="mb-12 text-center text-3xl font-bold text-orange-500">What We Treat</h2>
+                            <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
+                                {conditions.map((condition) => (
+                                    <div key={condition.name} className="rounded-lg p-4 ">
+                                        <div>
+                                            <img
+                                                src={condition.image}
+                                                alt={condition.name}
+                                                width={100}
+                                                height={100}
+                                                className="mb-4 h-[280px] w-full rounded object-cover"
+                                            />
+                                            <p className="text-center text-lg font-semibold text-orange-500">{condition.name}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-8 text-center">
-                                <button className="rounded bg-orange-500 px-8 py-3 text-white hover:bg-orange-600">
-                                    Request an Appointment
-                                </button>
+                            <div className='flex items-center justify-center'>
+                                <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 py-3 px-8 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Book a Consultation" />
                             </div>
-                        </div>
-                    </section>
-                    {/* What We Treat */}
-                 {!condition &&   <section className="bg-primary-div mx-auto py-6">
-                        <h2 className="mb-12 text-center text-3xl font-bold text-orange-500">What We Treat</h2>
-                        <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
-                            {conditions.map((condition) => (
-                                <div key={condition.name} className="rounded-lg p-4 ">
-                                    <div>
-                                        <img
-                                            src={condition.image}
-                                            alt={condition.name}
-                                            width={100}
-                                            height={100}
-                                            className="mb-4 h-[280px] w-full rounded object-cover"
-                                        />
-                                        <p className="text-center text-lg font-semibold text-orange-500">{condition.name}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='flex items-center justify-center'>
-                            <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 py-3 px-8 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Book a Consultation" />
-                        </div>
+                        </Container>
                     </section>}
 
-                    <AdsCombinePage condition={condition}  expertText={expertText} location={location}/>
+                    <AdsCombinePage condition={condition} expertText={expertText} location={location} />
                     {/* our experts */}
                     {/* <div className='bg-primary-div'>
                         <ClinicLocationDoctors city={city} />
@@ -464,8 +469,8 @@ export default function AdsPage({ params, condition }) {
                             </div>
                         </div>
                         <div className='flex items-center justify-center mt-6'>
-                                    <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
-                                </div>
+                            <RequestAppointment customStyle={"flex  items-center justify-center gap-2 rounded bg-orange-500 p-3 text-white hover:bg-orange-600 focus:ring focus:ring-orange-500 mx-10"} name="Request an Appointment" />
+                        </div>
                     </section>
 
 

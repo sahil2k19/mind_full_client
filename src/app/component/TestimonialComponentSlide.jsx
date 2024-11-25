@@ -10,6 +10,7 @@ export default function TestimonialComponentSlide({
     condition,
     disableSlide,
     setDisableSlide,
+    mobileView,
 }) {
     const [testimonials, setTestimonials] = useState([]);
     const [currentTestimonial, setCurrentTestimonial] = useState({});
@@ -71,7 +72,7 @@ export default function TestimonialComponentSlide({
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: mobileView ? 2 : 3,
         autoplay: true, // Enable auto-slide
         autoplaySpeed: 3000, // Slide every 5 seconds
         slidesToScroll: 1,
@@ -182,7 +183,8 @@ export default function TestimonialComponentSlide({
     }
 
     return (
-        <div className="bg-white rounded-lg  w-full p-4">
+        <div className={`${mobileView?"flex justify-center w-full":""}`}>
+            <div className={`bg-white rounded-lg   ${mobileView?"w-[80%]":"w-full"} p-4`}>
             <Slider {...settings}>
                 {testimonials.map((testimonial, index) => {
                     const {
@@ -251,6 +253,7 @@ export default function TestimonialComponentSlide({
                     <QuoteComponent modalOpen={true} index={1} testimonial={currentTestimonial} />
                 </DialogContent>
             </Dialog>
+        </div>
         </div>
     );
 }
