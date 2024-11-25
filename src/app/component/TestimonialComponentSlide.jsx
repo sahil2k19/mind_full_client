@@ -30,7 +30,7 @@ export default function TestimonialComponentSlide({
     useEffect(() => {
         fetchTestimonials();
     }, [condition, location]);
-
+ 
     if (testimonials.length === 0) {
         return <div className="flex justify-center h-full items-center"><CircularProgress /></div>;
     }
